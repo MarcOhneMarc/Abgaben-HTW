@@ -36,25 +36,25 @@ public class MathFunctions {
      * @return Rueckgabe eines boolschen werts zur Aussage, ob es moeglich ist
      */
     public static boolean istSummeVonPotenzen(long zahl){
-        long pruefsumme = 0; // Definition der Pruef Summe
-        boolean retbool = false; // Definition des Rueckgabe Booleans
-        double baseA = (Math.pow(zahl,(1.0/4.0))); // Definition der maximalen basis fuer hoch 4
-        double baseB = (Math.pow(zahl,(1.0/3.0))); // Definition der maximalen basis fuer hoch 3
-        double baseC = (Math.pow(zahl,(1.0/2.0))); // Definition der maximalen basis fuer hoch 2
+        long checkSum = 0; // Definition der Pruef Summe
+        boolean returnedBool = false; // Definition des Rueckgabe Booleans
+        double maxBaseA = (Math.pow(zahl,(1.0/4.0))); // Definition der maximalen basis fuer hoch 4
+        double maxBaseB = (Math.pow(zahl,(1.0/3.0))); // Definition der maximalen basis fuer hoch 3
+        double maxBaseC = (Math.pow(zahl,(1.0/2.0))); // Definition der maximalen basis fuer hoch 2
 
         // Ueberpruefung der verschiedenen basen a, b, und c
-        for (int a = 1; a <= baseA; a++){
-            for (int b = 1; b <= baseB;  b++){
-                for (int c = 1; c <= baseC;  c++){
-                    pruefsumme = (long)Math.pow(a,4) + (long)Math.pow(b,3) + (long)Math.pow(c,2);
-                    if (pruefsumme == zahl){
-                        retbool = true;
+        for (int a = 1; a <= maxBaseA; a++){
+            for (int b = 1; b <= maxBaseB;  b++){
+                for (int c = 1; c <= maxBaseC;  c++){
+                    checkSum = (long)Math.pow(a,4) + (long)Math.pow(b,3) + (long)Math.pow(c,2);
+                    if (checkSum == zahl){
+                        returnedBool = true;
                         break;
                     }
                 }
             }
         }
-        return retbool;
+        return returnedBool;
     }
 
     /**
