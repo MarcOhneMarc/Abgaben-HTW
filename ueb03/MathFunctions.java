@@ -27,4 +27,18 @@ public class MathFunctions {
         return retZeroPoints;
     }
 
+    public static int berechneGgt(int zahl1, int zahl2){
+        int ausgabe = 0;
+
+        if (zahl1 == 0){
+            ausgabe = zahl2;
+        } else {
+            while (zahl2 != 0) {
+                if (zahl1 > zahl2){
+
+                }
+            }
+        }
+        return ausgabe;
+    }
 }
