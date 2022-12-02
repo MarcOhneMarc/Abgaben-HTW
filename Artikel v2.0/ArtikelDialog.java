@@ -118,10 +118,8 @@ public class ArtikelDialog {
             String art = input.nextLine();
             System.out.println("Eingabe des Bestandes:"); 
             int bestand = input.nextInt();
-            System.out.println("Eingabe der Preis als Double:");
-            double preis = input.nextDouble();
-            artikel = new Artikel(artikelNr, art, bestand, preis);
-            System.out.println("Der artikel wurde erstellt. \nArtikel Nummer: " + artikelNr + "\nArt des artikels: " + art + "\nBestand im lager: " + bestand +"\nPreis des artikels: " + preis);
+            artikel = new Artikel(artikelNr, art, bestand);
+            System.out.println("Der artikel wurde erstellt. \nArtikel Nummer: " + artikelNr + "\nArt des artikels: " + art + "\nBestand im lager: " + bestand);
 
         }
     }
@@ -141,10 +139,8 @@ public class ArtikelDialog {
             input.nextLine();
             System.out.println("Eingabe der Art als String:"); 
             String art = input.nextLine();
-            System.out.println("Eingabe der Preis als Double:");
-            double preis = input.nextDouble();
-            artikel = new Artikel(artikelNr, art, preis);
-            System.out.println("Der artikel wurde erstellt. \nArtikel Nummer: " + artikelNr + "\nArt des artikels: " + art + "\nPreis des artikels: " + preis + "\n");
+            artikel = new Artikel(artikelNr, art);
+            System.out.println("Der artikel wurde erstellt. \nArtikel Nummer: " + artikelNr + "\nArt des artikels: " + art + "\n");
         }
     }
 

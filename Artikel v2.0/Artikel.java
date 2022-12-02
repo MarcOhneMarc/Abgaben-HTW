@@ -1,16 +1,14 @@
 /**
  * Bestandsfuehrung.
  * 
- * @author Marc Perwark & Jonas Neu
- * 06.11.2022
+ * @Marc Perwark & Jonas Neu
+ * @06.11.2022
  */
 public class Artikel{
     //initialisierung der Attribute
     private int artikelNr;
     private String art;
     private int bestand;
-
-    private double preis;
     
      /**
      * Konstruktor zum initialisiern eines Artikel mit Bestand
@@ -19,18 +17,17 @@ public class Artikel{
      * @param art gibt als Zeichenkette an was der Artikel ist
      * @param bestand gibt den wahrenbestand als ganzzahl an
      */
-    public Artikel(int artikelNr, String art, int bestand, double preis) {
+    public Artikel(int artikelNr, String art, int bestand) {
         if (art == null || art.strip().isEmpty()) {
-            throw new IllegalArgumentException("'Art' darf nicht leer sein!");
+            System.out.println("'Art' darf nicht leer sein!");
         } else if (artikelNr > 10000 || artikelNr < 999) {
-            throw new IllegalArgumentException("Die Artikelnummer muss 4 Stellen haben!");
+            System.out.println("Die Artikelnummer muss 4 Stellen haben!");
         } else if (bestand < 0) {
-            throw new IllegalArgumentException("Der bestand darf nicht negativ sein!");
+            System.out.println("Der bestand darf nicht negativ sein!");
         } else {
             this.artikelNr = artikelNr;
             this.art = art;
             this.bestand = bestand;
-            this.preis = preis;
         }
     }
     
@@ -40,15 +37,14 @@ public class Artikel{
      * @param artikelNr gibt die Artikelnummer als vierstellige ganzzahl an
      * @param art gibt als Zeichenkette an was der Artikel ist
      */
-    public Artikel(int artikelNr, String art, double preis) {
+    public Artikel(int artikelNr, String art) {
         if (art == null || art.strip().isEmpty()) {
-            throw new IllegalArgumentException("'Art' darf nicht leer sein!");
+            System.out.println("'Art' darf nicht leer sein!");
         } else if (artikelNr > 10000 || artikelNr < 999) {
-            throw new IllegalArgumentException("Die Artikelnummer muss 4 Stellen haben!");
+            System.out.println("Die Artikelnummer muss 4 Stellen haben!");
         } else {
             this.artikelNr = artikelNr;
             this.art = art;
-            this.preis = preis;
         }
     }
     //Ein Standardkonstruktor wie Artikel() macht hier keinen Sinn, da jeder Artikel unterschiedlich sein muss.
@@ -59,7 +55,7 @@ public class Artikel{
      */
     public void bucheZugang(int menge) {
         if (menge < 0) {
-            throw new IllegalArgumentException("Die Menge darf nicht negativ sein!");
+            System.out.println("Die Menge darf nicht negativ sein!");
         } else {
             bestand = bestand + menge;
         }
@@ -73,9 +69,9 @@ public class Artikel{
      */
     public void bucheAbgang(int menge) {
         if (menge < 0) {
-            throw new IllegalArgumentException("Die Menge darf nicht negativ sein!");
+            System.out.println("Die Menge darf nicht negativ sein!");
         } else if (bestand - menge < 0) {
-            throw new IllegalArgumentException("Der Finale Bestand darf nicht negativ sein!");
+            System.out.println("Der Finale Bestand darf nicht negativ sein!");
         } else {
             bestand = bestand - menge;
         }
@@ -107,9 +103,6 @@ public class Artikel{
      */
     public int getBestand() {
         return bestand;
-    }
-    public double getPreis() {
-        return preis;
     }
     
     /**
