@@ -32,7 +32,12 @@ import java.lang.reflect.Array;
    public void legeAnArtikel(Artikel artikel){
 
   }
-
+  
+  /**
+  * Methode zum entfernen eines Artikels
+  * @param artikelNr Die Artikelnummer des Artikels der entfernt werden soll.
+  * @throws IllegalArgumentException wenn der Artikel nicht gefunden wird.
+  */
   public void entferneArtikel(int artikelNr){
     int artikelIndex = findeArtikelIndex(artikelNr);
     if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
