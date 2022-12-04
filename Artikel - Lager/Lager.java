@@ -10,6 +10,7 @@ import java.lang.reflect.Array;
     //initialisierung der Attribute
     private static final int ARTIKEL_NICHT_GEFUNDEN = -1;
     
+        private static final String ERROR_ARTIKEL_EXISTIERT_BEREITS = "Dieser Artikel ist bereits im Lager.";
     
     private int arraylaenge;
     private int id;
@@ -49,11 +50,11 @@ import java.lang.reflect.Array;
            throw new IllegalArgumentException("Die Station ist belegt");
        }
 
-       String artikelNr = artikel.getArtikelNr();
-       int index = findeRoboterIndex(artikelNr);
+       int artikelNr = artikel.getArtikelNr();
+       int index = findeArtikelIndex(artikelNr);
 
-       if (index != ROBOTER_NICHT_GEFUNDEN) {
-           throw new IllegalArgumentException(ERROR_ROBOTER_BEREITS_REGISTRIERT);
+       if (index != ARTIKEL_NICHT_GEFUNDEN) {
+           throw new IllegalArgumentException(ERROR_ARTIKEL_EXISTIERT_BEREITS);
        }
 
        allArtikels[countArtikel] = artikel;
@@ -81,12 +82,13 @@ import java.lang.reflect.Array;
     }
 
     private int findeArtikelIndex(int artikelNr) {
-    for (int i = 0; i < countArtikel; i++) {
-      Artikel artikel = allArtikels[i];
-      if (artikel.getArtikelNr() == artikelNr) {
-        return i;
-      }
-    }
+        for (int i = 0; i < countArtikel; i++) {
+          Artikel artikel = allArtikels[i];
+          if (artikel.getArtikelNr() == artikelNr) {
+            return i;
+          }
+        }
+        return ARTIKEL_NICHT_GEFUNDEN;
     }
 
     private void aenderePreisEinesArtikels(int artikelNr, double prozent) {
