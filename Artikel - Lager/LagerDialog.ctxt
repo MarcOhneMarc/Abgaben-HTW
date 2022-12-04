@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=LagerDialog
+comment0.text=\r\n\ Bestandsfuehrung.\r\n\r\n\ @author\ Marc\ Perwark\ &\ Jonas\ Neu\r\n\ @06.11.2022\r\n
+comment1.params=
+comment1.target=LagerDialog()
+comment2.params=
+comment2.target=void\ start()
+comment2.text=\r\n\ Hauptschleife\ des\ Dialogprogramms.\r\n
+comment3.params=
+comment3.target=void\ menu()
+comment3.text=\r\n\ Text\ des\ Hauptmenues\r\n
+comment4.params=
+comment4.target=int\ einlesenFuktion()
+comment4.text=\r\n\ Einlesen\ der\ Funktion\r\n\r\n\ @return\ Auswahl\ wird\ im\ Menu\ als\ ganzzahliger\ Wert\ zur\u00FCckgegeben\r\n
+comment5.params=funktion
+comment5.target=void\ ausfuehrenFunktion(int)
+comment5.text=\r\n\ Abfrage\ welche\ Funktion\ ausgef\u00FChrt\ werden\ soll\r\n\r\n\ @param\ funktion\ gibt\ die\ auszufuehrende\ Funktion\ als\ ganze\ Zahl\ an\r\n
+comment6.params=
+comment6.target=void\ lager_erstellen()
+comment7.params=
+comment7.target=void\ artikel_anlegen()
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9
