@@ -1,6 +1,6 @@
 /**
  * Bestandsfuehrung.
- * 
+ *
  * @author Marc Perwark & Jonas Neu
  * 06.11.2022
  */
@@ -11,10 +11,10 @@ public class Artikel{
     private int bestand;
 
     private double preis;
-    
+
      /**
      * Konstruktor zum initialisiern eines Artikel mit Bestand
-     * 
+     *
      * @param artikelNr gibt die Artikelnummer als vierstellige ganzzahl an
      * @param art gibt als Zeichenkette an was der Artikel ist
      * @param bestand gibt den wahrenbestand als ganzzahl an
@@ -33,10 +33,10 @@ public class Artikel{
             this.preis = preis;
         }
     }
-    
+
      /**
      * Konstruktor zum initialisiern eines Artikel ohne Bestand
-     * 
+     *
      * @param artikelNr gibt die Artikelnummer als vierstellige ganzzahl an
      * @param art gibt als Zeichenkette an was der Artikel ist
      */
@@ -54,7 +54,7 @@ public class Artikel{
     //Ein Standardkonstruktor wie Artikel() macht hier keinen Sinn, da jeder Artikel unterschiedlich sein muss.
     /**
      * Methode zur Buchung einer Bestandserhoehung
-     * 
+     *
      * @param menge gibt an welcher int Wert zum ursprünglichen bestand addiert werden soll
      */
     public void bucheZugang(int menge) {
@@ -65,10 +65,10 @@ public class Artikel{
         }
         System.out.println(bestand);
     }
-    
+
     /**
      * Methode zur Buchung einer Bestandsverminderung
-     * 
+     *
      * @param menge gibt an welcher int Wert vom ursprünglichen bestand abgezogen werden soll
      */
     public void bucheAbgang(int menge) {
@@ -80,28 +80,28 @@ public class Artikel{
             bestand = bestand - menge;
         }
     }
-    
+
     /**
      * Ausgabe der Artikelattribute mit aktuellem Wert als Zeichenkette
      */
     public String toString() {
         return "Artikel: " + artikelNr + ", Art: " + art + ", Bestand: " + bestand;
     }
-    
+
     /**
      * get Artikelnummer
      */
     public int getArtikelNr() {
         return artikelNr;
     }
-    
+
     /**
      * get Art des Artikels
      */
     public String getArt() {
         return art;
     }
-    
+
     /**
      * get Benstand eines Artikels
      */
@@ -111,10 +111,10 @@ public class Artikel{
     public double getPreis() {
         return preis;
     }
-    
+
     /**
      * set Art eines Artikels
-     * 
+     *
      * @param art gibt als Zeichenkette an was der Artikel ist
      */
     public void setArt(String art) {
@@ -123,11 +123,11 @@ public class Artikel{
         } else {
             this.art = art;
         }
-    } 
-    
+    }
+
     /**
      * set Benstand eines Artikels
-     * 
+     *
      * @param bestand gibt den wahrenbestand als ganzzahl an
      */
     public void setBestand(int bestand) {
