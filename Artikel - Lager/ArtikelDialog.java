@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Bestandsfuehrung.
  * 
- * @Marc Perwark & Jonas Neu
+ * @author Marc Perwark & Jonas Neu
  * @06.11.2022
  */
 public class ArtikelDialog {
