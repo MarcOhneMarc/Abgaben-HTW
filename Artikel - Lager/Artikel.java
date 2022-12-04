@@ -143,7 +143,7 @@ public class Artikel{
      *
      * @param preis gibt den neuen Preis als ganzzahl an
      */
-    public void setPreis(int preis) {
+    public void setPreis(double preis) {
         if (bestand < 0) {
             throw new IllegalAccessError("Der preis darf nicht negativ sein!");
         } else {
