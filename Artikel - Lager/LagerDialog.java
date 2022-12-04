@@ -99,19 +99,20 @@ public class LagerDialog {
         case artikel_entfernen: artikel_entfernen();
         break;
         case get_artikel: artikelAusgeben();
+        break;
+        case buche_zugang: bucheZugang();
+        break;
+        case buche_abgang: bucheAbgang();
+        break;
+        case to_string: to_String();
         
-        /*        /lager_erstellen();
-        } else if (funktion == buche_zugang) {
-            //lager_erstellen();
-        } else if (funktion == buche_abgang) {
+        /*
             //lager_erstellen();
         } else if (funktion == aendere_preis_eines_artikels) {
             //lager_erstellen();
         } else if (funktion == aendere_preis_aller_artikels) {
             //lager_erstellen();
         } else if (funktion == get_artikel) {
-            //lager_erstellen();
-        } else if (funktion == to_string) {
             //lager_erstellen();
         } else if (funktion == get_artikel_anzahl) {
             //lager_erstellen();
@@ -176,6 +177,34 @@ public class LagerDialog {
             
             System.out.println(lager.getArtikel(index));
         }
+    }
+    
+    private void bucheZugang() {
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("ArtikelNr");
+            int artikelNr = input.nextInt();
+            System.out.println("Zugang");
+            int zugang = input.nextInt();
+            lager.bucheZugang(artikelNr, zugang);
+        }
+    }
+
+    private void bucheAbgang() {
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("ArtikelNr");
+            int artikelNr = input.nextInt();
+            System.out.println("Abgang");
+            int abgang = input.nextInt();
+            lager.bucheAbgang(artikelNr, abgang);
+        }
+    }
+    
+    private void to_String() {
+        System.out.println(lager.toString());
     }
     
     public static void main(String[] args) {
