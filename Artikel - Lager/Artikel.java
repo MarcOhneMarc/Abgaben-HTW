@@ -137,4 +137,17 @@ public class Artikel{
             this.bestand = bestand;
         }
     }
+
+    /**
+     * set Preis eines Artikels
+     *
+     * @param preis gibt den neuen Preis als ganzzahl an
+     */
+    public void setPreis(int preis) {
+        if (bestand < 0) {
+            throw new IllegalAccessError("Der preis darf nicht negativ sein!");
+        } else {
+            this.preis = preis;
+        }
+    }
 }
