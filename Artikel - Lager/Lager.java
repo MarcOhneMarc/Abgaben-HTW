@@ -75,7 +75,7 @@ import java.lang.reflect.Array;
         countArtikel--;
     }
 
-    private int findeArtikelIndex(int artikelNr) {
+    public int findeArtikelIndex(int artikelNr) {
         for (int i = 0; i < countArtikel; i++) {
           Artikel artikel = allArtikels[i];
           if (artikel.getArtikelNr() == artikelNr) {
@@ -84,8 +84,12 @@ import java.lang.reflect.Array;
         }
         return ARTIKEL_NICHT_GEFUNDEN;
     }
+    
+    public void bucheZugang(int artikelNr, int zugang) {
+        //
+    }
 
-    private void aenderePreisEinesArtikels(int artikelNr, double prozent) {
+    public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
         int artikelIndex = findeArtikelIndex(artikelNr);
         
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
@@ -94,5 +98,9 @@ import java.lang.reflect.Array;
         }
         Artikel artikel = allArtikels[artikelIndex];
         artikel.setPreis(artikel.getPreis()*prozent);
+    }
+    
+    public Artikel getArtikel(int index) {
+        return allArtikels[index];
     }
 }

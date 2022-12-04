@@ -25,6 +25,9 @@ public class LagerDialog {
     private static final int get_lager_groesse = 11;
     private static final int ende = 0;
     
+    // Konstanten fuer die Fehlermeldungen.
+    private static final String KEIN_LAGER_EXISTIERT = "Es wurde noch kein Lager erstellt";
+    
     //Konstruktor zum initialisiern des Scanners
     public LagerDialog() {
         input = new Scanner(System.in);
@@ -88,12 +91,16 @@ public class LagerDialog {
      * @param funktion gibt die auszufuehrende Funktion als ganze Zahl an
      */
     private void ausfuehrenFunktion(int funktion) {
-        if (funktion == lager_erstellen) {
-            lager_erstellen();
-        } else if (funktion == artikel_anlegen) {
-            artikel_anlegen();
-        } else if (funktion == artikel_entfernen) {
-            //lager_erstellen();
+        switch (funktion) {
+        case lager_erstellen: lager = lager_erstellen();
+        break;
+        case artikel_anlegen: artikel_anlegen();
+        break;
+        case artikel_entfernen: artikel_entfernen();
+        break;
+        case get_artikel: artikelAusgeben();
+        
+        /*        /lager_erstellen();
         } else if (funktion == buche_zugang) {
             //lager_erstellen();
         } else if (funktion == buche_abgang) {
@@ -114,29 +121,61 @@ public class LagerDialog {
             System.out.println("Programmende!");
         } else {
             System.out.println("Falsche Eingabe!");
+        }*/
         }
     }
     
-    private void lager_erstellen() {
-        System.out.print("Maximale Lagerkapazität: ");
-        int arraylaenge = input.nextInt();
-        input.nextLine();
-        new Lager(arraylaenge);
+    private Lager lager_erstellen() {
+        if (lager != null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.print("Maximale Lagerkapazität: ");
+            int arraylaenge = input.nextInt();
+            input.nextLine();
+            return new Lager(arraylaenge);
+        }
     }
     
     private void artikel_anlegen() {
-        System.out.println("Eingabe der ID als Ganzzahl mit 4 Ziffern:");
-        int artikelNr = input.nextInt();
-        input.nextLine();
-        System.out.println("Eingabe der Art als String:");
-        String art = input.nextLine();
-        System.out.println("Eingabe des Bestandes:");
-        int bestand = input.nextInt();
-        System.out.println("Eingabe der Preis als Double:");
-        double preis = input.nextDouble();
-        artikel = new Artikel(artikelNr, art, bestand, preis);
-        
-        lager.legeAnArtikel(artikel);
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("Eingabe der ID als Ganzzahl mit 4 Ziffern:");
+            int artikelNr = input.nextInt();
+            input.nextLine();
+            System.out.println("Eingabe der Art als String:");
+            String art = input.nextLine();
+            System.out.println("Eingabe des Bestandes:");
+            int bestand = input.nextInt();
+            System.out.println("Eingabe der Preis als Double:");
+            double preis = input.nextDouble();
+            
+            artikel = new Artikel(artikelNr, art, bestand, preis);
+            
+            lager.legeAnArtikel(artikel);
+        }
+    }
+    
+    private void artikel_entfernen() {
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("Eingabe der Artikelnummer als Ganzzahl mit 4 Ziffern:");
+            int artikelNr = input.nextInt();
+            
+            lager.entferneArtikel(artikelNr);
+        }
+    }
+    
+    private void artikelAusgeben() {
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("Index");
+            int index = input.nextInt();
+            
+            System.out.println(lager.getArtikel(index));
+        }
     }
     
     public static void main(String[] args) {
