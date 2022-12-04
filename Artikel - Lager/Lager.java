@@ -10,12 +10,9 @@ import java.lang.reflect.Array;
     //initialisierung der Attribute
     private static final int ARTIKEL_NICHT_GEFUNDEN = -1;
     
-        private static final String ERROR_ARTIKEL_EXISTIERT_BEREITS = "Dieser Artikel ist bereits im Lager.";
+    private static final String ERROR_ARTIKEL_EXISTIERT_BEREITS = "Dieser Artikel ist bereits im Lager.";
     
     private int arraylaenge;
-    private int id;
-    private String name;
-    private int bestand;
     private Artikel[] allArtikels;
     
     private int countArtikel;
@@ -25,11 +22,8 @@ import java.lang.reflect.Array;
     *
     * @param arraylaenge gibt an wie viele speicherplaetze im Array vergeben werden
     */
-    public Lager(int id, String name, int bestand, int arraylaenge) {
+    public Lager(int arraylaenge) {
        allArtikels = new Artikel[arraylaenge];
-       this.id = id;
-       this.name = name;
-       this.bestand = bestand;
        this.arraylaenge = arraylaenge;
     }
     
@@ -92,13 +86,13 @@ import java.lang.reflect.Array;
     }
 
     private void aenderePreisEinesArtikels(int artikelNr, double prozent) {
-    int artikelIndex = findeArtikelIndex(artikelNr);
-    
-    if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
-      throw new IllegalArgumentException("Ein Artikel mit der Id " +
-      artikelNr + " exixtiert nicht!");
-    }
-    Artikel artikel = allArtikels[artikelIndex];
-    artikel.setPreis(artikel.getPreis()*prozent);
+        int artikelIndex = findeArtikelIndex(artikelNr);
+        
+        if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+          throw new IllegalArgumentException("Ein Artikel mit der Id " +
+          artikelNr + " exixtiert nicht!");
+        }
+        Artikel artikel = allArtikels[artikelIndex];
+        artikel.setPreis(artikel.getPreis()*prozent);
     }
 }
