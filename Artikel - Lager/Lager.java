@@ -32,7 +32,7 @@ import java.lang.reflect.Array;
    public void legeAnArtikel(Artikel artikel){
 
   }
-  
+
   /**
   * Methode zum entfernen eines Artikels
   * @param artikelNr Die Artikelnummer des Artikels der entfernt werden soll.
@@ -59,5 +59,16 @@ import java.lang.reflect.Array;
         return i;
       }
     }
+  }
+
+  private void aenderePreisEinesArtikels(int artikelNr, double prozent) {
+    int artikelIndex = findeArtikelIndex(artikelNr);
+
+    if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+      throw new IllegalArgumentException("Ein Artikel mit der Id " +
+      roboterId + " exixtiert nicht!");
+    }
+    Artiekel artikel = allArtikels[artikelIndex];
+    artikel.setPreis(getPreis()*prozent);
   }
 }
