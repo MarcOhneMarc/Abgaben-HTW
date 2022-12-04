@@ -9,8 +9,9 @@ import java.lang.reflect.Array;
 
  public class Lager {
    //initialisierung der Attribute
+   private static final int ARTIKEL_NICHT_GEFUNDEN = -1;
 
-    private Artikel[] allArtikels;
+   private Artikel[] allArtikels;
 
    /**
    * Konstruktor zum initialisiern der Lagergroesse
@@ -31,4 +32,27 @@ import java.lang.reflect.Array;
    public void legeAnArtikel(Artikel artikel){
 
   }
- }
+
+  public void entferneArtikel(int artikelNr){
+    int artikelIndex = findeArtikelIndex(artikelNr);
+    if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+      throw new IllegalArgumentException("Ein Artikel mit der Id " +
+      roboterId + " exixtiert nicht!");
+    }
+
+    if (int i = artikelIndex; i < countArtikel -1; i++) {
+      allArtikels[i] = allArtikels[i + 1];
+    }
+    allArtikels[countArtikel - 1] = null;
+    countArtikel--;
+  }
+
+  private int findeArtikelIndex(String artikelNr) {
+    for (int i = 0; i < countArtikel; i++) {
+      Artikel artikel = allArtikels;
+      if (artikel.getArtikelNr().equals(artikelNr)) {
+        return i;
+      }
+    }
+  }
+}
