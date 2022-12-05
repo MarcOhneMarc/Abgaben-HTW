@@ -60,7 +60,7 @@ public class LagerDialog {
      * Text des Hauptmenues
      */
     private void menu() {
-        System.out.println("Press '1' zum erzeugen eines Lagers");
+        System.out.println("\nPress '1' zum erzeugen eines Lagers");
         System.out.println("Press '2' zum hinzufuegen eines Artikels");
         System.out.println("Press '3' zum entfernen eines Artikels");
         System.out.println("Press '4' zum buchen eines Zugangs für einen Artikel");
@@ -130,10 +130,19 @@ public class LagerDialog {
         if (lager != null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.print("Maximale Lagerkapazität: ");
-            int arraylaenge = input.nextInt();
-            input.nextLine();
-            return new Lager(arraylaenge);
+            System.out.print("Wollen sie ein Lager mit einer bestimmten anzahl von Lagerplaetzen Y/N: ");
+            char choice = input.nextLine().charAt(0);
+            if (choice == 'Y') {
+                System.out.print("Geben sie die Lagerkapazität an (Maximal 10): ");
+                int arraylaenge = input.nextInt();
+                input.nextLine();
+                return new Lager(arraylaenge);
+            } else if (choice == 'N') {
+                System.out.print("Lager mit der maximalen Lagergroesse 10 wird erstellt!\n");
+                return new Lager(10);
+            } else {
+                throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
+            }
         }
     }
     
@@ -146,12 +155,24 @@ public class LagerDialog {
             input.nextLine();
             System.out.println("Eingabe der Art als String:");
             String art = input.nextLine();
-            System.out.println("Eingabe des Bestandes:");
-            int bestand = input.nextInt();
             System.out.println("Eingabe der Preis als Double:");
             double preis = input.nextDouble();
+            input.nextLine();
             
-            artikel = new Artikel(artikelNr, art, bestand, preis);
+            
+            
+            System.out.print("Wollen sie einen Artikel mit Bestand erstellen Y/N: ");
+            char choice = input.nextLine().charAt(0);
+            if (choice == 'Y') {
+                System.out.println("Eingabe des Bestandes:");
+                int bestand = input.nextInt();
+                input.nextLine();
+                artikel = new Artikel(artikelNr, art, bestand, preis);
+            } else if (choice == 'N') {
+                artikel = new Artikel(artikelNr, art, preis);
+            } else {
+                throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
+            }  
             
             lager.legeAnArtikel(artikel);
         }

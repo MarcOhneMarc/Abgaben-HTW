@@ -23,15 +23,20 @@ import java.lang.reflect.Array;
     * @param arraylaenge gibt an wie viele speicherplaetze im Array vergeben werden
     */
     public Lager(int arraylaenge) {
-       allArtikels = new Artikel[arraylaenge];
-       this.arraylaenge = arraylaenge;
+        if (arraylaenge > 10 || arraylaenge <= 0) {
+            throw new IllegalArgumentException("Das Lager darf minimal 1 und maximal 10 einheiten groß sein!");
+        } else {
+           allArtikels = new Artikel[arraylaenge];
+           this.arraylaenge = arraylaenge;
+        }
     }
     
     /**
-    * Starndard-Konstruktor zum initialisiern eines Lagers mit der Lagergroesse 10
+    * Standart-Konstruktor zum initialisiern der maximalen Lagergroesse = 10
     */
     public Lager() {
-       allArtikels = new Artikel[10];
+        allArtikels = new Artikel[10];
+        this.arraylaenge = 10;
     }
 
     /**
@@ -147,17 +152,14 @@ import java.lang.reflect.Array;
     }
     
     public String toString() {
-        String ausgabe = " ";
-        //System.out.println(0 + " " + allArtikels[0].toString());
-        //System.out.println(1 + " " + allArtikels[1].toString());
+        String ausgabe = "";
         
         for (int i = 0; i < allArtikels.length; i++) {
-            ausgabe = ausgabe + "Lagerplatz " + i + ": ";
+            ausgabe = ausgabe + "[Lagerplatz " + i + ": ";
             if (allArtikels[i] == null) {
-                ausgabe = ausgabe + "NULL" + " ";
+                ausgabe = ausgabe + "NULL" + "] ";
             } else {
-                System.out.println(i + " " + allArtikels[i].toString());
-                ausgabe = ausgabe + allArtikels[i].toString() + " ";
+                ausgabe = ausgabe + allArtikels[i].toString() + "] ";
             }
         }
         return ausgabe;
