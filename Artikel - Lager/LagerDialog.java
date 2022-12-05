@@ -4,7 +4,7 @@ import java.util.Scanner;
  * Bestandsfuehrung.
  *
  * @author Marc Perwark & Jonas Neu
- * @06.11.2022
+ * 06.11.2022
  */
 public class LagerDialog {
     //initialisierung der Attribute
