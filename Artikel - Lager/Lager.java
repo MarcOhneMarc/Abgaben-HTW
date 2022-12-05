@@ -42,7 +42,7 @@ import java.lang.reflect.Array;
     /**
     * Methode zum anlegen eines Artikels
     * 
-    * @param Artikel artikel ist der Artikel der hinzugefuegt werden soll
+    * @param artikel artikel ist der Artikel der hinzugefuegt werden soll
     * @throws IllegalArgumentException wenn der Artikel null ist
     * @throws IllegalArgumentException wenn der Lagerplatz belegt ist
     * @throws IllegalArgumentException wenn der Artikel bereits existiert
@@ -147,6 +147,8 @@ import java.lang.reflect.Array;
           throw new IllegalArgumentException("Ein Artikel mit der Id " +
           artikelNr + " exixtiert nicht!");
         }
+        double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Aktuelle Preis des artikels an der stelle i des Arrays
+        double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geänderter Preis
         Artikel artikel = allArtikels[artikelIndex];
         artikel.setPreis(artikel.getPreis()*(prozent/100));
     }
@@ -177,9 +179,33 @@ import java.lang.reflect.Array;
      * @return Artikel Der Artikel and der stelle Index
      */
     public Artikel getArtikel(int index) {
-        if (index < 1 || index > arraylaenge) {
-            throw new IllegalArgumentException("Der index kann nicht kleiner als null oder groesser als " + arraylaenge + " sein");
+        if (index < 0){
+            throw new IllegalArgumentException("Es gibt keinen negativen Lager Platz");
+        } else if (index > arraylaenge) {
+            throw new IllegalArgumentException("Diese Speicherstelle existiert nicht");
+        } else{
+            return allArtikels[index];
         }
-        return allArtikels[index];
+    }
+
+    public int getArtikelAnzahl(){
+        if (countArtikel == 0)
+            throw new IllegalArgumentException("Es Ist noch kein Artikel im Lager");
+        else{
+            return countArtikel;
+        }
+    }
+
+    /**
+     * Methode zur rueckgabe der Lagergroese
+     *
+     * @return rueckgabe der lager groese als integer
+     */
+    public int getLagerGroesse(){
+        if (allArtikels == null)
+            throw new IllegalArgumentException("Es existiert noch kein lager");
+        else {
+            return allArtikels.length;
+        }
     }
 }

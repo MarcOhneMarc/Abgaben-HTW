@@ -180,6 +180,21 @@ public class LagerDialog {
             lager.entferneArtikel(artikelNr);
         }
     }
+
+    private void aenderePreisEinesArtikels(){
+        System.out.println("Geben sie bitte die ArtikelNr ein");
+        int artikelNr = input.nextInt();
+        System.out.println("Geben sie Prozentzahl ein");
+        int procent = input.nextInt();
+
+        lager.aenderePreisEinesArtikels(artikelNr,procent);
+    }
+    private void aenderePreisAllerArtikels(){
+        System.out.println("Geben sie Prozentzahl ein");
+        int procent = input.nextInt();
+
+        lager.aenderePreisAllerArtikel(procent);
+    }
     
     private void getArtikel() {
         if (lager == null) {
@@ -190,6 +205,14 @@ public class LagerDialog {
             
             System.out.println(lager.getArtikel(index));
         }
+    }
+
+    private void getArtikelAnzahl(){
+        System.out.println("Es befinden sich: " + lager.getArtikelAnzahl() + " im Lager");
+    }
+
+    private void getlagergroesse(){
+        System.out.println("Die groese des Lagers baetraegt: " + lager.getLagerGroesse() + " Paetze");
     }
     
     private void bucheZugang() {
