@@ -1,5 +1,5 @@
 /**
- * Lager
+ * Klasse zum erstellen eines Lagers, in dem man mehrere Artikel der funktion Artikel.java speichern kann.
  *
  * @author Marc Perwark & Jonas Neu
  * 06.11.2022
@@ -8,7 +8,10 @@
     //initialisierung der Attribute
     private static final int ARTIKEL_NICHT_GEFUNDEN = -1;
     
-    private static final String ERROR_ARTIKEL_EXISTIERT_BEREITS = "Dieser Artikel ist bereits im Lager.";
+    private static final String ERROR_ARTIKEL_EXISTIERT_BEREITS = "Dieser Artikel ist bereits im Lager!";
+    private static final String MINIMAL_MAXIMAL_LAGER = "Das Lager darf minimal 1 und maximal 10 einheiten groß sein!";
+    private static final String ARTIKEL_EXISTIERT_NICHT = "Dieser Artikel existiert noch nicht!";
+    private static final String LAGER_VOLL = "Das Lager ist Voll!";
     
     private int arraylaenge;
     private Artikel[] allArtikels;
@@ -22,7 +25,7 @@
     */
     public Lager(int arraylaenge) {
         if (arraylaenge > 10 || arraylaenge <= 0) {
-            throw new IllegalArgumentException("Das Lager darf minimal 1 und maximal 10 einheiten groß sein!");
+            throw new IllegalArgumentException(MINIMAL_MAXIMAL_LAGER);
         } else {
            allArtikels = new Artikel[arraylaenge];
            this.arraylaenge = arraylaenge;
@@ -47,26 +50,26 @@
     */
     public void legeAnArtikel(Artikel artikel){
 
-        // Pruefen ob null
-       if (artikel == null) {
-           throw new IllegalArgumentException("Der Artikel ist null");
-       }
-
-       // Pruefen ob die arraylaenge gleich countArtikel
-       if (arraylaenge == countArtikel) {
-           throw new IllegalArgumentException("Die Lagerplatz ist belegt");
-       }
-
-       int artikelNr = artikel.getArtikelNr(); // Abspeichen der artikel nummer die von getArtikelNr uebergeben wird
-       int index = findeArtikelIndex(artikelNr); // Wir speichen den rueckgabe wert der findeArtikelIndex Methonde in die variable rein
-
-       // Ueberpruefung, ob was gefunden wird unter der artikel nummer
-       if (index != ARTIKEL_NICHT_GEFUNDEN) {
+        // Pruefen ob der Artikel existiert
+        if (artikel == null) {
+           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
+        }
+        
+        // Pruefen ob das Lager schon voll ist
+        if (arraylaenge == countArtikel) {
+           throw new IllegalArgumentException(LAGER_VOLL);
+        }
+        
+        int artikelNr = artikel.getArtikelNr(); // Abspeichern der Artikelnummer, die von getArtikelNr() uebergeben wird
+        int index = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
+        
+        // Ueberpruefung ob sich der Artikel noch nicht im Lager befindet
+        if (index != ARTIKEL_NICHT_GEFUNDEN) {
            throw new IllegalArgumentException(ERROR_ARTIKEL_EXISTIERT_BEREITS);
-       }
-
-       allArtikels[countArtikel] = artikel;
-       countArtikel++;
+        }
+        
+        allArtikels[countArtikel] = artikel;
+        countArtikel++;
 
     }
 
@@ -77,9 +80,9 @@
     * @throws IllegalArgumentException wenn der Artikel nicht gefunden wird.
     */
     public void entferneArtikel(int artikelNr){
-        int artikelIndex = findeArtikelIndex(artikelNr); // Wir speichen den rueckgabe wert der findeArtikelIndex Methonde in die variable rein
+        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
 
-        // Ueberpruefung, ob was gefunden wird unter der artikel nummer
+        // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException("Ein Artikel mit der Id " +
           artikelIndex + " exixtiert nicht!");
@@ -115,9 +118,9 @@
     * @param zugang Der Zugang als Ganzzahl
     */
     public void bucheZugang(int artikelNr, int zugang) {
-        int artikelIndex = findeArtikelIndex(artikelNr); // Wir speichen den rueckgabe wert der findeArtikelIndex Methonde in die variable rein
-
-        // Ueberpruefung, ob was gefunden wird unter der artikel nummer
+        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
+        
+        // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException("Ein Artikel mit der Id " +
           artikelNr + " exixtiert nicht!");
@@ -133,9 +136,9 @@
     * @param abgang Der Abgang als Ganzzahl
     */
     public void bucheAbgang(int artikelNr, int abgang) {
-        int artikelIndex = findeArtikelIndex(artikelNr); // Wir speichen den rueckgabe wert der findeArtikelIndex Methonde in die variable rein
+        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
 
-        // Ueberpruefung, ob was gefunden wird unter der artikel nummer
+        // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException("Ein Artikel mit der Id " +
           artikelNr + " exixtiert nicht!");
@@ -152,18 +155,18 @@
      * @param prozent uebergebene Prozentzahl als double
      */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
-        int artikelIndex = findeArtikelIndex(artikelNr); // Wir speichen den rueckgabe wert der findeArtikelIndex Methonde in die variable rein
+        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
 
-        // Ueberpruefung, ob was gefunden wird unter der artikel nummer
+        // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException("Ein Artikel mit der Id " +
           artikelNr + " exixtiert nicht!");
+        } else {
+            double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Der aktuelle Preis des Artikels wird abgespeichert
+            double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geaenderter Preis wird abgespeichert
+            Artikel artikel = allArtikels[artikelIndex];
+            artikel.setPreis(preisRechnung);
         }
-
-        double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Der aktuelle Preis des artikels
-        double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geänderter Preis
-        Artikel artikel = allArtikels[artikelIndex];
-        artikel.setPreis(preisRechnung);
     }
 
     /**
@@ -173,11 +176,11 @@
      * @param prozent uebergebene Prozentzahl als double
      */
     public void aenderePreisAllerArtikel(double prozent) {
-
-        // For schleife zur ermittlung der artikel im Array
+        
+        // For-Schleife zur Ermittlung der Artikel im Array
         for (int i = 0; i < countArtikel; i++) {
-            double preisAkktuel = allArtikels[i].getPreis(); // Der aktuelle Preis des artikels an der stelle i des Arrays
-            double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geänderter Preis
+            double preisAkktuel = allArtikels[i].getPreis(); // Der aktuelle Preis des Artikels an der stelle i des Arrays
+            double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geaenderter Preis
             allArtikels[i].setPreis(preisRechnung);
         }
     }
@@ -189,9 +192,9 @@
      * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
      */
     public String toString() {
-        String ausgabe = ""; // Definition der ausgebe Variable als String
+        String ausgabe = ""; // Definition der Variable "ausgabe" als String
 
-        // Umformatirung der Lagerstaeten
+        // Erweitern der ausgabe in den String
         for (int i = 0; i < allArtikels.length; i++) {
             ausgabe = ausgabe + "[Lagerplatz " + i + ": ";
             if (allArtikels[i] == null) {
@@ -226,7 +229,7 @@
      * @return countArtikel Die Anzahl der Artikel
      */
     public int getArtikelAnzahl(){
-        // pruefen, ob es die zahl nicht null ist
+        // pruefen, ob es countArtikel nicht null ist
         if (countArtikel == 0)
             throw new IllegalArgumentException("Es Ist noch kein Artikel im Lager");
         else{
@@ -240,7 +243,7 @@
      * @return rueckgabe Die Groesse des Lagers als Ganzzahl
      */
     public int getLagerGroesse(){
-        // pruefen, ob es das lager nicht null ist
+        // pruefen, ob es countArtikel nicht null ist
         if (allArtikels == null)
             throw new IllegalArgumentException("Es existiert noch kein lager");
         else {
