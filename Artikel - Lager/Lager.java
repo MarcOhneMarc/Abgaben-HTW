@@ -96,11 +96,51 @@ import java.lang.reflect.Array;
           throw new IllegalArgumentException("Ein Artikel mit der Id " +
           artikelNr + " exixtiert nicht!");
         }
+        double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Aktuelle Preis des artikels an der stelle i des Arrays
+        double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geänderter Preis
         Artikel artikel = allArtikels[artikelIndex];
-        artikel.setPreis(artikel.getPreis()*prozent);
+        artikel.setPreis(preisRechnung);
+    }
+
+    /**
+     *
+     * Methode zum aendern des preises aller Artikel
+     *
+     * @param prozent uebergebene Prozentzahl als integer
+     */
+    public void aenderePreisAllerArtikel(double prozent) {
+        
+        // For schleife zur ermittlung der artikel im Array
+        for (int i = 0; i < countArtikel; i++) {
+            Artikel artikel = allArtikels[i];
+            double preisAkktuel = allArtikels[i].getPreis(); // Aktuelle Preis des artikels an der stelle i des Arrays
+            double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geänderter Preis
+            allArtikels[i].setPreis(preisRechnung);
+        }
     }
     
     public Artikel getArtikel(int index) {
-        return allArtikels[index];
+        if (index < 0){
+            throw new IllegalArgumentException("Es gibt keinen negativen Lager Platz");
+        } else if (index > arraylaenge) {
+            throw new IllegalArgumentException("Diese Speicherstelle existiert nicht");
+        } else{
+            return allArtikels[index];
+        }
+    }
+
+    public int getArtikelAnzahl(){
+        if (countArtikel == 0)
+            throw new IllegalArgumentException("Es Ist noch kein Artikel im Lager");
+        else{
+            return countArtikel;
+        }
+    }
+    public int getLagerGroesse(){
+        if (allArtikels == null)
+            throw new IllegalArgumentException("Es existiert noch kein lager");
+        else {
+            return allArtikels.length;
+        }
     }
 }

@@ -99,6 +99,15 @@ public class LagerDialog {
         case artikel_entfernen: artikel_entfernen();
         break;
         case get_artikel: artikelAusgeben();
+        break;
+        case aendere_preis_eines_artikels: aenderePreisEinesArtikels();
+        break;
+        case aendere_preis_aller_artikels: aenderePreisAllerArtikels();
+        break;
+        case get_artikel_anzahl: getArtikelAnzahl();
+        break;
+        case get_lager_groesse: getlagergroesse();
+
         
         /*        /lager_erstellen();
         } else if (funktion == buche_zugang) {
@@ -166,6 +175,21 @@ public class LagerDialog {
             lager.entferneArtikel(artikelNr);
         }
     }
+
+    private void aenderePreisEinesArtikels(){
+        System.out.println("Geben sie bitte die ArtikelNr ein");
+        int artikelNr = input.nextInt();
+        System.out.println("Geben sie Prozentzahl ein");
+        int procent = input.nextInt();
+
+        lager.aenderePreisEinesArtikels(artikelNr,procent);
+    }
+    private void aenderePreisAllerArtikels(){
+        System.out.println("Geben sie Prozentzahl ein");
+        int procent = input.nextInt();
+
+        lager.aenderePreisAllerArtikel(procent);
+    }
     
     private void artikelAusgeben() {
         if (lager == null) {
@@ -176,6 +200,14 @@ public class LagerDialog {
             
             System.out.println(lager.getArtikel(index));
         }
+    }
+
+    private void getArtikelAnzahl(){
+        System.out.println("Es befinden sich: " + lager.getArtikelAnzahl() + " im Lager");
+    }
+
+    private void getlagergroesse(){
+        System.out.println("Die groese des Lagers baetraegt: " + lager.getLagerGroesse() + " Paetze");
     }
     
     public static void main(String[] args) {
