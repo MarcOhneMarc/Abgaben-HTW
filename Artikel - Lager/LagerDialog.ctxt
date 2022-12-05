@@ -30,5 +30,5 @@ comment7.target=void\ artikel_anlegen()
 comment8.params=
 comment8.target=void\ artikel_entfernen()
 comment9.params=
-comment9.target=void\ artikelAusgeben()
+comment9.target=void\ getArtikel()
 numComments=14
