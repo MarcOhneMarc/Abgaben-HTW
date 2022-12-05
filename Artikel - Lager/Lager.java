@@ -42,7 +42,7 @@ import java.lang.reflect.Array;
     /**
     * Methode zum anlegen eines Artikels
     * 
-    * @param Artikel artikel ist der Artikel der hinzugefuegt werden soll
+    * @param artikel artikel ist der Artikel der hinzugefuegt werden soll
     * @throws IllegalArgumentException wenn der Artikel null ist
     * @throws IllegalArgumentException wenn der Lagerplatz belegt ist
     * @throws IllegalArgumentException wenn der Artikel bereits existiert
@@ -184,6 +184,12 @@ import java.lang.reflect.Array;
             return countArtikel;
         }
     }
+
+    /**
+     * Methode zur rueckgabe der Lagergroese
+     *
+     * @return rueckgabe der lager groese als integer
+     */
     public int getLagerGroesse(){
         if (allArtikels == null)
             throw new IllegalArgumentException("Es existiert noch kein lager");
