@@ -6,6 +6,7 @@ comment1.target=Lager(int)
 comment1.text=\r\n\ Konstruktor\ zum\ initialisiern\ der\ Lagergroesse\r\n\r\n\ @param\ arraylaenge\ gibt\ an\ wie\ viele\ speicherplaetze\ im\ Array\ vergeben\ werden\r\n
 comment10.params=index
 comment10.target=Artikel\ getArtikel(int)
+comment10.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Artikels\ anhand\ des\ Indexes\r\n\ \r\n\ @param\ index\ der\ index\ als\ ganze\ zahl\ von\ 1\ bis\ 10\r\n\ @return\ Artikel\ Der\ Artikel\ and\ der\ stelle\ Index\r\n
 comment2.params=
 comment2.target=Lager()
 comment2.text=\r\n\ Standart-Konstruktor\ zum\ initialisiern\ der\ maximalen\ Lagergroesse\ \=\ 10\r\n
@@ -28,4 +29,5 @@ comment8.params=artikelNr\ prozent
 comment8.target=void\ aenderePreisEinesArtikels(int,\ double)
 comment9.params=
 comment9.target=java.lang.String\ toString()
+comment9.text=\r\n\ Methode\ zum\ ausgeben\ des\ ganzen\ Lagers\ und\ den\ Artikeln,\ die\ sich\ darin\ befinden\r\n\ \r\n\ @return\ ausgabe\ Die\ Ausgabe\ des\ ganzen\ Lagers\ und\ den\ Artikeln,\ die\ sich\ darin\ befinden\ als\ String\r\n
 numComments=11
