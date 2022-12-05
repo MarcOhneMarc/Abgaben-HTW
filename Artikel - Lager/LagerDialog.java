@@ -189,11 +189,11 @@ public class LagerDialog {
 
         lager.aenderePreisEinesArtikels(artikelNr,procent);
     }
-    private void aenderePreisAllerArtikels(){
+    private void aenderePreisAllerArtikel(){
         System.out.println("Geben sie Prozentzahl ein");
         int procent = input.nextInt();
 
-        lager.aenderePreisAllerArtikel(procent);
+        //lager.aenderePreisAllerArtikel(procent);
     }
     
     private void getArtikel() {
