@@ -104,7 +104,7 @@
     }
     
     /**
-    * Methode zum buchen einer bestandserhoehung eines Artikels
+    * Methode zum buchen einer Bestandserhoehung eines Artikels
     * 
     * @param artikelNr Die Artikelnummer des Artikels, dessen Bestand erhoeht werden soll
     * @param zugang Der Zugang als Ganzzahl
@@ -121,7 +121,7 @@
     }
     
     /**
-    * Methode zum buchen einer bestandsverminderung eines Artikels
+    * Methode zum buchen einer Bestandsverminderung eines Artikels
     * 
     * @param artikelNr Die Artikelnummer des Artikels, dessen Bestand erhoeht werden soll
     * @param abgang Der Abgang als Ganzzahl
@@ -137,6 +137,13 @@
         }
     }
 
+    /**
+     *
+     * Methode zum aendern des preises eines Artikel
+     *
+     * @param artikelNr ist die Artikelnummer des zu aendernden Artikels
+     * @param prozent uebergebene Prozentzahl als integer
+     */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
         int artikelIndex = findeArtikelIndex(artikelNr);
         
@@ -187,7 +194,7 @@
     }
     
     /**
-     * Methode zum ausgeben eines Artikels anhand des Indexes
+     * Methode zum ausgeben eines Artikels anhand seines Index
      * 
      * @param index der index als ganze zahl von 1 bis 10
      * @return Artikel Der Artikel and der stelle Index
@@ -202,6 +209,11 @@
         }
     }
 
+    /**
+     * Methode zum ausgeben der Anzahl aller Artikel
+     * 
+     * @return countArtikel Die Anzahl der Artikel
+     */
     public int getArtikelAnzahl(){
         if (countArtikel == 0)
             throw new IllegalArgumentException("Es Ist noch kein Artikel im Lager");
@@ -211,9 +223,9 @@
     }
 
     /**
-     * Methode zur rueckgabe der Lagergroesse
+     * Get Methode zur ausgabe der Lagergroesse als Ganzzahl
      *
-     * @return rueckgabe der groesse des lagers als ganzzahl
+     * @return rueckgabe Die Groesse des Lagers als Ganzzahl
      */
     public int getLagerGroesse(){
         if (allArtikels == null)
