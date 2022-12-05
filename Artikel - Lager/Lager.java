@@ -153,6 +153,11 @@ import java.lang.reflect.Array;
         artikel.setPreis(artikel.getPreis()*(prozent/100));
     }
     
+    /**
+     * Methode zum ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
+     * 
+     * @return ausgabe Die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
+     */
     public String toString() {
         String ausgabe = "";
         
@@ -167,6 +172,12 @@ import java.lang.reflect.Array;
         return ausgabe;
     }
     
+    /**
+     * Methode zum ausgeben eines Artikels anhand des Indexes
+     * 
+     * @param index der index als ganze zahl von 1 bis 10
+     * @return Artikel Der Artikel and der stelle Index
+     */
     public Artikel getArtikel(int index) {
         if (index < 0){
             throw new IllegalArgumentException("Es gibt keinen negativen Lager Platz");

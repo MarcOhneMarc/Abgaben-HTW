@@ -92,45 +92,29 @@ public class LagerDialog {
      */
     private void ausfuehrenFunktion(int funktion) {
         switch (funktion) {
-        case lager_erstellen: lager = lager_erstellen();
-        break;
-        case artikel_anlegen: artikel_anlegen();
-        break;
-        case artikel_entfernen: artikel_entfernen();
-        break;
-        case get_artikel: artikelAusgeben();
-        break;
-        case aendere_preis_eines_artikels: aenderePreisEinesArtikels();
-        break;
-        case aendere_preis_aller_artikels: aenderePreisAllerArtikels();
-        break;
-        case get_artikel_anzahl: getArtikelAnzahl();
-        break;
-        case get_lager_groesse: getlagergroesse();
-
-        case buche_zugang: bucheZugang();
-        break;
-        case buche_abgang: bucheAbgang();
-        break;
-        case to_string: to_String();
-        
-        /*
-            //lager_erstellen();
-        } else if (funktion == aendere_preis_eines_artikels) {
-            //lager_erstellen();
-        } else if (funktion == aendere_preis_aller_artikels) {
-            //lager_erstellen();
-        } else if (funktion == get_artikel) {
-            //lager_erstellen();
-        } else if (funktion == get_artikel_anzahl) {
-            //lager_erstellen();
-        } else if (funktion == get_lager_groesse) {
-            //lager_erstellen();
-        } else if (funktion == ende) {
-            System.out.println("Programmende!");
-        } else {
-            System.out.println("Falsche Eingabe!");
-        }*/
+            case lager_erstellen: lager = lager_erstellen();
+            break;
+            case artikel_anlegen: artikel_anlegen();
+            break;
+            case artikel_entfernen: artikel_entfernen();
+            break;
+            case buche_zugang: bucheZugang();
+            break;
+            case buche_abgang: bucheAbgang();
+            break;
+            /*case aendere_preis_eines_artikels: aenderePreisEinesArtikels();
+            break;
+            case aendere_preis_aller_artikels: aenderePreisAllerArtikels();
+            break;*/
+            case get_artikel: getArtikel();
+            break;
+            case to_string: to_String();
+            break;
+            /*case get_artikel_anzahl: getArtikelAnzahl();
+            break;
+            case get_lager_groesse: getLagerGroesse();
+            break;*/
+            case ende: System.out.println("Programmende!");
         }
     }
     
@@ -212,7 +196,7 @@ public class LagerDialog {
         lager.aenderePreisAllerArtikel(procent);
     }
     
-    private void artikelAusgeben() {
+    private void getArtikel() {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
