@@ -23,17 +23,30 @@ import java.lang.reflect.Array;
     * @param arraylaenge gibt an wie viele speicherplaetze im Array vergeben werden
     */
     public Lager(int arraylaenge) {
-       allArtikels = new Artikel[arraylaenge];
-       this.arraylaenge = arraylaenge;
+        if (arraylaenge > 10 || arraylaenge <= 0) {
+            throw new IllegalArgumentException("Das Lager darf minimal 1 und maximal 10 einheiten groß sein!");
+        } else {
+           allArtikels = new Artikel[arraylaenge];
+           this.arraylaenge = arraylaenge;
+        }
     }
     
     /**
-    * Starndard-Konstruktor zum initialisiern eines Lagers mit der Lagergroesse 10
+    * Standart-Konstruktor zum initialisiern der maximalen Lagergroesse = 10
     */
     public Lager() {
-       allArtikels = new Artikel[10];
+        allArtikels = new Artikel[10];
+        this.arraylaenge = 10;
     }
 
+    /**
+    * Methode zum anlegen eines Artikels
+    * 
+    * @param Artikel artikel ist der Artikel der hinzugefuegt werden soll
+    * @throws IllegalArgumentException wenn der Artikel null ist
+    * @throws IllegalArgumentException wenn der Lagerplatz belegt ist
+    * @throws IllegalArgumentException wenn der Artikel bereits existiert
+    */
     public void legeAnArtikel(Artikel artikel){
 
        if (artikel == null) {
@@ -41,7 +54,7 @@ import java.lang.reflect.Array;
        }
 
        if (arraylaenge == countArtikel) {
-           throw new IllegalArgumentException("Die Station ist belegt");
+           throw new IllegalArgumentException("Die Lagerplatz ist belegt");
        }
 
        int artikelNr = artikel.getArtikelNr();
@@ -58,6 +71,7 @@ import java.lang.reflect.Array;
  
     /**
     * Methode zum entfernen eines Artikels
+    * 
     * @param artikelNr Die Artikelnummer des Artikels der entfernt werden soll.
     * @throws IllegalArgumentException wenn der Artikel nicht gefunden wird.
     */
@@ -75,6 +89,13 @@ import java.lang.reflect.Array;
         countArtikel--;
     }
 
+    /**
+    * Methode zum finden des Index im Lager eines Artikels anhand der artikelNr
+    * 
+    * @param artikelNr Die Artikelnummer des Artikels, dessen index ausgegeben werden soll
+    * @return i Ist der gefundene Index
+    * @return ARTIKEL_NICHT_GEFUNDEN = -1 bedeutet der Artikel befindet sich nicht im Lager
+    */
     public int findeArtikelIndex(int artikelNr) {
         for (int i = 0; i < countArtikel; i++) {
           Artikel artikel = allArtikels[i];
@@ -85,8 +106,38 @@ import java.lang.reflect.Array;
         return ARTIKEL_NICHT_GEFUNDEN;
     }
     
+    /**
+    * Methode zum buchen einer bestandserhoehung eines Artikels
+    * 
+    * @param artikelNr Die Artikelnummer des Artikels, dessen Bestand erhoeht werden soll
+    * @param zugang Der Zugang als Ganzzahl
+    */
     public void bucheZugang(int artikelNr, int zugang) {
-        //
+        int artikelIndex = findeArtikelIndex(artikelNr);
+                
+        if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+          throw new IllegalArgumentException("Ein Artikel mit der Id " +
+          artikelNr + " exixtiert nicht!");
+        } else {
+            allArtikels[artikelIndex].bucheZugang(zugang);
+        }
+    }
+    
+    /**
+    * Methode zum buchen einer bestandsverminderung eines Artikels
+    * 
+    * @param artikelNr Die Artikelnummer des Artikels, dessen Bestand erhoeht werden soll
+    * @param zugang Der Abgang als Ganzzahl
+    */
+    public void bucheAbgang(int artikelNr, int abgang) {
+        int artikelIndex = findeArtikelIndex(artikelNr);
+        
+        if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+          throw new IllegalArgumentException("Ein Artikel mit der Id " +
+          artikelNr + " exixtiert nicht!");
+        } else {
+            allArtikels[artikelIndex].bucheAbgang(abgang);
+        }
     }
 
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
@@ -99,24 +150,21 @@ import java.lang.reflect.Array;
         double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Aktuelle Preis des artikels an der stelle i des Arrays
         double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geänderter Preis
         Artikel artikel = allArtikels[artikelIndex];
-        artikel.setPreis(preisRechnung);
+        artikel.setPreis(artikel.getPreis()*(prozent/100));
     }
-
-    /**
-     *
-     * Methode zum aendern des preises aller Artikel
-     *
-     * @param prozent uebergebene Prozentzahl als integer
-     */
-    public void aenderePreisAllerArtikel(double prozent) {
+    
+    public String toString() {
+        String ausgabe = "";
         
-        // For schleife zur ermittlung der artikel im Array
-        for (int i = 0; i < countArtikel; i++) {
-            Artikel artikel = allArtikels[i];
-            double preisAkktuel = allArtikels[i].getPreis(); // Aktuelle Preis des artikels an der stelle i des Arrays
-            double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geänderter Preis
-            allArtikels[i].setPreis(preisRechnung);
+        for (int i = 0; i < allArtikels.length; i++) {
+            ausgabe = ausgabe + "[Lagerplatz " + i + ": ";
+            if (allArtikels[i] == null) {
+                ausgabe = ausgabe + "NULL" + "] ";
+            } else {
+                ausgabe = ausgabe + allArtikels[i].toString() + "] ";
+            }
         }
+        return ausgabe;
     }
     
     public Artikel getArtikel(int index) {

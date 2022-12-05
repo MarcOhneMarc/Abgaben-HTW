@@ -60,7 +60,7 @@ public class LagerDialog {
      * Text des Hauptmenues
      */
     private void menu() {
-        System.out.println("Press '1' zum erzeugen eines Lagers");
+        System.out.println("\nPress '1' zum erzeugen eines Lagers");
         System.out.println("Press '2' zum hinzufuegen eines Artikels");
         System.out.println("Press '3' zum entfernen eines Artikels");
         System.out.println("Press '4' zum buchen eines Zugangs für einen Artikel");
@@ -108,19 +108,19 @@ public class LagerDialog {
         break;
         case get_lager_groesse: getlagergroesse();
 
+        case buche_zugang: bucheZugang();
+        break;
+        case buche_abgang: bucheAbgang();
+        break;
+        case to_string: to_String();
         
-        /*        /lager_erstellen();
-        } else if (funktion == buche_zugang) {
-            //lager_erstellen();
-        } else if (funktion == buche_abgang) {
+        /*
             //lager_erstellen();
         } else if (funktion == aendere_preis_eines_artikels) {
             //lager_erstellen();
         } else if (funktion == aendere_preis_aller_artikels) {
             //lager_erstellen();
         } else if (funktion == get_artikel) {
-            //lager_erstellen();
-        } else if (funktion == to_string) {
             //lager_erstellen();
         } else if (funktion == get_artikel_anzahl) {
             //lager_erstellen();
@@ -138,10 +138,19 @@ public class LagerDialog {
         if (lager != null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.print("Maximale Lagerkapazität: ");
-            int arraylaenge = input.nextInt();
-            input.nextLine();
-            return new Lager(arraylaenge);
+            System.out.print("Wollen sie ein Lager mit einer bestimmten anzahl von Lagerplaetzen Y/N: ");
+            char choice = input.nextLine().charAt(0);
+            if (choice == 'Y') {
+                System.out.print("Geben sie die Lagerkapazität an (Maximal 10): ");
+                int arraylaenge = input.nextInt();
+                input.nextLine();
+                return new Lager(arraylaenge);
+            } else if (choice == 'N') {
+                System.out.print("Lager mit der maximalen Lagergroesse 10 wird erstellt!\n");
+                return new Lager(10);
+            } else {
+                throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
+            }
         }
     }
     
@@ -154,12 +163,24 @@ public class LagerDialog {
             input.nextLine();
             System.out.println("Eingabe der Art als String:");
             String art = input.nextLine();
-            System.out.println("Eingabe des Bestandes:");
-            int bestand = input.nextInt();
             System.out.println("Eingabe der Preis als Double:");
             double preis = input.nextDouble();
+            input.nextLine();
             
-            artikel = new Artikel(artikelNr, art, bestand, preis);
+            
+            
+            System.out.print("Wollen sie einen Artikel mit Bestand erstellen Y/N: ");
+            char choice = input.nextLine().charAt(0);
+            if (choice == 'Y') {
+                System.out.println("Eingabe des Bestandes:");
+                int bestand = input.nextInt();
+                input.nextLine();
+                artikel = new Artikel(artikelNr, art, bestand, preis);
+            } else if (choice == 'N') {
+                artikel = new Artikel(artikelNr, art, preis);
+            } else {
+                throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
+            }  
             
             lager.legeAnArtikel(artikel);
         }
@@ -208,6 +229,34 @@ public class LagerDialog {
 
     private void getlagergroesse(){
         System.out.println("Die groese des Lagers baetraegt: " + lager.getLagerGroesse() + " Paetze");
+    }
+    
+    private void bucheZugang() {
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("ArtikelNr");
+            int artikelNr = input.nextInt();
+            System.out.println("Zugang");
+            int zugang = input.nextInt();
+            lager.bucheZugang(artikelNr, zugang);
+        }
+    }
+
+    private void bucheAbgang() {
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("ArtikelNr");
+            int artikelNr = input.nextInt();
+            System.out.println("Abgang");
+            int abgang = input.nextInt();
+            lager.bucheAbgang(artikelNr, abgang);
+        }
+    }
+    
+    private void to_String() {
+        System.out.println(lager.toString());
     }
     
     public static void main(String[] args) {
