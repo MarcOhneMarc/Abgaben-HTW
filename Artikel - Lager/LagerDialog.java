@@ -118,6 +118,11 @@ public class LagerDialog {
         }
     }
     
+    /**
+    * Standart-Konstruktor oder Konstruktor zum initialisiern der Lagergroesse wird aufgerufen
+    *
+    * @return arraylaenge gibt an wie viele speicherplaetze im Array vergeben werden
+    */
     private Lager lager_erstellen() {
         if (lager != null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
@@ -138,6 +143,9 @@ public class LagerDialog {
         }
     }
     
+    /**
+    * Methode zum anlegen eines Artikels wird aufgerufen
+    */
     private void artikel_anlegen() {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
@@ -170,6 +178,9 @@ public class LagerDialog {
         }
     }
     
+    /**
+    * Methode zum entfernen eines Artikels wird aufgerufen
+    */
     private void artikel_entfernen() {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
@@ -181,40 +192,9 @@ public class LagerDialog {
         }
     }
 
-    private void aenderePreisEinesArtikels(){
-        System.out.println("Geben sie bitte die ArtikelNr ein");
-        int artikelNr = input.nextInt();
-        System.out.println("Geben sie Prozentzahl ein");
-        int procent = input.nextInt();
-
-        lager.aenderePreisEinesArtikels(artikelNr,procent);
-    }
-    private void aenderePreisAllerArtikel(){
-        System.out.println("Geben sie Prozentzahl ein");
-        int procent = input.nextInt();
-
-        lager.aenderePreisAllerArtikel(procent);
-    }
-    
-    private void getArtikel() {
-        if (lager == null) {
-            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
-        } else {
-            System.out.println("Index");
-            int index = input.nextInt();
-            
-            System.out.println(lager.getArtikel(index));
-        }
-    }
-
-    private void getArtikelAnzahl(){
-        System.out.println("Es befinden sich: " + lager.getArtikelAnzahl() + " im Lager");
-    }
-
-    private void getlagergroesse(){
-        System.out.println("Die groese des Lagers baetraegt: " + lager.getLagerGroesse() + " Paetze");
-    }
-    
+    /**
+    * Methode zum buchen einer Bestandserhoehung eines Artikels
+    */
     private void bucheZugang() {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
@@ -226,7 +206,10 @@ public class LagerDialog {
             lager.bucheZugang(artikelNr, zugang);
         }
     }
-
+    
+    /**
+    * Methode zum buchen einer Bestandsverminderung eines Artikels    
+    */
     private void bucheAbgang() {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
@@ -239,8 +222,61 @@ public class LagerDialog {
         }
     }
     
+    /**
+    * Methode zum aendern des preises eines Artikel
+    */
+    private void aenderePreisEinesArtikels(){
+        System.out.println("Geben sie die ArtikelNr ein, dessen Preis geaendert werden soll: ");
+        int artikelNr = input.nextInt();
+        System.out.println("Geben sie ein um wie viel Prozent der Preis des Artikels geaendert werden soll:");
+        int procent = input.nextInt();
+
+        lager.aenderePreisEinesArtikels(artikelNr,procent);
+    }
+    
+    /**
+     * Methode zum aendern des preises aller Artikel
+     */
+    private void aenderePreisAllerArtikel(){
+        System.out.println("Geben sie ein um wie viel Prozent der Preis aller Artikel geaendert werden soll: ");
+        int procent = input.nextInt();
+
+        lager.aenderePreisAllerArtikel(procent);
+    }
+
+    /**
+     * Methode zum ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
+     */
     private void to_String() {
         System.out.println(lager.toString());
+    }
+    
+    /**
+     * Methode zum ausgeben eines Artikels anhand seines Index
+     */
+    private void getArtikel() {
+        if (lager == null) {
+            throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
+        } else {
+            System.out.println("Index");
+            int index = input.nextInt();
+            
+            System.out.println(lager.getArtikel(index));
+        }
+    }
+    
+    /**
+     * Methode zum ausgeben der Anzahl aller Artikel
+     */
+    private void getArtikelAnzahl(){
+        System.out.println("Es befinden sich: " + lager.getArtikelAnzahl() + " im Lager");
+    }
+
+    /**
+     * Get Methode zur ausgabe der Lagergroesse als Ganzzahl
+     */
+    private void getlagergroesse(){
+        System.out.println("Die groese des Lagers baetraegt: " + lager.getLagerGroesse() + " Paetze");
     }
     
     public static void main(String[] args) {

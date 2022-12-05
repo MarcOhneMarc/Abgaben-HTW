@@ -109,7 +109,7 @@
     }
     
     /**
-    * Methode zum Buchen einer bestandserhoehung eines Artikels
+    * Methode zum buchen einer Bestandserhoehung eines Artikels
     * 
     * @param artikelNr Die Artikelnummer des Artikels, dessen Bestand erhoeht werden soll
     * @param zugang Der Zugang als Ganzzahl
@@ -127,7 +127,7 @@
     }
     
     /**
-    * Methode zum Buchen einer bestandsverminderung eines Artikels
+    * Methode zum buchen einer Bestandsverminderung eines Artikels
     * 
     * @param artikelNr Die Artikelnummer des Artikels, dessen Bestand erhoeht werden soll
     * @param abgang Der Abgang als Ganzzahl
@@ -146,7 +146,9 @@
 
     /**
      *
-     * @param artikelNr ist die uebergebene artikelnummer als Integer
+     * Methode zum aendern des preises eines Artikel
+     *
+     * @param artikelNr ist die Artikelnummer des zu aendernden Artikels als Ganzzahl
      * @param prozent uebergebene Prozentzahl als double
      */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
@@ -202,7 +204,7 @@
     }
     
     /**
-     * Methode zum Ausgeben eines Artikels anhand des Indexes
+     * Methode zum ausgeben eines Artikels anhand seines Index
      * 
      * @param index der index als ganze zahl von 1 bis 10
      * @return Artikel der Artikel and der stelle Index
@@ -219,9 +221,9 @@
     }
 
     /**
-     * Methode zur rueckgabe der anzahl aller existirenden Artikel im Lager
-     *
-     * @return Rueckgabe der anzahl artikel als integer
+     * Methode zum ausgeben der Anzahl aller Artikel
+     * 
+     * @return countArtikel Die Anzahl der Artikel
      */
     public int getArtikelAnzahl(){
         // pruefen, ob es die zahl nicht null ist
@@ -233,9 +235,9 @@
     }
 
     /**
-     * Methode zur rueckgabe der Lagergroesse
+     * Get Methode zur ausgabe der Lagergroesse als Ganzzahl
      *
-     * @return rueckgabe der groesse des lagers als ganzzahl
+     * @return rueckgabe Die Groesse des Lagers als Ganzzahl
      */
     public int getLagerGroesse(){
         // pruefen, ob es das lager nicht null ist
