@@ -43,7 +43,7 @@ public class Artikel{
     public Artikel(int artikelNr, String art, double preis) {
         if (art == null || art.strip().isEmpty()) {
             throw new IllegalArgumentException("'Art' darf nicht leer sein!");
-        } else if (artikelNr > 10000 || artikelNr < 999) {
+        } else if (Math.floor(Math.log10(artikelNr))+1 != 4) {
             throw new IllegalArgumentException("Die Artikelnummer muss 4 Stellen haben!");
         } else {
             this.artikelNr = artikelNr;
@@ -85,7 +85,7 @@ public class Artikel{
      * Ausgabe der Artikelattribute mit aktuellem Wert als Zeichenkette
      */
     public String toString() {
-        return "Artikel: " + artikelNr + ", Art: " + art + ", Bestand: " + bestand;
+        return "Artikel: " + artikelNr + ", Art: " + art + ", Bestand: " + bestand + ", Preis: " + preis;
     }
 
     /**
