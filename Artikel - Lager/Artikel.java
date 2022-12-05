@@ -20,9 +20,10 @@ public class Artikel{
      * @param bestand gibt den wahrenbestand als ganzzahl an
      */
     public Artikel(int artikelNr, String art, int bestand, double preis) {
+        int anzahlDerStellen = String.valueOf(artikelNr).length();
         if (art == null || art.strip().isEmpty()) {
             throw new IllegalArgumentException("'Art' darf nicht leer sein!");
-        } else if (artikelNr > 10000 || artikelNr < 999) {
+        } else if (anzahlDerStellen != 4) {
             throw new IllegalArgumentException("Die Artikelnummer muss 4 Stellen haben!");
         } else if (bestand < 0) {
             throw new IllegalArgumentException("Der bestand darf nicht negativ sein!");
@@ -41,9 +42,10 @@ public class Artikel{
      * @param art gibt als Zeichenkette an was der Artikel ist
      */
     public Artikel(int artikelNr, String art, double preis) {
+        int anzahlDerStellen = String.valueOf(artikelNr).length();
         if (art == null || art.strip().isEmpty()) {
             throw new IllegalArgumentException("'Art' darf nicht leer sein!");
-        } else if (Math.floor(Math.log10(artikelNr))+1 != 4) {
+        } else if (anzahlDerStellen != 4) {
             throw new IllegalArgumentException("Die Artikelnummer muss 4 Stellen haben!");
         } else {
             this.artikelNr = artikelNr;
