@@ -102,18 +102,18 @@ public class LagerDialog {
             break;
             case buche_abgang: bucheAbgang();
             break;
-            /*case aendere_preis_eines_artikels: aenderePreisEinesArtikels();
+            case aendere_preis_eines_artikels: aenderePreisEinesArtikels();
             break;
             case aendere_preis_aller_artikels: aenderePreisAllerArtikels();
-            break;*/
+            break;
             case get_artikel: getArtikel();
             break;
             case to_string: to_String();
             break;
-            /*case get_artikel_anzahl: getArtikelAnzahl();
+            case get_artikel_anzahl: getArtikelAnzahl();
             break;
-            case get_lager_groesse: getLagerGroesse();
-            break;*/
+            case get_lager_groesse: getlagergroesse();
+            break;
             case ende: System.out.println("Programmende!");
         }
     }
@@ -193,7 +193,7 @@ public class LagerDialog {
         System.out.println("Geben sie Prozentzahl ein");
         int procent = input.nextInt();
 
-        //lager.aenderePreisAllerArtikel(procent);
+        lager.aenderePreisAllerArtikel(procent);
     }
     
     private void getArtikel() {
