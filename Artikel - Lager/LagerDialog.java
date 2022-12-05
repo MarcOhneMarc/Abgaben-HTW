@@ -104,7 +104,7 @@ public class LagerDialog {
             break;
             case aendere_preis_eines_artikels: aenderePreisEinesArtikels();
             break;
-            case aendere_preis_aller_artikels: aenderePreisAllerArtikels();
+            case aendere_preis_aller_artikels: aenderePreisAllerArtikel();
             break;
             case get_artikel: getArtikel();
             break;
