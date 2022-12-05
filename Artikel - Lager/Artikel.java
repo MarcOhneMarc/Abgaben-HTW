@@ -87,7 +87,7 @@ public class Artikel{
      * Ausgabe der Artikelattribute mit aktuellem Wert als Zeichenkette
      */
     public String toString() {
-        return "Artikel: " + artikelNr + ", Art: " + art + ", Bestand: " + bestand;
+        return "Artikel: " + artikelNr + ", Art: " + art + ", Bestand: " + bestand + ", Preis: " + preis;
     }
 
     /**

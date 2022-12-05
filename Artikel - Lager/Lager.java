@@ -233,9 +233,9 @@
     }
 
     /**
-     * Methode zur rueckgabe der Lagergroese
+     * Methode zur rueckgabe der Lagergroesse
      *
-     * @return rueckgabe der lager groese als integer
+     * @return rueckgabe der groesse des lagers als ganzzahl
      */
     public int getLagerGroesse(){
         // pruefen, ob es das lager nicht null ist
