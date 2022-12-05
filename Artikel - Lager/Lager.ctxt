@@ -8,7 +8,7 @@ comment10.params=index
 comment10.target=Artikel\ getArtikel(int)
 comment2.params=
 comment2.target=Lager()
-comment2.text=\r\n\ Starndard-Konstruktor\ zum\ initialisiern\ eines\ Lagers\ mit\ der\ Lagergroesse\ 10\r\n
+comment2.text=\r\n\ Standart-Konstruktor\ zum\ initialisiern\ der\ maximalen\ Lagergroesse\ \=\ 10\r\n
 comment3.params=artikel
 comment3.target=void\ legeAnArtikel(Artikel)
 comment3.text=\r\n\ Methode\ zum\ anlegen\ eines\ Artikels\r\n\ \r\n\ @param\ Artikel\ artikel\ ist\ der\ Artikel\ der\ hinzugefuegt\ werden\ soll\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ null\ ist\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Lagerplatz\ belegt\ ist\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ bereits\ existiert\r\n
