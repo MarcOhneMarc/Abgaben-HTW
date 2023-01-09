@@ -5,7 +5,7 @@ import java.util.Scanner;
  * 
  * @Jonas Neu & Marc Perwark
  */
-public class åMathFunctions_Dialog {
+public class MathFunctions_Dialog {
     //initialisierung der Attribute
     public MathFunctions mathfunctions;
     private Scanner input;

@@ -65,7 +65,6 @@ public class Artikel{
         } else {
             bestand = bestand + menge;
         }
-        System.out.println(bestand);
     }
 
     /**
