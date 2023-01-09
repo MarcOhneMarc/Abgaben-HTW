@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PatientenWarteschlange
-comment0.text=\r\n\ Der\ n\u00E4chste\ bitte\ fertig\r\n\ \u00DCberarbeiten\r\n\ Aufgabenstellung\ wieder\ lesen\r\n
+comment0.text=\r\n\ Funktion\ einer\ Patientenwarteschlange\ mit\ der\ Funktion\ Patienten\ hinzuzufuegen,\ zu\ entfernen,\ aufzurufen\ und\ die\ Warteschlange\ auszugeben.\r\n\ \r\n\ @Marc_Perwak_&_Jonas_Neu\r\n
 comment1.params=groesseWarteschlange
 comment1.target=PatientenWarteschlange(int)
 comment1.text=\r\n\ Konstruktor\ zum\ initialisiern\ der\ Warteschlange\r\n\r\n\ @param\ groesseWarteschlange\ Die\ groesse\ der\ Warteschlange\ (Minimal\ 1,\ Maximal\ 10)\r\n

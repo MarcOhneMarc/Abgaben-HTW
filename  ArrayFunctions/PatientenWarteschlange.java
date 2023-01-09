@@ -1,9 +1,8 @@
 /**
- * Der nächste bitte fertig
- * Überarbeiten
- * Aufgabenstellung wieder lesen
-*/
-
+ * Funktion einer Patientenwarteschlange mit der Funktion Patienten hinzuzufuegen, zu entfernen, aufzurufen und die Warteschlange auszugeben.
+ * 
+ * @Marc_Perwak_&_Jonas_Neu
+ */
 public class PatientenWarteschlange {
     //initialisierung der Konstanten für Exceptions
     private static final int PATIENT_NICHT_GEFUNDEN = -1;

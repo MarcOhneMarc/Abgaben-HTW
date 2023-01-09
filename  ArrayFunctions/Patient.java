@@ -1,3 +1,8 @@
+/**
+ * Klasse Patient zum zurueckgeben des Patienten in der Warteschlange
+ * 
+ * @Marc_Perwak_&_Jonas_Neu
+ */
 public class Patient {
     //initialisierung der Konstanten für Exceptions
     private static final String PATIENTENNUMMER_NICHT_4STELLIG = "Die Patientennummer muss 4 Stellen haben!";

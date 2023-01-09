@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Patient
+comment0.text=\r\n\ Klasse\ Patient\ zum\ zurueckgeben\ des\ Patienten\ in\ der\ Warteschlange\r\n\ \r\n\ @Marc_Perwak_&_Jonas_Neu\r\n
 comment1.params=patientennummer\ vorname\ nachname
 comment1.target=Patient(int,\ java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ zum\ initialisiern\ eines\ Patienten\r\n\r\n\ @param\ patientennummer\ Die\ Patientennummer\ als\ 4-Stellige\ Ganzzahl\r\n\ @param\ vorname\ Der\ Vorname\ als\ String\r\n\ @param\ nachname\ Der\ Nachname\ als\ String\r\n
