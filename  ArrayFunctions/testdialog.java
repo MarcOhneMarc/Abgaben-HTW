@@ -10,6 +10,9 @@ public class testdialog {
         Mittelwert atze = ArrayFunctions.berechneMittelwert(testa);
 
         System.out.println(atze.getMittelwert());
+        
+        String[] test = {"Hueb", "KEK", "low"};
+        System.out.println(ArrayFunctions.stringsAuswerten(test));
 
     }
 }

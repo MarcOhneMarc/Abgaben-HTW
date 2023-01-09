@@ -22,4 +22,14 @@ public class ArrayFunctions {
         return rueckgabe;
     }
     
+    public static int stringsAuswerten(String[] strings){
+        int uebergabe = 0;
+        for (int i = 0; i< strings.length; i++){
+            if ((strings[i].toUpperCase()).equals(strings[i]) || (strings[i].toLowerCase()).equals(strings[i])) {
+                uebergabe++;
+            }
+        }
+        return uebergabe;
+    }
+    
 }

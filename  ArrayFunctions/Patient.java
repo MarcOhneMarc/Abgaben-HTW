@@ -1,5 +1,3 @@
-
-
 public class Patient {
     //initialisierung der Konstanten für Exceptions
     private static final String PATIENTENNUMMER_NICHT_4STELLIG = "Die Patientennummer muss 4 Stellen haben!";
@@ -34,10 +32,10 @@ public class Patient {
     }
     
     /**
-     * Ausgabe eines Patienten als Zeichenkette ????????????????????
+     * Ausgabe eines Patienten als Zeichenkette
      */
     public String toString() {
-        return patientennummer + vorname + nachname;
+        return patientennummer + ", " + vorname + " " + nachname;
     }
     
     /**

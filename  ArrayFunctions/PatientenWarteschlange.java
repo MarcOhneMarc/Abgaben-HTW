@@ -7,7 +7,7 @@
 public class PatientenWarteschlange {
     //initialisierung der Konstanten für Exceptions
     private static final int PATIENT_NICHT_GEFUNDEN = -1;
-    private static final String MIN_MAX_WARTESCHLANGE = "Die Warteschlange darf maximal 10 Personen groß und nicht kleiner als 1 sein!";
+    private static final String MIN_MAX_WARTESCHLANGE = "Die Warteschlange darf nicht kleiner als 1 sein!";
     private static final String PATIENT_EXISTIERT_NICHT = "Dieser Patient existiert nicht!";
     private static final String WARTESCHLANGE_VOLL = "Die Warteschlange ist voll!";
     private static final String PATIENT_EXISTIERT_BEREITS = "Dieser Patient ist bereits in der Warteschlange!";
@@ -25,7 +25,7 @@ public class PatientenWarteschlange {
      * @param groesseWarteschlange Die groesse der Warteschlange (Minimal 1, Maximal 10)
      */
     public PatientenWarteschlange(int groesseWarteschlange) {
-        if (groesseWarteschlange <= 0 || groesseWarteschlange > 10) {
+        if (groesseWarteschlange <= 0) {
             throw new IllegalArgumentException(MIN_MAX_WARTESCHLANGE);
         } else {
            warteschlange = new Patient[groesseWarteschlange];
@@ -73,7 +73,7 @@ public class PatientenWarteschlange {
         if (patientenindex == PATIENT_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(PATIENT_EXISTIERT_NICHT);
         }
-        Patient entfernterPatient =warteschlange[patientenindex];
+        Patient entfernterPatient = warteschlange[patientenindex];
         for (int i = patientenindex; i < aktuelleAnzahlPatienten -1; i++) {
           warteschlange[i] = warteschlange[i + 1];
         }
@@ -90,12 +90,8 @@ public class PatientenWarteschlange {
         if (aktuelleAnzahlPatienten <= 0) {
             throw new IllegalArgumentException(WARTESCHLANGE_LEER);
         }
-        Patient next = warteschlange[0];
-        for (int i = 0; i < aktuelleAnzahlPatienten -1; i++) {
-          warteschlange[i] = warteschlange[i + 1];
-        }
-        warteschlange[aktuelleAnzahlPatienten - 1] = null;
-        aktuelleAnzahlPatienten--;
+        
+        Patient next = entfernePatient(warteschlange[0].getpatientennummer());
         return next;
     }
     

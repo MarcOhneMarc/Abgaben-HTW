@@ -4,4 +4,6 @@ comment1.params=
 comment1.target=ArrayFunctions()
 comment2.params=messwerte
 comment2.target=Mittelwert\ berechneMittelwert(double[])
-numComments=3
+comment3.params=strings
+comment3.target=int\ stringsAuswerten(java.lang.String[])
+numComments=4
