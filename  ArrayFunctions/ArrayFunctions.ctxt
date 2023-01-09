@@ -8,4 +8,5 @@ comment2.target=Mittelwert\ berechneMittelwert(double[])
 comment2.text=\r\n\ berechneMittelwert\ ist\ eine\ Methode\ zur\ berechnung\ des\ Mittelwerts\ aus\ einem\ uebergebenen\ Array\r\n\r\n\ @param\ messwerte\ werden\ als\ double\ Array\ uebergeben\ und\ stellen\ die\ zu\ analysirenden\ daten\ da\r\n\ @return\ Erzeugen\ eines\ Objekts\ in\ der\ Klasse\ Mittelwert\r\n
 comment3.params=strings
 comment3.target=int\ stringsAuswerten(java.lang.String[])
+comment3.text=\r\n\ Methode\ die\ bestimmt\ wiefiele\ gross\ und\ kleingeschriebene\ woerter\ in\ einem\ Strig\ array\ existirern\r\n\ @param\ strings\ Uebergebeber\ String\ Array\r\n\ @return\ ruebgabe\ des\ Ergebnisses\r\n
 numComments=4

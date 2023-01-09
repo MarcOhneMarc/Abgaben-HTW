@@ -13,15 +13,16 @@ public class ArrayFunctions {
      * @return Erzeugen eines Objekts in der Klasse Mittelwert
      */
     public static Mittelwert berechneMittelwert(double[] messwerte){
-
-        double summe = 0; // Initialisirung der variable summe die, die summe der zahlen im Array darstellt
-        double median = 0; // Initialisirung der Median variable die den Mittelwert speichert
-        double naechsterwert = messwerte[0]; // Initialisirung einer Vaibale die den naechsten wert zum Median Darstellt
-        double entferntesterwert = messwerte[0]; // Initialisirung einer Vaibale die den Entferntesten wert zum Median Darstellt
-
-        if (messwerte == null){
+        
+        if (messwerte.length == 0){
             throw new IllegalArgumentException("'Art' darf nicht leer sein!");
         } else {
+            
+            double summe = 0; // Initialisirung der variable summe die, die summe der zahlen im Array darstellt
+            double median = 0; // Initialisirung der Median variable die den Mittelwert speichert
+            double naechsterwert = messwerte[0]; // Initialisirung einer Vaibale die den naechsten wert zum Median Darstellt
+            double entferntesterwert = messwerte[0]; // Initialisirung einer Vaibale die den Entferntesten wert zum Median Darstellt
+
 
             // Berechnung der Summe
             for(int i = 0; i < messwerte.length; i++){
@@ -37,9 +38,10 @@ public class ArrayFunctions {
                     entferntesterwert = messwerte[i];
                 }
             }
+            // Das Return Statement erzuegt dirket ein Objekt in der mittelwert Klasse
+            return new Mittelwert(median,entferntesterwert,naechsterwert);
+        
         }
-        // Das Return Statement erzuegt dirket ein Objekt in der mittelwert Klasse
-        return new Mittelwert(median,entferntesterwert,naechsterwert);
     }
 
     /**
