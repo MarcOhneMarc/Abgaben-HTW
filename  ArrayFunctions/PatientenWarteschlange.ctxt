@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=PatientenWarteschlange
+comment0.text=\r\n\ Der\ n\u00E4chste\ bitte\ fertig\r\n\ \u00DCberarbeiten\r\n\ Aufgabenstellung\ wieder\ lesen\r\n
+comment1.params=groesseWarteschlange
+comment1.target=PatientenWarteschlange(int)
+comment1.text=\r\n\ Konstruktor\ zum\ initialisiern\ der\ Warteschlange\r\n\r\n\ @param\ groesseWarteschlange\ Die\ groesse\ der\ Warteschlange\ (Minimal\ 1,\ Maximal\ 10)\r\n
+comment2.params=patientennummer\ vorname\ nachname
+comment2.target=void\ neuerPatient(int,\ java.lang.String,\ java.lang.String)
+comment3.params=patient
+comment3.target=void\ patienthinzufuegen(Patient)
+comment3.text=\r\n\ Methode\ zum\ hinzufuegen\ eines\ Patienten\ zur\ Warteschlange\r\n\r\n\ @param\ patient\ gibt\ an\ welcher\ Patient\ hinzugefuegt\ werden\ soll\r\n
+comment4.params=patientennummer
+comment4.target=Patient\ entfernePatient(int)
+comment4.text=\r\n\ Methode\ zum\ entfernen\ eines\ Patienten\ zur\ Warteschlange\r\n\r\n\ @param\ patient\ gibt\ an\ welcher\ Patient\ entfernt\ werden\ soll\r\n
+comment5.params=
+comment5.target=Patient\ derNaechsteBitte()
+comment5.text=\r\n\ Methode\ zum\ aufrufen\ des\ naechsten\ Patienten\r\n
+comment6.params=patientennummer
+comment6.target=int\ findePatientenIndex(int)
+comment6.text=\r\n\ Methode\ um\ herauszufinfen\ an\ welchem\ index\ sich\ ein\ Patient\ in\ der\ Warteschlange\ befindet\r\n\ \r\n\ @param\ patientennummer\ Die\ Patientennummer\ des\ Patienten,\ dessen\ index\ ausgegeben\ werden\ soll\r\n\ @return\ PATIENT_NICHT_GEFUNDEN\ \=\ -1\ bedeutet\ der\ Patient\ wurde\ nicht\ gefunden\r\n\ @return\ i\ Der\ index,\ an\ dem\ sich\ der\ Patient\ befindet\r\n
+comment7.params=
+comment7.target=java.lang.String\ toString()
+comment7.text=\r\n\ Methode\ zum\ Ausgeben\ der\ ganzen\ Warteschlange\ und\ den\ Patienten,\ die\ sich\ darin\ befinden\r\n\ \r\n\ @return\ ausgabe\ die\ Ausgabe\ der\ ganzen\ Warteschlange\ und\ den\ Patienten,\ die\ sich\ darin\ befinden\ als\ String\r\n
+numComments=8

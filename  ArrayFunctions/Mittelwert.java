@@ -9,8 +9,6 @@ public class Mittelwert {
         this.mittelwert = mittelwert;
         this.min = min;
         this.max = max;
-        System.out.println(mittelwert + " " + min + " " + max);
-
     }
 
     public double getMittelwert(){

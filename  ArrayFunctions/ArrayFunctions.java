@@ -17,10 +17,9 @@ public class ArrayFunctions {
                 min = messwerte[i];
             }
         }
-
-        System.out.println((sum/messwerte.length)+ " " +max + " " +min);
-        Mittelwert rueckgabe = new Mittelwert((sum/messwerte.length),max,min);
-
+        
+        Mittelwert rueckgabe = new Mittelwert((sum/messwerte.length), max, min);
         return rueckgabe;
     }
+    
 }

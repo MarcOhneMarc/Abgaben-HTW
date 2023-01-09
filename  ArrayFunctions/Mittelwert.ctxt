@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Mittelwert
+comment1.params=mittelwert\ min\ max
+comment1.target=Mittelwert(double,\ double,\ double)
+comment2.params=
+comment2.target=double\ getMittelwert()
+comment3.params=
+comment3.target=double\ getMin()
+comment4.params=
+comment4.target=double\ getMax()
+numComments=5
