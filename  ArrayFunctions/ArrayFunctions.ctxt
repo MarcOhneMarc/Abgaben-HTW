@@ -2,8 +2,10 @@
 comment0.target=ArrayFunctions
 comment1.params=
 comment1.target=ArrayFunctions()
+comment1.text=\r\n\ Privater\ Konstrucktor\r\n
 comment2.params=messwerte
 comment2.target=Mittelwert\ berechneMittelwert(double[])
+comment2.text=\r\n\ berechneMittelwert\ ist\ eine\ Methode\ zur\ berechnung\ des\ Mittelwerts\ aus\ einem\ uebergebenen\ Array\r\n\r\n\ @param\ messwerte\ werden\ als\ double\ Array\ uebergeben\ und\ stellen\ die\ zu\ analysirenden\ daten\ da\r\n\ @return\ Erzeugen\ eines\ Objekts\ in\ der\ Klasse\ Mittelwert\r\n
 comment3.params=strings
 comment3.target=int\ stringsAuswerten(java.lang.String[])
 numComments=4

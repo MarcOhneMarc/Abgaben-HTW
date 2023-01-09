@@ -1,11 +1,15 @@
 #BlueJ class context
 comment0.target=Mittelwert
-comment1.params=mittelwert\ min\ max
+comment1.params=mittelwert\ entferntester\ naechster
 comment1.target=Mittelwert(double,\ double,\ double)
+comment1.text=\r\n\ Konstrucktor\ zum\ Erzeugen\ des\ Mittelwertobjekts\r\n\r\n\ @param\ mittelwert\ ist\ der\ uebergebner\ Mittelwert\r\n\ @param\ entferntester\ ist\ der\ uebergebene\ wert\ mit\ der\ weitesten\ entfernung\ zum\ median\r\n\ @param\ naechster\ ist\ der\ uebergebene\ wert\ mit\ der\ geringsten\ entfernung\ zum\ mittelwert\r\n
 comment2.params=
 comment2.target=double\ getMittelwert()
+comment2.text=\r\n\ Get\ Methode\ fuer\ Mittelwert\r\n\ @return\ die\ Instanzvariable\ Mittelwert\r\n
 comment3.params=
 comment3.target=double\ getMin()
+comment3.text=\r\n\ Get\ Methode\ fuer\ naechster\r\n\ @return\ die\ Instanzvariable\ naechster\r\n
 comment4.params=
 comment4.target=double\ getMax()
+comment4.text=\r\n\ Get\ Methode\ fuer\ entferntester\r\n\ @return\ die\ Instanzvariable\ entferntester\r\n
 numComments=5

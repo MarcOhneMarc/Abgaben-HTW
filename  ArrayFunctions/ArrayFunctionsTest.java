@@ -31,12 +31,37 @@ public class ArrayFunctionsTest {
 
     @Test
     public void berechneMittelwert_maxSollteKorrektSein() {
-        final double erwarteterMaxMittelwert = 4;
+        final double erwarteterMaxMittelwert = 0;
         double[] array = {0, 2.8, 3, 3.3, 4};
         Mittelwert mittelwert = ArrayFunctions.berechneMittelwert(array);
         
         final double tatsaechlicherMaxMittelwert = mittelwert.getMax();
         assertEquals(erwarteterMaxMittelwert, tatsaechlicherMaxMittelwert);
+    }
+    
+    @Test
+    public void berechneMittelwert_arrayNull_erwartetException() {
+        double[] array = {};
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            ArrayFunctions.berechneMittelwert(array);
+        });
+    }
+    
+    @Test
+    public void stringsAuswerten_SollteKorrektSein() {
+        final int erwarteteAnzahlStrings = 3;
+        String[] array = {"HTW", "Saar", "klein", "GROESS"};
+        int tatsaechlicheAnzahlStrings = ArrayFunctions.stringsAuswerten(array);
+        
+        assertEquals(erwarteteAnzahlStrings, tatsaechlicheAnzahlStrings);
+    }
+
+    @Test
+    public void stringsAuswerten_arrayNull_erwartetException() {
+        String[] array = {};
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            ArrayFunctions.stringsAuswerten(array);
+        });
     }
     
 }
