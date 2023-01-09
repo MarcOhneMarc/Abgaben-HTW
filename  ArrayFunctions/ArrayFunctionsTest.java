@@ -63,5 +63,4 @@ public class ArrayFunctionsTest {
             ArrayFunctions.stringsAuswerten(array);
         });
     }
-    
 }
