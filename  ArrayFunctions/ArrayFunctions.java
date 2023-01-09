@@ -1,7 +1,5 @@
 public class ArrayFunctions {
 
-
-
     /**
      * Privater Konstrucktor
      */
@@ -22,40 +20,47 @@ public class ArrayFunctions {
         double entferntesterwert = messwerte[0]; // Initialisirung einer Vaibale die den Entferntesten wert zum Median Darstellt
 
         if (messwerte == null){
-
-        }else {
+            throw new IllegalArgumentException("'Art' darf nicht leer sein!");
+        } else {
 
             // Berechnung der Summe
             for(int i = 0; i < messwerte.length; i++){
                 summe = summe + messwerte[i];
-
             }
             median = summe/messwerte.length; // Berechnug des Median
 
             // Berechnung des Naechesten und entferntesten wertes
             for(int i = 0; i < messwerte.length; i++){
-
                 if (Math.abs((messwerte[i] - median)) < Math.abs((naechsterwert - median))){
                     naechsterwert = messwerte[i];
-                }
-                else if (Math.abs((messwerte[i] - median)) > Math.abs((entferntesterwert - median))){
+                } else if (Math.abs((messwerte[i] - median)) > Math.abs((entferntesterwert - median))){
                     entferntesterwert = messwerte[i];
                 }
-
             }
         }
         // Das Return Statement erzuegt dirket ein Objekt in der mittelwert Klasse
         return new Mittelwert(median,entferntesterwert,naechsterwert);
     }
-    
+
+    /**
+     * Methode die bestimmt wiefiele gross und kleingeschriebene woerter in einem Strig array existirern
+     * @param strings Uebergebeber String Array
+     * @return ruebgabe des Ergebnisses
+     */
     public static int stringsAuswerten(String[] strings){
-        int uebergabe = 0;
+        int uebergabe = 0; // Initialisirung der Uebergabe Variable die spaeter veraendert und zurueckgegeben wird
+
+        if (strings == null){
+            throw new IllegalArgumentException("'Art' darf nicht leer sein!");
+        }
+
+        // Die bestimmung der Gross und klein geschriebenen woerter
         for (int i = 0; i< strings.length; i++){
             if ((strings[i].toUpperCase()).equals(strings[i]) || (strings[i].toLowerCase()).equals(strings[i])) {
                 uebergabe++;
             }
         }
+
         return uebergabe;
     }
-
 }
