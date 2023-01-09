@@ -41,7 +41,7 @@ public class ArrayFunctionsTest {
     
     @Test
     public void berechneMittelwert_arrayNull_erwartetException() {
-        double[] array = {};
+        double[] array = null;
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             ArrayFunctions.berechneMittelwert(array);
         });
@@ -58,7 +58,7 @@ public class ArrayFunctionsTest {
 
     @Test
     public void stringsAuswerten_arrayNull_erwartetException() {
-        String[] array = {};
+        String[] array = null;
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             ArrayFunctions.stringsAuswerten(array);
         });
