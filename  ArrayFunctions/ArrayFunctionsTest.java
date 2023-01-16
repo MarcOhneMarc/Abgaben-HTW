@@ -42,7 +42,6 @@ public class ArrayFunctionsTest {
     @Test
     public void berechneMittelwert_arrayNull_erwartetException() {
         double[] array = {};
-        System.out.println(array.length);
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             ArrayFunctions.berechneMittelwert(array);
         });
