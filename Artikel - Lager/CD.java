@@ -30,17 +30,17 @@ public class CD extends Artikel{
     /**
      * Methode zum Vergleichen von einem Artikel mit einem anderen
      *
-     * @param obj ist das Objekt, dass verglichen werden soll
+     * @param CD ist das Objekt, dass verglichen werden soll
      */
     @Override
-    public boolean equals(Object obj){
-        if (this == obj)
+    public boolean equals(Object CD){
+        if (this == CD)
             return true;
-        if (obj == null)
+        if (CD == null)
             return false;
-        if (getClass() != obj.getClass())
+        if (getClass() != CD.getClass())
             return false;
-        CD other = (CD) obj;
+        CD other = (CD) CD;
         if (titel == null ){
             if (other.titel != null)
                 return false;
