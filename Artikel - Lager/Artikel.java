@@ -86,7 +86,7 @@ public class Artikel{
      * Ausgabe der Artikelattribute mit aktuellem Wert als Zeichenkette
      */
     public String toString() {
-        String ausgabe = String.format("%-10d %-40s %-4.2f %-5d", artikelNr, art, preis, bestand);
+        String ausgabe = String.format("%-10d %-40s %8.2f %10d", artikelNr, art, preis, bestand);
         return ausgabe;
     }
 

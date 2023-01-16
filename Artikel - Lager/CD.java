@@ -22,8 +22,8 @@ public class CD extends Artikel{
     
     @Override
     public String toString(){
-        String beschreibung = String.format("%s, %s", interpret, titel);
-        String ausgabe = String.format("%-10d %-40s %-4.2f %-5d", artikelNr, beschreibung, preis, bestand);
+        String beschreibung = interpret+", "+titel;
+        String ausgabe = String.format("%-10d %-40s %8.2f %10d", artikelNr, beschreibung, preis, bestand);
         return ausgabe;
     }
 }

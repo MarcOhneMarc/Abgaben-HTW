@@ -176,7 +176,6 @@
      * @param prozent uebergebene Prozentzahl als double
      */
     public void aenderePreisAllerArtikel(double prozent) {
-        
         // For-Schleife zur Ermittlung der Artikel im Array
         for (int i = 0; i < countArtikel; i++) {
             double preisAkktuel = allArtikels[i].getPreis(); // Der aktuelle Preis des Artikels an der stelle i des Arrays
@@ -184,29 +183,6 @@
             allArtikels[i].setPreis(preisRechnung);
         }
     }
-
-    /*
-    /**
-     * Methode zum Ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
-     * 
-     * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
-     
-    public String toString() {
-        String ausgabe = ""; // Definition der Variable "ausgabe" als String
-
-        // Erweitern der ausgabe in den String
-        for (int i = 0; i < allArtikels.length; i++) {
-            ausgabe = ausgabe + "[Lagerplatz " + i + ": ";
-            if (allArtikels[i] == null) {
-                ausgabe = ausgabe + "NULL" + "] ";
-            } else {
-                ausgabe = ausgabe + allArtikels[i].toString() + "] ";
-            }
-        }
-        
-        return ausgabe;
-    }
-    */
    
     /**
      * Methode zum Ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
@@ -215,14 +191,15 @@
      */
     public String toString() {
         String ausgabe = ""; // Definition der Variable "ausgabe" als String
-        ausgabe = String.format("%-10s %-40s %-6s %-5s", "artikelNr", "beschreibung", "preis", "bestand");
+        ausgabe = String.format("%-10s %-40s %8s %10s %9", "ArtikelNr", "Beschreibung", "Preis", "Bestand", "Gesamt");
+        ausgabe = ausgabe + "\n---------------------------------------------------------------------------------";
         // Erweitern der ausgabe in den String
         for (int i = 0; i < allArtikels.length; i++) {
             if (allArtikels[i] != null) {
-                ausgabe = ausgabe + "\n" + allArtikels[i].toString();
+                double gesamt = getGesamt(allArtikels[i]);
+                ausgabe = ausgabe + "\n" + allArtikels[i].toString() + String.format("%10.2f", gesamt);
             }
         }
-        
         return ausgabe;
     }
     
@@ -255,6 +232,17 @@
         else{
             return countArtikel;
         }
+    }
+    
+    /**
+     * Methode zum berechnen des Gesamten Wert des Bestands eines Artikels
+     * 
+     * @param artikel Jeweiliger Artikel, dessen Gesamtwert berechnet werden soll
+     * @retrun gesamt Der gesamte, ausgerechnete Wert der Artikel
+     */
+    public double getGesamt(Artikel artikel){
+        double gesamt = artikel.getPreis() * artikel.getBestand();
+        return gesamt;
     }
 
     /**
