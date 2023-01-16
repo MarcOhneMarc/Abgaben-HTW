@@ -150,32 +150,83 @@ public class LagerDialog {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
+
             System.out.println("Eingabe der ID als Ganzzahl mit 4 Ziffern:");
             int artikelNr = input.nextInt();
             input.nextLine();
-            System.out.println("Eingabe der Art als String:");
-            String art = input.nextLine();
             System.out.println("Eingabe der Preis als Double:");
             double preis = input.nextDouble();
             input.nextLine();
-            
-            
-            
-            System.out.print("Wollen sie einen Artikel mit Bestand erstellen Y/N: ");
-            char choice = input.nextLine().charAt(0);
-            if (choice == 'Y') {
-                System.out.println("Eingabe des Bestandes:");
-                int bestand = input.nextInt();
-                input.nextLine();
-                artikel = new Artikel(artikelNr, art, bestand, preis);
-            } else if (choice == 'N') {
-                artikel = new Artikel(artikelNr, art, preis);
-            } else {
-                throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
-            }  
-            
+
+            System.out.print("Geben sie bitte an welchen artikel sie erzeugen wollen (1-4) \nCD: 1 \nBuch: 2 \nVideo:3 \nSonstige:4");
+            int choiceArtikel = input.nextInt();
+            if (choiceArtikel == 4) {
+                System.out.println("Eingabe der Art als String:");
+                String art = input.nextLine();
+                System.out.print("Wollen sie einen Artikel mit Bestand erstellen Y/N: ");
+                char choice = input.nextLine().charAt(0);
+                if (choice == 'Y') {
+                    System.out.println("Eingabe des Bestandes:");
+                    int bestand = input.nextInt();
+                    input.nextLine();
+                    artikel = new Artikel(artikelNr, art, bestand, preis);
+                } else if (choice == 'N') {
+                    artikel = new Artikel(artikelNr, art, preis);
+                } else {
+                    throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
+                }
+            } else if (choiceArtikel == 1) {
+                cdAnlegen(artikelNr,preis);
+            } else if (choiceArtikel == 2) {
+                buchAnlegen(artikelNr,preis);
+            } else if (choiceArtikel == 3) {
+                videoAnlegen(artikelNr,preis);
+            }
             lager.legeAnArtikel(artikel);
         }
+    }
+
+    public void cdAnlegen(int artikelNr, double preis){
+        System.out.println("Geben sie denn Interpreten an");
+        String interpret = input.nextLine();
+        System.out.println("Geben sie denn Titel an");
+        String titel = input.nextLine();
+        System.out.println("Geben sie die anzahl der Titel an");
+        int anzahlTitel = input.nextInt();
+        input.nextLine();
+        System.out.println("Eingabe des Bestandes:");
+        int bestand = input.nextInt();
+        input.nextLine();
+
+        artikel = new CD(artikelNr, bestand, preis, interpret, titel, anzahlTitel);
+    }
+    public void buchAnlegen(int artikelNr, double preis){
+        System.out.println("Geben sie denn Interpreten an");
+        String verlag = input.nextLine();
+        System.out.println("Geben sie denn Titel an");
+        String titel = input.nextLine();
+        System.out.println("Geben sie denn Author an");
+        String author = input.nextLine();
+        System.out.println("Eingabe des Bestandes:");
+        int bestand = input.nextInt();
+        input.nextLine();
+
+        artikel = new Buch(artikelNr, bestand, preis, verlag, titel, author);
+    }
+    public void videoAnlegen(int artikelNr, double preis){
+        System.out.println("Geben sie denn Titel an");
+        String titel = input.nextLine();
+        System.out.println("Geben sie die Spieldauer in Minuten ein");
+        int spieldauer = input.nextInt();
+        input.nextLine();
+        System.out.println("Geben sie das erscheinungs Jahr ein");
+        int jahr = input.nextInt();
+        input.nextLine();
+        System.out.println("Eingabe des Bestandes:");
+        int bestand = input.nextInt();
+        input.nextLine();
+
+        artikel = new Video(artikelNr, bestand, preis, titel, spieldauer, jahr);
     }
     
     /**

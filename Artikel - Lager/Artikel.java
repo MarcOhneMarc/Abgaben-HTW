@@ -151,4 +151,8 @@ public class Artikel{
             this.preis = preis;
         }
     }
+
+    public String getBeschreibung(){
+        return "Testbesch";
+    }
 }
