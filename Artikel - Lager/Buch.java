@@ -3,6 +3,9 @@ public class Buch extends Artikel {
     private String titel;
     private String autor;
     private String verlag;
+    private static final String TITEL_NICHT_LEER = "Der Titel darf nicht leer sein";
+    private static final String SPIELDAUER_NICHT_LEER = "Der Autor darf nicht null sein";
+    private static final String VERLAG_NICHT_LEER = "Der verlag darf nicht null sein";
     
     /**
      * Konstruktor zum initialisiern eines Buches
@@ -17,11 +20,11 @@ public class Buch extends Artikel {
     public Buch(int artikelNr, int bestand, double preis, String verlag, String titel, String autor){
         super(artikelNr,"Medien",bestand,preis);
         if (titel == null)
-            throw new IllegalArgumentException("Der Titel darf nicht leer sein");
+            throw new IllegalArgumentException(TITEL_NICHT_LEER);
         if (autor == null)
-            throw new IllegalArgumentException("Der Autor darf nicht null sein");
+            throw new IllegalArgumentException(SPIELDAUER_NICHT_LEER);
         if (verlag == null)
-            throw new IllegalArgumentException("Der verlag darf nicht null sein");
+            throw new IllegalArgumentException(VERLAG_NICHT_LEER);
         this.verlag = verlag;
         this.titel = titel;
         this.autor = autor;
@@ -41,16 +44,12 @@ public class Buch extends Artikel {
         if (getClass() != Buch.getClass())
             return false;
         Buch other = (Buch) Buch;
-        if (titel == null ){
-            if (other.titel != null)
+        if (titel == null && autor == null){
+            if (other.titel != null && other.autor != null)
                 return false;
-        } else if (!titel.equals(other.titel))
+        } else if (!titel.equals(other.titel) && !autor.equals(other.autor))
             return false;
-        if (autor == null ){
-            if (other.autor != null)
-                return false;
-        } else if (!autor.equals(other.autor))
-            return false;
+
         return true;
     }
 
@@ -67,7 +66,6 @@ public class Buch extends Artikel {
      */
     @Override
     public String toString(){
-        String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
-        return ausgabe;
+        return String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
     }
 }

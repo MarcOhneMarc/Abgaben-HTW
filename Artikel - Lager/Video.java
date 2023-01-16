@@ -3,6 +3,11 @@ public class Video extends Artikel{
     private int jahr;
     private String titel;
 
+    private static final String TITEL_NICHT_LEER = "'Titel' darf nicht leer sein!";
+    private static final String SPIELDAUER_NICHT_NULL = "Spieldauer ist ungueltig!";
+    private static final String UNGUELTIGES_ERSCHEINUNGSJAHR = "Ungueltiges Erscheinungsjahr";
+
+
     /**
      * Konstruktor zum initialisiern eines Video
      *
@@ -16,11 +21,11 @@ public class Video extends Artikel{
     public Video(int artikelNr, int bestand, double preis, String titel, int spieldauer, int jahr){
         super(artikelNr,"Medien",bestand,preis);
         if (titel == null)
-            throw new IllegalArgumentException("Der Titel darf nicht leer sein");
+            throw new IllegalArgumentException(TITEL_NICHT_LEER);
         if (spieldauer < 0)
-            throw new IllegalArgumentException("Die Spieldauer darf nicht Negativ sein");
+            throw new IllegalArgumentException(SPIELDAUER_NICHT_NULL);
         if (jahr < 1900 || jahr > 2022)
-            throw new IllegalArgumentException("Ungueltiges Erscheinungsjahr");
+            throw new IllegalArgumentException(UNGUELTIGES_ERSCHEINUNGSJAHR);
         this.spieldauer = spieldauer;
         this.titel = titel;
         this.jahr = jahr;
@@ -61,7 +66,6 @@ public class Video extends Artikel{
      */
     @Override
     public String toString(){
-        String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
-        return ausgabe;
+        return String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
     }
 }

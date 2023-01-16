@@ -3,6 +3,9 @@ public class CD extends Artikel{
     private String interpret;
     private String titel;
     private int anzahlTitel;
+    private static final String TITEL_NICHT_LEER = "'Titel' darf nicht leer sein!";
+    private static final String INTERPRET_NICHT_NULL = "Interpret darf nicht null sein";
+    private static final String ANZAHL_TITEL_UNGUELTIG = "Anzahl Titel muss Posiv sein";
 
     /**
      * Konstruktor zum initialisiern einer CD
@@ -17,11 +20,11 @@ public class CD extends Artikel{
     public CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel){
         super(artikelNr, "Medien", bestand, preis);
         if (interpret == null)
-            throw new IllegalArgumentException("Der Interpret darf nicht null sein");
+            throw new IllegalArgumentException(INTERPRET_NICHT_NULL);
         if (titel == null)
-            throw new IllegalArgumentException("Der Titel darf nicht leer sein");
+            throw new IllegalArgumentException(TITEL_NICHT_LEER);
         if (anzahlTitel < 0)
-            throw new IllegalArgumentException("Du must eine Posivive zahl als Titel anzahl eingeben");
+            throw new IllegalArgumentException(ANZAHL_TITEL_UNGUELTIG);
         this.interpret = interpret;
         this.titel = titel;
         this.anzahlTitel = anzahlTitel;
@@ -67,7 +70,6 @@ public class CD extends Artikel{
      */
     @Override
     public String toString(){
-        String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
-        return ausgabe;
+        return String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
     }
 }
