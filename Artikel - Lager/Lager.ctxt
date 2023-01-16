@@ -1,33 +1,43 @@
 #BlueJ class context
 comment0.target=Lager
-comment0.text=\r\n\ Lager\r\n\r\n\ @author\ Marc\ Perwark\ &\ Jonas\ Neu\r\n\ @06.11.2022\r\n
+comment0.text=\r\n\ Klasse\ zum\ erstellen\ eines\ Lagers,\ in\ dem\ man\ mehrere\ Artikel\ der\ funktion\ Artikel.java\ speichern\ kann.\r\n\r\n\ @author\ Marc\ Perwark\ &\ Jonas\ Neu\r\n\ 06.11.2022\r\n
 comment1.params=arraylaenge
 comment1.target=Lager(int)
 comment1.text=\r\n\ Konstruktor\ zum\ initialisiern\ der\ Lagergroesse\r\n\r\n\ @param\ arraylaenge\ gibt\ an\ wie\ viele\ speicherplaetze\ im\ Array\ vergeben\ werden\r\n
-comment10.params=index
-comment10.target=Artikel\ getArtikel(int)
-comment10.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Artikels\ anhand\ des\ Indexes\r\n\ \r\n\ @param\ index\ der\ index\ als\ ganze\ zahl\ von\ 1\ bis\ 10\r\n\ @return\ Artikel\ Der\ Artikel\ and\ der\ stelle\ Index\r\n
+comment10.params=
+comment10.target=java.lang.String\ toString()
+comment10.text=\r\n\ Methode\ zum\ Ausgeben\ des\ ganzen\ Lagers\ und\ den\ Artikeln,\ die\ sich\ darin\ befinden\r\n\ \r\n\ @return\ ausgabe\ die\ Ausgabe\ des\ ganzen\ Lagers\ und\ den\ Artikeln,\ die\ sich\ darin\ befinden\ als\ String\r\n
+comment11.params=index
+comment11.target=Artikel\ getArtikel(int)
+comment11.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Artikels\ anhand\ seines\ Index\r\n\ \r\n\ @param\ index\ der\ index\ als\ ganze\ zahl\ von\ 1\ bis\ 10\r\n\ @return\ Artikel\ der\ Artikel\ and\ der\ stelle\ Index\r\n
+comment12.params=
+comment12.target=int\ getArtikelAnzahl()
+comment12.text=\r\n\ Methode\ zum\ ausgeben\ der\ Anzahl\ aller\ Artikel\r\n\ \r\n\ @return\ countArtikel\ Die\ Anzahl\ der\ Artikel\r\n
+comment13.params=
+comment13.target=int\ getLagerGroesse()
+comment13.text=\r\n\ Get\ Methode\ zur\ ausgabe\ der\ Lagergroesse\ als\ Ganzzahl\r\n\r\n\ @return\ rueckgabe\ Die\ Groesse\ des\ Lagers\ als\ Ganzzahl\r\n
 comment2.params=
 comment2.target=Lager()
 comment2.text=\r\n\ Standart-Konstruktor\ zum\ initialisiern\ der\ maximalen\ Lagergroesse\ \=\ 10\r\n
 comment3.params=artikel
 comment3.target=void\ legeAnArtikel(Artikel)
-comment3.text=\r\n\ Methode\ zum\ anlegen\ eines\ Artikels\r\n\ \r\n\ @param\ Artikel\ artikel\ ist\ der\ Artikel\ der\ hinzugefuegt\ werden\ soll\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ null\ ist\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Lagerplatz\ belegt\ ist\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ bereits\ existiert\r\n
+comment3.text=\r\n\ Methode\ zum\ Anlegen\ eines\ Artikels\r\n\ \r\n\ @param\ artikel\ artikel\ ist\ der\ Artikel\ der\ hinzugefuegt\ werden\ soll\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ null\ ist\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Lagerplatz\ belegt\ ist\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ bereits\ existiert\r\n
 comment4.params=artikelNr
 comment4.target=void\ entferneArtikel(int)
-comment4.text=\r\n\ Methode\ zum\ entfernen\ eines\ Artikels\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels\ der\ entfernt\ werden\ soll.\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ nicht\ gefunden\ wird.\r\n
+comment4.text=\r\n\ Methode\ zum\ Entfernen\ eines\ Artikels\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels\ der\ entfernt\ werden\ soll.\r\n\ @throws\ IllegalArgumentException\ wenn\ der\ Artikel\ nicht\ gefunden\ wird.\r\n
 comment5.params=artikelNr
 comment5.target=int\ findeArtikelIndex(int)
-comment5.text=\r\n\ Methode\ zum\ finden\ des\ Index\ im\ Lager\ eines\ Artikels\ anhand\ der\ artikelNr\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels,\ dessen\ index\ ausgegeben\ werden\ soll\r\n\ @return\ i\ Ist\ der\ gefundene\ Index\r\n\ @return\ ARTIKEL_NICHT_GEFUNDEN\ \=\ -1\ bedeutet\ der\ Artikel\ befindet\ sich\ nicht\ im\ Lager\r\n
+comment5.text=\r\n\ Methode\ zum\ Finden\ des\ Index\ im\ Lager\ eines\ Artikels\ anhand\ der\ artikelNr\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels,\ dessen\ index\ ausgegeben\ werden\ soll\r\n\ @return\ ARTIKEL_NICHT_GEFUNDEN\ \=\ -1\ bedeutet\ der\ Artikel\ befindet\ sich\ nicht\ im\ Lager\ oder\ i\ wenn\ die\ Artikelnummer\ gefunden\ wurde\r\n
 comment6.params=artikelNr\ zugang
 comment6.target=void\ bucheZugang(int,\ int)
-comment6.text=\r\n\ Methode\ zum\ buchen\ einer\ bestandserhoehung\ eines\ Artikels\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels,\ dessen\ Bestand\ erhoeht\ werden\ soll\r\n\ @param\ zugang\ Der\ Zugang\ als\ Ganzzahl\r\n
+comment6.text=\r\n\ Methode\ zum\ buchen\ einer\ Bestandserhoehung\ eines\ Artikels\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels,\ dessen\ Bestand\ erhoeht\ werden\ soll\r\n\ @param\ zugang\ Der\ Zugang\ als\ Ganzzahl\r\n
 comment7.params=artikelNr\ abgang
 comment7.target=void\ bucheAbgang(int,\ int)
-comment7.text=\r\n\ Methode\ zum\ buchen\ einer\ bestandsverminderung\ eines\ Artikels\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels,\ dessen\ Bestand\ erhoeht\ werden\ soll\r\n\ @param\ zugang\ Der\ Abgang\ als\ Ganzzahl\r\n
+comment7.text=\r\n\ Methode\ zum\ buchen\ einer\ Bestandsverminderung\ eines\ Artikels\r\n\ \r\n\ @param\ artikelNr\ Die\ Artikelnummer\ des\ Artikels,\ dessen\ Bestand\ erhoeht\ werden\ soll\r\n\ @param\ abgang\ Der\ Abgang\ als\ Ganzzahl\r\n
 comment8.params=artikelNr\ prozent
 comment8.target=void\ aenderePreisEinesArtikels(int,\ double)
-comment9.params=
-comment9.target=java.lang.String\ toString()
-comment9.text=\r\n\ Methode\ zum\ ausgeben\ des\ ganzen\ Lagers\ und\ den\ Artikeln,\ die\ sich\ darin\ befinden\r\n\ \r\n\ @return\ ausgabe\ Die\ Ausgabe\ des\ ganzen\ Lagers\ und\ den\ Artikeln,\ die\ sich\ darin\ befinden\ als\ String\r\n
-numComments=11
+comment8.text=\r\n\r\n\ Methode\ zum\ aendern\ des\ preises\ eines\ Artikel\r\n\r\n\ @param\ artikelNr\ ist\ die\ Artikelnummer\ des\ zu\ aendernden\ Artikels\ als\ Ganzzahl\r\n\ @param\ prozent\ uebergebene\ Prozentzahl\ als\ double\r\n
+comment9.params=prozent
+comment9.target=void\ aenderePreisAllerArtikel(double)
+comment9.text=\r\n\r\n\ Methode\ zum\ aendern\ des\ preises\ aller\ Artikel\r\n\r\n\ @param\ prozent\ uebergebene\ Prozentzahl\ als\ double\r\n
+numComments=14
