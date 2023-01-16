@@ -8,6 +8,7 @@ public class Artikel{
     //initialisierung der Attribute
     protected int artikelNr;
     protected String art;
+
     protected int bestand;
 
     protected double preis;
@@ -86,7 +87,7 @@ public class Artikel{
      * Ausgabe der Artikelattribute mit aktuellem Wert als Zeichenkette
      */
     public String toString() {
-        String ausgabe = String.format("%-10d %-40s %8.2f %10d", artikelNr, art, preis, bestand);
+        String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, art, preis, bestand);
         return ausgabe;
     }
 
@@ -154,6 +155,6 @@ public class Artikel{
     }
 
     public String getBeschreibung(){
-        return "Testbesch";
+        return "Art: " + art;
     }
 }

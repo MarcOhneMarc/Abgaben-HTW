@@ -14,13 +14,30 @@ public class Video extends Artikel{
     }
 
     @Override
+    public boolean equals(Object obj){
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Video other = (Video) obj;
+        if (titel == null ){
+            if (other.titel != null)
+                return false;
+        } else if (!titel.equals(other.titel))
+            return false;
+        return true;
+    }
+
+    @Override
     public String getBeschreibung(){
-        return "Video";
+        return "Titel:" + titel + " Spieldauer:" + spieldauer + " Erschinungsjahr:" + jahr;
     }
 
     @Override
     public String toString(){
-        String ausgabe = String.format("%-10d %-40s %8.2f %10d", artikelNr, titel, preis, bestand);
+        String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
         return ausgabe;
     }
 }

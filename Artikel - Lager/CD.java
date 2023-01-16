@@ -17,13 +17,34 @@ public class CD extends Artikel{
 
     @Override
     public String getBeschreibung(){
-        return "CD";
+        return "Interpert:" + interpret+ ", Titel:"+titel;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        CD other = (CD) obj;
+        if (titel == null ){
+            if (other.titel != null)
+                return false;
+        } else if (!titel.equals(other.titel))
+            return false;
+        if (interpret == null ){
+            if (other.interpret != null)
+                return false;
+        } else if (!interpret.equals(other.interpret))
+            return false;
+        return true;
     }
     
     @Override
     public String toString(){
-        String beschreibung = interpret+", "+titel;
-        String ausgabe = String.format("%-10d %-40s %8.2f %10d", artikelNr, beschreibung, preis, bestand);
+        String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);
         return ausgabe;
     }
 }

@@ -1,3 +1,5 @@
+import static java.lang.String.format;
+
 /**
  * Klasse zum erstellen eines Lagers, in dem man mehrere Artikel der funktion Artikel.java speichern kann.
  *
@@ -191,13 +193,13 @@
      */
     public String toString() {
         String ausgabe = ""; // Definition der Variable "ausgabe" als String
-        ausgabe = String.format("%-10s %-40s %8s %10s %9", "ArtikelNr", "Beschreibung", "Preis", "Bestand", "Gesamt");
-        ausgabe = ausgabe + "\n---------------------------------------------------------------------------------";
+        ausgabe = format("%-10s %-60s %8s %10s %9s", "ArtikelNr", "Beschreibung", "Preis", "Bestand", "Gesamt");
+        ausgabe = ausgabe + "\n-----------------------------------------------------------------------------------------------------";
         // Erweitern der ausgabe in den String
         for (int i = 0; i < allArtikels.length; i++) {
             if (allArtikels[i] != null) {
                 double gesamt = getGesamt(allArtikels[i]);
-                ausgabe = ausgabe + "\n" + allArtikels[i].toString() + String.format("%10.2f", gesamt);
+                ausgabe = ausgabe + "\n" + allArtikels[i].toString() + format("%10.2f", gesamt);
             }
         }
         return ausgabe;
