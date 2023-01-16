@@ -15,12 +15,18 @@ public class CD extends Artikel{
      * @param anzahlTitel ist die Anzahl der Titel als Ganzzahl
      */
     public CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel){
-        super(artikelNr,"Medien",bestand,preis);
+        super(artikelNr, "Medien", bestand, preis);
+        if (interpret == null)
+            throw new IllegalArgumentException("Der Interpret darf nicht null sein");
+        if (titel == null)
+            throw new IllegalArgumentException("Der Titel darf nicht leer sein");
+        if (anzahlTitel < 0)
+            throw new IllegalArgumentException("Du must eine Posivive zahl als Titel anzahl eingeben");
         this.interpret = interpret;
         this.titel = titel;
         this.anzahlTitel = anzahlTitel;
     }
-    
+
     /**
      * Methode zum Vergleichen von einem Artikel mit einem anderen
      *
@@ -55,7 +61,7 @@ public class CD extends Artikel{
     public String getBeschreibung(){
         return "Interpert: " + interpret + " Titel: "+ titel;
     }
-    
+
     /**
      * Methode zum ausgeben der Attribute einer CD als Zeichenkette
      */
