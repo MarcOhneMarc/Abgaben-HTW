@@ -1,25 +1,31 @@
 public class CD extends Artikel{
-
+    //initialisierung der Attribute
     private String interpret;
-
     private String titel;
-
     private int anzahlTitel;
 
+    /**
+     * Konstruktor zum initialisiern einer CD
+     *
+     * @param artikelNr ist die Artikelnummer als vierstellige Ganzzahl
+     * @param bestand ist der Bestand als Ganzzahl
+     * @param preis ist der Preis des Atikels
+     * @param interpret ist der Interpret, der die CD erstellt hat
+     * @param titel ist der Titel der CD
+     * @param anzahlTitel ist die Anzahl der Titel als Ganzzahl
+     */
     public CD(int artikelNr, int bestand, double preis, String interpret, String titel, int anzahlTitel){
-
         super(artikelNr,"Medien",bestand,preis);
         this.interpret = interpret;
         this.titel = titel;
         this.anzahlTitel = anzahlTitel;
-
     }
-
-    @Override
-    public String getBeschreibung(){
-        return "Interpert:" + interpret+ ", Titel:"+titel;
-    }
-
+    
+    /**
+     * Methode zum Vergleichen von einem Artikel mit einem anderen
+     *
+     * @param obj ist das Objekt, dass verglichen werden soll
+     */
     @Override
     public boolean equals(Object obj){
         if (this == obj)
@@ -42,6 +48,17 @@ public class CD extends Artikel{
         return true;
     }
     
+    /**
+     * get Methode zum weitergeben der Beschreibung einer CD an die toString Methode
+     */
+    @Override
+    public String getBeschreibung(){
+        return "Interpert: " + interpret + " Titel: "+ titel;
+    }
+    
+    /**
+     * Methode zum ausgeben der Attribute einer CD als Zeichenkette
+     */
     @Override
     public String toString(){
         String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, getBeschreibung(), preis, bestand);

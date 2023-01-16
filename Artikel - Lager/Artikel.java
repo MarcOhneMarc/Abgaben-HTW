@@ -1,5 +1,5 @@
 /**
- * Bestandsfuehrung.
+ * Klasse zum erstellen und Bearbeiten eines Artikels mit den Attributen artikelNr, art, bestand und preis
  *
  * @author Marc Perwark & Jonas Neu
  * 06.11.2022
@@ -8,26 +8,31 @@ public class Artikel{
     //initialisierung der Attribute
     protected int artikelNr;
     protected String art;
-
     protected int bestand;
-
     protected double preis;
-
+    
+    private static final String ART_NICHT_LEER = "'Art' darf nicht leer sein!";
+    private static final String ARTIKELNUMMER_NICHT_4STELLIG = "Die Artikelnummer muss 4 Stellen haben!";
+    private static final String BESTAND_NEGATIV = "Der Bestand darf nicht negativ sein!";
+    private static final String PREIS_NEGATIV = "Der Preis darf nicht negativ sein!";
+    private static final String MENGE_NEGATIV = "Die Menge darf nicht negativ sein!";
+    
      /**
      * Konstruktor zum initialisiern eines Artikel mit Bestand
      *
-     * @param artikelNr gibt die Artikelnummer als vierstellige ganzzahl an
-     * @param art gibt als Zeichenkette an was der Artikel ist
-     * @param bestand gibt den wahrenbestand als ganzzahl an
+     * @param artikelNr ist die Artikelnummer als vierstellige Ganzzahl
+     * @param art beschreibt den Artikel (Was ist der Artikel?)
+     * @param bestand ist der Bestand als Ganzzahl
+     * @param preis ist der Preis des Atikels
      */
     public Artikel(int artikelNr, String art, int bestand, double preis) {
         int anzahlDerStellen = String.valueOf(artikelNr).length();
         if (art == null || art.strip().isEmpty()) {
-            throw new IllegalArgumentException("'Art' darf nicht leer sein!");
+            throw new IllegalArgumentException(ART_NICHT_LEER);
         } else if (anzahlDerStellen != 4) {
-            throw new IllegalArgumentException("Die Artikelnummer muss 4 Stellen haben!");
+            throw new IllegalArgumentException(ARTIKELNUMMER_NICHT_4STELLIG);
         } else if (bestand < 0) {
-            throw new IllegalArgumentException("Der bestand darf nicht negativ sein!");
+            throw new IllegalArgumentException(BESTAND_NEGATIV);
         } else {
             this.artikelNr = artikelNr;
             this.art = art;
@@ -39,30 +44,30 @@ public class Artikel{
      /**
      * Konstruktor zum initialisiern eines Artikel ohne Bestand
      *
-     * @param artikelNr gibt die Artikelnummer als vierstellige ganzzahl an
-     * @param art gibt als Zeichenkette an was der Artikel ist
-     */
+     * @param artikelNr ist die Artikelnummer als vierstellige Ganzzahl
+     * @param art beschreibt den Artikel (Was ist der Artikel?)
+    */
     public Artikel(int artikelNr, String art, double preis) {
         int anzahlDerStellen = String.valueOf(artikelNr).length();
         if (art == null || art.strip().isEmpty()) {
-            throw new IllegalArgumentException("'Art' darf nicht leer sein!");
+            throw new IllegalArgumentException(ART_NICHT_LEER);
         } else if (anzahlDerStellen != 4) {
-            throw new IllegalArgumentException("Die Artikelnummer muss 4 Stellen haben!");
+            throw new IllegalArgumentException(ARTIKELNUMMER_NICHT_4STELLIG);
         } else {
             this.artikelNr = artikelNr;
             this.art = art;
             this.preis = preis;
         }
     }
-    //Ein Standardkonstruktor wie Artikel() macht hier keinen Sinn, da jeder Artikel unterschiedlich sein muss.
+    
     /**
      * Methode zur Buchung einer Bestandserhoehung
      *
-     * @param menge gibt an welcher int Wert zum ursprünglichen bestand addiert werden soll
+     * @param menge gibt an welcher int Wert zum urspruenglichen Bestand addiert werden soll
      */
     public void bucheZugang(int menge) {
         if (menge < 0) {
-            throw new IllegalArgumentException("Die Menge darf nicht negativ sein!");
+            throw new IllegalArgumentException(MENGE_NEGATIV);
         } else {
             bestand = bestand + menge;
         }
@@ -75,16 +80,16 @@ public class Artikel{
      */
     public void bucheAbgang(int menge) {
         if (menge < 0) {
-            throw new IllegalArgumentException("Die Menge darf nicht negativ sein!");
+            throw new IllegalArgumentException(MENGE_NEGATIV);
         } else if (bestand - menge < 0) {
-            throw new IllegalArgumentException("Der Finale Bestand darf nicht negativ sein!");
+            throw new IllegalArgumentException(BESTAND_NEGATIV);
         } else {
             bestand = bestand - menge;
         }
     }
 
     /**
-     * Ausgabe der Artikelattribute mit aktuellem Wert als Zeichenkette
+     * Ausgabe der Artikelattribute mit dem aktuellen Wert als Zeichenkette
      */
     public String toString() {
         String ausgabe = String.format("%-10d %-60s %8.2f %10d", artikelNr, art, preis, bestand);
@@ -111,6 +116,10 @@ public class Artikel{
     public int getBestand() {
         return bestand;
     }
+    
+    /**
+     * get Preis eines Artikels
+     */
     public double getPreis() {
         return preis;
     }
@@ -122,7 +131,7 @@ public class Artikel{
      */
     public void setArt(String art) {
         if (art == null || art.strip().isEmpty()) {
-            throw new IllegalAccessError("'Art' darf nicht leer sein!");
+            throw new IllegalAccessError(ART_NICHT_LEER);
         } else {
             this.art = art;
         }
@@ -135,7 +144,7 @@ public class Artikel{
      */
     public void setBestand(int bestand) {
         if (bestand < 0) {
-            throw new IllegalAccessError("Der bestand darf nicht negativ sein!");
+            throw new IllegalAccessError(BESTAND_NEGATIV);
         } else {
             this.bestand = bestand;
         }
@@ -148,12 +157,15 @@ public class Artikel{
      */
     public void setPreis(double preis) {
         if (bestand < 0) {
-            throw new IllegalAccessError("Der preis darf nicht negativ sein!");
+            throw new IllegalAccessError(PREIS_NEGATIV);
         } else {
             this.preis = preis;
         }
     }
 
+    /**
+     * get Beschreibung eines Artikels
+     */
     public String getBeschreibung(){
         return "Art: " + art;
     }

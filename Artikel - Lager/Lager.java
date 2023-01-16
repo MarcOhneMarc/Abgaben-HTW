@@ -1,29 +1,30 @@
 import static java.lang.String.format;
 
 /**
- * Klasse zum erstellen eines Lagers, in dem man mehrere Artikel der funktion Artikel.java speichern kann.
+ * Klasse zum erstellen eines Lagers, in dem man mehrere Artikel der klasse Artikel.java speichern kann.
  *
- * @author Marc Perwark & Jonas Neu
- * 06.11.2022
+ * @Marc_Perwark_&_Jonas_Neu
  */
  public class Lager {
     //initialisierung der Attribute
     private static final int ARTIKEL_NICHT_GEFUNDEN = -1;
-    
     private static final String ERROR_ARTIKEL_EXISTIERT_BEREITS = "Dieser Artikel ist bereits im Lager!";
     private static final String MINIMAL_MAXIMAL_LAGER = "Das Lager darf minimal 1 und maximal 10 einheiten groß sein!";
     private static final String ARTIKEL_EXISTIERT_NICHT = "Dieser Artikel existiert noch nicht!";
-    private static final String LAGER_VOLL = "Das Lager ist Voll!";
+    private static final String LAGER_VOLL = "Das Lager ist voll!";
+    private static final String KEIN_LAGER = "Es existiert noch kein Lager!";
+    private static final String LAGER_LEER = "Es existiert noch kein Artikel im Lager!";
+    private static final String SPEICHERSTELLE_NICHT_VORHANDEN = "Diese Speicherstelle existiert nicht!";
+    private static final String KEIN_NEGATIVER_LAGERPLATZ = "Es gibt keinen negativen Lagerplatz!";
     
-    private int arraylaenge;
     private Artikel[] allArtikels;
-    
     private int countArtikel;
+    private int arraylaenge;
     
     /**
     * Konstruktor zum initialisiern der Lagergroesse
     *
-    * @param arraylaenge gibt an wie viele speicherplaetze im Array vergeben werden
+    * @param arraylaenge gibt an wie viele Speicherplaetze im Array vergeben werden
     */
     public Lager(int arraylaenge) {
         if (arraylaenge > 10 || arraylaenge <= 0) {
@@ -35,7 +36,7 @@ import static java.lang.String.format;
     }
     
     /**
-    * Standart-Konstruktor zum initialisiern der maximalen Lagergroesse = 10
+    * Konstruktor zum initialisiern der maximalen Lagergroesse 10
     */
     public Lager() {
         allArtikels = new Artikel[10];
@@ -51,7 +52,6 @@ import static java.lang.String.format;
     * @throws IllegalArgumentException wenn der Artikel bereits existiert
     */
     public void legeAnArtikel(Artikel artikel){
-
         // Pruefen ob der Artikel existiert
         if (artikel == null) {
            throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
@@ -62,8 +62,8 @@ import static java.lang.String.format;
            throw new IllegalArgumentException(LAGER_VOLL);
         }
         
-        int artikelNr = artikel.getArtikelNr(); // Abspeichern der Artikelnummer, die von getArtikelNr() uebergeben wird
-        int index = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
+        int artikelNr = artikel.getArtikelNr(); // Abspeichern der Artikelnummer
+        int index = findeArtikelIndex(artikelNr); // Abspeichern des Index eines Artikels
         
         // Ueberpruefung ob sich der Artikel noch nicht im Lager befindet
         if (index != ARTIKEL_NICHT_GEFUNDEN) {
@@ -72,13 +72,12 @@ import static java.lang.String.format;
         
         allArtikels[countArtikel] = artikel;
         countArtikel++;
-
     }
 
     /**
-    * Methode zum Entfernen eines Artikels
+    * Methode zum entfernen eines Artikels
     * 
-    * @param artikelNr Die Artikelnummer des Artikels der entfernt werden soll.
+    * @param artikelNr die Artikelnummer des Artikels, der entfernt werden soll.
     * @throws IllegalArgumentException wenn der Artikel nicht gefunden wird.
     */
     public void entferneArtikel(int artikelNr){
@@ -86,8 +85,7 @@ import static java.lang.String.format;
 
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
-          throw new IllegalArgumentException("Ein Artikel mit der Id " +
-          artikelIndex + " exixtiert nicht!");
+          throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         }
 
         for (int i = artikelIndex; i < countArtikel -1; i++) {
@@ -98,7 +96,7 @@ import static java.lang.String.format;
     }
 
     /**
-    * Methode zum Finden des Index im Lager eines Artikels anhand der artikelNr
+    * Methode zum finden des Index im Lager eines Artikels anhand der artikelNr
     * 
     * @param artikelNr Die Artikelnummer des Artikels, dessen index ausgegeben werden soll
     * @return ARTIKEL_NICHT_GEFUNDEN = -1 bedeutet der Artikel befindet sich nicht im Lager oder i wenn die Artikelnummer gefunden wurde
@@ -124,8 +122,7 @@ import static java.lang.String.format;
         
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
-          throw new IllegalArgumentException("Ein Artikel mit der Id " +
-          artikelNr + " exixtiert nicht!");
+          throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         } else {
             allArtikels[artikelIndex].bucheZugang(zugang);
         }
@@ -142,8 +139,7 @@ import static java.lang.String.format;
 
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
-          throw new IllegalArgumentException("Ein Artikel mit der Id " +
-          artikelNr + " exixtiert nicht!");
+          throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         } else {
             allArtikels[artikelIndex].bucheAbgang(abgang);
         }
@@ -161,8 +157,7 @@ import static java.lang.String.format;
 
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
-          throw new IllegalArgumentException("Ein Artikel mit der Id " +
-          artikelNr + " exixtiert nicht!");
+          throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         } else {
             double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Der aktuelle Preis des Artikels wird abgespeichert
             double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geaenderter Preis wird abgespeichert
@@ -173,7 +168,7 @@ import static java.lang.String.format;
 
     /**
      *
-     * Methode zum aendern des preises aller Artikel
+     * Methode zum aendern des Preises aller Artikel
      *
      * @param prozent uebergebene Prozentzahl als double
      */
@@ -187,7 +182,7 @@ import static java.lang.String.format;
     }
    
     /**
-     * Methode zum Ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
+     * Methode zum ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
      * 
      * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
      */
@@ -206,17 +201,17 @@ import static java.lang.String.format;
     }
     
     /**
-     * Methode zum ausgeben eines Artikels anhand seines Index
+     * Methode zum ausgeben eines Artikels anhand seines index
      * 
-     * @param index der index als ganze zahl von 1 bis 10
+     * @param index der index als Ganzzahl von 1 bis 10
      * @return Artikel der Artikel and der stelle Index
      */
     public Artikel getArtikel(int index) {
         // Pruefung ob index == null und ob index groeser ist als die eigentliche array laenge
         if (index < 0){
-            throw new IllegalArgumentException("Es gibt keinen negativen Lager Platz");
+            throw new IllegalArgumentException(KEIN_NEGATIVER_LAGERPLATZ);
         } else if (index > arraylaenge) {
-            throw new IllegalArgumentException("Diese Speicherstelle existiert nicht");
+            throw new IllegalArgumentException(SPEICHERSTELLE_NICHT_VORHANDEN);
         } else{
             return allArtikels[index];
         }
@@ -230,7 +225,7 @@ import static java.lang.String.format;
     public int getArtikelAnzahl(){
         // pruefen, ob es countArtikel nicht null ist
         if (countArtikel == 0)
-            throw new IllegalArgumentException("Es Ist noch kein Artikel im Lager");
+            throw new IllegalArgumentException(LAGER_LEER);
         else{
             return countArtikel;
         }
@@ -255,7 +250,7 @@ import static java.lang.String.format;
     public int getLagerGroesse(){
         // pruefen, ob es countArtikel nicht null ist
         if (allArtikels == null)
-            throw new IllegalArgumentException("Es existiert noch kein lager");
+            throw new IllegalArgumentException(KEIN_LAGER);
         else {
             return allArtikels.length;
         }
