@@ -188,6 +188,11 @@ public class LagerDialog {
         }
     }
 
+    /**
+     * Methode zum Anlegen eines CD Artikels
+     * @param artikelNr uebergeben artikel nummer
+     * @param preis uebergebener Preis
+     */
     public void cdAnlegen(int artikelNr, double preis){
         System.out.println("Geben Sie den Interpreten an");
         String interpret = input.nextLine();
@@ -202,7 +207,12 @@ public class LagerDialog {
 
         artikel = new CD(artikelNr, bestand, preis, interpret, titel, anzahlTitel);
     }
-    
+
+    /**
+     * Methode zum Anlegen eines Buch Artikels
+     * @param artikelNr uebergeben artikel nummer
+     * @param preis uebergebener Preis
+     */
     public void buchAnlegen(int artikelNr, double preis){
         System.out.println("Geben Sie den Interpreten an");
         String verlag = input.nextLine();
@@ -219,7 +229,12 @@ public class LagerDialog {
 
         artikel = new Buch(artikelNr, bestand, preis, verlag, titel, autor);
     }
-    
+
+    /**
+     * Methode zum Anlegen eines Video Artikels
+     * @param artikelNr uebergeben artikel nummer
+     * @param preis uebergebener Preis
+     */
     public void videoAnlegen(int artikelNr, double preis){
         System.out.println("Geben Sie den Titel an");
         String titel = input.nextLine();

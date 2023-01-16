@@ -57,7 +57,7 @@ public class Video extends Artikel{
      */
     @Override
     public String getBeschreibung(){
-        return "Titel: " + titel + " Spieldauer: " + spieldauer + " Erscheinungsjahr: " + jahr;
+        return titel;
     }
 
     /**

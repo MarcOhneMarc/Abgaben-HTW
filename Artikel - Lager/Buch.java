@@ -58,7 +58,7 @@ public class Buch extends Artikel {
      */
     @Override
     public String getBeschreibung(){
-        return "Autor: " + autor + " Titel: " + titel + " Verlag: " + verlag;
+        return autor + " " + titel;
     }
 
     /**
