@@ -163,6 +163,7 @@ public class LagerDialog {
             if (choiceArtikel == 4) {
                 System.out.println("Eingabe der Art als String:");
                 String art = input.nextLine();
+                input.nextLine();
                 System.out.print("Wollen sie einen Artikel mit Bestand erstellen Y/N: ");
                 char choice = input.nextLine().charAt(0);
                 if (choice == 'Y') {
@@ -189,8 +190,10 @@ public class LagerDialog {
     public void cdAnlegen(int artikelNr, double preis){
         System.out.println("Geben sie denn Interpreten an");
         String interpret = input.nextLine();
+        input.nextLine();
         System.out.println("Geben sie denn Titel an");
         String titel = input.nextLine();
+        input.nextLine();
         System.out.println("Geben sie die anzahl der Titel an");
         int anzahlTitel = input.nextInt();
         input.nextLine();
@@ -203,10 +206,13 @@ public class LagerDialog {
     public void buchAnlegen(int artikelNr, double preis){
         System.out.println("Geben sie denn Interpreten an");
         String verlag = input.nextLine();
+        input.nextLine();
         System.out.println("Geben sie denn Titel an");
         String titel = input.nextLine();
+        input.nextLine();
         System.out.println("Geben sie denn Author an");
         String author = input.nextLine();
+        input.nextLine();
         System.out.println("Eingabe des Bestandes:");
         int bestand = input.nextInt();
         input.nextLine();
@@ -216,6 +222,7 @@ public class LagerDialog {
     public void videoAnlegen(int artikelNr, double preis){
         System.out.println("Geben sie denn Titel an");
         String titel = input.nextLine();
+        input.nextLine();
         System.out.println("Geben sie die Spieldauer in Minuten ein");
         int spieldauer = input.nextInt();
         input.nextLine();

@@ -6,11 +6,11 @@
  */
 public class Artikel{
     //initialisierung der Attribute
-    private int artikelNr;
-    private String art;
-    private int bestand;
+    protected int artikelNr;
+    protected String art;
+    protected int bestand;
 
-    private double preis;
+    protected double preis;
 
      /**
      * Konstruktor zum initialisiern eines Artikel mit Bestand
@@ -86,7 +86,8 @@ public class Artikel{
      * Ausgabe der Artikelattribute mit aktuellem Wert als Zeichenkette
      */
     public String toString() {
-        return "Artikel: " + artikelNr + ", Art: " + art + ", Bestand: " + bestand + ", Preis: " + preis;
+        String ausgabe = String.format("%-10d %-40s %-4.2f %-5d", artikelNr, art, preis, bestand);
+        return ausgabe;
     }
 
     /**

@@ -185,12 +185,12 @@
         }
     }
 
-
+    /*
     /**
      * Methode zum Ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
      * 
      * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
-     */
+     
     public String toString() {
         String ausgabe = ""; // Definition der Variable "ausgabe" als String
 
@@ -203,6 +203,26 @@
                 ausgabe = ausgabe + allArtikels[i].toString() + "] ";
             }
         }
+        
+        return ausgabe;
+    }
+    */
+   
+    /**
+     * Methode zum Ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
+     * 
+     * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
+     */
+    public String toString() {
+        String ausgabe = ""; // Definition der Variable "ausgabe" als String
+        ausgabe = String.format("%-10s %-40s %-6s %-5s", "artikelNr", "beschreibung", "preis", "bestand");
+        // Erweitern der ausgabe in den String
+        for (int i = 0; i < allArtikels.length; i++) {
+            if (allArtikels[i] != null) {
+                ausgabe = ausgabe + "\n" + allArtikels[i].toString();
+            }
+        }
+        
         return ausgabe;
     }
     

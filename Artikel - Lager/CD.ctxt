@@ -4,4 +4,6 @@ comment1.params=artikelNr\ bestand\ preis\ interpret\ titel\ anzahlTitel
 comment1.target=CD(int,\ int,\ double,\ java.lang.String,\ java.lang.String,\ int)
 comment2.params=
 comment2.target=java.lang.String\ getBeschreibung()
-numComments=3
+comment3.params=
+comment3.target=java.lang.String\ toString()
+numComments=4

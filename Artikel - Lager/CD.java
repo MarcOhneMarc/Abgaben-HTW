@@ -19,4 +19,11 @@ public class CD extends Artikel{
     public String getBeschreibung(){
         return "CD";
     }
+    
+    @Override
+    public String toString(){
+        String beschreibung = String.format("%s, %s", interpret, titel);
+        String ausgabe = String.format("%-10d %-40s %-4.2f %-5d", artikelNr, beschreibung, preis, bestand);
+        return ausgabe;
+    }
 }
