@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Bestandsfuehrung.
  *
- * @author Marc Perwark & Jonas Neu
+ * @autor Marc Perwark & Jonas Neu
  * 06.11.2022
  */
 public class LagerDialog {
@@ -27,6 +27,7 @@ public class LagerDialog {
     
     // Konstanten fuer die Fehlermeldungen.
     private static final String KEIN_LAGER_EXISTIERT = "Es wurde noch kein Lager erstellt";
+    private static final String FALSCHE_EINGABE = "Falsche Eingabe!";
     
     //Konstruktor zum initialisiern des Scanners
     public LagerDialog() {
@@ -66,7 +67,7 @@ public class LagerDialog {
         System.out.println("Press '4' zum buchen eines Zugangs für einen Artikel");
         System.out.println("Press '5' zum buchen eines Abgangs für einen Artikel");
         System.out.println("Press '6' zum aendern des Preis eines Artikels");
-        System.out.println("Press '7' zum aendern des Preis aller Artikels");
+        System.out.println("Press '7' zum aendern des Preis aller Artikel");
         System.out.println("Press '8' zum ermittlen eines Artikel an einer bestimmten Stelle im Lager");
         System.out.println("Press '9' zum ausgeben des Lagers");
         System.out.println("Press '10' zum ausgeben der aktuellen Anzahl der Artikel im Lager");
@@ -127,10 +128,10 @@ public class LagerDialog {
         if (lager != null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.print("Wollen sie ein Lager mit einer bestimmten anzahl von Lagerplaetzen Y/N: ");
+            System.out.print("Wollen sie ein Lager mit einer bestimmten Anzahl von Lagerplaetzen [Y/N]: ");
             char choice = input.nextLine().charAt(0);
             if (choice == 'Y') {
-                System.out.print("Geben sie die Lagerkapazität an (Maximal 10): ");
+                System.out.print("Geben sie die Lagerkapazitaet an (Maximal 10): ");
                 int arraylaenge = input.nextInt();
                 input.nextLine();
                 return new Lager(arraylaenge);
@@ -138,7 +139,7 @@ public class LagerDialog {
                 System.out.print("Lager mit der maximalen Lagergroesse 10 wird erstellt!\n");
                 return new Lager(10);
             } else {
-                throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
+                throw new IllegalArgumentException(FALSCHE_EINGABE);
             }
         }
     }
@@ -154,17 +155,17 @@ public class LagerDialog {
             System.out.println("Eingabe der ID als Ganzzahl mit 4 Ziffern:");
             int artikelNr = input.nextInt();
             input.nextLine();
-            System.out.println("Eingabe der Preis als Double:");
+            System.out.println("Eingabe des Preises als Double:");
             double preis = input.nextDouble();
             input.nextLine();
 
-            System.out.print("Geben sie bitte an welchen artikel sie erzeugen wollen (1-4) \nCD: 1 \nBuch: 2 \nVideo:3 \nSonstige:4");
+            System.out.print("Geben Sie bitte an, welchen Artikel sie erzeugen wollen (1-4) \nCD: 1 \nBuch: 2 \nVideo: 3 \nSonstige:4");
             int choiceArtikel = input.nextInt();
             if (choiceArtikel == 4) {
                 System.out.println("Eingabe der Art als String:");
                 String art = input.nextLine();
                 input.nextLine();
-                System.out.print("Wollen sie einen Artikel mit Bestand erstellen Y/N: ");
+                System.out.print("Wollen sie einen Artikel mit Bestand erstellen [Y/N]: ");
                 char choice = input.nextLine().charAt(0);
                 if (choice == 'Y') {
                     System.out.println("Eingabe des Bestandes:");
@@ -174,7 +175,7 @@ public class LagerDialog {
                 } else if (choice == 'N') {
                     artikel = new Artikel(artikelNr, art, preis);
                 } else {
-                    throw new IllegalArgumentException("Falsche Eingabe von Y/N!");
+                    throw new IllegalArgumentException(FALSCHE_EINGABE);
                 }
             } else if (choiceArtikel == 1) {
                 cdAnlegen(artikelNr,preis);
@@ -188,48 +189,48 @@ public class LagerDialog {
     }
 
     public void cdAnlegen(int artikelNr, double preis){
-        System.out.println("Geben sie denn Interpreten an");
+        System.out.println("Geben Sie den Interpreten an");
         String interpret = input.nextLine();
         input.nextLine();
-        System.out.println("Geben sie denn Titel an");
+        System.out.println("Geben Sie den Titel an");
         String titel = input.nextLine();
-        input.nextLine();
-        System.out.println("Geben sie die anzahl der Titel an");
+        System.out.println("Geben Sie die Anzahl der Titel an");
         int anzahlTitel = input.nextInt();
         input.nextLine();
-        System.out.println("Eingabe des Bestandes:");
+        System.out.println("Geben Sie den Bestand an:");
         int bestand = input.nextInt();
-        input.nextLine();
 
         artikel = new CD(artikelNr, bestand, preis, interpret, titel, anzahlTitel);
     }
+    
     public void buchAnlegen(int artikelNr, double preis){
-        System.out.println("Geben sie denn Interpreten an");
+        System.out.println("Geben Sie den Interpreten an");
         String verlag = input.nextLine();
         input.nextLine();
-        System.out.println("Geben sie denn Titel an");
+        System.out.println("Geben Sie den Titel an");
         String titel = input.nextLine();
         input.nextLine();
-        System.out.println("Geben sie denn Author an");
-        String author = input.nextLine();
+        System.out.println("Geben Sie den Autor an");
+        String autor = input.nextLine();
         input.nextLine();
-        System.out.println("Eingabe des Bestandes:");
+        System.out.println("Geben Sie den Bestand an:");
         int bestand = input.nextInt();
         input.nextLine();
 
-        artikel = new Buch(artikelNr, bestand, preis, verlag, titel, author);
+        artikel = new Buch(artikelNr, bestand, preis, verlag, titel, autor);
     }
+    
     public void videoAnlegen(int artikelNr, double preis){
-        System.out.println("Geben sie denn Titel an");
+        System.out.println("Geben Sie den Titel an");
         String titel = input.nextLine();
         input.nextLine();
-        System.out.println("Geben sie die Spieldauer in Minuten ein");
+        System.out.println("Geben Sie die Spieldauer in Minuten ein");
         int spieldauer = input.nextInt();
         input.nextLine();
-        System.out.println("Geben sie das erscheinungs Jahr ein");
+        System.out.println("Geben Sie das Erscheinungsjahr ein");
         int jahr = input.nextInt();
         input.nextLine();
-        System.out.println("Eingabe des Bestandes:");
+        System.out.println("Geben Sie den Bestand an:");
         int bestand = input.nextInt();
         input.nextLine();
 
@@ -257,9 +258,9 @@ public class LagerDialog {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.println("ArtikelNr");
+            System.out.println("ArtikelNr:");
             int artikelNr = input.nextInt();
-            System.out.println("Zugang");
+            System.out.println("Zugang:");
             int zugang = input.nextInt();
             lager.bucheZugang(artikelNr, zugang);
         }
@@ -272,9 +273,9 @@ public class LagerDialog {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.println("ArtikelNr");
+            System.out.println("ArtikelNr:");
             int artikelNr = input.nextInt();
-            System.out.println("Abgang");
+            System.out.println("Abgang:");
             int abgang = input.nextInt();
             lager.bucheAbgang(artikelNr, abgang);
         }
@@ -289,7 +290,7 @@ public class LagerDialog {
         } else {
             System.out.println("Geben sie die ArtikelNr ein, dessen Preis geaendert werden soll: ");
             int artikelNr = input.nextInt();
-            System.out.println("Geben sie ein um wie viel Prozent der Preis des Artikels geaendert werden soll:");
+            System.out.println("Geben sie ein, um wie viel Prozent der Preis des Artikels geaendert werden soll:");
             int procent = input.nextInt();
     
             lager.aenderePreisEinesArtikels(artikelNr,procent);
@@ -303,7 +304,7 @@ public class LagerDialog {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.println("Geben sie ein um wie viel Prozent der Preis aller Artikel geaendert werden soll: ");
+            System.out.println("Geben sie ein, um wie viel Prozent der Preis aller Artikel geaendert werden soll: ");
             int procent = input.nextInt();
     
             lager.aenderePreisAllerArtikel(procent);
@@ -328,7 +329,7 @@ public class LagerDialog {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.println("Index");
+            System.out.println("Index:");
             int index = input.nextInt();
             
             System.out.println(lager.getArtikel(index));
@@ -353,7 +354,7 @@ public class LagerDialog {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            System.out.println("Die groese des Lagers baetraegt: " + lager.getLagerGroesse() + " Paetze");
+            System.out.println("Die groesse des Lagers betraegt: " + lager.getLagerGroesse() + " Plaetze");
         }
     }
     
