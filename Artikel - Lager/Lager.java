@@ -187,16 +187,21 @@ import static java.lang.String.format;
      * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
      */
     public String toString() {
+        double warenwertLager = 0;
+        double gesamt = 0;
         String ausgabe = ""; // Definition der Variable "ausgabe" als String
-        ausgabe = format("%-10s %-60s %8s %10s %9s", "ArtikelNr", "Beschreibung", "Preis", "Bestand", "Gesamt");
-        ausgabe = ausgabe + "\n-----------------------------------------------------------------------------------------------------";
+        ausgabe = format("\n%-10s %-60s %8s %10s %9s", "ArtikelNr", "Beschreibung", "Preis", "Bestand", "Gesamt");
+        ausgabe = ausgabe + "\n-----------------------------------------------------------------------------------------------------\n";
         // Erweitern der ausgabe in den String
         for (int i = 0; i < allArtikels.length; i++) {
             if (allArtikels[i] != null) {
-                double gesamt = getGesamt(allArtikels[i]);
-                ausgabe = ausgabe + "\n" + allArtikels[i].toString() + format("%10.2f", gesamt);
+                gesamt = getGesamt(allArtikels[i]);
+                warenwertLager += gesamt;
+                ausgabe = ausgabe + allArtikels[i].toString() + format("%10.2f", gesamt) + "\n";
             }
         }
+        ausgabe = ausgabe + "-----------------------------------------------------------------------------------------------------\n";
+        ausgabe = ausgabe + format("%s %89.2f", "Gesamtwert:", warenwertLager);
         return ausgabe;
     }
     
