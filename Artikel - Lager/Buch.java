@@ -11,11 +11,17 @@ public class Buch extends Artikel {
      * @param bestand ist der Bestand als Ganzzahl
      * @param preis ist der Preis des Atikels
      * @param verlag ist der Verlag, der das Buch herausgebracht hat
-     * @param titel ist der Titel des Buch
+     * @param titel ist der Titel des Buches
      * @param autor ist der Autor, der das Buch geschrieben hat
      */
     public Buch(int artikelNr, int bestand, double preis, String verlag, String titel, String autor){
         super(artikelNr,"Medien",bestand,preis);
+        if (titel == null)
+            throw new IllegalArgumentException("Der Titel darf nicht leer sein");
+        if (autor == null)
+            throw new IllegalArgumentException("Der Autor darf nicht null sein");
+        if (verlag == null)
+            throw new IllegalArgumentException("Der verlag darf nicht null sein");
         this.verlag = verlag;
         this.titel = titel;
         this.autor = autor;
@@ -24,17 +30,17 @@ public class Buch extends Artikel {
     /**
      * Methode zum Vergleichen von einem Artikel mit einem anderen
      *
-     * @param obj ist das Objekt, dass verglichen werden soll
+     * @param Buch ist das Objekt, dass verglichen werden soll
      */
     @Override
-    public boolean equals(Object obj){
-        if (this == obj)
+    public boolean equals(Object Buch){
+        if (this == Buch)
             return true;
-        if (obj == null)
+        if (Buch == null)
             return false;
-        if (getClass() != obj.getClass())
+        if (getClass() != Buch.getClass())
             return false;
-        Buch other = (Buch) obj;
+        Buch other = (Buch) Buch;
         if (titel == null ){
             if (other.titel != null)
                 return false;
