@@ -2,10 +2,10 @@
 comment0.target=Buch
 comment1.params=artikelNr\ bestand\ preis\ verlag\ titel\ autor
 comment1.target=Buch(int,\ int,\ double,\ java.lang.String,\ java.lang.String,\ java.lang.String)
-comment1.text=\r\n\ Konstruktor\ zum\ initialisiern\ eines\ Buches\r\n\r\n\ @param\ artikelNr\ ist\ die\ Artikelnummer\ als\ vierstellige\ Ganzzahl\r\n\ @param\ bestand\ ist\ der\ Bestand\ als\ Ganzzahl\r\n\ @param\ preis\ ist\ der\ Preis\ des\ Atikels\r\n\ @param\ verlag\ ist\ der\ Verlag,\ der\ das\ Buch\ herausgebracht\ hat\r\n\ @param\ titel\ ist\ der\ Titel\ des\ Buch\r\n\ @param\ autor\ ist\ der\ Autor,\ der\ das\ Buch\ geschrieben\ hat\r\n
-comment2.params=obj
+comment1.text=\r\n\ Konstruktor\ zum\ initialisiern\ eines\ Buches\r\n\r\n\ @param\ artikelNr\ ist\ die\ Artikelnummer\ als\ vierstellige\ Ganzzahl\r\n\ @param\ bestand\ ist\ der\ Bestand\ als\ Ganzzahl\r\n\ @param\ preis\ ist\ der\ Preis\ des\ Atikels\r\n\ @param\ verlag\ ist\ der\ Verlag,\ der\ das\ Buch\ herausgebracht\ hat\r\n\ @param\ titel\ ist\ der\ Titel\ des\ Buches\r\n\ @param\ autor\ ist\ der\ Autor,\ der\ das\ Buch\ geschrieben\ hat\r\n
+comment2.params=Buch
 comment2.target=boolean\ equals(java.lang.Object)
-comment2.text=\r\n\ Methode\ zum\ Vergleichen\ von\ einem\ Artikel\ mit\ einem\ anderen\r\n\r\n\ @param\ obj\ ist\ das\ Objekt,\ dass\ verglichen\ werden\ soll\r\n
+comment2.text=\r\n\ Methode\ zum\ Vergleichen\ von\ einem\ Artikel\ mit\ einem\ anderen\r\n\r\n\ @param\ Buch\ ist\ das\ Objekt,\ dass\ verglichen\ werden\ soll\r\n
 comment3.params=
 comment3.target=java.lang.String\ getBeschreibung()
 comment3.text=\r\n\ get\ Methode\ zum\ weitergeben\ der\ Beschreibung\ eines\ Buches\ an\ die\ toString\ Methode\r\n

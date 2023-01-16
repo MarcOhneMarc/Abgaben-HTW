@@ -1,5 +1,3 @@
-
-
 public class LagerTest {
     private Lager lager;
     
