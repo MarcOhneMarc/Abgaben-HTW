@@ -182,11 +182,11 @@ import static java.lang.String.format;
     }
    
     /**
-     * Methode zum ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
+     * Methode zum ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden mir dem Gesamtpreis
      * 
      * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
      */
-    public String toString() {
+    public String ausgebenBestandsListe() {
         double warenwertLager = 0;
         double gesamt = 0;
         String ausgabe = ""; // Definition der Variable "ausgabe" als String
@@ -202,6 +202,24 @@ import static java.lang.String.format;
         }
         ausgabe = ausgabe + "-----------------------------------------------------------------------------------------------------\n";
         ausgabe = ausgabe + format("%s %89.2f", "Gesamtwert:", warenwertLager);
+        return ausgabe;
+    }
+    
+    /**
+     * Methode zum ausgeben des ganzen Lagers und den Artikeln, die sich darin befinden
+     * 
+     * @return ausgabe die Ausgabe des ganzen Lagers und den Artikeln, die sich darin befinden als String
+     */
+    public String toString() {
+        String ausgabe = ""; // Definition der Variable "ausgabe" als String
+        ausgabe = format("\n%-10s %-60s %8s %10s", "ArtikelNr", "Beschreibung", "Preis", "Bestand");
+        ausgabe = ausgabe + "\n-------------------------------------------------------------------------------------------\n";
+        // Erweitern der ausgabe in den String
+        for (int i = 0; i < allArtikels.length; i++) {
+            if (allArtikels[i] != null) {
+                ausgabe = ausgabe + allArtikels[i].toString() + "\n";
+            }
+        }
         return ausgabe;
     }
     

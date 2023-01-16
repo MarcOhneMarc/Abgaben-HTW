@@ -7,7 +7,6 @@ public class Video extends Artikel{
     private static final String SPIELDAUER_NICHT_NULL = "Spieldauer ist ungueltig!";
     private static final String UNGUELTIGES_ERSCHEINUNGSJAHR = "Ungueltiges Erscheinungsjahr";
 
-
     /**
      * Konstruktor zum initialisiern eines Video
      *

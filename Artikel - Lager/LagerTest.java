@@ -16,6 +16,7 @@ public class LagerTest {
         lager.legeAnArtikel(buch1);
         lager.legeAnArtikel(cd1);
         
+        System.out.println(lager.ausgebenBestandsListe());
         System.out.println(lager.toString());
     }
     
