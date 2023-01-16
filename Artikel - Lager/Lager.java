@@ -16,6 +16,8 @@ import static java.lang.String.format;
     private static final String LAGER_LEER = "Es existiert noch kein Artikel im Lager!";
     private static final String SPEICHERSTELLE_NICHT_VORHANDEN = "Diese Speicherstelle existiert nicht!";
     private static final String KEIN_NEGATIVER_LAGERPLATZ = "Es gibt keinen negativen Lagerplatz!";
+    private static final String PREIS_KLEINER_NULL = "Der Preis darf nicht negativ werden!";
+    
     
     private Artikel[] allArtikels;
     private int countArtikel;
@@ -158,12 +160,17 @@ import static java.lang.String.format;
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
         if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
-        } else {
-            double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Der aktuelle Preis des Artikels wird abgespeichert
-            double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geaenderter Preis wird abgespeichert
-            Artikel artikel = allArtikels[artikelIndex];
-            artikel.setPreis(preisRechnung);
         }
+        
+        double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Der aktuelle Preis des Artikels wird abgespeichert
+        double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geaenderter Preis wird abgespeichert
+        
+        if (preisRechnung < 0) {
+          throw new IllegalArgumentException(PREIS_KLEINER_NULL);
+        }
+        
+        Artikel artikel = allArtikels[artikelIndex];
+        artikel.setPreis(preisRechnung);
     }
 
     /**
