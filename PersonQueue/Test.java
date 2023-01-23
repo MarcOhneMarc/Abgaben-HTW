@@ -6,22 +6,53 @@ public class Test {
     public Queue queue;
     
     public static void main(String[] args) {
-        Person person1 = new Person("Neu", "Jonas");
-        Person person2 = new Person("Huen", "John");
+        /*
+        System.out.println("STRING QUEUE______________________");        
+        String eins = "1-------1";
+        String zwei = "2-------2";
+        String drei = "3-------2";
         
-        Queue queue = new PersonQueue(3);
+        Queue queue = new StringQueue(10);
         
-        queue.addLast(person1);
+        queue.addLast(eins);
+        queue.addLast(zwei);
+        queue.addLast(drei);
         
-        System.out.println("Queue (1ADDED): ");
-        System.out.println(queue.get(0));
-        System.out.println(queue.get(1));
-        System.out.println(queue.get(2));
+        System.out.println("Queue: ");
+        for(int i = 0; i < queue.size(); i++) {
+            System.out.println(queue.get(i));
+        }
+        */            
+        Person eins = new Person("Jonas", "Neu");
+        Person zwei = new Person("Aeneas", "Kremer");
+        Person drei = new Person("Marc", "Perwak");
+        
+        Queue queue = new PersonQueue(5);
+        
+        queue.addLast(eins);
+        queue.addLast(zwei);
+        queue.addLast(drei);
+        
+        System.out.println("\nQueue: ");
+        for(int i = 0; i < queue.size(); i++) {
+            Person person = (Person)(queue.get(i));
+            if(person != null) {
+                System.out.println(person.getVorname() + " " + person.getNachname());
+            } else {
+                System.out.println("NULL");
+            }
+        }
         
         queue.removeFirst();
-        System.out.println("Queue (REMOVED FIRST): ");
-        System.out.println(queue.get(0));
-        System.out.println(queue.get(1));
-        System.out.println(queue.get(2));
+        System.out.println("\nQueue: ");
+        for(int i = 0; i < queue.size(); i++) {
+            Person person = (Person)(queue.get(i));
+            if(person != null) {
+                System.out.println(person.getVorname() + " " + person.getNachname());
+            } else {
+                System.out.println("empty");
+            }
+        }
+        
     }
 }

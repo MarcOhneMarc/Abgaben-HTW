@@ -3,9 +3,8 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Artikel - Lager" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/ueb04" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/ ArrayFunctions" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/PersonQueue" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

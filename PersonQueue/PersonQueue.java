@@ -5,10 +5,14 @@ public class PersonQueue implements Queue {
     //Constants for error messages
     private static final String MIN_QUEUE = "The queue needs to habe at least 1 object!";
     private static final String QUEUE_ALREADY_EMPTY = "The queue is already empty!";
+    private static final String QUEUE_FULL = "The queue is full!";
+    private static final String INDEX_NOT_IN_ARR = "This index is not in the Queue!";
+    private static final String OBJECT_ALREADY_IN_QUEUE = "This object is already in the Queue!";
     
     //initialize attributes
     public Person[] queue;
     public Person person;
+    public int peopleInQueue;
     
     /**
      * Constructor to initialize a queue with persons in it
@@ -20,32 +24,62 @@ public class PersonQueue implements Queue {
             throw new IllegalArgumentException(MIN_QUEUE);
         } else {
            queue = new Person[queueSize];
+           peopleInQueue = 0;
         }
     }
     
+    /**
+     * Method to add a person to the queue
+     */
     @Override
     public void addLast(Object o) {
+        if(full() == true) {
+            throw new IllegalArgumentException(QUEUE_FULL);
+        }
         Person person = Person.class.cast(o);
-        queue[0] = person;
-        System.out.println("ADD PERSON " + o);
+        for (int i = 0; i < peopleInQueue; i++) {
+          Person compare = queue[i];
+          if (person == compare) {
+            throw new IllegalArgumentException(OBJECT_ALREADY_IN_QUEUE);
+          }
+        }  
+        queue[peopleInQueue] = person;
+        peopleInQueue++;
     }
     
+    /**
+     * Method to remove the first person out of the queue
+     */
     @Override
     public Person removeFirst() {
-        if(queue[0] == null) {
+        if(empty() == true) {
             throw new IllegalArgumentException(QUEUE_ALREADY_EMPTY);
         }
+        
+        //Letze Person wird noch nicht entfernt
         Person person = queue[0];
-        queue[0] = null;
+        for (int i = 0; i < peopleInQueue -1; i++) {
+          queue[i] = queue[i + 1];
+        }
+        queue[peopleInQueue-1] = null;
+        peopleInQueue--;
         return person;
     }
     
+    /**
+     * Method to get a person in the queue
+     */
     @Override
     public Person get(int i) {
-        System.out.println("SCH"+queue[i].getVorname()+" "+queue[i].getNachname());
+        if(i > size()) {
+            throw new IllegalArgumentException(INDEX_NOT_IN_ARR);
+        }
         return queue[i];
     }
     
+    /**
+     * Method to check if the queue is empty
+     */
     @Override
     public boolean empty() {
         if(queue[0] == null) {
@@ -55,6 +89,9 @@ public class PersonQueue implements Queue {
         }
     }
     
+    /**
+     * Method to check if the queue is full
+     */
     @Override
     public boolean full() {
         if(queue[queue.length-1] == null) {
@@ -64,6 +101,9 @@ public class PersonQueue implements Queue {
         }
     }
 
+    /**
+     * Method to get the size of the queue
+     */
     @Override
     public int size() {
         return queue.length;
