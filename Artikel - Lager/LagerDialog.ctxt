@@ -1,6 +1,10 @@
 #BlueJ class context
 comment0.target=LagerDialog
+<<<<<<< Updated upstream
 comment0.text=\r\n\ Bestandsfuehrung.\r\n\r\n\ @autor\ Marc\ Perwark\ &\ Jonas\ Neu\r\n\ 06.11.2022\r\n
+=======
+comment0.text=\r\n\ Bestandsfuehrung.\r\n\r\n\ @author\ Marc\ Perwark\ &\ Jonas\ Neu\r\n\ 06.11.2022\r\n
+>>>>>>> Stashed changes
 comment1.params=
 comment1.target=LagerDialog()
 comment10.params=artikelNr\ preis

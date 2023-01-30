@@ -3,6 +3,7 @@
 dependency1.from=ArtikelDialog
 dependency1.to=Artikel
 dependency1.type=UsesDependency
+<<<<<<< Updated upstream
 dependency10.from=LagerProgrammierhilfe
 dependency10.to=Video
 dependency10.type=UsesDependency
@@ -23,22 +24,46 @@ dependency15.to=Artikel
 dependency15.type=UsesDependency
 dependency2.from=ArtikelTest
 dependency2.to=Artikel
+=======
+dependency10.from=LagerTest
+dependency10.to=Artikel
+dependency10.type=UsesDependency
+dependency11.from=LagerTest
+dependency11.to=Video
+dependency11.type=UsesDependency
+dependency12.from=LagerTest
+dependency12.to=Buch
+dependency12.type=UsesDependency
+dependency13.from=LagerTest
+dependency13.to=CD
+dependency13.type=UsesDependency
+dependency2.from=LagerDialog
+dependency2.to=Lager
+>>>>>>> Stashed changes
 dependency2.type=UsesDependency
 dependency3.from=LagerDialog
-dependency3.to=Lager
+dependency3.to=Artikel
 dependency3.type=UsesDependency
 dependency4.from=LagerDialog
-dependency4.to=Artikel
+dependency4.to=CD
 dependency4.type=UsesDependency
 dependency5.from=LagerDialog
+<<<<<<< Updated upstream
 dependency5.to=CD
 dependency5.type=UsesDependency
 dependency6.from=LagerDialog
 dependency6.to=Buch
+=======
+dependency5.to=Buch
+dependency5.type=UsesDependency
+dependency6.from=LagerDialog
+dependency6.to=Video
+>>>>>>> Stashed changes
 dependency6.type=UsesDependency
 dependency7.from=LagerDialog
 dependency7.to=Video
 dependency7.type=UsesDependency
+<<<<<<< Updated upstream
 dependency8.from=LagerProgrammierhilfe
 dependency8.to=Lager
 dependency8.type=UsesDependency
@@ -65,6 +90,30 @@ package.frame.height=833
 package.frame.width=1427
 package.numDependencies=15
 package.numTargets=10
+=======
+dependency8.from=Lager
+dependency8.to=Artikel
+dependency8.type=UsesDependency
+dependency9.from=LagerTest
+dependency9.to=Lager
+dependency9.type=UsesDependency
+editor.fx.0.height=1048
+editor.fx.0.width=1936
+editor.fx.0.x=-8
+editor.fx.0.y=-8
+objectbench.height=86
+objectbench.width=1293
+package.divider.horizontal=0.6
+package.divider.vertical=0.8868613138686131
+package.editor.height=722
+package.editor.width=1182
+package.editor.x=238
+package.editor.y=25
+package.frame.height=922
+package.frame.width=1333
+package.numDependencies=13
+package.numTargets=9
+>>>>>>> Stashed changes
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
@@ -78,6 +127,7 @@ target1.name=CD
 target1.showInterface=false
 target1.type=ClassTarget
 target1.width=120
+<<<<<<< Updated upstream
 target1.x=200
 target1.y=400
 target10.height=70
@@ -87,11 +137,16 @@ target10.type=UnitTestTargetJunit5
 target10.width=120
 target10.x=200
 target10.y=40
+=======
+target1.x=160
+target1.y=310
+>>>>>>> Stashed changes
 target2.height=70
 target2.name=Lager
 target2.showInterface=false
 target2.type=ClassTarget
 target2.width=120
+<<<<<<< Updated upstream
 target2.x=830
 target2.y=180
 target3.height=70
@@ -272,3 +327,56 @@ target9.width=120
 target9.x=10
 target9.y=230
 >>>>>>> 5468308c8b8b7413a19b4a336fcd95088e30faeb
+=======
+target2.x=720
+target2.y=160
+target3.height=70
+target3.name=ArtikelDialog
+target3.showInterface=false
+target3.type=ClassTarget
+target3.width=120
+target3.x=310
+target3.y=510
+target4.height=70
+target4.name=Video
+target4.showInterface=false
+target4.type=ClassTarget
+target4.width=120
+target4.x=160
+target4.y=150
+target5.height=70
+target5.name=Buch
+target5.showInterface=false
+target5.type=ClassTarget
+target5.width=120
+target5.x=160
+target5.y=230
+target6.height=70
+target6.name=LagerDialog
+target6.showInterface=false
+target6.type=ClassTarget
+target6.width=120
+target6.x=600
+target6.y=70
+target7.height=70
+target7.name=Artikel
+target7.showInterface=false
+target7.type=ClassTarget
+target7.width=120
+target7.x=390
+target7.y=370
+target8.height=70
+target8.name=LagerTest
+target8.showInterface=false
+target8.type=ClassTarget
+target8.width=120
+target8.x=990
+target8.y=260
+target9.height=70
+target9.name=ArtikelTest
+target9.showInterface=false
+target9.type=UnitTestTargetJunit5
+target9.width=120
+target9.x=470
+target9.y=510
+>>>>>>> Stashed changes
