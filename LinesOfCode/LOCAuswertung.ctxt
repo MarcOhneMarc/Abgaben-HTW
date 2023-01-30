@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=LOCAuswertung
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=files
+comment2.target=void\ evaluationOfFiles(java.lang.String[])
+comment2.text=\r\n\ Methode\ zum\ errechnen\ der\ Zeilen\ von\ den\ Dateien,\ deren\ Dateiname\ uebergeben\ wird.\r\n\ \r\n\ @param\ files\ Dateinamen\ als\ Liste\r\n\ @throws\ NoFileGivenException\ Ausnahme,\ wenn\ keine\ Dateinamen\ uebergeben\ werden\r\n
+comment3.params=arg
+comment3.target=int\ getLines(java.lang.String)
+comment3.text=\r\n\ Hilfsmethode\ zum\ errechnen\ der\ Zeilen\r\n\ \r\n\ @param\ arg\ Dateinamen\ als\ String\r\n
+numComments=4
