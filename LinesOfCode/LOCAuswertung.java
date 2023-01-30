@@ -2,32 +2,39 @@ import java.io.*;
 import java.util.Arrays;
 
 public class LOCAuswertung {
+    private static final String NO_FILES_GIVEN = "No files given!";
+    private static final String JAVA_FILES_REQ = ".java files are required!";
+    
     public static void main(String[] args) throws IOException {
-        if(args.length <1) {
-            System.out.println("wrong number of arguments");
-            System.exit(1);
+        evaluationOfFiles(args);
+    }
+    
+    public static void evaluationOfFiles(String[] files) throws IOException {
+        if(files.length <1) {
+            throw new NoFileGivenException(NO_FILES_GIVEN);
         }
         int sumCount = 0;
         int fileCount = 0;
-        for(String arg: args) {
-            if (!arg.endsWith("java")) {
-                System.out.println("Die Übergebenen Dataien müssen Java dateinen sein");
+        for(String file: files) {
+            if (!file.endsWith(".java")) {
+                System.out.println(JAVA_FILES_REQ);
                 continue;
             }
-            int linesOfCode = getLines(arg);
+            int linesOfCode = getLines(file);
             sumCount += linesOfCode;
-            fileCount += 1;
-            System.out.println(arg.toString() +": "+ linesOfCode);
+            fileCount++;
+            System.out.println(file.toString() +": "+ linesOfCode);
         }
-        System.out.println("Gesamte: " + fileCount + " Dateien mit " + sumCount + " Lines of Code");
+        System.out.println("Gesammt: " + fileCount + " Dateien mit " + sumCount + " Zeilen Code");
     }
+    
     private static int getLines(String arg) throws IOException {
         BufferedReader file = new BufferedReader(new FileReader(arg));
         int count = 0;
         boolean isEOF = false;
-        do{
-            String t= file.readLine();
-            if(t!=null){
+        do {
+            String t = file.readLine();
+            if(t!=null) {
                 isEOF=true;
                 t=t.replaceAll("\\n|\\t|\\s", "");
                 if((!t.equals("")) && (!t.startsWith("//"))) {
@@ -37,7 +44,7 @@ public class LOCAuswertung {
             else {
                 isEOF=false;
             }
-        }while(isEOF);
+        } while(isEOF);
         file.close();
         return count;
     }
