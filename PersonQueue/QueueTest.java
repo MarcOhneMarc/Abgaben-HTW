@@ -1,221 +1,195 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-/**
- * Class to test a Queue
- */
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 public class QueueTest {
-    //initialize attributes
-    private Person person;
+    private static final double EPSILON = 1.0E-8;
     private Queue queue;
-    private Scanner input;
+    private Queue queue2;
+    private Person person;
+    private String string;
 
-    //initialize attributes for menu choi
-    private static final int create_queue = 1;
-    private static final int add_last = 2;
-    private static final int remove_first = 3;
-    private static final int get = 4;
-    private static final int empty = 5;
-    private static final int full = 6;
-    private static final int size = 7;
-    private static final int end = 0;
-    
-    //Constants for error messages
-    private static final String QUEUE_DOES_NOT_EXSIST = "No queue has been created!";
-    private static final String WRONG_INPUT = "Wrong input!";
-    
-    //Constructor to initialize the scanner
-    public QueueTest() {
-        input = new Scanner(System.in);
-    }
-
-    /**
-     * Mainloop of the program
-     */
-    public void start() {
-        queue = null;
-        int function = 0;
-        do {
-            try {
-                menu();
-                function = readFunction();
-                executeFunction(function);
-            } catch(IllegalArgumentException e) {
-                System.out.println(e);
-            } catch(InputMismatchException e) {
-                System.out.println(e);
-                input.nextLine();
-            } catch(Exception e) {
-                System.out.println(e);
-                e.printStackTrace(System.out);
-            }
-        } while (function != end);
+    @BeforeEach
+    public void setup() {
+        this.queue = new PersonQueue(20);
+        this.queue2 = new StringQueue(20);
+        this.person = new Person("Alsaid","Mohmaned");
+        this.queue.addLast(person);
+        this.queue2.addLast("ha");
+        this.person = new Person("Marc","Perwak");
+        this.queue.addLast(person);
+        this.queue2.addLast("ka");
+        this.person = new Person("Jonas","Neu");
+        this.queue.addLast(person);
+        this.queue2.addLast("ba");
+        this.person = new Person("Aeneas","Kremer");
+        this.queue.addLast(person);
+        this.queue2.addLast("aa");
     }
 
-    /**
-     * Text of the Main Menu
-     */
-    private void menu() {
-        System.out.println("\n[1] create the queue.");
-        System.out.println("[2] add an obj to the end of the queue.");
-        System.out.println("[3] remove the first obj of the queue.");
-        System.out.println("[4] get an obj of the queue.");
-        System.out.println("[5] check if the queue is empty.");
-        System.out.println("[6] check if the queue is full.");
-        System.out.println("[7] get the size of the queue.");
-        System.out.println("[0] end program");
+    @Test
+    public void testCreatequeue_with_Correct_size() {
+        queue = new PersonQueue(10);
+        int queueSize = queue.size();
+        int expectetSize = 10;
+        Assertions.assertEquals(expectetSize,queueSize);
+
+    }
+    @Test
+    public void testCreatequeue_with_size_Null() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            queue = new PersonQueue(0);;
+        });
+    }
+    @Test
+    public void testCreatequeue_with_size_negative() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            queue = new PersonQueue(-10);;
+        });
+    }
+    @Test
+    public void testCreateSqueue_with_Correct_size() {
+        queue2 = new StringQueue(10);
+        int queueSize = queue2.size();
+        int expectetSize = 10;
+        Assertions.assertEquals(expectetSize,queueSize);
+
+    }
+    @Test
+    public void testCreateSqueue_with_size_Null() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            queue2 = new StringQueue(0);;
+        });
+    }
+    @Test
+    public void testCreateSqueue_with_size_negative() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            queue2 = new StringQueue(-10);;
+        });
+    }
+    @Test
+    public void testQueueAddLast_Correct() {
+        Person person1 = new Person("Emalda", "Showman");
+        queue.addLast(person1);
+        int indexOfLast = 4;
+        Person person2 = (Person)(queue.get(indexOfLast));
+        Assertions.assertEquals(person1,person2);
+    }
+    @Test
+    public void testSQueueAddLast_Correct() {
+        String string1 = new String("Emalda");
+        queue2.addLast(string1);
+        int indexOfLast = 4;
+        String string2 = (String) (queue2.get(indexOfLast));
+        Assertions.assertEquals(string1,string2);
+    }
+    @Test
+    public void testQueueRemoveFirst_Correct() {
+        Person firstPersonBefore = (Person)(queue.get(0));
+        queue.removeFirst();
+        Person firstPersonAfter = (Person)(queue.get(0));
+        Assertions.assertNotEquals(firstPersonBefore,firstPersonAfter);
+    }
+    @Test
+    public void testSQueueRemoveFirst_Correct() {
+        String firstStringBefore = (String) (queue2.get(0));
+        queue2.removeFirst();
+        String firstStringAfter = (String) (queue2.get(0));
+        Assertions.assertNotEquals(firstStringBefore,firstStringAfter);
     }
 
-    /**
-     * Read in which function should be executed
-     *
-     * @return function the function which should be executed
-     */
-    private int readFunction() {
-        int function = input.nextInt();
-        input.nextLine();
-        return function;
+    @Test
+    public void testQueueGetPerson_Correct() {
+        Person personToGet = new Person("Emalda", "Showman");
+        queue.addLast(personToGet);
+        Person getPerson = (Person)(queue.get(4));
+        Assertions.assertEquals(personToGet,getPerson);
     }
-
-    /**
-     * Query which function should be executed
-     *
-     * @param function specifies the function to be executed as an integer
-     */
-    private void executeFunction(int function) {
-        switch (function) {
-            case create_queue: queue = createQueue();
-            break;
-            case add_last: addLast();
-            break;
-            case remove_first: removeFirst();
-            break;
-            case get: get();
-            break;
-            case empty: empty();
-            break;
-            case full: full();
-            break;
-            case size: size();
-            break;
-            case end: System.out.println("Programm closed.");
-        }
+    @Test
+    public void testSQueueGetPerson_Correct() {
+        String stringToGet = new String("Emalda");
+        queue2.addLast(stringToGet);
+        String getString = (String) (queue2.get(4));
+        Assertions.assertEquals(stringToGet,getString);
     }
-    
-    /**
-    * Standart-Konstruktor oder Konstruktor zum initialisiern der Lagergroesse wird aufgerufen
-    *
-    * @return arraylaenge gibt an wie viele speicherplaetze im Array vergeben werden
-    */
-    private Queue createQueue() {
-        if (queue != null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            System.out.print("Type in which Queue should be created:\n[A] stringQueue\n[B] personQueue\n");
-            char choice = input.nextLine().charAt(0);
-            if (choice == 'A') {
-                System.out.print("Type in how long the Queue should be:\n");
-                int length = input.nextInt();
-                input.nextLine();
-                return new StringQueue(length);
-            } else if (choice == 'B') {
-                System.out.print("Type in how long the Queue should be:\n");
-                int length = input.nextInt();
-                input.nextLine();
-                return new PersonQueue(length);
-            } else {
-                throw new IllegalArgumentException(WRONG_INPUT);
-            }
-        }
+    @Test
+    public void testqueue_notFull_Correct() {
+        queue = new PersonQueue(2);
+        this.person = new Person("Alsaid","Mohmaned");
+        this.queue.addLast(person);
+        boolean fullness = queue.full();
+        boolean expectetBool = false;
+        Assertions.assertEquals(expectetBool,fullness);
     }
-    
-    /**
-     * Adds a object to the end of the queue
-     */
-    private void addLast() {
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            if(queue.getClass().getName() == "PersonQueue") {
-                System.out.println("Type in the lastname of the Person you want to add to the queue:\n");
-                String lastname = input.nextLine();
-                System.out.println("Type in the firstname of the Person you want to add to the queue:\n");
-                String firstname = input.nextLine();
-                Person person = new Person(firstname, lastname);
-                queue.addLast(person);
-            } else {
-                System.out.println("Type in the string you want to add to the queue:\n");
-                String string = input.nextLine();
-                queue.addLast(string);
-            }
-        }
+    @Test
+    public void testSqueue_notFull_Correct() {
+        queue2 = new StringQueue(2);
+        this.string = new String("Alsaid");
+        this.queue2.addLast(string);
+        boolean fullness = queue2.full();
+        boolean expectetBool = false;
+        Assertions.assertEquals(expectetBool,fullness);
     }
-    
-    /**
-     * Deletes the first object in Queue
-     */
-    private void removeFirst() {
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            queue.removeFirst();
-        }
+    @Test
+    public void testqueue_isFull_Correct() {
+        queue = new PersonQueue(1);
+        this.person = new Person("Alsaid","Mohmaned");
+        this.queue.addLast(person);
+        boolean fullness = queue.full();
+        boolean expectetBool = true;
+        Assertions.assertEquals(expectetBool,fullness);
     }
-
-    /**
-     * Get the object in queue on position 'i'
-     */
-    private void get() {
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            System.out.println("Type in the place in the queue you want to get: ");
-            int i = input.nextInt();
-            System.out.println(queue.get(i));
-        }
+    @Test
+    public void testSqueue_isFull_Correct() {
+        queue2 = new StringQueue(1);
+        this.string = new String("Alsaid");
+        this.queue2.addLast(string);
+        boolean fullness = queue2.full();
+        boolean expectetBool = true;
+        Assertions.assertEquals(expectetBool,fullness);
     }
-    
-    /**
-     * Tests if queue is empty
-     */
-    private void empty(){
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            if (queue.empty() == true) {
-                System.out.println("Queue is empty");
-            } else {
-                System.out.println("Queue is not empty");
-            }
-        }
+    @Test
+    public void testqueue_notEmpty_Correct() {
+        queue = new PersonQueue(2);
+        this.person = new Person("Alsaid","Mohmaned");
+        this.queue.addLast(person);
+        boolean fullness = queue.empty();
+        boolean expectetBool = false;
+        Assertions.assertEquals(expectetBool,fullness);
     }
-    
-    /**
-     * Tests if queue is full
-     */
-    private void full(){
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            if (queue.full() == true) {
-                System.out.println("Queue is full");
-            } else {
-                System.out.println("Queue is not full");
-            }
-        }
+    @Test
+    public void testSqueue_notEmpty_Correct() {
+        queue2 = new StringQueue(2);
+        this.string = new String("Alsaid");
+        this.queue2.addLast(string);
+        boolean fullness = queue2.empty();
+        boolean expectetBool = false;
+        Assertions.assertEquals(expectetBool,fullness);
     }
-
-    /**
-     * Return of queue size
-     */
-    private void size(){
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            System.out.println("The size of the Queue is: " + queue.size());
-        }
+    @Test
+    public void testqueue_isEmpty_Correct() {
+        queue = new PersonQueue(2);
+        boolean fullness = queue.empty();
+        boolean expectetBool = true;
+        Assertions.assertEquals(expectetBool,fullness);
     }
-    
-    public static void main(String[] args) {
-        new QueueTest().start();
+    @Test
+    public void testSqueue_isEmpty_Correct() {
+        queue2 = new StringQueue(2);
+        boolean fullness = queue2.empty();
+        boolean expectetBool = true;
+        Assertions.assertEquals(expectetBool,fullness);
+    }
+    @Test
+    public void testQueueSize_Correct() {
+        int expectetSize = 20;
+        int actuelSize = queue.size();
+        Assertions.assertEquals(expectetSize,actuelSize);
+    }
+    @Test
+    public void testSQueueSize_Correct() {
+        int expectetSize = 20;
+        int actuelSize = queue2.size();
+        Assertions.assertEquals(expectetSize,actuelSize);
     }
 }

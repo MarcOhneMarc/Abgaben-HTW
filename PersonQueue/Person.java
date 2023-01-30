@@ -9,7 +9,7 @@ public class Person {
     /**
      * Constructor to create a person
      */
-    public Person(String firstname, String nachname) {
+    public Person(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
