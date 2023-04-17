@@ -15,12 +15,10 @@ public class Mitarbeiter extends Person {
      */
     public Mitarbeiter(String vorname, String nachname, String mail) {
         super(vorname, nachname);
-        if (mail == null || mail.strip().isEmpty()) {
+        if (mail == null || mail.strip().isEmpty())
             throw new IllegalArgumentException(KEINE_GUELTIGE_MAIL);
-        }
-        if (!mail.contains("@")) {
+        if (!mail.contains("@"))
             throw new IllegalArgumentException(KEINE_GUELTIGE_MAIL);
-        }
         this.mail = mail;
     }
 

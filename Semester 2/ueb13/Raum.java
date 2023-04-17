@@ -45,9 +45,8 @@ public class Raum {
         String raumausgabe = ("RAUM " + geb + "-" + etage + "." + raum);
         for (int i = 0; i < anzahl; i++) 
         {
-            if (reservierungen[i] != null) {
+            if (reservierungen[i] != null)
                 raumausgabe += ("\n" + reservierungen[i]);
-            }
         }
         return raumausgabe;
     }

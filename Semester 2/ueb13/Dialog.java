@@ -151,30 +151,28 @@ public class Dialog {
      * Reservieren eines Raumes
      */
     private void raumReservieren() {
-        if(mitarbeiterListeLaenge <= 0) {
+        if(mitarbeiterListeLaenge <= 0)
             throw new IllegalArgumentException(KEIN_MITARBEITER_ANGELEGT);
-        }
-        if(rauemeListeLaenge <= 0) {
+
+        if(rauemeListeLaenge <= 0)
             throw new IllegalArgumentException(KEIN_RAUM_ANGELEGT);
-        }
         
         System.out.println("Auswahl des Mitarbeiter der reserviert [0-X]:");
         for (int i = 0; i < mitarbeiterListeLaenge; i++) {
             System.out.println(i + " " + mitarbeiterListe[i]);
         }
         int mitarbeiterIndex = input.nextInt();
-        if (mitarbeiterIndex >= mitarbeiterListeLaenge) {
+        if (mitarbeiterIndex >= mitarbeiterListeLaenge)
             throw new IllegalArgumentException(INDEX_OUT_OF_BOUNCE);
-        }
         
         System.out.println("Auswahl des Raumes der reserviert werden soll [0-X]:");
         for (int i = 0; i < rauemeListeLaenge; i++) {
             System.out.println(i + " " + rauemeListe[i]);
         }
         int raumIndex = input.nextInt();
-        if (raumIndex >= rauemeListeLaenge) {
+        if (raumIndex >= rauemeListeLaenge)
             throw new IllegalArgumentException(INDEX_OUT_OF_BOUNCE);
-        }
+
         
         System.out.println("Eingebe der Uhrzeit, ab der Reserviert werden soll:");
         System.out.println("Stundenzeiger (0 - 23 Uhr):");
@@ -198,9 +196,8 @@ public class Dialog {
      * Ausgeben aller Mitarbeiter
      */
     private void mitarbeiterAusgeben() {
-        if(mitarbeiterListeLaenge <= 0) {
+        if(mitarbeiterListeLaenge <= 0)
             throw new IllegalArgumentException(KEIN_MITARBEITER_ANGELEGT);
-        }
         for (int i = 0; i < mitarbeiterListeLaenge; i++) {
             System.out.println(mitarbeiterListe[i]);
         }
@@ -210,9 +207,8 @@ public class Dialog {
      * Ausgeben aller Raeume und Reservierungen
      */
     private void raeumeUndResarvirerungenAusgeben() {
-        if(rauemeListeLaenge <= 0) {
+        if(rauemeListeLaenge <= 0)
             throw new IllegalArgumentException(KEIN_RAUM_ANGELEGT);
-        }
         for (int i = 0; i < rauemeListeLaenge; i++) {
             System.out.println(rauemeListe[i]);
         }

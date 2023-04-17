@@ -14,9 +14,8 @@ public class Uhrzeit {
      * Konstruktor fuer Objekte der Klasse Uhrzeit
      */
     public Uhrzeit(int stunde, int minute) {
-        if (stunde > 24 || stunde < 0 || minute >= 60 || minute < 0){
+        if (stunde > 24 || stunde < 0 || minute >= 60 || minute < 0)
             throw new IllegalArgumentException(FALSCHE_UHRZEIT);
-        }
         this.stunde = stunde;
         this.minute = minute; 
     }

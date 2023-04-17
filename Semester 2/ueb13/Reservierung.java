@@ -39,9 +39,8 @@ public class Reservierung {
      * @param bemerkung Die Bemerkung
      */
     public void setBemerkung(String bemerkung) {
-        if (bemerkung == null || bemerkung.strip().isEmpty()) {
+        if (bemerkung == null || bemerkung.strip().isEmpty())
             throw new IllegalArgumentException(BEMERKUNG_LEER);
-        }
         this.bemerkung = bemerkung;
     }
     

@@ -19,9 +19,8 @@ public class Person
     public Person(String vorname, String nachname) {
         if (vorname == null || vorname.strip().isEmpty()) {
             throw new IllegalArgumentException(VORNAME_LEER);
-        } else if (nachname == null || nachname.strip().isEmpty()) {
+        } else if (nachname == null || nachname.strip().isEmpty())
             throw new IllegalArgumentException(NACHNAME_LEER);
-        }
         this.vorname = vorname;
         this.nachname = nachname;
     }
