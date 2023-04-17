@@ -48,7 +48,10 @@ public class Raum
     */    
     public void addResavierung(Reservierung reservierung)
     {
-        for (int i = 0; i < reservierungen.length; i++) 
+        if (getAnzahlReservierungen() == reservierungen.length) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = 0; i < getAnzahlReservierungen(); i++) 
         {
             if (reservierungen[i] == null) {
                 reservierungen[i] = reservierung;
