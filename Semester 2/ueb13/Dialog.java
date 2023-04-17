@@ -20,12 +20,12 @@ public class Dialog
     private int raumArLaenge = 0;
     private Mitarbeiter[] mitAr;
     private int mitArLaenge = 0;
-
-    private static final int lager_erstellen = 1;
-    private static final int mitarbeiter_anlegen = 2;
-    private static final int raum_anlegen = 3;
-    private static final int mitarbeiterLager_anlegen = 3;
-    private static final int RaumLager_anlegen = 3;
+    private static final int mitarbeiter_anlegen = 1;
+    private static final int raum_anlegen = 2;
+    private static final int reservierung_Erstellen = 3;
+    private static final int alle_mitarbeiter = 4;
+    private static final int alle_raume = 5;
+    private static final int zeige_resarvirerungen = 6;
     private static final int ende = 0;
 
     /**
@@ -65,9 +65,11 @@ public class Dialog
      * Text des Hauptmenues
      */
     private void menu() {
-        System.out.println("\nGib '1' ein zum Resarvieren eines Raumes " +
-                            "\nGib '2' ein zum anlegen eines Mitarbeiters" +
-                            "\nGib '3' ein zum Hinzufuegen eines Raumes");
+        System.out.println("\nGib '1' ein zum anlegen eines Mitarbeiters " +
+                            "\nGib '2' ein zum Hinzufuegen eines Raumes" +
+                            "\nGib '3' ein zum Resarvieren eines Raumes" +
+                            "\nGib '4' ein zum Anzeigen aller Mitarbeiter" +
+                            "\nGib '5' ein zum Anzeigen aller Raume");
     }
     
     /**
@@ -88,11 +90,17 @@ public class Dialog
      */
     private void ausfuehrenFunktion(int funktion) {
         switch (funktion) {
-            case lager_erstellen: reservierungErstellen();
+            case reservierung_Erstellen: reservierungErstellen();
             break;
             case mitarbeiter_anlegen: mitarbeiter_anlegen();
             break;
             case raum_anlegen: raum_anlegen();
+            break;
+            case alle_mitarbeiter: alleMitarbeiter();
+            break;
+            case alle_raume: alleRaume();
+            break;
+            case zeige_resarvirerungen: zeigeResarvirerungen();
             break;
             case ende: System.out.println("Programmende!");
         }
@@ -106,11 +114,11 @@ public class Dialog
         System.out.println("Geben sie bitte die Email Adresse des Mitarbeites an");
         String email = this.input.nextLine();
 
-        if (vorname.isEmpty())
+        if (vorname == null || vorname.strip().isEmpty())
             throw new IllegalArgumentException("Der Vorname darf nicht leer sein");
-        if (nachname.isEmpty())
+        if (nachname == null || nachname.strip().isEmpty())
             throw new IllegalArgumentException("Der Nachname darf nicht leer sein");
-        if (email.isEmpty())
+        if (email == null || email.strip().isEmpty())
             throw new IllegalArgumentException("Die Email darf nicht leer sein");
 
         this.mitarbeiter = new Mitarbeiter(vorname, nachname,email);
@@ -169,8 +177,28 @@ public class Dialog
         input.nextLine();
 
         mitAr[mitarbeiterIndex].reserviere(raumAr[raumIndex], new Uhrzeit(uhrAnfStd, uhrAnfMin), new Uhrzeit(uhrEndStd, uhrEndMin), bemerkung);
-        System.out.println(reservierung.toString());
+        System.out.println(raum);
     }
+    private void alleMitarbeiter(){
+        for (int i = 0; i < mitArLaenge; i++){
+            System.out.println(i + " " + mitAr[i]);
+        }
+    }
+    private void alleRaume(){
+        for (int i = 0; i < raumArLaenge; i++){
+            System.out.println(i + " " + raumAr[i]);
+        }
+    }
+    private void zeigeResarvirerungen(){
+        System.out.println("Zu welchen raum wollen sie die Resarvierungen sehen");
+        for (int i = 0; i < raumArLaenge; i++){
+            System.out.println(i + " " + raumAr[i]);
+        }
+        int raumIndex = input.nextInt();
+        input.nextLine();
+        System.out.println(raumAr[raumIndex]);
+    }
+
     public static void main(String[] args){
         new Dialog().start();
     }
