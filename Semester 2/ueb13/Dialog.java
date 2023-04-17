@@ -1,14 +1,13 @@
 import java.sql.Array;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 /**
- * Beschreiben Sie hier die Klasse Dialog.
+ * Diese Klasse dient als Dialog fuer die erstellung von Resavierungen anhand von Mitarbeitern und Raeumen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @jonas_neu_+_marc_perwak
  */
-public class Dialog
-{
+public class Dialog {
     // Instanzvariablen
     private Scanner input;
 
@@ -16,25 +15,30 @@ public class Dialog
     public Mitarbeiter mitarbeiter;
     public Reservierung reservierung;
     public Raum raum;
-    private Raum[] raumAr;
-    private int raumArLaenge = 0;
-    private Mitarbeiter[] mitAr;
-    private int mitArLaenge = 0;
-    private static final int mitarbeiter_anlegen = 1;
-    private static final int raum_anlegen = 2;
-    private static final int reservierung_Erstellen = 3;
-    private static final int alle_mitarbeiter = 4;
-    private static final int alle_raume = 5;
-    private static final int zeige_resarvirerungen = 6;
+    
+    private Raum[] rauemeListe;
+    private int rauemeListeLaenge = 0;
+    
+    private Mitarbeiter[] mitarbeiterListe;
+    private int mitarbeiterListeLaenge = 0;
+    
+    private static final int mitarbeiterHinzufügen = 1;
+    private static final int raumHinzufügen = 2;
+    private static final int raumReservieren = 3;
+    private static final int mitarbeiterAusgeben = 4;
+    private static final int raeumeUndResarvirerungenAusgeben = 5;
     private static final int ende = 0;
+    
+    private static final String KEIN_RAUM_ANGELEGT = "Es wurde noch kein Raum angelegt!";
+    private static final String KEIN_MITARBEITER_ANGELEGT = "Es wurde noch kein Mitarbeiter angelegt!";
+    private static final String INDEX_OUT_OF_BOUNCE = "Falscher Index!";
 
     /**
      * Konstruktor fuer Objekte der Klasse Dialog
      */
-    public Dialog()
-    {
-        raumAr = new Raum[10];
-        mitAr = new Mitarbeiter[10];
+    public Dialog() {
+        rauemeListe = new Raum[10];
+        mitarbeiterListe = new Mitarbeiter[10];
         input = new Scanner(System.in);
     }
     
@@ -48,7 +52,6 @@ public class Dialog
                 menu();
                 funktion = einlesenFuktion();
                 ausfuehrenFunktion(funktion);
-
             } catch(IllegalArgumentException e) {
                 System.out.println(e);
             } catch(InputMismatchException e) {
@@ -65,12 +68,12 @@ public class Dialog
      * Text des Hauptmenues
      */
     private void menu() {
-        System.out.println("\nGib '1' ein zum anlegen eines Mitarbeiters " +
-                            "\nGib '2' ein zum Hinzufuegen eines Raumes" +
-                            "\nGib '3' ein zum Resarvieren eines Raumes" +
-                            "\nGib '4' ein zum Anzeigen aller Mitarbeiter" +
-                            "\nGib '5' ein zum Anzeigen aller Raume" +
-                            "\nGib '6' ein zum Anzeigen aller Resarvierungen eines Raumes");
+        System.out.println("\nGib '1' ein um einen Mitarbeiter zu dem Programm hinzuzufuegen" +
+                            "\nGib '2' ein um einen Raum zu dem Programm hinzuzufuegen" +
+                            "\nGib '3' ein um einen Raum zu reservieren" +
+                            "\nGib '4' ein um alle Mitarbeiter anzuzeigen" +
+                            "\nGib '5' ein um alle Raeume mit Reservierungen anzuzeigen"+
+                            "\nGib '0' ein um das Programm zu beenden");
     }
     
     /**
@@ -85,138 +88,137 @@ public class Dialog
     }
     
     /**
-     * Abfrage welche Funktion ausgefï¿½hrt werden soll
+     * Abfrage welche Funktion ausgefuehrt werden soll
      *
      * @param funktion gibt die auszufuehrende Funktion als ganze Zahl an
      */
     private void ausfuehrenFunktion(int funktion) {
         switch (funktion) {
-            case reservierung_Erstellen: reservierungErstellen();
+            case raumReservieren: raumReservieren();
             break;
-            case mitarbeiter_anlegen: mitarbeiter_anlegen();
+            case mitarbeiterHinzufügen: mitarbeiterHinzufügen();
             break;
-            case raum_anlegen: raum_anlegen();
+            case raumHinzufügen: raumHinzufügen();
             break;
-            case alle_mitarbeiter: alleMitarbeiter();
+            case mitarbeiterAusgeben: mitarbeiterAusgeben();
             break;
-            case alle_raume: alleRaume();
-            break;
-            case zeige_resarvirerungen: zeigeResarvirerungen();
+            case raeumeUndResarvirerungenAusgeben: raeumeUndResarvirerungenAusgeben();
             break;
             case ende: System.out.println("Programmende!");
         }
     }
 
-    private void mitarbeiter_anlegen() {
-        System.out.println("Geben sie bitte den Vornamen des Mitarbeites an");
-        String vorname = this.input.nextLine();
-        System.out.println("Geben sie bitte den Nachnamen des Mitarbeites an");
-        String nachname = this.input.nextLine();
-        System.out.println("Geben sie bitte die Email Adresse des Mitarbeites an");
-        String email = this.input.nextLine();
+    /**
+     * Hinzufuegen eines Mitarbeites zum Programm
+     */
+    private void mitarbeiterHinzufügen() {
+        System.out.println("Vorname des Mitarbeiters:");
+        String vorname = input.nextLine();
+        System.out.println("Nachname des Mitarbeiters:");
+        String nachname = input.nextLine();
+        System.out.println("E-Mail des Mitarbeiters:");
+        String email = input.nextLine();
 
-        if (vorname == null || vorname.strip().isEmpty())
-            throw new IllegalArgumentException("Der Vorname darf nicht leer sein");
-        if (nachname == null || nachname.strip().isEmpty())
-            throw new IllegalArgumentException("Der Nachname darf nicht leer sein");
-        if (email == null || email.strip().isEmpty())
-            throw new IllegalArgumentException("Die Email darf nicht leer sein");
-
-        this.mitarbeiter = new Mitarbeiter(vorname, nachname,email);
-        mitAr[mitArLaenge] = mitarbeiter;
-        mitArLaenge++;
-
-        System.out.println(mitAr.toString());
-        System.out.println(mitAr[mitArLaenge -1].toString());
+        this.mitarbeiter = new Mitarbeiter(vorname, nachname, email);
+        mitarbeiterListe[mitarbeiterListeLaenge] = mitarbeiter;
+        
+        System.out.println("Der Mitarbeiter " + mitarbeiterListe[mitarbeiterListeLaenge].toString() + " wurde erstellt!");
+        
+        mitarbeiterListeLaenge++;
     }
     
-    private void raum_anlegen() {
-        System.out.println("Geben sie bitte das gebeude an");
-        int geb = this.input.nextInt();
-        System.out.println("Geben sie bitte deie Etage an");
-        int etage = this.input.nextInt();
-        System.out.println("Geben sie bitte den Raum an");
-        int raumNr = this.input.nextInt();
-
-        if (geb <= 0)
-            throw new IllegalArgumentException("Das geb darf nicht leer sein");
-        if (etage <= 0)
-            throw new IllegalArgumentException("Die Etage darf nicht leer sein");
-        if (raumNr <= 0)
-            throw new IllegalArgumentException("Der Raum darf nicht leer sein");
+    /**
+     * Hinzufuegen eines Raumes zum Programm
+     */
+    private void raumHinzufügen() {
+        System.out.println("Nummer des Gebaeudes:");
+        int geb = input.nextInt();
+        System.out.println("Nummer der Etage:");
+        int etage = input.nextInt();
+        System.out.println("Nummer des Raumes:");
+        int raumNr = input.nextInt();
 
         this.raum = new Raum(geb, etage, raumNr);
-        raumAr[raumArLaenge] = raum;
-        raumArLaenge++;
+        rauemeListe[rauemeListeLaenge] = raum;
 
-        System.out.println(raumAr.toString());
-        System.out.println(raumAr[raumArLaenge -1].toString());
+        System.out.println("Der Raum " + rauemeListe[rauemeListeLaenge].toString() + " wurde erstellt!");
 
-        System.out.println(raum);
+        
+        rauemeListeLaenge++;
     }
     
-    private void reservierungErstellen() {
-        System.out.println("WÃ¤hlen sie einen Mitarbeiter aus");
-        for (int i = 0; i < mitArLaenge; i++){
-            System.out.println(i + " " + mitAr[i]);
+    /**
+     * Reservieren eines Raumes
+     */
+    private void raumReservieren() {
+        if(mitarbeiterListeLaenge <= 0) {
+            throw new IllegalArgumentException(KEIN_MITARBEITER_ANGELEGT);
+        }
+        if(rauemeListeLaenge <= 0) {
+            throw new IllegalArgumentException(KEIN_RAUM_ANGELEGT);
+        }
+        
+        System.out.println("Auswahl des Mitarbeiter der reserviert [0-X]:");
+        for (int i = 0; i < mitarbeiterListeLaenge; i++) {
+            System.out.println(i + " " + mitarbeiterListe[i]);
         }
         int mitarbeiterIndex = input.nextInt();
-        System.out.println("WÃ¤hlen sie einen Raum aus");
-        for (int i = 0; i < raumArLaenge; i++){
-            System.out.println(i + " " + raumAr[i]);
+        if (mitarbeiterIndex >= mitarbeiterListeLaenge) {
+            throw new IllegalArgumentException(INDEX_OUT_OF_BOUNCE);
+        }
+        
+        System.out.println("Auswahl des Raumes der reserviert werden soll [0-X]:");
+        for (int i = 0; i < rauemeListeLaenge; i++) {
+            System.out.println(i + " " + rauemeListe[i]);
         }
         int raumIndex = input.nextInt();
-
-        System.out.println("Geben sie bitte die Anfangs Stunde ein");
+        if (raumIndex >= rauemeListeLaenge) {
+            throw new IllegalArgumentException(INDEX_OUT_OF_BOUNCE);
+        }
+        
+        System.out.println("Eingebe der Uhrzeit, ab der Reserviert werden soll:");
+        System.out.println("Stundenzeiger (0 - 23 Uhr):");
         int uhrAnfStd = input.nextInt();
-        System.out.println("Geben sie bitte die Anfangs Minuten ein");
+        System.out.println("Minutenzeiger (0 - 59 Minuten):");
         int uhrAnfMin = input.nextInt();
-        System.out.println("Geben sie bitte die End Stunde ein");
+        System.out.println("Eingebe der Uhrzeit, ab der die Reservierung beendet werden soll:");
+        System.out.println("Stundenzeiger (0 - 23 Uhr):");
         int uhrEndStd = input.nextInt();
-        System.out.println("Geben sie bitte die End Minuten ein");
+        System.out.println("Minutenzeiger (0 - 59 Minuten):");
         int uhrEndMin = input.nextInt();
-        System.out.println("Geben sie bitte die Bemerkung an");
-        String bemerkung = this.input.nextLine();
         input.nextLine();
+        System.out.println("Fuegen sie eine Bemerkung hinzu:");
+        String bemerkung = input.nextLine();
 
-        mitAr[mitarbeiterIndex].reserviere(raumAr[raumIndex], new Uhrzeit(uhrAnfStd, uhrAnfMin), new Uhrzeit(uhrEndStd, uhrEndMin), bemerkung);
+        mitarbeiterListe[mitarbeiterIndex].reserviere(rauemeListe[raumIndex], new Uhrzeit(uhrAnfStd, uhrAnfMin), new Uhrzeit(uhrEndStd, uhrEndMin), bemerkung);
         System.out.println(raum);
     }
     
-    private void alleMitarbeiter(){
-        if(mitArLaenge <= 0)
-            throw new IllegalArgumentException("Es wurde noch kein Mitarbeiter angelegt");
-        for (int i = 0; i < mitArLaenge; i++){
-            System.out.println(i + " " + mitAr[i]);
+    /**
+     * Ausgeben aller Mitarbeiter
+     */
+    private void mitarbeiterAusgeben() {
+        if(mitarbeiterListeLaenge <= 0) {
+            throw new IllegalArgumentException(KEIN_MITARBEITER_ANGELEGT);
+        }
+        for (int i = 0; i < mitarbeiterListeLaenge; i++) {
+            System.out.println(mitarbeiterListe[i]);
         }
     }
     
-    private void alleRaume(){
-        if(raumArLaenge <= 0)
-            throw new IllegalArgumentException("Es wurde noch kein raum angelegt");
-        for (int i = 0; i < raumArLaenge; i++){
-            System.out.println(i + " " + raumAr[i]);
+    /**
+     * Ausgeben aller Raeume und Reservierungen
+     */
+    private void raeumeUndResarvirerungenAusgeben() {
+        if(rauemeListeLaenge <= 0) {
+            throw new IllegalArgumentException(KEIN_RAUM_ANGELEGT);
         }
-    }
-    
-    private void zeigeResarvirerungen(){
-        if(mitArLaenge <= 0)
-            throw new IllegalArgumentException("Es wurde noch kein Mitarbeiter angelegt");
-        if(raumArLaenge <= 0)
-            throw new IllegalArgumentException("Es wurde noch kein raum angelegt");
-        System.out.println("Zu welchen raum wollen sie die Resarvierungen sehen");
-        for (int i = 0; i < raumArLaenge; i++){
-            System.out.println(i + " " + raumAr[i]);
+        for (int i = 0; i < rauemeListeLaenge; i++) {
+            System.out.println(rauemeListe[i]);
         }
-        int raumIndex = input.nextInt();
-        input.nextLine();
-        if(raumAr[raumIndex].getAnzahlReservierungen() == 0)// Da gehÃ¶ert die abfrage rein
-            throw new IllegalArgumentException("Es gibt noch keine Resarvirungen fÃ¼r denn raum ");
-        System.out.println(raumAr[raumIndex]);
     }
     
     public static void main(String[] args){
         new Dialog().start();
     }
-
 }

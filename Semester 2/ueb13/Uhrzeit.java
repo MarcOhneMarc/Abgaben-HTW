@@ -1,12 +1,10 @@
 
 /**
- * Beschreiben Sie hier die Klasse Uhrzeit.
+ * Diese Klasse dient als Datentyp fuer eine Uhrzeit.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @jonas_neu_+_marc_perwak
  */
-public class Uhrzeit
-{
+public class Uhrzeit {
     // Instanzvariablen
     private int stunde;
     private int minute;
@@ -15,13 +13,12 @@ public class Uhrzeit
     /**
      * Konstruktor fuer Objekte der Klasse Uhrzeit
      */
-    public Uhrzeit(int stunde, int minute)
-    {
+    public Uhrzeit(int stunde, int minute) {
         if (stunde > 24 || stunde < 0 || minute >= 60 || minute < 0){
             throw new IllegalArgumentException(FALSCHE_UHRZEIT);
         }
         this.stunde = stunde;
-        this.minute = minute;
+        this.minute = minute; 
     }
 
     /**
@@ -29,8 +26,7 @@ public class Uhrzeit
      * 
      * @return uhrzeit Die Ausgabe der Uhrzeit mit Signatur: STUNDE:MINUTE Uhr
      */
-    public String toString()
-    {
+    public String toString() {
         String uhrzeit = (stunde + ":" + minute + " Uhr");
         return uhrzeit;
     }
@@ -38,22 +34,18 @@ public class Uhrzeit
     /**
      * Methode zur Rueckgabe der Stunde
      * 
-     * @return stunde Die R�ckgabe der Stunde als Integer
+     * @return stunde Die Rueckgabe der Stunde als Integer
      */
-    public int getStunde()
-    {
+    public int getStunde() {
         return stunde;
     }
 
     /**
      * Methode zur Rueckgabe der Minute
      * 
-     * @return minute Die R�ckgabe der Minute als Integer
+     * @return minute Die Rueckgabe der Minute als Integer
      */
-    public int getMinute()
-    {
+    public int getMinute() {
         return minute;
     }
-    
-    
 }

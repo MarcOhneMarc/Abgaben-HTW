@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Mitarbeiter
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Mitarbeiter.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Diese\ Klasse\ definiert\ einen\ Mitarbeiter\ welcher\ von\ der\ Klasse\ Person\ erbt.\r\n\ \r\n\ @jonas_neu_+_marc_perwak\r\n
 comment1.params=vorname\ nachname\ mail
 comment1.target=Mitarbeiter(java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ Mitarbeiter\r\n
@@ -13,4 +13,6 @@ comment3.text=\r\n\ Methode\ zum\ resavieren\ eines\ Raumes\r\n\ \r\n\ @param\ r
 comment4.params=
 comment4.target=java.lang.String\ getEmail()
 comment4.text=\r\n\ Methode\ zur\ Rueckgabe\ der\ Email\r\n\ \r\n\ @return\ mail\ Die\ Rueckgabe\ des\ Vornamens\ als\ String\r\n
-numComments=5
+comment5.params=mitarbeiter
+comment5.target=boolean\ equals(Mitarbeiter)
+numComments=6

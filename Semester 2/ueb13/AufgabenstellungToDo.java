@@ -1,9 +1,8 @@
 
 /**
- * Beschreiben Sie hier die Klasse AufgabenstellungToDo.
+ * Hilfsprogramm zum Testen der Aufgabenstellungen.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @jonas_neu_+_marc_perwak
  */
 public class AufgabenstellungToDo
 {
@@ -11,7 +10,6 @@ public class AufgabenstellungToDo
     public Mitarbeiter mitarbeiter;
     
     public static void main(String[] args) {
-        /**
         Uhrzeit u = new Uhrzeit(12, 54);
         System.out.println(u);
         
@@ -20,7 +18,7 @@ public class AufgabenstellungToDo
         
         Raum r = new Raum(18, 0, 1);
         System.out.println(r);
-        */
+        
        
         Mitarbeiter m1 = new Mitarbeiter("Max", "Mustermann", "max@htwsaar.de");
         Mitarbeiter m2 = new Mitarbeiter("John", "Doe", "john@htwsaar.de");
@@ -36,6 +34,5 @@ public class AufgabenstellungToDo
         System.out.println(r1);
         System.out.println(r2);
         System.out.println(r3);
-        
     }
 }

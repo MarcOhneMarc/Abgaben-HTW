@@ -1,29 +1,39 @@
 
 /**
- * Beschreiben Sie hier die Klasse Raum.
+ * Diese Klasse dient als Grundgeruest fuer einen Raum.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @jonas_neu_+_marc_perwak
  */
-public class Raum
-{
+public class Raum {
     // Instanzvariablen
     private int geb;
     private int etage;
     private int raum;
     private Reservierung[] reservierungen;
     private int anzahl;
+    private int maxAnzahlReservierungen = 10;
 
+    private static final String GEBAEUDENUMMER_NEGATIV = "Die Gebaeudenummer darf nicht negativ sein!";
+    private static final String ETAGENNUMMER_NEGATIV = "Die Etagennummer darf nicht negativ sein!";
+    private static final String RAUMNUMMER_NEGATIV = "Die Raumnummer darf nicht negativ sein!";
+    
     /**
      * Konstruktor fuer Objekte der Klasse Raum
      */
-    public Raum(int geb, int etage, int raum)
-    {
+    public Raum(int geb, int etage, int raum) {
         // Instanzvariablen initialisieren
+        if (geb < 0)
+            throw new IllegalArgumentException(GEBAEUDENUMMER_NEGATIV);
+        if (etage < 0)
+            throw new IllegalArgumentException(ETAGENNUMMER_NEGATIV);
+        if (raum < 0)
+            throw new IllegalArgumentException(RAUMNUMMER_NEGATIV);
+            
         this.geb = geb;
         this.etage = etage;
         this.raum = raum;
-        reservierungen = new Reservierung[10];
+        
+        reservierungen = new Reservierung[maxAnzahlReservierungen];
     }
     
     /**
@@ -31,10 +41,9 @@ public class Raum
      * 
      * @return raumausgabe Die Ausgabe einers Raumes mit Signatur: Raum GEB-ETAGE.RAUM
      */
-    public String toString()
-    {
+    public String toString() {
         String raumausgabe = ("RAUM " + geb + "-" + etage + "." + raum);
-        for (int i = 0; i < reservierungen.length; i++) 
+        for (int i = 0; i < anzahl; i++) 
         {
             if (reservierungen[i] != null) {
                 raumausgabe += ("\n" + reservierungen[i]);
@@ -46,19 +55,12 @@ public class Raum
     /**
      * Methode zum hinzufuegen einer Reservierung zu einem Raum
     */    
-    public void addResavierung(Reservierung reservierung)
-    {
+    public void addReservierung(Reservierung reservierung) {
         if (getAnzahlReservierungen() == reservierungen.length) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Keine Reservierungen mehr verfügbar");
         }
-        for (int i = 0; i < getAnzahlReservierungen(); i++) 
-        {
-            if (reservierungen[i] == null) {
-                reservierungen[i] = reservierung;
-                anzahl++;
-                break;
-            }
-        }
+        reservierungen[anzahl] = reservierung;
+        anzahl++;
     }
     
     /**
@@ -66,8 +68,7 @@ public class Raum
      * 
      * @return geb Die Gebaeudenummer als Ganzzahl
      */
-    public int getGeb()
-    {
+    public int getGeb() {
         return geb;
     }
     
@@ -76,8 +77,7 @@ public class Raum
      * 
      * @return etage Die Etage als Ganzzahl
      */
-    public int getEtage()
-    {
+    public int getEtage() {
         return etage;
     }
     
@@ -86,8 +86,7 @@ public class Raum
      * 
      * @return raum Die Raum als Ganzzahl
      */
-    public int getRaum()
-    {
+    public int getRaum() {
         return raum;
     }
     
@@ -96,8 +95,7 @@ public class Raum
      * 
      * @return reservierungen[index] Die Reservierung als Reservierung
      */
-    public Reservierung getReservierungen(int index)
-    {
+    public Reservierung getReservierungen(int index) {
         return reservierungen[index];
     }
     
@@ -106,13 +104,11 @@ public class Raum
      * 
      * @return anzahl Die Anzahl an Reservierungen als Ganzzahl
      */
-    public int getAnzahlReservierungen()
-    {
+    public int getAnzahlReservierungen() {
         return anzahl;
     }
     
-    
-    /**
+    /*Keine Reservierungsueberschneidungen (auskommentiert, da nicht benötigt)
      * Methode zum hinzufuegen einer Resavierung zu einem Raum   
     public void addResavierung(Reservierung reservierung)
     {

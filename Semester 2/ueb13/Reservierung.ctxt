@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Reservierung
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Reservierung.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Mit\ dieser\ Klasse\ kann\ Raeume\ zu\ einer\ bestimmten\ Uhrzeit\ reservieren.\ Verwendet\ werden\ die\ Klassen\ Mitarbeiter,\ Raum\ und\ Uhrzeit.\r\n\ \r\n\ @jonas_neu_+_marc_perwak\r\n
 comment1.params=beginn\ ende
 comment1.target=Reservierung(Uhrzeit,\ Uhrzeit)
 comment1.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ Reservierung\r\n
@@ -9,7 +9,7 @@ comment2.target=java.lang.String\ toString()
 comment2.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Raumes\ als\ String\r\n\ \r\n\ @return\ raumausgabe\ Die\ Ausgabe\ einers\ Raumes\ mit\ Signatur\:\ Raum\ GEB-ETAGE.RAUM\r\n
 comment3.params=bemerkung
 comment3.target=void\ setBemerkung(java.lang.String)
-comment3.text=\r\n\ Diese\ Methode\ f\u00EF\u00BF\u00BDgt\ einer\ Reservierung\ eine\ Bemerkung\ zu\r\n\ \r\n\ @param\ bemerkung\ Die\ Bemerkung\r\n
+comment3.text=\r\n\ Diese\ Methode\ fuegt\ einer\ Reservierung\ eine\ Bemerkung\ zu\r\n\ \r\n\ @param\ bemerkung\ Die\ Bemerkung\r\n
 comment4.params=mitarbeiter
 comment4.target=void\ setMitarbeiter(Mitarbeiter)
 comment4.text=\r\n\ Diese\ Methode\ stellt\ einer\ Reservierung\ einen\ Mitarbeiter\ zu\r\n\ \r\n\ @param\ mitarbeiter\ Der\ Mitarbeiter\r\n

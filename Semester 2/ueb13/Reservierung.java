@@ -1,12 +1,10 @@
 
 /**
- * Beschreiben Sie hier die Klasse Reservierung.
+ * Mit dieser Klasse kann Raeume zu einer bestimmten Uhrzeit reservieren. Verwendet werden die Klassen Mitarbeiter, Raum und Uhrzeit.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @jonas_neu_+_marc_perwak
  */
-public class Reservierung
-{
+public class Reservierung {
     // Instanzvariablen
     private String bemerkung;
     private Uhrzeit beginn;
@@ -14,11 +12,12 @@ public class Reservierung
     private Mitarbeiter mitarbeiter;
     private Raum raum;
     
+    private static final String BEMERKUNG_LEER = "Die Bemerkung darf nicht leer sein!";
+    
     /**
      * Konstruktor fuer Objekte der Klasse Reservierung
      */
-    public Reservierung(Uhrzeit beginn, Uhrzeit ende)
-    {
+    public Reservierung(Uhrzeit beginn, Uhrzeit ende) {
         this.beginn = beginn;
         this.ende = ende;
     }
@@ -28,20 +27,21 @@ public class Reservierung
      * 
      * @return raumausgabe Die Ausgabe einers Raumes mit Signatur: Raum GEB-ETAGE.RAUM
      */
-    public String toString()
-    {
+    public String toString() {
         String raumausgabe = ("gebucht von " + mitarbeiter + "von " + beginn + " bis "
                                 + ende + " fuer " + bemerkung);
         return raumausgabe;
     }
 
     /**
-     * Diese Methode f�gt einer Reservierung eine Bemerkung zu
+     * Diese Methode fuegt einer Reservierung eine Bemerkung zu
      * 
      * @param bemerkung Die Bemerkung
      */
-    public void setBemerkung(String bemerkung)
-    {
+    public void setBemerkung(String bemerkung) {
+        if (bemerkung == null || bemerkung.strip().isEmpty()) {
+            throw new IllegalArgumentException(BEMERKUNG_LEER);
+        }
         this.bemerkung = bemerkung;
     }
     
@@ -50,8 +50,7 @@ public class Reservierung
      * 
      * @param mitarbeiter Der Mitarbeiter
      */
-    public void setMitarbeiter(Mitarbeiter mitarbeiter)
-    {
+    public void setMitarbeiter(Mitarbeiter mitarbeiter) {
         this.mitarbeiter = mitarbeiter;
     }
 
@@ -60,8 +59,7 @@ public class Reservierung
      * 
      * @param mitarbeiter Der Mitarbeiter
      */
-    public void setRaum(Raum raum)
-    {
+    public void setRaum(Raum raum) {
         this.raum = raum;
     }
     
@@ -70,8 +68,7 @@ public class Reservierung
      * 
      * @return beginn Die Rueckgabe des beginns einer Reservierung als Uhrzeit
      */
-    public Uhrzeit getBeginn()
-    {
+    public Uhrzeit getBeginn() {
         return beginn;
     }
     
@@ -80,8 +77,7 @@ public class Reservierung
      * 
      * @return ende Die Rueckgabe des endes einer Reservierung als Uhrzeit
      */
-    public Uhrzeit getEnde()
-    {
+    public Uhrzeit getEnde() {
         return ende;
     }
     
@@ -90,8 +86,7 @@ public class Reservierung
      * 
      * @return bemerkung Die Rueckgabe des endes einer Reservierung als Uhrzeit
      */
-    public String getBemerkung()
-    {
+    public String getBemerkung() {
         return bemerkung;
     }
 }

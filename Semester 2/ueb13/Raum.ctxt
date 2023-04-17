@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Raum
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Raum.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Diese\ Klasse\ dient\ als\ Grundgeruest\ fuer\ einen\ Raum.\r\n\ \r\n\ @jonas_neu_+_marc_perwak\r\n
 comment1.params=geb\ etage\ raum
 comment1.target=Raum(int,\ int,\ int)
 comment1.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ Raum\r\n
@@ -8,7 +8,7 @@ comment2.params=
 comment2.target=java.lang.String\ toString()
 comment2.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Raumes\ als\ String\r\n\ \r\n\ @return\ raumausgabe\ Die\ Ausgabe\ einers\ Raumes\ mit\ Signatur\:\ Raum\ GEB-ETAGE.RAUM\r\n
 comment3.params=reservierung
-comment3.target=void\ addResavierung(Reservierung)
+comment3.target=void\ addReservierung(Reservierung)
 comment3.text=\r\n\ Methode\ zum\ hinzufuegen\ einer\ Reservierung\ zu\ einem\ Raum\r\n
 comment4.params=
 comment4.target=int\ getGeb()
