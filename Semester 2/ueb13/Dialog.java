@@ -69,7 +69,8 @@ public class Dialog
                             "\nGib '2' ein zum Hinzufuegen eines Raumes" +
                             "\nGib '3' ein zum Resarvieren eines Raumes" +
                             "\nGib '4' ein zum Anzeigen aller Mitarbeiter" +
-                            "\nGib '5' ein zum Anzeigen aller Raume");
+                            "\nGib '5' ein zum Anzeigen aller Raume" +
+                            "\nGib '6' ein zum Anzeigen aller Resarvierungen eines Raumes");
     }
     
     /**
@@ -183,24 +184,34 @@ public class Dialog
     }
     
     private void alleMitarbeiter(){
+        if(mitArLaenge <= 0)
+            throw new IllegalArgumentException("Es wurde noch kein Mitarbeiter angelegt");
         for (int i = 0; i < mitArLaenge; i++){
             System.out.println(i + " " + mitAr[i]);
         }
     }
     
     private void alleRaume(){
+        if(raumArLaenge <= 0)
+            throw new IllegalArgumentException("Es wurde noch kein raum angelegt");
         for (int i = 0; i < raumArLaenge; i++){
             System.out.println(i + " " + raumAr[i]);
         }
     }
     
     private void zeigeResarvirerungen(){
+        if(mitArLaenge <= 0)
+            throw new IllegalArgumentException("Es wurde noch kein Mitarbeiter angelegt");
+        if(raumArLaenge <= 0)
+            throw new IllegalArgumentException("Es wurde noch kein raum angelegt");
         System.out.println("Zu welchen raum wollen sie die Resarvierungen sehen");
         for (int i = 0; i < raumArLaenge; i++){
             System.out.println(i + " " + raumAr[i]);
         }
         int raumIndex = input.nextInt();
         input.nextLine();
+        if(raumAr[raumIndex].getAnzahlReservierungen() == 0)// Da gehöert die abfrage rein
+            throw new IllegalArgumentException("Es gibt noch keine Resarvirungen für denn raum ");
         System.out.println(raumAr[raumIndex]);
     }
     
