@@ -128,6 +128,7 @@ public class Dialog
         System.out.println(mitAr.toString());
         System.out.println(mitAr[mitArLaenge -1].toString());
     }
+    
     private void raum_anlegen() {
         System.out.println("Geben sie bitte das gebeude an");
         int geb = this.input.nextInt();
@@ -152,6 +153,7 @@ public class Dialog
 
         System.out.println(raum);
     }
+    
     private void reservierungErstellen() {
         System.out.println("Wählen sie einen Mitarbeiter aus");
         for (int i = 0; i < mitArLaenge; i++){
@@ -178,6 +180,7 @@ public class Dialog
 
         mitAr[mitarbeiterIndex].reserviere(raumAr[raumIndex], new Uhrzeit(uhrAnfStd, uhrAnfMin), new Uhrzeit(uhrEndStd, uhrEndMin), bemerkung);
         System.out.println(raum);
+<<<<<<< Updated upstream
     }
     private void alleMitarbeiter(){
         for (int i = 0; i < mitArLaenge; i++){
@@ -199,6 +202,10 @@ public class Dialog
         System.out.println(raumAr[raumIndex]);
     }
 
+=======
+    }
+    
+>>>>>>> Stashed changes
     public static void main(String[] args){
         new Dialog().start();
     }

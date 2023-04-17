@@ -43,7 +43,7 @@ public class Raum
     }
     
     /**
-     * Methode zum hinzuf�gen einer Resavierung zu einem Raum
+     * Methode zum hinzufuegen einer Reservierung zu einem Raum
     */    
     public void addResavierung(Reservierung reservierung)
     {
@@ -56,10 +56,39 @@ public class Raum
         }
     }
     
+    /**
+     * Methode zur Rueckgabe der Gebaeudenummer
+     * 
+     * @return geb Die Gebaeudenummer als Ganzzahl
+     */
+    public int getGeb()
+    {
+        return geb;
+    }
+    
+    /**
+     * Methode zur Rueckgabe der Etage
+     * 
+     * @return etage Die Etage als Ganzzahl
+     */
+    public int getEtage()
+    {
+        return etage;
+    }
+    
+    /**
+     * Methode zur Rueckgabe der Raum
+     * 
+     * @return raum Die Raum als Ganzzahl
+     */
+    public int getRaum()
+    {
+        return raum;
+    }
     
     
     /**
-     * Methode zum hinzuf�gen einer Resavierung zu einem Raum   
+     * Methode zum hinzufuegen einer Resavierung zu einem Raum   
     public void addResavierung(Reservierung reservierung)
     {
         for (int i = 0; i < reservierungen.length; i++) 

@@ -13,7 +13,7 @@ public class Reservierung
     private Uhrzeit ende;
     private Mitarbeiter mitarbeiter;
     private Raum raum;
-
+    
     /**
      * Konstruktor fuer Objekte der Klasse Reservierung
      */
@@ -83,5 +83,15 @@ public class Reservierung
     public Uhrzeit getEnde()
     {
         return ende;
+    }
+    
+    /**
+     * Methode zur Rueckgabe der Bemerkung zu einer Reservierung
+     * 
+     * @return bemerkung Die Rueckgabe des endes einer Reservierung als Uhrzeit
+     */
+    public String getBemerkung()
+    {
+        return bemerkung;
     }
 }

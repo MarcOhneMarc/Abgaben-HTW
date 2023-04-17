@@ -50,4 +50,14 @@ public class Mitarbeiter extends Person
         reservierung.setBemerkung(bemerkung);
         raum.addResavierung(reservierung);
     }
+    
+    /**
+     * Methode zur Rueckgabe der Email
+     * 
+     * @return mail Die Rueckgabe des Vornamens als String
+     */
+    public String getEmail()
+    {
+        return mail;
+    }
 }
