@@ -180,18 +180,20 @@ public class Dialog
 
         mitAr[mitarbeiterIndex].reserviere(raumAr[raumIndex], new Uhrzeit(uhrAnfStd, uhrAnfMin), new Uhrzeit(uhrEndStd, uhrEndMin), bemerkung);
         System.out.println(raum);
-<<<<<<< Updated upstream
     }
+    
     private void alleMitarbeiter(){
         for (int i = 0; i < mitArLaenge; i++){
             System.out.println(i + " " + mitAr[i]);
         }
     }
+    
     private void alleRaume(){
         for (int i = 0; i < raumArLaenge; i++){
             System.out.println(i + " " + raumAr[i]);
         }
     }
+    
     private void zeigeResarvirerungen(){
         System.out.println("Zu welchen raum wollen sie die Resarvierungen sehen");
         for (int i = 0; i < raumArLaenge; i++){
@@ -201,11 +203,7 @@ public class Dialog
         input.nextLine();
         System.out.println(raumAr[raumIndex]);
     }
-
-=======
-    }
     
->>>>>>> Stashed changes
     public static void main(String[] args){
         new Dialog().start();
     }

@@ -12,6 +12,7 @@ public class Raum
     private int etage;
     private int raum;
     private Reservierung[] reservierungen;
+    private int anzahl;
 
     /**
      * Konstruktor fuer Objekte der Klasse Raum
@@ -51,6 +52,7 @@ public class Raum
         {
             if (reservierungen[i] == null) {
                 reservierungen[i] = reservierung;
+                anzahl++;
                 break;
             }
         }
@@ -84,6 +86,26 @@ public class Raum
     public int getRaum()
     {
         return raum;
+    }
+    
+    /**
+     * Methode zur Rueckgabe einer Reservierung anhand eines Index
+     * 
+     * @return reservierungen[index] Die Reservierung als Reservierung
+     */
+    public Reservierung getReservierungen(int index)
+    {
+        return reservierungen[index];
+    }
+    
+    /**
+     * Methode zur Rueckgabe der Anzahl aller Reservierung
+     * 
+     * @return anzahl Die Anzahl an Reservierungen als Ganzzahl
+     */
+    public int getAnzahlReservierungen()
+    {
+        return anzahl;
     }
     
     
