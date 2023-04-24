@@ -7,7 +7,6 @@ public class laufzeitMessung {
         Palindrom palindromRe = new PalindromRekursiv();
         Palindrom palindromIt = new PalindromIterativ();
 
-
         BufferedReader var1 = new BufferedReader(new FileReader(fileName));
         PrintWriter writer = new PrintWriter("Semester 2/ggt-palindrom/messungen/messung.csv");
         writer.println("The first line");
@@ -31,12 +30,10 @@ public class laufzeitMessung {
                     System.out.println(palindromIt.istPalindrom(var4) + ": " + var4);
                     sysTimeAfter = System.nanoTime();
                     writer.println("\nIT,");
-
             } else {
                 var3 = false;
             }
         } while(var3);
-
         var1.close();
     }
 

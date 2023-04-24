@@ -98,7 +98,11 @@ public class PalindromDialog {
         if (method < 1 || method > 2)
             throw new IllegalArgumentException(METHODE_NICHT_VERFUEGBAR);
 
+<<<<<<< HEAD
         System.out.println(loadFile(fileName, method));
+=======
+        System.out.println(loadFile("Semester 2/ggt-palindrom BlueJ/" + fileName, method));
+>>>>>>> df5ed6030df86b69c30dbd65d6e2e4a8afb7b972
 
     }
 

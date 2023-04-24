@@ -11,7 +11,11 @@ public class laufzeitMessung {
 
 
         BufferedReader var1 = new BufferedReader(new FileReader(fileName));
+<<<<<<< HEAD
         PrintWriter writer = new PrintWriter("messung.csv");
+=======
+        PrintWriter writer = new PrintWriter("Semester 2/ggt-palindrom BlueJ/messung.csv");
+>>>>>>> df5ed6030df86b69c30dbd65d6e2e4a8afb7b972
         writer.println("The first line");
         writer.println("The second line");
         int var2 = 0;
@@ -45,6 +49,10 @@ public class laufzeitMessung {
     public static void main(String[] args) throws IOException {
         laufzeitMessung messung1 = new laufzeitMessung();
 
+<<<<<<< HEAD
         messung1.messung("palin2.txt");
+=======
+        messung1.messung("Semester 2/ggt-palindrom BlueJ/palin.txt");
+>>>>>>> df5ed6030df86b69c30dbd65d6e2e4a8afb7b972
     }
 }
