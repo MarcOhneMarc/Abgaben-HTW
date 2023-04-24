@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=PalindromDialog
+comment1.params=
+comment1.target=PalindromDialog()
+comment2.params=
+comment2.target=void\ start()
+comment3.params=
+comment3.target=void\ menu()
+comment4.params=
+comment4.target=int\ einlesenFuktion()
+comment5.params=funktion
+comment5.target=void\ ausfuehrenFunktion(int)
+comment6.params=
+comment6.target=void\ pruefeString()
+comment7.params=
+comment7.target=void\ puefeDatei()
+comment8.params=fileName\ method
+comment8.target=java.lang.String\ loadFile(java.lang.String,\ int)
+comment9.params=args
+comment9.target=void\ main(java.lang.String[])
+numComments=10

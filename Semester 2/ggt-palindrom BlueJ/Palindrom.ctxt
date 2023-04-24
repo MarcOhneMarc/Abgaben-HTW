@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Palindrom
+comment0.text=\r\n\ Interface\ fuer\ die\ beiden\ verschiedenen\ Algoritmen\ (rekursiv,\ iterativ)\ zur\ Untersuchung\ auf\ die\ Eigenschaft\ "Palindrom"\ eines\ Strings\r\n\ @author\ Jonas\ Neu\ und\ Marc\ Perwak\r\n
+comment1.params=wort
+comment1.target=boolean\ istPalindrom(java.lang.String)
+numComments=2

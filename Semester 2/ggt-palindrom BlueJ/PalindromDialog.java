@@ -11,7 +11,7 @@ public class PalindromDialog {
     private static final int puefeDatei = 2;
     private static final int ende = 0;
     private static final String STRING_DARF_NICHT_NULL_SEIN = "Der Uebergebene String darf nicht leer sein";
-    private static final String METHODE_NICHT_VERFUEGBAR = "Die von ihnen angegebene Methode Existiert nicht bitte geben sie 1 oder 2 ein";
+    private static final String METHODE_NICHT_VERFUEGBAR = "Die von Ihnen angegebene Methode Existiert nicht bitte geben sie 1 oder 2 ein";
 
     public PalindromDialog() {
         this.input = new Scanner(System.in);
@@ -39,9 +39,9 @@ public class PalindromDialog {
     }
 
     private void menu() {
-        System.out.println("\nGib '1' ein um einen Sting einzugeben und Ueberpruefen zu lassen" +
-                "\nGib '2' ein um eine Datei einzulesen die dann Zeile um Zeile geprueft wird" +
-                "\nGib '0' ein zum beenden des Programms");
+        System.out.println("\nGib '1' ein um einen Sting auf die Eigenschaft 'Palindrom' zu pruefen" +
+                "\nGib '2' ein um eine Datei an, um Zeile fuer Zeile auf die Eigenschaft 'Palindrom' zu pruefen" +
+                "\nGib '0' ein um das Programm zu beenden");
     }
 
     private int einlesenFuktion() {
@@ -67,7 +67,7 @@ public class PalindromDialog {
     private void pruefeString(){
         System.out.println("Geben sie bitte denn zu pruefenden String ein");
         String checkSting = input.nextLine();
-        System.out.println("Welche methode wollen sie verwenden \n(1) Rekursiv \n(2) Iterativ");
+        System.out.println("Welche methode wollen sie verwenden? \n(1) Rekursiv \n(2) Iterativ");
         int method = input.nextInt();
         input.nextLine();
 
@@ -87,9 +87,9 @@ public class PalindromDialog {
     }
 
     private void puefeDatei() throws IOException {
-        System.out.println("Gebe bitte denn Pfad der datei ein");
+        System.out.println("Gebe bitte denn Pfad der Datei ein");
         String fileName = input.nextLine();
-        System.out.println("Welche methode wollen sie verwenden \n(1) Rekursiv \n(2) Iterativ");
+        System.out.println("Welche methode wollen sie verwenden? \n(1) Rekursiv \n(2) Iterativ");
         int method = input.nextInt();
         input.nextLine();
 
@@ -98,7 +98,7 @@ public class PalindromDialog {
         if (method < 1 || method > 2)
             throw new IllegalArgumentException(METHODE_NICHT_VERFUEGBAR);
 
-        System.out.println(loadFile("Semester 2/ggt-palindrom/TestFiles/" + fileName, method));
+        System.out.println(loadFile(fileName, method));
 
     }
 

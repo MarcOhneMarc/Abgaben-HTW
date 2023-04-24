@@ -1,12 +1,12 @@
 /**
- * Klasse zur Implementirung eines Algoritmus der Palindrome mit Iterativen ansatz findet
+ * Klasse zur Implementirung des Algoritmus, der auf die Eigenschaft "Palindrom" prueft (iterativ)
  * @author Jonas Neu und Marc Perwak
  */
 public class PalindromIterativ implements Palindrom{
     /**
-     * Methode zur pruefung ob ein String ein Palindrom ist (Iterativ)
-     * @param wort stelt denn string da der geprueft werden soll
-     * @return ein boolscher wert der angibt ob ein wort ein Palindrom ist oder nicht
+     * Methode zur ueberpruefung ob ein String ein Palindrom ist (iterativ)
+     * @param wort Der string, der geprueft werden soll
+     * @return Rueckgabe ob der String ein Palindrom ist oder nicht (true: Wert ist Palindrom, false: Wert ist kein Palindrom)
      */
     public boolean istPalindrom(String wort) {
         //Entfernen aller Sonderzeichen und whitespaces

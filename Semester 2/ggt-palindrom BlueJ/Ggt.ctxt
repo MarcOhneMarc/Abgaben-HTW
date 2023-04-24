@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Ggt
+comment0.text=\r\n\ Klasse\ zur\ Berechnung\ des\ GGT\ mit\ dem\ Euklid\ Algoritmus\ (rekursiv)\r\n\ @author\ Jonas\ Neu\ und\ Marc\ Perwak\r\n
+comment1.params=x\ y
+comment1.target=double\ ggt(int,\ int)
+comment1.text=\r\n\ Eine\ rekursive\ Methode\ die\ den\ ggt\ von\ 2\ natuerlichen\ Zahlen\ berechnet\r\n\ @return\ Eine\ natuerliche\ Zahl\ die\ den\ GGT\ der\ beiden\ uebergebenen\ Zahlen\ zurueck\ gibt\r\n
+numComments=2

@@ -1,4 +1,6 @@
 import java.io.*;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class laufzeitMessung {
     public Palindrom palindrom;
@@ -9,7 +11,7 @@ public class laufzeitMessung {
 
 
         BufferedReader var1 = new BufferedReader(new FileReader(fileName));
-        PrintWriter writer = new PrintWriter("Semester 2/ggt-palindrom/messungen/messung.csv");
+        PrintWriter writer = new PrintWriter("messung.csv");
         writer.println("The first line");
         writer.println("The second line");
         int var2 = 0;
@@ -43,6 +45,6 @@ public class laufzeitMessung {
     public static void main(String[] args) throws IOException {
         laufzeitMessung messung1 = new laufzeitMessung();
 
-        messung1.messung("Semester 2/ggt-palindrom/TestFiles/palin.txt");
+        messung1.messung("palin2.txt");
     }
 }
