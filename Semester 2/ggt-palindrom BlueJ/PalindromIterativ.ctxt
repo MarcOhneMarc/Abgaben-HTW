@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=PalindromIterativ
+comment0.text=\r\n\ Klasse\ zur\ Implementirung\ des\ Algoritmus,\ der\ auf\ die\ Eigenschaft\ "Palindrom"\ prueft\ (iterativ)\r\n\ @author\ Jonas\ Neu\ und\ Marc\ Perwak\r\n
+comment1.params=wort
+comment1.target=boolean\ istPalindrom(java.lang.String)
+comment1.text=\r\n\ Methode\ zur\ ueberpruefung\ ob\ ein\ String\ ein\ Palindrom\ ist\ (iterativ)\r\n\ @param\ wort\ Der\ string,\ der\ geprueft\ werden\ soll\r\n\ @return\ Rueckgabe\ ob\ der\ String\ ein\ Palindrom\ ist\ oder\ nicht\ (true\:\ Wert\ ist\ Palindrom,\ false\:\ Wert\ ist\ kein\ Palindrom)\r\n
+numComments=2

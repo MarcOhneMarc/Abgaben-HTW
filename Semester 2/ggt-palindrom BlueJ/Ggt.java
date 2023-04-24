@@ -1,18 +1,18 @@
 /**
- * Klasse zur Berechnung des GGT mit dem Rekursiven Euklid Algoritmus
+ * Klasse zur Berechnung des GGT mit dem Euklid Algoritmus (rekursiv)
  * @author Jonas Neu und Marc Perwak
  */
 public class Ggt {
 
     /**
-     * Eine Rekursive Methode die das ggt von 2 natürlichen Zahlen berechnet
-     * @return Eine Natuerliche Zahl die das GGT der beiden uebergebenen Zahlen darstellt
+     * Eine rekursive Methode die den ggt von 2 natuerlichen Zahlen berechnet
+     * @return Eine natuerliche Zahl die den GGT der beiden uebergebenen Zahlen zurueck gibt
      */
     public static double ggt(int x, int y) {
-        //Wenn x null ist dann ist Y der größte gemeinsame teiler
-        //Es wird verglichen welcher der werte größer ist danach dann wird der größere von dem kleineren abgezogen und-
-        //- er ruft sich selber wieder auf
-        //Solange bis einer der werte 0 ist
+        // 1) Wenn x = null: y ist der größte gemeinsame teiler
+        // 2) Vergleich welcher der Werte größer ist, der groessere -
+        //    von dem kleineren abgezogen und er ruft sich selber wieder -
+        //    auf bis einer der werte 0 ist
         if (x==0){
             return y;
         } else if (y!=0){
