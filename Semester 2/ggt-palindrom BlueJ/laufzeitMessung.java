@@ -11,11 +11,8 @@ public class laufzeitMessung {
 
 
         BufferedReader var1 = new BufferedReader(new FileReader(fileName));
-<<<<<<< HEAD
-        PrintWriter writer = new PrintWriter("messung.csv");
-=======
-        PrintWriter writer = new PrintWriter("Semester 2/ggt-palindrom BlueJ/messung.csv");
->>>>>>> df5ed6030df86b69c30dbd65d6e2e4a8afb7b972
+        //PrintWriter writer = new PrintWriter("messung.csv");
+
         writer.println("The first line");
         writer.println("The second line");
         int var2 = 0;
