@@ -7,16 +7,11 @@ public class laufzeitMessung {
         Palindrom palindromRe = new PalindromRekursiv();
         Palindrom palindromIt = new PalindromIterativ();
 
-
         BufferedReader var1 = new BufferedReader(new FileReader(fileName));
-<<<<<<< HEAD
-        //PrintWriter writer = new PrintWriter("messung.csv");
-
-        writer.println("The first line");
-        writer.println("The second line");
-=======
-        FileWriter writer = new FileWriter("Semester 2/ggt-palindrom BlueJ/messung.csv", true);
->>>>>>> fa4dc0d41b40d8ce58c756149fee3b997207ea5a
+        
+        FileWriter writer = new FileWriter("messung.csv", true);
+        writer.write("Rekursiv(Versuch), Rekursiv(Zeit), Iterariv(Versuch), Iterativ (Zeit)");
+        
         int var2 = 0;
         long sysTimeCur;
         long sysTimeAfter;
@@ -30,12 +25,12 @@ public class laufzeitMessung {
                     sysTimeCur = System.nanoTime();
                     System.out.println(palindromRe.istPalindrom(var4) + " " + var4);
                     sysTimeAfter = System.nanoTime();
-                    writer.write("\nRE," + var4.length() + "," + (sysTimeAfter - sysTimeCur));
+                    //writer.write("\n" + var4.length() + "," + (sysTimeAfter - sysTimeCur));
 
                     sysTimeCur = System.nanoTime();
                     System.out.println(palindromIt.istPalindrom(var4) + ": " + var4);
                     sysTimeAfter = System.nanoTime();
-                    writer.write("\nIT,"  + var4.length() + "," + (sysTimeAfter - sysTimeCur));
+                    writer.write("\n"  + var4.length() + "," + (sysTimeAfter - sysTimeCur) + var4.length() + "," + (sysTimeAfter - sysTimeCur));
 
             } else {
                 var3 = false;
@@ -48,6 +43,6 @@ public class laufzeitMessung {
     public static void main(String[] args) throws IOException {
         laufzeitMessung messung1 = new laufzeitMessung();
 
-        messung1.messung("Semester 2/ggt-palindrom BlueJ/palin2.txt");
+        messung1.messung("palin2.txt");
     }
 }
