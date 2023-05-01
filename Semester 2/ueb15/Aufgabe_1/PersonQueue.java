@@ -111,26 +111,70 @@ public class PersonQueue implements Queue {
         return queue.length;
     }
 
-    public Person getAllIter(){
-     PersonIterator iter = new Iterator();
-     while (iter.hasNext()) {
-         return iter.next();
+    /**
+     * A Method to Print all Objects in Queue with the Iterator
+     */
+    public void print(){
+     PersonIterator iter = new Iterator(); // Initialise the Iterator
+     Person person; // Initialise the Person object variable
+     //Iterate throw the queue and Prints the first and the last name
+     while (iter.hasNext()){
+         person = iter.next();
+         System.out.println(person.getVorname() + " " + person.getNachname());
      }
-     return iter.next();
     }
 
-    public class Iterator implements PersonIterator{
-        private int index = 0;
+    /**
+     * A Method to return the Lexical smallest name in queue with the Iterator
+     * @return a sting value with the Lexical smallest name in queue
+     */
+    public String smallest(){
+        PersonIterator iter = new Iterator(); // Initialise the Iterator
+        String personName; // Initialise the Person firstname variable
+        String smallestName = iter.getFirst().getVorname(); // Initialise the Person firstname variable with the first Person in queue
+        //Iterate throw the queue and Compare with the compare to method the current fist name and the currently smallest name
+        while (iter.hasNext()){
+            personName = iter.next().getVorname();
+            if (personName.compareTo(smallestName) < 0) {
+                smallestName = personName;
+            }
+        }
+        return smallestName;
+    }
 
+    /**
+     * Iterator Class to iterate Objekts with the type Person
+     */
+    public class Iterator implements PersonIterator{
+        private int index = 0; // Initialising the Index variable
+
+        /**
+         *  This method Check if an next object exist in queue
+         * @return a bool that shows if an next person is in queue
+         */
+        @Override
         public boolean hasNext() {
             return index < peopleInQueue;
         }
 
+        /**
+         * A method for returning the next "person" in queue and iterate the index
+         * @return the next "Person" in queue
+         */
+        @Override
         public Person next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
                 return get(index++);
+        }
+
+        /**
+         * a method to return the First Person in queue
+         * @return the first person in queue
+         */
+        public Person getFirst(){
+            return get(0);
         }
     }
 }
