@@ -33,8 +33,9 @@ public class Test {
         queue.addLast(zwei);
         queue.addLast(drei);
 
-        queue.getAllIter();
-        
+        queue.print();
+        System.out.println(queue.smallest());
+
         /*System.out.println("\nQueue: ");
         for(int i = 0; i < queue.size(); i++) {
             Person person = (Person)(queue.get(i));

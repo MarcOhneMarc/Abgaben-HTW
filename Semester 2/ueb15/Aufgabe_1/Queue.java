@@ -9,5 +9,6 @@ public interface Queue {
     public boolean empty(); //Testen, ob die Queue leer ist
     public boolean full(); // Testen, ob noch Elemente einfuegbar sind
     public int size(); //Anzahl eingefuegter Elemente
-    public Object getAllIter();
+    public void print();
+    public String smallest();
 }
