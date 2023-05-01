@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Person
+comment0.text=\r\n\ Class\ to\ create\ a\ person\r\n
+comment1.params=firstname\ lastname
+comment1.target=Person(java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ to\ create\ a\ person\r\n
+comment2.params=person
+comment2.target=void\ setNext(Person)
+comment3.params=
+comment3.target=Person\ getNext()
+comment4.params=
+comment4.target=java.lang.String\ getVorname()
+comment4.text=\r\n\ get-Method\ to\ get\ the\ firstname\r\n
+comment5.params=
+comment5.target=java.lang.String\ getNachname()
+comment5.text=\r\n\ get-Method\ to\ get\ the\ lastname\r\n
+numComments=6
