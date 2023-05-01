@@ -1,19 +1,23 @@
 import java.util.Random;
 
 /**
- * NumberCruncherTopLevel
+ * NumberCruncherTopLevel besitzt ein float-Array, welches über den Konstruktor 
+ * uebergeben wird.Auf das Float array werden mit der Methode crunch verschiedene
+ * Operationen angewandt.
  * 
  * @jonas_neu_&_marc_perwak
  * @25.04.2023
  */
 public class NumberCruncherTopLevel {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
+    // Instanzvariablen
     private float[] numbers;
     
     private final static String INVALID_OPERATION = "Invalid operation";
 
     /**
      * Konstruktor für Objekte der Klasse NumberCruncherAnonym
+     * 
+     * @param numbers Das Array mit den Float werten
      */
     public NumberCruncherTopLevel(float[] numbers){
         // Instanzvariable initialisieren
@@ -27,6 +31,9 @@ public class NumberCruncherTopLevel {
      * @param operations Die auszufuehrenden Operationen
      */
     public void crunch(String[] operations) {
+        for (String operation: operations) {
+            System.out.println("2"+operation);
+        }
         for (String op : operations) {
             CrunchOperation operation;
             switch(op) {
@@ -64,14 +71,15 @@ public class NumberCruncherTopLevel {
     }
     
     /**
-     * Tragen Sie hier eine Beschreibung des Interface CrunchOperation ein.
-     * 
-     * @author (Ihr Name) 
-     * @version (eine Versionsnummer oder ein Datum)
+     * Das Interface CrunchOperation wird von den verschiedenen
+     * Crunch Operationen imlementiert um diese in der Methode Crunch einfacher
+     * aufzurufen
      */
-    
     public interface CrunchOperation
     {
+        /**
+         * Interface Methode crunch
+         */
         public void crunch(float[] numbers);
     }
     
@@ -106,78 +114,84 @@ public class NumberCruncherTopLevel {
     }
 
     /**
-     * Beschreiben Sie hier die Klasse DivideOperation.
-     * 
-     * @author (Ihr Name) 
-     * @version (eine Versionsnummer oder ein Datum)
+     * Teilt die n/2 größten Werte im Array durch die n/2 Kleinsten und speichert den
+     * neuen Wert im Datenfeld des jeweils größeren Wertes. D.h. der größte Wert wird 
+     * durch den Kleinsten geteilt. Der Zweitgrößte durch den Zweitkleinsten usw.
      */
     public class DivideOperation implements CrunchOperation {
         @Override
         public void crunch(float[] numbers) {
-            //float[] numbersSorted = bubbleSort(numbers);
-            /*for (int i = 0; i <=  numbers.length/2; i++) {
-                numbers[numbers.length-1-i] = numbers[numbers.length-1-i] / numbers[i];
-            }*/
-            
-             // setze max auf das erste Element im Array
-            
-            float preMin = numbers[numbers.length-1]; // setze min auf das erste Element im Array
-            float preMax = numbers[numbers.length-1]; // setze max auf das erste Element im Array
-            
-            for (int a = 0; a <= numbers.length/2; a++) {
-                float min = numbers[0]; // setze min auf das erste Element im Array
-                float max = numbers[0];
-                for (int i = 0; i < numbers.length; i++) {
-                    if (numbers[i] < min && numbers[i] > preMin) {
-                        min = numbers[i];
-                    }
-                    if (numbers[i] > max && numbers[i] < preMax) {
-                        max = numbers[i];
+            int n = numbers.length;
+            //erstellen eines Integer Arrays, welches sich die
+            //Positionen nach dem Sortieren mehrkt
+            float[] numberPositions = new float[n];
+            for(int i = 0; i < n; i++) {
+                numberPositions[i] = i;
+            }
+            //Sortieren des Float Arrays
+            float[][] merge = bubbleSort(numbers, numberPositions);
+            numbers = merge[0];
+            numberPositions = merge[1];
+            //Dividiervorgang
+            for (int i = 0; i <  n/2; i++) {
+            numbers[n-1-i] = numbers[n-1-i] / numbers[i];
+            }
+            //Ruecksortieren des Float Arrays
+            //(Werte an uhrspruengliche Position)
+            merge = bubbleSort(numberPositions, numbers);
+            numbers = merge[1];
+        }
+
+        /**
+         * Hilfsmethode zum Sortieren und ruecksortieren der Arrays unter
+         * Verwendung von Bubble Sort
+         * 
+         * @param toSort das zu sortierende Array
+         * @param sorted das bereits sortierte array, welches umgekehrt sortiert wird
+         */
+        public float[][] bubbleSort(float[] toSort, float[] sorted) {
+            int n = toSort.length;
+            float[][] merge = new float[2][n*2];
+            float temp1 = 0;
+            float temp2 = 0;
+            for(int i = 0; i < n; i++) {
+                for(int j = 1; j < (n-i); j++) {
+                    if(toSort[j-1] > toSort[j]) {
+                        //swap elements
+                        temp1 = toSort[j-1];  
+                        temp2 = sorted[j-1]; 
+                        
+                        toSort[j-1] = toSort[j];  
+                        sorted[j-1] = sorted[j];  
+                        
+                        toSort[j] = temp1;
+                        sorted[j] = temp2;
                     }
                 }
-                preMin = min;
-                preMax = max;
-                System.out.println("MIN: " + min);
-                System.out.println("max: " + max);
             }
-        }
-        
-        public void bubbleSort(float[] arr) {  
-            int n = arr.length;  
-            float temp = 0;  
-            for(int i=0; i < n; i++) {
-                for(int j=1; j < (n-i); j++) {  
-                    if(arr[j-1] > arr[j]) { 
-                        //swap elements  
-                        temp = arr[j-1];  
-                        arr[j-1] = arr[j];  
-                        arr[j] = temp;
-                    }
-                }  
-            }
+            merge[0] = toSort;
+            merge[1] = sorted;
+            return merge;
         }
     }
 
     /**
-     * Beschreiben Sie hier die Klasse SubtractOperation.
-     * 
-     * @author (Ihr Name) 
-     * @version (eine Versionsnummer oder ein Datum)
+     * Subtrahiert die Elemente des Arrays paarweise von links nach rechts und 
+     * speichert den neuen Wert in dem jeweils rechten Datenfeld. 
+     * D.h.: a[1] = a[0] - a[1]; a[2] = a[1] - a[2] usw.
      */
     public class SubtractOperation implements CrunchOperation {
         @Override
         public void crunch(float[] numbers) {
             for (int i = 1; i < numbers.length; i++) {
-                numbers[i] = numbers[i] + numbers[i-1];
+                numbers[i] = numbers[i] - numbers[i-1];
             }
         }
     }
     
     /**
-     * Beschreiben Sie hier die Klasse AverageOperation.
-     * 
-     * @author (Ihr Name) 
-     * @version (eine Versionsnummer oder ein Datum)
+     * Bestimmt den Durchschnitt aller Werte im Array und speichert 
+     * den Durchschnittswert im Datenfeld mit dem größten Wert.
      */
     public class AverageOperation implements CrunchOperation {
         @Override

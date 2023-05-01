@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=NumberCruncherTopLevel
-comment0.text=\r\n\ NumberCruncherTopLevel\r\n\ \r\n\ @jonas_neu_&_marc_perwak\r\n\ @25.04.2023\r\n
+comment0.text=\r\n\ NumberCruncherTopLevel\ besitzt\ ein\ float-Array,\ welches\ \u00FCber\ den\ Konstruktor\ \r\n\ uebergeben\ wird.Auf\ das\ Float\ array\ werden\ mit\ der\ Methode\ crunch\ verschiedene\r\n\ Operationen\ angewandt.\r\n\ \r\n\ @jonas_neu_&_marc_perwak\r\n\ @25.04.2023\r\n
 comment1.params=numbers
 comment1.target=NumberCruncherTopLevel(float[])
-comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ NumberCruncherAnonym\r\n
+comment1.text=\r\n\ Konstruktor\ f\u00FCr\ Objekte\ der\ Klasse\ NumberCruncherAnonym\r\n\ \r\n\ @param\ numbers\ Das\ Array\ mit\ den\ Float\ werten\r\n
 comment2.params=operations
 comment2.target=void\ crunch(java.lang.String[])
 comment2.text=\r\n\ Diese\ Methode\ gibt\ an,\ welche\ Operationen\ auf\ das\ float-Array\r\n\ angewendet\ werden\ m\u00FCssen.\r\n\ \r\n\ @param\ operations\ Die\ auszufuehrenden\ Operationen\r\n
