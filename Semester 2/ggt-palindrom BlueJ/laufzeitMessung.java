@@ -8,14 +8,13 @@ public class laufzeitMessung {
         Palindrom palindromIt = new PalindromIterativ();
 
         BufferedReader var1 = new BufferedReader(new FileReader(fileName));
-<<<<<<< HEAD
-        
+
+
         FileWriter writer = new FileWriter("messung.csv", true);
         writer.write("Rekursiv(Versuch), Rekursiv(Zeit), Iterariv(Versuch), Iterativ (Zeit)");
-        
-=======
+
         FileWriter writer = new FileWriter("Semester 2/ggt-palindrom BlueJ/messung.csv", true);
->>>>>>> 538565311ed74d7b338ebe60640310135534ca0a
+
         int var2 = 0;
         long sysTimeCur;
         long sysTimeAfter;
@@ -42,6 +41,7 @@ public class laufzeitMessung {
         } while(var3);
 
         var1.close();
+        writer.close();
     }
 
     public static void main(String[] args) throws IOException {
