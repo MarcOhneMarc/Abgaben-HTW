@@ -1,0 +1,48 @@
+
+/**
+ * Beschreiben Sie hier die Klasse Wasser.
+ * 
+ * @author (Ihr Name) 
+ * @version (eine Versionsnummer oder ein Datum)
+ */
+public class Bier extends AlkoholischesGetraenk {
+    public String brauerei;
+    
+    private static final String FALSCHE_DEKLERATION = "Geben sie eine gueltige Brauerei an!";
+    
+    public Bier(float alkoholgehalt, String brauerei) {
+        super(alkoholgehalt);
+        
+        if (brauerei.strip().isEmpty() || brauerei == null)
+            throw new IllegalArgumentException(FALSCHE_DEKLERATION);
+        /*if (brauerei == "Bitburger")
+            throw new IllegalArgumentException(FALSCHE_DEKLERATION);*/
+        this.brauerei = brauerei;
+    }
+    
+    /**
+     * Methode zur Rueckgabe der Brauerei eines Biers
+     * 
+     * @return brauerei Die Rueckgabe der Brauerei als String
+     */
+    public String getBrauerei() {
+        return brauerei;
+    }
+    
+    /**
+     * Methode zum ueberschreiben der Brauerei eines Biers
+     * 
+     * @param brauerei Die Uebergabe der Brauerei als String
+     */
+    public void setBrauerei(String brauerei) {
+        this.brauerei = brauerei;
+    }
+    
+    /**
+     * Methode zum ausgeben eines Hopfenfeingetraenks
+     */
+    public String toString() {
+        String rueckgabe = super.toString() + " Quelle: " + brauerei;
+        return rueckgabe;
+    }
+}
