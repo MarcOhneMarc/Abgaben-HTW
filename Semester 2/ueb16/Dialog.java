@@ -131,12 +131,16 @@ public class Dialog {
         if(capacity <= 0)
             throw new IllegalArgumentException(Capacity_ungueltig);
 
-        Getraenkeautomat getraenkeautomat = new Getraenkeautomat(capacity);
+        this.getraenkeautomat = new Getraenkeautomat(capacity);
         this.automatType = type;
     }
 
     private void deleteAutomat() {
-        
+        if(this.getraenkeautomat == null)
+            throw new IllegalArgumentException(KEIN_AUTOMAT_ERSTELLT);
+        System.out.println("Der automat wir entfernt");
+        this.getraenkeautomat = null;
+        System.out.println("Erfolgreich entfernt");
     }
     
     private void fillAutomat() throws FalscheDeklerationException, LagerVollException {

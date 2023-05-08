@@ -1,14 +1,19 @@
 #BlueJ class context
 comment0.target=Getraenkeautomat
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Flasche.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Generische\ Klasse,\ welche\ einen\ Getraenkeautomaten\ implementiert,\ der\ mit\ Flaschen\ gefuellt\ werden\ kann.\r\n\ \r\n\ @Jonas_Neu_&_Marc_Perwak\r\n
 comment1.params=kapazitaet
 comment1.target=Getraenkeautomat(int)
+comment1.text=\r\n\ Konstruktor\ zum\ erstellen\ eines\ Getraenkeautomaten,\ welcher\ Flaschen\r\n\ abspeichern\ kann.\r\n\ \r\n\ @param\ kapazitaet\ die\ Kapazitaet\ des\ Automaten\r\n
 comment2.params=flasche
 comment2.target=void\ flascheEinlegen(Flasche)
+comment2.text=\r\n\ Methode\ um\ eine\ Flasche\ in\ den\ Automaten\ zu\ fuellen\r\n\ \r\n\ @param\ flasche\ Die\ Flasche,\ die\ in\ den\ Automaten\ soll\r\n
 comment3.params=
 comment3.target=int\ getKapazitaet()
+comment3.text=\r\n\ Get\ Methode\ um\ die\ Kapazitaet\ eines\ Automaten\ zu\ bekommen\r\n\ \r\n\ @return\ kapazitaet\ Die\ Bleibende\ Kapazitaet\r\n
 comment4.params=
 comment4.target=Flasche\ flascheAusgeben()
+comment4.text=\r\n\ Methode\ um\ die\ erste\ Flasche\ aus\ dem\ Automaten\ zu\ entnehmen\r\n\ \r\n\ @return\ T\ Die\ Flasche,\ die\ entnommen\ werden\ soll\r\n
 comment5.params=
 comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ Diese\ Methode\ gibt\ einen\ Automaten\ mit\ Inhalt\ als\ String\ zurueck\r\n
 numComments=6
