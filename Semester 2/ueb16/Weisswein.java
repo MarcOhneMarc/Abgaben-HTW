@@ -14,7 +14,7 @@ public class Weisswein extends Wein {
      * Methode zum ausgeben eines Rotweins
      */
     public String toString() {
-        String rueckgabe = super.toString() + " Weingut des Weissweins: " + weingut;
+        String rueckgabe = "(Weiss)" + super.toString();
         return rueckgabe;
     }
 }
