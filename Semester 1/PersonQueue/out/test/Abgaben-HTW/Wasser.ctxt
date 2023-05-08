@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Wasser
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Wasser.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=hersteller\ quelle
+comment1.target=Wasser(java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getQuelle()
+comment2.text=\r\n\ Methode\ zur\ Rueckgabe\ der\ Quelle\ eines\ Wassers\r\n\ \r\n\ @return\ quelle\ Die\ Rueckgabe\ der\ Quelle\ als\ String\r\n
+comment3.params=quelle
+comment3.target=void\ setQuelle(java.lang.String)
+comment3.text=\r\n\ Methode\ zum\ ueberschreiben\ der\ Quelle\ eines\ Wassers\r\n\ \r\n\ @param\ quelle\ Die\ Uebergabe\ der\ Quelle\ als\ String\r\n
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment4.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Wassers\r\n
+numComments=5
