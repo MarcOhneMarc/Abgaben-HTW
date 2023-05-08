@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Getraenkeautomat
-comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Flasche.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment0.text=\r\n\ Generische\ Klasse,\ welche\ einen\ Getraenkeautomaten\ implementiert,\ der\ mit\ Flaschen\ gefuellt\ werden\ kann.\r\n\ \r\n\ @Jonas_Neu_&_Marc_Perwak\r\n
 comment1.params=kapazitaet
 comment1.target=Getraenkeautomat(int)
 comment1.text=\r\n\ Konstruktor\ zum\ erstellen\ eines\ Getraenkeautomaten,\ welcher\ Flaschen\r\n\ abspeichern\ kann.\r\n\ \r\n\ @param\ kapazitaet\ die\ Kapazitaet\ des\ Automaten\r\n

@@ -1,9 +1,8 @@
 
 /**
- * Beschreiben Sie hier die Klasse Getraenk.
+ * Abstrakte Klasse Getraenk.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @Jonas_Neu_&_Marc_Perwak
  */
 public abstract class Getraenk {
 }

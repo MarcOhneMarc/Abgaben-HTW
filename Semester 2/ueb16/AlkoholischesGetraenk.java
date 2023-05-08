@@ -1,9 +1,8 @@
 
 /**
- * Beschreiben Sie hier die Klasse AlkoholfreiesGetraenk.
+ * Abstrakte Klasse AlkoholischesGetraenk, erbt von Getraenk.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @Jonas_Neu_&_Marc_Perwak
  */
 public abstract class AlkoholischesGetraenk extends Getraenk {
     public float alkoholgehalt;

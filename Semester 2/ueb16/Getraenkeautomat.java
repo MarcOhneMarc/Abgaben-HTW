@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 /**
- * Beschreiben Sie hier die Klasse Flasche.
+ * Generische Klasse, welche einen Getraenkeautomaten implementiert, der mit Flaschen gefuellt werden kann.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @Jonas_Neu_&_Marc_Perwak
  */
 public class Getraenkeautomat <T extends Flasche>{
     private ArrayList<T> flaschenlager;
@@ -53,7 +52,9 @@ public class Getraenkeautomat <T extends Flasche>{
         if (flaschenlager.isEmpty()) {
             return null;
         }
-        return flaschenlager.remove(0);
+        T ausgabe = flaschenlager.get(0);
+        flaschenlager.remove(0);
+        return ausgabe;
     }
     
    /**
