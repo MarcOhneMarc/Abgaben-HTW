@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Flasche
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Flasche.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=object
+comment1.target=void\ fuellen(Getraenk)
+comment2.params=object
+comment2.target=void\ leeren(Getraenk)
+comment3.params=
+comment3.target=Getraenk\ getInhalt()
+numComments=4

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Softdrink
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Wasser.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=hersteller\ zuckergehalt
+comment1.target=Softdrink(java.lang.String,\ float)
+comment2.params=
+comment2.target=float\ getZuckergehalt()
+comment2.text=\r\n\ Methode\ zur\ Rueckgabe\ des\ Zuckergehalts\ eines\ Softdrinks\r\n\ \r\n\ @return\ zuckergehalt\ Die\ Rueckgabe\ des\ Zuckergehalts\ als\ String\r\n
+comment3.params=zuckergehalt
+comment3.target=void\ getZuckergehalt(float)
+comment3.text=\r\n\ Methode\ zum\ ueberschreiben\ des\ Zuckergehalts\ eines\ Softdrinks\r\n\ \r\n\ @param\ zuckergehalt\ Die\ Uebergabe\ des\ Zuckergehalts\ als\ String\r\n
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment4.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Softdrinks\r\n
+numComments=5
