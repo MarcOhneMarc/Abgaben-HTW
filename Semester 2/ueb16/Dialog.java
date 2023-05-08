@@ -17,6 +17,7 @@ public class Dialog {
     private Getraenkeautomat getraenkeautomat;
     private Flasche flasche;
     private int automatType;
+    private Flasche letzteFlasche;
     private static final int create_automat = 1;
     private static final int delete_automat = 2;
     private static final int fill_automat = 3;
@@ -121,7 +122,7 @@ public class Dialog {
         int capacity = input.nextInt();
         input.nextLine();
 
-        if(type < 1 || type > 8)
+        if(type < 1 || type > 9)
             throw new IllegalArgumentException(type_nicht_null);
         if(capacity <= 0)
             throw new IllegalArgumentException(Capacity_ungueltig);
@@ -238,11 +239,14 @@ public class Dialog {
             throw new IllegalArgumentException(AUTOMAT_VOLL);
         System.out.println("\nDie Flasche wird entnommen...");
         Flasche flasche = getraenkeautomat.flascheAusgeben();
+        letzteFlasche = flasche;
         System.out.println(flasche + " wurde erfolgreich entnommen!");
     }
 
     private void drinkBottle() {
-
+        System.out.println("Die zuletzt entnommene Flasche wird getrunken");
+        letzteFlasche.leeren();
+        System.out.println("Erfolgreich getrunken");
     }
 
     private void printAutomat() {
