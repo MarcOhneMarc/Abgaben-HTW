@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Dialog {
     private Scanner input;
     private Getraenkeautomat getraenkeautomat;
+    
     private static final int create_automat = 1;
     private static final int delete_automat = 2;
     private static final int fill_automat = 3;
@@ -17,6 +18,7 @@ public class Dialog {
     private static final int drink_bottle = 5;
     private static final int print_automat = 6;
     private static final int ende = 0;
+    
     private static final String ARRAY_MIN_SIZE = "Das Array muss mindestens 2 Werte erhalten!";
     private static final String KEIN_CRUNCHER_INITIALISIERT = "Es wurde noch kein Cruncher Initialisiert!";
     private static final String INDEX_OUT_OF_BOUNCE = "Falscher Index!";
@@ -43,7 +45,6 @@ public class Dialog {
                 var5.printStackTrace(System.out);
             }
         } while(funktion != 0);
-
     }
 
     private void menu() {
@@ -94,18 +95,23 @@ public class Dialog {
         Getraenkeautomat<Flasche> getraenkeautomat = new Getraenkeautomat(10);
         System.out.println(getraenkeautomat);
     }
+    
     private void deleteAutomat() {
 
     }
+    
     private void fillAutomat() {
 
     }
+    
     private void delItemsAutomat() {
 
     }
+    
     private void drinkBottle() {
 
     }
+    
     private void printAutomat() {
 
     }

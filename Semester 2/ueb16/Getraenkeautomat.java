@@ -21,7 +21,7 @@ public class Getraenkeautomat <T extends Flasche>{
     
     public void flascheEinlegen(T flasche) throws LagerVollException {
         if (flaschenlager.size() >= kapazitaet)
-            throw new LagerVollException(); //LASSEN???????????????????
+            throw new LagerVollException();
         flaschenlager.add(flasche);
     }
     
@@ -29,7 +29,7 @@ public class Getraenkeautomat <T extends Flasche>{
         return kapazitaet;
     }
     
-        public T flascheAusgeben() {
+    public T flascheAusgeben() {
         if (flaschenlager.isEmpty()) {
             return null;
         }
