@@ -3,7 +3,9 @@
 // (powered by FernFlower decompiler)
 //
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Dialog {
     private Scanner input;
@@ -44,7 +46,6 @@ public class Dialog {
                 var5.printStackTrace(System.out);
             }
         } while(funktion != 0);
-
     }
 
     private void menu() {
@@ -114,7 +115,6 @@ public class Dialog {
         Getraenkeautomat getraenkeautomat = new Getraenkeautomat(capacity);
         this.automatType = type;
     }
-
     private void deleteAutomat() {
 
     }
