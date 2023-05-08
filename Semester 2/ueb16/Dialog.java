@@ -126,7 +126,7 @@ public class Dialog {
         int capacity = input.nextInt();
         input.nextLine();
 
-        if(type < 1 || type > 8)
+        if(type < 1 || type > 9)
             throw new IllegalArgumentException(type_nicht_null);
         if(capacity <= 0)
             throw new IllegalArgumentException(Capacity_ungueltig);
@@ -224,7 +224,7 @@ public class Dialog {
                         "\n[6] Wasser");
                 type = input.nextInt();
                 input.nextLine();
-                if(type < 1 || type > 4)
+                if(type < 1 || type > 6)
                     throw new IllegalArgumentException(type_ungueltig);
 
                 if(type == 1)
