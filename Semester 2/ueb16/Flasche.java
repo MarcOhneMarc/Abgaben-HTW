@@ -1,9 +1,8 @@
 
 /**
- * Beschreiben Sie hier die Klasse Flasche.
+ * Generische Klasse Flasche, welche Getraenke beinhalten kann.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @Jonas_Neu_&_Marc_Perwak
  */
 public class Flasche <T extends Getraenk>{
     private T inhalt;

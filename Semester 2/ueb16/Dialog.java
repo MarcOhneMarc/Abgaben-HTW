@@ -1,12 +1,12 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Dialog zum anlegen von Getraenkeautomaten. Diese beinhalten Flaschen, welche mit Getreanken gefuellt sind.
+ * 
+ * @Jonas_Neu_&_Marc_Perwak
+ */
 public class Dialog {
     private Scanner input;
     private Getraenkeautomat getraenkeautomat;
@@ -23,6 +23,9 @@ public class Dialog {
     private static final String type_ungueltig = "Der Type ist Ungueltig";
     private static final String Capacity_ungueltig = "Die Capazitaet muss hoher als 0 sein";
     private static final String INDEX_OUT_OF_BOUNCE = "Falscher Index!";
+    private static final String KEIN_AUTOMAT_ERSTELLT = "Es wurde noch kein Automat erstellt!";
+    private static final String AUTOMAT_VOLL = "Der Automat ist voll!";
+    private static final String FALSCHE_AUSWAHL = "Falsche Eingabe!";
 
     public Dialog() {
         this.input = new Scanner(System.in);
@@ -52,7 +55,7 @@ public class Dialog {
         System.out.println("\n[1] Automat erstellen" +
                 "\n[2] Automat entfernen" +
                 "\n[3] Automat mit Flaschen befüllen" +
-                "\n[4] Flaschen aus Automat entfernen" +
+                "\n[4] 'erste' Flasche aus Automat nehmen" +
                 "\n[5] Flasche Trinken" +
                 "\n[6] Automat Ausgeben" +
                 "\n[0] Zum beenden des Programms");
@@ -76,7 +79,11 @@ public class Dialog {
                 this.deleteAutomat();
                 break;
             case 3:
+                try {
                 this.fillAutomat();
+                } catch(FalscheDeklerationException e) {
+                } catch(LagerVollException e) {
+                }
                 break;
             case 4:
                 this.delItemsAutomat();
@@ -87,8 +94,9 @@ public class Dialog {
             case 6:
                 this.printAutomat();
                 break;
+            default:
+                throw new IllegalArgumentException(FALSCHE_AUSWAHL);
         }
-
     }
 
 
@@ -115,10 +123,12 @@ public class Dialog {
         Getraenkeautomat getraenkeautomat = new Getraenkeautomat(capacity);
         this.automatType = type;
     }
+    
     private void deleteAutomat() {
 
     }
-    private void fillAutomat() throws FalscheDeklerationException {
+    
+    private void fillAutomat() throws FalscheDeklerationException, LagerVollException {
         int type;
         System.out.println("Wiefiele Flaschen wollen sie einfuellen");
         int anzahl = input.nextInt();
@@ -142,7 +152,8 @@ public class Dialog {
                     float bierAlkoholgehalt = input.nextFloat();
                     for (int i = 0; i < anzahl; i++) {
                     Bier bier = new Bier(bierAlkoholgehalt, brauerei);
-                    Flasche<Bier> bierFlasche = new Flasche(bier);
+                    Flasche<Bier> bierFlasche = new Flasche();
+                    bierFlasche.fuellen(bier);
                     this.getraenkeautomat.flascheEinlegen(bierFlasche);
                 }
                 break;
@@ -195,17 +206,26 @@ public class Dialog {
                 break;
         }
     }
+    
     private void delItemsAutomat() {
-
+        if (getraenkeautomat == null) 
+            throw new IllegalArgumentException(KEIN_AUTOMAT_ERSTELLT);
+        if (getraenkeautomat.getKapazitaet() <= 0)
+            throw new IllegalArgumentException(AUTOMAT_VOLL);
+        System.out.println("\nDie Flasche wird entnommen...");
+        Flasche flasche = getraenkeautomat.flascheAusgeben();
+        System.out.println(flasche + " wurde erfolgreich entnommen!");
     }
+    
     private void drinkBottle() {
-
+        
     }
+    
     private void printAutomat() {
-
+        if (getraenkeautomat == null) 
+            throw new IllegalArgumentException(KEIN_AUTOMAT_ERSTELLT);
+        System.out.println(getraenkeautomat);
     }
-
-
 
     public static void main(String[] args) {
         (new Dialog()).start();

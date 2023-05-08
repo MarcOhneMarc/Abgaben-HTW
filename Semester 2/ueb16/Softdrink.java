@@ -1,9 +1,8 @@
 
 /**
- * Beschreiben Sie hier die Klasse Wasser.
+ * Abstrakte Klasse Softdrink, erbt von AlkoholfreiesGetraenk.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @Jonas_Neu_&_Marc_Perwak
  */
 public class Softdrink extends AlkoholfreiesGetraenk {
     public float zuckergehalt;

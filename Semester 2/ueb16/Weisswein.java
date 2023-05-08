@@ -1,9 +1,8 @@
 
 /**
- * Beschreiben Sie hier die Klasse Wasser.
+ * Klasse Weisswein, erbt von Wein
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @Jonas_Neu_&_Marc_Perwak
  */
 public class Weisswein extends Wein {
     

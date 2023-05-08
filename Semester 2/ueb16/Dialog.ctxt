@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Dialog
+comment0.text=\r\n\ Dialog\ zum\ anlegen\ von\ Getraenkeautomaten.\ Diese\ beinhalten\ Flaschen,\ welche\ mit\ Getreanken\ gefuellt\ sind.\r\n\ \r\n\ @Jonas_Neu_&_Marc_Perwak\r\n
 comment1.params=
 comment1.target=Dialog()
 comment10.params=

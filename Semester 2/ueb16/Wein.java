@@ -1,9 +1,8 @@
 
 /**
- * Beschreiben Sie hier die Klasse Wasser.
+ * Klasse Wein, erbt von AlkoholischesGetraenk.
  * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
+ * @Jonas_Neu_&_Marc_Perwak
  */
 public class Wein extends AlkoholischesGetraenk {
     public String weingut;
