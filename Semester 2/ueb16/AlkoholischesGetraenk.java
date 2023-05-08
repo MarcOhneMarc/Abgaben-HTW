@@ -10,9 +10,9 @@ public abstract class AlkoholischesGetraenk extends Getraenk {
     
     private static final String FALSCHE_DEKLERATION = "Geben sie einen gueltigen Alkoholgehalt an!";
     
-    public AlkoholischesGetraenk(float alkoholgehalt) {
+    public AlkoholischesGetraenk(float alkoholgehalt) throws FalscheDeklerationException {
         if (alkoholgehalt <= 0)
-            throw new IllegalArgumentException(FALSCHE_DEKLERATION);
+            throw new FalscheDeklerationException(FALSCHE_DEKLERATION);
         this.alkoholgehalt = alkoholgehalt;
     }
     

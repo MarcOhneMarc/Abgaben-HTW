@@ -10,11 +10,11 @@ public class Bier extends AlkoholischesGetraenk {
     
     private static final String FALSCHE_DEKLERATION = "Geben sie eine gueltige Brauerei an!";
     
-    public Bier(float alkoholgehalt, String brauerei) {
+    public Bier(float alkoholgehalt, String brauerei) throws FalscheDeklerationException{
         super(alkoholgehalt);
         
         if (brauerei.strip().isEmpty() || brauerei == null)
-            throw new IllegalArgumentException(FALSCHE_DEKLERATION);
+            throw new FalscheDeklerationException(FALSCHE_DEKLERATION);
         /*if (brauerei == "Bitburger")
             throw new IllegalArgumentException(FALSCHE_DEKLERATION);*/
         this.brauerei = brauerei;

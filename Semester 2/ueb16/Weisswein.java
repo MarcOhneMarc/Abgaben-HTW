@@ -7,7 +7,7 @@
  */
 public class Weisswein extends Wein {
     
-    public Weisswein(float alkoholgehalt, String weingut) {
+    public Weisswein(float alkoholgehalt, String weingut) throws FalscheDeklerationException {
         super(alkoholgehalt, weingut);
     }
     

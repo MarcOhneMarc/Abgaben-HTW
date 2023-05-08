@@ -10,11 +10,11 @@ public class Wasser extends AlkoholfreiesGetraenk {
     
     private static final String FALSCHE_DEKLERATION = "Geben sie eine gueltige Quelle an!";
     
-    public Wasser(String hersteller, String quelle) {
+    public Wasser(String hersteller, String quelle) throws FalscheDeklerationException {
         super(hersteller);
         
         if (quelle.strip().isEmpty() || quelle == null)
-            throw new IllegalArgumentException(FALSCHE_DEKLERATION);
+            throw new FalscheDeklerationException(FALSCHE_DEKLERATION);
         this.quelle = quelle;
     }
     

@@ -10,11 +10,11 @@ public class Softdrink extends AlkoholfreiesGetraenk {
     
     private static final String FALSCHE_DEKLERATION = "Geben sie eine gueltige Quelle an!";
     
-    public Softdrink(String hersteller, float zuckergehalt) {
+    public Softdrink(String hersteller, float zuckergehalt) throws FalscheDeklerationException {
         super(hersteller);
         
         if (zuckergehalt <= 0)
-            throw new IllegalArgumentException(FALSCHE_DEKLERATION);
+            throw new FalscheDeklerationException(FALSCHE_DEKLERATION);
         this.zuckergehalt = zuckergehalt;
     }
     
