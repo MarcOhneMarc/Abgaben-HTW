@@ -39,7 +39,7 @@ public class Softdrink extends AlkoholfreiesGetraenk {
      * Methode zum ausgeben eines Softdrinks
      */
     public String toString() {
-        String rueckgabe = super.toString() + " Zuckergehalt: " + zuckergehalt;
+        String rueckgabe = "Softdrink mit Zuckergehalt: " + zuckergehalt + super.toString();
         return rueckgabe;
     }
 }

@@ -41,7 +41,7 @@ public class Bier extends AlkoholischesGetraenk {
      * Methode zum ausgeben eines Hopfenfeingetraenks
      */
     public String toString() {
-        String rueckgabe = super.toString() + " Quelle: " + brauerei;
+        String rueckgabe = "Bier aus der Brauerei: " + brauerei + super.toString();
         return rueckgabe;
     }
 }

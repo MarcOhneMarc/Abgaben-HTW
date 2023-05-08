@@ -39,7 +39,7 @@ public class Wein extends AlkoholischesGetraenk {
      * Methode zum ausgeben eines Weins
      */
     public String toString() {
-        String rueckgabe = super.toString() + " Weingut des Weins: " + weingut;
+        String rueckgabe = "Wein vom Weingut: " + weingut + super.toString();
         return rueckgabe;
     }
 }

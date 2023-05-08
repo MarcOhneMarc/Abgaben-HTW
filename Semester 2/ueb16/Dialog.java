@@ -13,10 +13,12 @@ import java.util.Scanner;
  * @Jonas_Neu_&_Marc_Perwak
  */
 public class Dialog {
+
     private Scanner input;
     private Getraenkeautomat getraenkeautomat;
     private Flasche flasche;
     private int automatType;
+
     private Flasche letzteFlasche;
     private static final int create_automat = 1;
     private static final int delete_automat = 2;
@@ -25,6 +27,7 @@ public class Dialog {
     private static final int drink_bottle = 5;
     private static final int print_automat = 6;
     private static final int ende = 0;
+
     private static final String type_nicht_null = "Der Type darf nicht null sein";
     private static final String type_ungueltig = "Der Type ist Ungueltig";
     private static final String Capacity_ungueltig = "Die Capazitaet muss hoher als 0 sein";
@@ -60,7 +63,7 @@ public class Dialog {
     private void menu() {
         System.out.println("\n[1] Automat erstellen" +
                 "\n[2] Automat entfernen" +
-                "\n[3] Automat mit Flaschen befüllen" +
+                "\n[3] Automat mit Flaschen befuellen" +
                 "\n[4] 'erste' Flasche aus Automat nehmen" +
                 "\n[5] Flasche Trinken" +
                 "\n[6] Automat Ausgeben" +
@@ -74,40 +77,40 @@ public class Dialog {
     }
 
     private void ausfuehrenFunktion(int funktion) throws LagerVollException, FalscheDeklerationException {
-        switch (funktion) {
-            case 0:
-                System.out.println("Programmende!");
-                break;
-            case 1:
-                this.createAutomat();
-                break;
-            case 2:
-                this.deleteAutomat();
-                break;
-            case 3:
-                try {
-                this.fillAutomat();
-                } catch(FalscheDeklerationException e) {
-                } catch(LagerVollException e) {
-                }
-                break;
-            case 4:
-                this.delItemsAutomat();
-                break;
-            case 5:
-                this.drinkBottle();
-                break;
-            case 6:
-                this.printAutomat();
-                break;
-            default:
-                throw new IllegalArgumentException(FALSCHE_AUSWAHL);
+        try {
+            switch (funktion) {
+                case 0:
+                    System.out.println("Programmende!");
+                    break;
+                case 1:
+                    this.createAutomat();
+                    break;
+                case 2:
+                    this.deleteAutomat();
+                    break;
+                case 3:
+                    this.fillAutomat();
+                    break;
+                case 4:
+                    this.delItemsAutomat();
+                    break;
+                case 5:
+                    this.drinkBottle();
+                    break;
+                case 6:
+                    this.printAutomat();
+                    break;
+                default:
+                    throw new IllegalArgumentException(FALSCHE_AUSWAHL);
+            }
+        } catch(FalscheDeklerationException e) {
+        } catch(LagerVollException e) {
         }
     }
 
 
     private void createAutomat() {
-        System.out.println("Geben sie an Welchen Typ getränke der Automat halten soll" +
+        System.out.println("Geben sie an Welchen Typ Getraenke der Automat halten soll" +
                 "\n[1] Alkoholische getraenke" +
                 "\n[2] Alkoholfreie getraenke" +
                 "\n[3] Bier" +
@@ -118,11 +121,11 @@ public class Dialog {
                 "\n[8] Wasser" +
                 "\n[9] Universeller Automat");
         int type = input.nextInt();
-        System.out.println("Geben sie bitte die Kapazität des automats an");
+        System.out.println("Geben sie bitte die Kapazitaet des Automats an");
         int capacity = input.nextInt();
         input.nextLine();
 
-        if(type < 1 || type > 9)
+        if(type < 1 || type > 8)
             throw new IllegalArgumentException(type_nicht_null);
         if(capacity <= 0)
             throw new IllegalArgumentException(Capacity_ungueltig);
@@ -136,7 +139,7 @@ public class Dialog {
     }
     private void fillAutomat() throws FalscheDeklerationException, LagerVollException {
         int type;
-        System.out.println("Wiefiele Flaschen wollen sie einfuellen");
+        System.out.println("Wie viele Flaschen wollen sie einfuellen");
         int anzahl = input.nextInt();
         input.nextLine();
         switch (automatType) {
@@ -204,7 +207,7 @@ public class Dialog {
                 makeWasser(anzahl);
                 break;
             case 9:
-                System.out.println("Welches getraenk moechten sie in den automaten legen" +
+                System.out.println("Welches getraenk moechten sie in den Automaten legen" +
                         "\n[1] Bier" +
                         "\n[2] Wein" +
                         "\n[3] Rotwein" +

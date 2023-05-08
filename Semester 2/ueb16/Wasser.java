@@ -39,7 +39,7 @@ public class Wasser extends AlkoholfreiesGetraenk {
      * Methode zum ausgeben eines Wassers
      */
     public String toString() {
-        String rueckgabe = super.toString() + " Quelle: " + quelle;
+        String rueckgabe = "Wasser aus der Quelle: " + quelle + super.toString();
         return rueckgabe;
     }
 }
