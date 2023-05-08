@@ -10,17 +10,13 @@ public class QueueDialog {
     private Scanner input;
 
     //initialize attributes for menu choi
-    private static final int create_queue = 1;
-    private static final int add_last = 2;
-    private static final int remove_first = 3;
-    private static final int get = 4;
-    private static final int empty = 5;
-    private static final int full = 6;
-    private static final int size = 7;
-    private static final int print = 8;
-    private static final int smallest = 9;
-    private static final int end = 0;
-    
+    private static final int create_automat = 1;
+    private static final int delete_automat = 2;
+    private static final int fill_automat = 3;
+    private static final int del_items_automat = 4;
+    private static final int drink_bottle = 5;
+    private static final int print_automat = 6;
+
     //Constants for error messages
     private static final String QUEUE_DOES_NOT_EXSIST = "No queue has been created!";
     private static final String WRONG_INPUT = "Wrong input!";
@@ -57,17 +53,13 @@ public class QueueDialog {
      * Text of the Main Menu
      */
     private void menu() {
-        System.out.println("\n[1] create the queue.");
-        System.out.println("[2] add an obj to the end of the queue.");
-        System.out.println("[3] remove the first obj of the queue.");
-        System.out.println("[4] get an obj of the queue.");
-        System.out.println("[5] check if the queue is empty.");
-        System.out.println("[6] check if the queue is full.");
-        System.out.println("[7] get the size of the queue.");
-        System.out.println("[8] print queue.");
-        System.out.println("[9] Get the Lexicalic Smallest name in queue");
-        System.out.println("[0] end program.");
-    }
+        System.out.println("\n[1] Automat erstellen" +
+                "\n[2] Automat entfernen" +
+                "\n[3] Automat mit Flaschen befüllen" +
+                "\n[4] Flaschen aus Automat entfernen" +
+                "\n[5] Flasche Trinken" +
+                "\n[6] Automat Ausgeben" +
+                "\n[0] Zum beenden des Programms");
 
     /**
      * Read in which function should be executed
@@ -87,24 +79,10 @@ public class QueueDialog {
      */
     private void executeFunction(int function) {
         switch (function) {
-            case create_queue: queue = createQueue();
+            case create_queue: createAutomat();
             break;
-            case add_last: addLast();
-            break;
-            case remove_first: removeFirst();
-            break;
-            case get: get();
-            break;
-            case empty: empty();
-            break;
-            case full: full();
-            break;
-            case size: size();
-            break;
-            case print: print();
-            break;
-            case smallest: smallest();
-            break;
+            case delete_automat:
+                break;
             case end: System.out.println("Programm closed.");
         }
     }
@@ -114,7 +92,7 @@ public class QueueDialog {
     *
     * @return arraylaenge gibt an wie viele speicherplaetze im Array vergeben werden
     */
-    private Queue createQueue() {
+    private Automat createAutomat() {
         if (queue != null) {
             throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
         } else {
@@ -124,135 +102,18 @@ public class QueueDialog {
             return new PersonQueue(length);
         }
     }
-    
-    /**
-     * Adds a object to the end of the queue
-     */
-    private void addLast() {
-        if (queue == null) {
+    private Automat createAutomat() {
+        if (queue != null) {
             throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
         } else {
-            if(queue instanceof PersonQueue) {
-                System.out.println("Type in the lastname of the Person you want to add to the queue:\n");
-                String lastname = input.nextLine();
-                System.out.println("Type in the firstname of the Person you want to add to the queue:\n");
-                String firstname = input.nextLine();
-                Person person = new Person(firstname, lastname);
-                queue.addLast(person);
-            }
+            System.out.print("Type in how long the Queue should be:\n");
+            int length = input.nextInt();
+            input.nextLine();
+            return new PersonQueue(length);
         }
     }
-    
-    /**
-     * Deletes the first object in Queue
-     */
-    private void removeFirst() {
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            if(queue instanceof PersonQueue) {
-                queue.removeFirst();
-            }
-        }
     }
 
-    /**
-     * Get the object in queue on position 'i'
-     */
-    private void get() {
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            System.out.println("Type in the place in the queue you want to get: ");
-            int i = input.nextInt();
-            System.out.println(queue.get(i));
-        }
-    }
-    
-    /**
-     * Tests if queue is empty
-     */
-    private void empty(){
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            if (queue.empty() == true) {
-                System.out.println("Queue is empty");
-            } else {
-                System.out.println("Queue is not empty");
-            }
-        }
-    }
-    
-    /**
-     * Tests if queue is full
-     */
-    private void full(){
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            if (queue.full() == true) {
-                System.out.println("Queue is full");
-            } else {
-                System.out.println("Queue is not full");
-            }
-        }
-    }
-
-    /**
-     * Return of queue size
-     */
-    private void size(){
-        if (queue == null) {
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        } else {
-            System.out.println("The size of the Queue is: " + queue.size());
-        }
-    }
-    
-    /**
-     * Print the queue
-     */
-    private void print() {
-        if (queue == null)
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        queue.print();
-    }
-    /**
-     * Prints the name of the Lexical smallest name
-     */
-    private void smallest() {
-        if (queue == null)
-            throw new IllegalArgumentException(QUEUE_DOES_NOT_EXSIST);
-        System.out.println(queue.smallest());
-    }
-    /**
-     * external print for PersonQueue
-     */
-    private void printPerson() {
-        for(int i = 0; i < queue.size(); i++) {
-            Person person = (Person)(queue.get(i));
-            if(person != null) {
-                System.out.println("Firstname: "+person.getVorname() + " Lastname: " + person.getNachname());
-            } else {
-                System.out.println("empty");
-            }
-        }
-    }
-    /**
-     * external print for StringQueue
-     */
-    private void printString() {
-        for(int i = 0; i < queue.size(); i++) {
-            String string = (String)(queue.get(i));
-            if(string != null) {
-                System.out.println("String: "+string);
-            } else {
-                System.out.println("empty");
-            }
-        }
-    }
-    
     public static void main(String[] args) {
         new QueueDialog().start();
     }

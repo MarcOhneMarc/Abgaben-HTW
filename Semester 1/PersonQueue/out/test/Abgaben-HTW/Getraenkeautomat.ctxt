@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Getraenkeautomat
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Flasche.\r\n\ \r\n\ @author\ (Ihr\ Name)\ \r\n\ @version\ (eine\ Versionsnummer\ oder\ ein\ Datum)\r\n
+comment1.params=kapazitaet
+comment1.target=Getraenkeautomat(int)
+comment2.params=flasche
+comment2.target=void\ flascheEinlegen(Flasche)
+comment3.params=
+comment3.target=int\ getKapazitaet()
+comment4.params=
+comment4.target=Flasche\ flascheAusgeben()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

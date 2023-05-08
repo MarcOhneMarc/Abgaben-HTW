@@ -10,11 +10,11 @@ public class Wein extends AlkoholischesGetraenk {
     
     private static final String FALSCHE_DEKLERATION = "Geben sie eine gueltiges Weingut an!";
     
-    public Wein(float alkoholgehalt, String weingut) {
+    public Wein(float alkoholgehalt, String weingut) throws FalscheDeklerationException {
         super(alkoholgehalt);
         
         if (weingut.strip().isEmpty() || weingut == null)
-            throw new IllegalArgumentException(FALSCHE_DEKLERATION);
+            throw new FalscheDeklerationException(FALSCHE_DEKLERATION);
         this.weingut = weingut;
     }
     

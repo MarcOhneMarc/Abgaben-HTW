@@ -10,9 +10,9 @@ public abstract class AlkoholfreiesGetraenk extends Getraenk {
     
     private static final String FALSCHE_DEKLERATION = "Geben sie einen gueltigen Hersteller an!";
     
-    public AlkoholfreiesGetraenk(String hersteller) {
+    public AlkoholfreiesGetraenk(String hersteller) throws FalscheDeklerationException {
         if (hersteller.strip().isEmpty() || hersteller == null)
-            throw new IllegalArgumentException(FALSCHE_DEKLERATION);
+            throw new FalscheDeklerationException(FALSCHE_DEKLERATION);
         this.hersteller = hersteller;
     }
     
