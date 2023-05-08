@@ -34,11 +34,10 @@ public class Flasche <T extends Getraenk>{
         return inhalt;
     }
     
-<<<<<<< HEAD
-=======
+    /**
+     * Diese Methode gibt eine Flasche mit Inhalt als String zurueck
+     */
     public String toString() {
         return "Flasche mit Inhalt: " + inhalt;
     }
-    
->>>>>>> d37136328e1f405931d44e415ab0fb0abf8ae5cd
 }

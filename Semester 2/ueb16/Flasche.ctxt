@@ -9,11 +9,8 @@ comment2.target=void\ leeren()
 comment2.text=\r\n\ Diese\ Methode\ leert\ eine\ Flassche\r\n\ \r\n\ @param\ object\ Ein\ Objekt\ aus\ dem\ Erbbaum\ Getraenk\r\n
 comment3.params=
 comment3.target=Getraenk\ getInhalt()
-<<<<<<< HEAD
 comment3.text=\r\n\ Diese\ Methode\ gibt\ den\ Inhalt\ einer\ Flasche\ zurueck.\r\n
-numComments=4
-=======
 comment4.params=
 comment4.target=java.lang.String\ toString()
+comment4.text=\r\n\ Diese\ Methode\ gibt\ eine\ Flasche\ mit\ Inhalt\ als\ String\ zurueck\r\n
 numComments=5
->>>>>>> d37136328e1f405931d44e415ab0fb0abf8ae5cd
