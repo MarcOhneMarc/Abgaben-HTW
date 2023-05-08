@@ -104,6 +104,7 @@ public class Dialog {
         }
     }
 
+
     private void createAutomat() {
         System.out.println("Geben sie an Welchen Typ getränke der Automat halten soll" +
                 "\n[1] Alkoholische getraenke" +
@@ -126,7 +127,6 @@ public class Dialog {
             throw new IllegalArgumentException(Capacity_ungueltig);
 
         Getraenkeautomat getraenkeautomat = new Getraenkeautomat(capacity);
-        this.getraenkeautomat = getraenkeautomat;
         this.automatType = type;
     }
 
@@ -150,52 +150,14 @@ public class Dialog {
                 if(type < 1 || type > 4)
                     throw new IllegalArgumentException(type_ungueltig);
 
-                if (type == 1){
-                    System.out.print("Brauerei: ");
-                    String brauerei = input.next();
-                    System.out.print("Alkoholgehalt: ");
-                    float bierAlkoholgehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Bier bier = new Bier(bierAlkoholgehalt, brauerei);
-                        Flasche<Bier> flasche = new Flasche();
-                        flasche.fuellen(bier);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                } else if(type == 2){
-                    System.out.print("Weingut: ");
-                    String weingut = input.next();
-                    System.out.print("Alkoholgehalt: ");
-                    float weinAlkoholgehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Wein wein = new Wein(weinAlkoholgehalt, weingut);
-                        Flasche<Wein> flasche = new Flasche();
-                        flasche.fuellen(wein);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                } else if(type == 3){
-                    System.out.print("Weingut: ");
-                    String weingut = input.next();
-                    System.out.print("Alkoholgehalt: ");
-                    float weinAlkoholgehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Rotwein rotwein = new Rotwein(weinAlkoholgehalt, weingut);
-                        Flasche<Wein> flasche = new Flasche();
-                        flasche.fuellen(rotwein);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                } else if(type == 4){
-                    System.out.print("Weingut: ");
-                    String weingut = input.next();
-                    System.out.print("Alkoholgehalt: ");
-                    float weinAlkoholgehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Weisswein weiswein = new Weisswein(weinAlkoholgehalt, weingut);
-                        Flasche<Weisswein> flasche = new Flasche();
-                        flasche.fuellen(weiswein);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                }
-
+                if (type == 1)
+                    makeBier(anzahl);
+                else if(type == 2)
+                   makeWein(anzahl);
+                else if(type == 3)
+                    makeRotwein(anzahl);
+                else if(type == 4)
+                    makeWeiswein(anzahl);
                 break;
             case 2:
                 System.out.println("\n[1] Wasser" +
@@ -205,41 +167,13 @@ public class Dialog {
                 if(type < 1 || type > 2)
                     throw new IllegalArgumentException(type_ungueltig);
 
-                if (type == 1){
-                    System.out.print("Hersteller: ");
-                    String hersteller = input.next();
-                    System.out.print("Quelle: ");
-                    String quelle = input.next();
-                    for (int i = 0; i < anzahl; i++) {
-                        Wasser wasser = new Wasser(hersteller, quelle);
-                        Flasche<Wasser> flasche = new Flasche();
-                        flasche.fuellen(wasser);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                } else if(type == 2){
-                    System.out.print("Hersteller: ");
-                    String hersteller = input.next();
-                    System.out.print("Zuckergehalt: ");
-                    float zuckergehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Softdrink softdrink = new Softdrink(hersteller,zuckergehalt);
-                        Flasche<Softdrink> flasche = new Flasche();
-                        flasche.fuellen(softdrink);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                }
+                if (type == 1)
+                    makeWasser(anzahl);
+                else if(type == 2)
+                    makeSoftdrinks(anzahl);
                 break;
             case 3:
-                System.out.print("Brauerei: ");
-                String brauerei = input.next();
-                System.out.print("Alkoholgehalt: ");
-                float bierAlkoholgehalt = input.nextFloat();
-                for (int i = 0; i < anzahl; i++) {
-                    Bier bier = new Bier(bierAlkoholgehalt, brauerei);
-                    Flasche<Bier> flasche = new Flasche();
-                    flasche.fuellen(bier);
-                    this.getraenkeautomat.flascheEinlegen(flasche);
-                }
+                makeBier(anzahl);
                 break;
             case 4:
                 System.out.println("\n[1] Wein" +
@@ -249,103 +183,24 @@ public class Dialog {
                 if(type < 1 || type > 3)
                     throw new IllegalArgumentException(type_ungueltig);
 
-                if(type == 1){
-                    System.out.print("Weingut: ");
-                    String weingut = input.next();
-                    System.out.print("Alkoholgehalt: ");
-                    float weinAlkoholgehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Wein wein = new Wein(weinAlkoholgehalt, weingut);
-                        Flasche<Wein> flasche = new Flasche();
-                        flasche.fuellen(wein);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                } else if(type == 2){
-                    System.out.print("Weingut: ");
-                    String weingut = input.next();
-                    System.out.print("Alkoholgehalt: ");
-                    float weinAlkoholgehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Rotwein rotwein = new Rotwein(weinAlkoholgehalt, weingut);
-                        Flasche<Rotwein> flasche = new Flasche();
-                        flasche.fuellen(rotwein);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                } else if(type == 3){
-                    System.out.print("Weingut: ");
-                    String weingut = input.next();
-                    System.out.print("Alkoholgehalt: ");
-                    float weinAlkoholgehalt = input.nextFloat();
-                    for (int i = 0; i < anzahl; i++) {
-                        Weisswein weiswein = new Weisswein(weinAlkoholgehalt, weingut);
-                        Flasche<Weisswein> flasche = new Flasche();
-                        flasche.fuellen(weiswein);
-                        this.getraenkeautomat.flascheEinlegen(flasche);
-                    }
-                }
+                if(type == 1)
+                    makeWein(anzahl);
+                else if(type == 2)
+                    makeRotwein(anzahl);
+                else if(type == 3)
+                   makeWeiswein(anzahl);
                 break;
             case 5:
-                System.out.print("Weingut: ");
-                String weingut = input.next();
-                System.out.print("Alkoholgehalt: ");
-                float weinAlkoholgehalt = input.nextFloat();
-                for (int i = 0; i < anzahl; i++) {
-                    Rotwein rotwein = new Rotwein(weinAlkoholgehalt, weingut);
-                    Flasche<Rotwein> flasche = new Flasche();
-                    flasche.fuellen(rotwein);
-                    this.getraenkeautomat.flascheEinlegen(flasche);
-                }
+                makeRotwein(anzahl);
                 break;
             case 6:
-                System.out.println("\n[1] Weiswein");
-                type = input.nextInt();
-                if(type != 1)
-                    throw new IllegalArgumentException(type_ungueltig);
-
-                System.out.print("Weingut: ");
-                String weisweingut = input.next();
-                System.out.print("Alkoholgehalt: ");
-                float weisweinAlkoholgehalt = input.nextFloat();
-                for (int i = 0; i < anzahl; i++) {
-                    Weisswein weiswein = new Weisswein(weisweinAlkoholgehalt, weisweingut);
-                    Flasche<Weisswein> flasche = new Flasche();
-                    flasche.fuellen(weiswein);
-                    this.getraenkeautomat.flascheEinlegen(flasche);
-                }
+                makeWeiswein(anzahl);
                 break;
             case 7:
-                System.out.println("\n[1] Softdrink");
-                type = input.nextInt();
-                if(type != 1)
-                    throw new IllegalArgumentException(type_ungueltig);
-
-                System.out.print("Hersteller: ");
-                String hersteller = input.next();
-                System.out.print("Zuckergehalt: ");
-                float zuckergehalt = input.nextFloat();
-                for (int i = 0; i < anzahl; i++) {
-                    Softdrink softdrink = new Softdrink(hersteller,zuckergehalt);
-                    Flasche<Softdrink> softdrinkflasche = new Flasche();
-                    softdrinkflasche.fuellen(softdrink);
-                    this.getraenkeautomat.flascheEinlegen(softdrinkflasche);
-                }
+                makeSoftdrinks(anzahl);
                 break;
             case 8:
-                System.out.println("\n[1] Wasser");
-                type = input.nextInt();
-                if(type != 1)
-                    throw new IllegalArgumentException(type_ungueltig);
-
-                System.out.print("Hersteller: ");
-                String whersteller = input.next();
-                System.out.print("Quelle: ");
-                String quelle = input.next();
-                for (int i = 0; i < anzahl; i++) {
-                    Wasser wasser = new Wasser(whersteller, quelle);
-                    Flasche<Wasser> flasche = new Flasche();
-                    flasche.fuellen(wasser);
-                    this.getraenkeautomat.flascheEinlegen(flasche);
-                }
+                makeWasser(anzahl);
                 break;
             case 9:
                 System.out.println("Welches getraenk moechten sie in den automaten legen" +
@@ -372,7 +227,6 @@ public class Dialog {
                     makeSoftdrinks(anzahl);
                 else if (type == 6)
                     makeWasser(anzahl);
-
                 break;
         }
     }
