@@ -104,7 +104,6 @@ public class Dialog {
         }
     }
 
-
     private void createAutomat() {
         System.out.println("Geben sie an Welchen Typ getränke der Automat halten soll" +
                 "\n[1] Alkoholische getraenke" +
@@ -127,6 +126,7 @@ public class Dialog {
             throw new IllegalArgumentException(Capacity_ungueltig);
 
         Getraenkeautomat getraenkeautomat = new Getraenkeautomat(capacity);
+        this.getraenkeautomat = getraenkeautomat;
         this.automatType = type;
     }
 
