@@ -35,6 +35,7 @@ public class Dialog {
     private static final String KEIN_AUTOMAT_ERSTELLT = "Es wurde noch kein Automat erstellt!";
     private static final String AUTOMAT_VOLL = "Der Automat ist voll!";
     private static final String FALSCHE_AUSWAHL = "Falsche Eingabe!";
+    private static final String ZU_VIELE_FLASCHEN = "Zu viele Flaschen!";
 
     public Dialog() {
         this.input = new Scanner(System.in);
@@ -135,13 +136,16 @@ public class Dialog {
     }
 
     private void deleteAutomat() {
-
+        
     }
+    
     private void fillAutomat() throws FalscheDeklerationException, LagerVollException {
         int type;
         System.out.println("Wie viele Flaschen wollen sie einfuellen");
         int anzahl = input.nextInt();
         input.nextLine();
+        if (anzahl > getraenkeautomat.getKapazitaet())
+            throw new IllegalArgumentException(ZU_VIELE_FLASCHEN);
         switch (automatType) {
             case 1:
                 System.out.println("Welches getraenk moechten sie in den automaten legen" +
