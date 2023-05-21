@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Weisswein
-comment0.text=\r\n\ Klasse\ Weisswein,\ erbt\ von\ Wein\r\n\ \r\n\ @Jonas_Neu_&_Marc_Perwak\r\n
-comment1.params=alkoholgehalt\ weingut
-comment1.target=Weisswein(float,\ java.lang.String)
-comment2.params=
-comment2.target=java.lang.String\ toString()
-comment2.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Rotweins\r\n
-numComments=3
