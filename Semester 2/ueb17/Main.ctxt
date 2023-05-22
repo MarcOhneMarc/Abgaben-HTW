@@ -1,11 +1,14 @@
 #BlueJ class context
 comment0.target=Main
+comment0.text=\r\n\ Eine\ Klasse,\ die\ verschiedene\ mathematische\ Funktionen\ \r\n\ implementiert\ und\ anwendet.\r\n
 comment1.params=
 comment1.target=Main()
 comment2.params=i\ j\ f
 comment2.target=void\ applyAndPrint(int,\ int,\ MyFunction)
+comment2.text=\r\n\ Wendet\ eine\ gegebene\ Funktion\ auf\ einen\ Bereich\ von\ Zahlen\ \r\n\ an\ und\ gibt\ die\ Ergebnisse\ aus.\r\n\r\n\ @param\ i\ die\ Startzahl\ des\ Bereichs\r\n\ @param\ j\ die\ Endzahl\ des\ Bereichs\r\n\ @param\ f\ die\ Funktion,\ die\ angewendet\ werden\ soll\r\n
 comment3.params=args
 comment3.target=void\ main(java.lang.String[])
+comment3.text=\r\n\ Die\ Hauptmethode\ des\ Programms.\r\n
 comment4.params=i
 comment4.target=int\ apply(int)
 comment5.params=i

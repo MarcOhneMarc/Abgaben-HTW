@@ -1,5 +1,7 @@
 #BlueJ class context
 comment0.target=MyFunction
+comment0.text=\r\n\ Eine\ funktionale\ Schnittstelle,\ die\ eine\ Funktion\ darstellt,\r\n\ die\ eine\ Ganzzahl\ als\ Eingabe\ annimmt\ und\ eine\ Ganzzahl\ als\r\n\ Ausgabe\ liefert.\r\n
 comment1.params=i
 comment1.target=int\ apply(int)
+comment1.text=\r\n\ Wendet\ die\ Funktion\ auf\ eine\ gegebene\ Ganzzahl\ an\ und\ gibt\ das\ Ergebnis\ zurueck.\r\n\r\n\ @param\ i\ die\ Ganzzahl,\ auf\ die\ die\ Funktion\ angewendet\ werden\ soll\r\n\ @return\ das\ Ergebnis\ der\ Funktion\r\n
 numComments=2

@@ -1,7 +1,10 @@
 #BlueJ class context
 comment0.target=MyFunctionExtended
+comment0.text=\r\n\ Eine\ erweiterte\ Funktionsschnittstelle,\ die\ die\ Funktionalit\u00E4t\ der\ MyFunction-Schnittstelle\ erweitert.\r\n
 comment1.params=predicate
 comment1.target=MyFunctionExtended\ conditionateInput(java.util.function.Predicate)
+comment1.text=\r\n\ Wendet\ ein\ Praedikat\ auf\ den\ Eingabeparameter\ dieser\ Funktion\ an\ und\ gibt\ Ergebnis\ zur\u00FCck,\r\n\ wenn\ Pr\u00E4dikat\ erf\u00FCllt,\ sonst\ 0\ zurueck.\r\n\r\n\ @param\ predicate\ das\ Praedikat,\ das\ auf\ den\ Eingabeparameter\ angewendet\ werden\ soll\r\n\ @return\ eine\ neue\ Funktion,\ die\ das\ Pr\u00E4dikat\ auf\ den\ Eingabeparameter\ anwendet\ und\ das\ \r\n\ \ \ \ \ \ \ \ \ \ Ergebnis\ zur\u00FCckgibt,\ wenn\ Pr\u00E4dikat\ erf\u00FCllt,\ sonst\ 0\ zurueck\r\n
 comment2.params=predicate
 comment2.target=MyFunctionExtended\ conditionateOutput(java.util.function.Predicate)
+comment2.text=\r\n\ Wendet\ ein\ Praedikat\ auf\ das\ Ergebnis\ dieser\ Funktion\ an\ und\ gibt\ das\ Ergebnis\ zurueck,\r\n\ wenn\ Praedikat\ erfuellt,\ sonst\ 0\ zurueck.\r\n\r\n\ @param\ predicate\ das\ Pr\u00E4dikat,\ das\ auf\ das\ Ergebnis\ angewendet\ werden\ soll\r\n\ @return\ eine\ neue\ Funktion,\ die\ das\ Praedikat\ auf\ das\ Ergebnis\ anwendet\ und\ das\ Ergebnis\ zur\u00FCckgibt,\r\n\ \ \ \ \ \ \ \ \ falls\ das\ Pr\u00E4dikat\ erfuellt\ ist,\ andernfalls\ wird\ 0\ zur\u00FCckgegeben\r\n
 numComments=3
