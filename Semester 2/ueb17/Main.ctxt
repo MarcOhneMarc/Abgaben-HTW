@@ -2,6 +2,8 @@
 comment0.target=Main
 comment1.params=
 comment1.target=Main()
+comment10.params=value
+comment10.target=int\ apply(int)
 comment2.params=i\ j\ f
 comment2.target=void\ applyAndPrint(int,\ int,\ MyFunction)
 comment3.params=args
@@ -16,4 +18,6 @@ comment7.params=i
 comment7.target=int\ apply(int)
 comment8.params=i
 comment8.target=boolean\ test(java.lang.Integer)
-numComments=9
+comment9.params=value
+comment9.target=int\ apply(int)
+numComments=11

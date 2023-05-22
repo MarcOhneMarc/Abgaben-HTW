@@ -44,7 +44,7 @@ public class Main {
         }
     }
 
-    public static class FactorialNasted implements MyfunctionExtendet{
+    public static class FactorialNasted implements MyFunctionExtended{
         @Override
         public int apply(int i) {
             return Main.FunctionEnum.factorial(i);
@@ -120,5 +120,31 @@ public class Main {
 
         System.out.println(even.test(number1) ? number1 : null);  // Output: null
         System.out.println(even.test(number2) ? number2 : null);  // Output: 4
+        
+        System.out.println("/nWAQDASPD");
+        
+        MyFunction functionF = x -> FunctionEnum.factorial(x);
+        MyFunction functionF2 = x -> odd.test(FunctionEnum.factorial(x)) ? FunctionEnum.factorial(x) : 0;
+
+        MyFunctionExtended extendedFunctionF = new MyFunctionExtended() {
+            @Override
+            public int apply(int value) {
+                return functionF.apply(value);
+            }
+        }.conditionateInput(odd);
+        
+        MyFunctionExtended extendedFunctionF2 = new MyFunctionExtended() {
+            @Override
+            public int apply(int value) {
+                return functionF2.apply(value);
+            }
+        }.conditionateOutput(odd);
+        
+        // Test
+        int result1 = extendedFunctionF.apply(5); // Applies conditionateInput and returns the result
+        int result2 = extendedFunctionF2.apply(5); // Applies conditionateOutput and returns the result
+        
+        System.out.println(result1); // Output: 120 (5! = 120)
+        System.out.println(result2); // Output: 0 (Factorial of 5 is not odd)
     }
 }

@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=MyfunctionExtendet
-comment1.params=predicate
-comment1.target=MyFunction\ conditionateInput(java.util.function.Predicate)
-comment2.params=predicate
-comment2.target=int\ conditionateOutput(java.util.function.Predicate)
-numComments=3
