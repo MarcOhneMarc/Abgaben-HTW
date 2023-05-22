@@ -32,6 +32,7 @@ public class Main {
     }
 
     private Main() {
+        
     }
 
     public static void applyAndPrint(int i, int j, MyFunction f) {
