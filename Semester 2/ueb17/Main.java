@@ -101,8 +101,24 @@ public class Main {
         System.out.println("II");
         Main.FactorialNasted factorialNasted = new FactorialNasted();
         applyAndPrint(1,5, factorialNasted);
-
         System.out.println("Test");
+        
+        
+        Predicate<Integer> odd = new Predicate<Integer>() {
+            public boolean test(Integer i) {
+                return i % 2 != 0;
+            }
+        };
 
+        Predicate<Integer> even = i -> i % 2 == 0;
+
+        int number1 = 3;
+        int number2 = 4;
+
+        System.out.println(odd.test(number1) ? number1 : null);  // Output: 3
+        System.out.println(odd.test(number2) ? number2 : null);  // Output: null
+
+        System.out.println(even.test(number1) ? number1 : null);  // Output: null
+        System.out.println(even.test(number2) ? number2 : null);  // Output: 4
     }
 }

@@ -14,4 +14,6 @@ comment6.params=i
 comment6.target=int\ apply(int)
 comment7.params=i
 comment7.target=int\ apply(int)
-numComments=8
+comment8.params=i
+comment8.target=boolean\ test(java.lang.Integer)
+numComments=9
