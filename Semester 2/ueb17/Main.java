@@ -140,11 +140,11 @@ public class Main {
             }
         }.conditionateOutput(odd);
         
-        // Test
-        int result1 = extendedFunctionF.apply(5); // Applies conditionateInput and returns the result
-        int result2 = extendedFunctionF2.apply(5); // Applies conditionateOutput and returns the result
-        
-        System.out.println(result1); // Output: 120 (5! = 120)
-        System.out.println(result2); // Output: 0 (Factorial of 5 is not odd)
+        System.out.println("/n FAK ungerade");
+        //int result1 = extendedFunctionF.apply(5); // Applies conditionateInput and returns the result
+        applyAndPrint(1, 10, functionF);
+        System.out.println("/n FAK gerade");
+        applyAndPrint(1, 10, functionF2);
+        //int result2 = extendedFunctionF2.apply(5); // Applies conditionateOutput and returns the result
     }
 }
