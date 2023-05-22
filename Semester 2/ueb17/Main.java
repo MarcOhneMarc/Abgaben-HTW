@@ -41,8 +41,14 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static class FactorialNasted implements MyFunction{
+        @Override
+        public int apply(int i) {
+            return Main.FunctionEnum.factorial(i);
+        }
+    }
 
+    public static void main(String[] args) {
         System.out.println("Berechnung mit Lambdas");
         System.out.println("\nI");
         applyAndPrint(1, 5, FunctionEnum.I.getFunction());
@@ -54,29 +60,43 @@ public class Main {
         applyAndPrint(1, 5, FunctionEnum.IV.getFunction());
 
         System.out.println("Berechnung mit Anonymen Klassen");
+        System.out.println("\nI");
         applyAndPrint(1, 5, new MyFunction() {
             @Override
             public int apply(int i) {
                 return i*i;
             }
         });
+        System.out.println("\nII");
         applyAndPrint(1, 5, new MyFunction() {
             @Override
             public int apply(int i) {
-                return;
+                return FunctionEnum.factorial(i);
             }
         });
+        System.out.println("\nIII");
         applyAndPrint(1, 5, new MyFunction() {
             @Override
             public int apply(int i) {
+                return i * i+1;
+            }
+        });
+        System.out.println("\nIV");
+        applyAndPrint(1, 5, new MyFunction() {
+            @Override
+            public int apply(int i) {
+                return FunctionEnum.fibonacci(i);
+            }
+        });
 
-            }
-        });
-        applyAndPrint(1, 5, new MyFunction() {
-            @Override
-            public int apply(int i) {
+        System.out.println("\nBerechnung mit TopLvL Klassen");
+        System.out.println("II");
+        Factorial factorialTopLvl = new Factorial();
+        applyAndPrint(1,5, factorialTopLvl);
 
-            }
-        });
+        System.out.println("\nBerechnung mit Static Nasted Klassen");
+        System.out.println("II");
+        Main.FactorialNasted factorialNasted = new FactorialNasted();
+        applyAndPrint(1,5, factorialNasted);
     }
 }
