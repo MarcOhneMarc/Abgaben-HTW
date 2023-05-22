@@ -1,5 +1,5 @@
 import java.util.function.Predicate;
-
+@FunctionalInterface
 public interface MyfunctionExtendet extends MyFunction{
     default MyFunction conditionateInput(Predicate<Integer> predicate) {
         return (value) -> {

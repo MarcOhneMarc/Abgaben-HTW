@@ -1,3 +1,5 @@
+import java.util.function.Predicate;
+
 public class Main {
 
     public enum FunctionEnum {
@@ -42,7 +44,7 @@ public class Main {
         }
     }
 
-    public static class FactorialNasted implements MyFunction{
+    public static class FactorialNasted implements MyfunctionExtendet{
         @Override
         public int apply(int i) {
             return Main.FunctionEnum.factorial(i);
@@ -99,5 +101,8 @@ public class Main {
         System.out.println("II");
         Main.FactorialNasted factorialNasted = new FactorialNasted();
         applyAndPrint(1,5, factorialNasted);
+
+        System.out.println("Test");
+
     }
 }
