@@ -122,29 +122,29 @@ public class Main {
         System.out.println(even.test(number2) ? number2 : null);  // Output: 4
         
         System.out.println("/nWAQDASPD");
-        
-        MyFunction functionF = x -> FunctionEnum.factorial(x);
-        MyFunction functionF2 = x -> odd.test(FunctionEnum.factorial(x)) ? FunctionEnum.factorial(x) : 0;
 
-        MyFunctionExtended extendedFunctionF = new MyFunctionExtended() {
-            @Override
-            public int apply(int value) {
-                return functionF.apply(value);
+        MyFunction functionF = x -> {
+            if (odd.test(x)) {
+                return FunctionEnum.factorial(x);
+            } else {
+                return 0;
             }
-        }.conditionateInput(odd);
-        
-        MyFunctionExtended extendedFunctionF2 = new MyFunctionExtended() {
-            @Override
-            public int apply(int value) {
-                return functionF2.apply(value);
+        };
+
+        MyFunction functionF2 = x -> {
+            if (even.test(x)) {
+                return FunctionEnum.factorial(x);
+            } else {
+                return 0;
             }
-        }.conditionateOutput(odd);
-        
-        System.out.println("/n FAK ungerade");
-        //int result1 = extendedFunctionF.apply(5); // Applies conditionateInput and returns the result
+        };
+
+        // ...
+
+        System.out.println("\n FAK ungerade");
         applyAndPrint(1, 10, functionF);
-        System.out.println("/n FAK gerade");
+
+        System.out.println("\n FAK gerade");
         applyAndPrint(1, 10, functionF2);
-        //int result2 = extendedFunctionF2.apply(5); // Applies conditionateOutput and returns the result
     }
 }
