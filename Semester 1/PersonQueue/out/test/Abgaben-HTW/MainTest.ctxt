@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=MainTest
+comment1.params=
+comment1.target=void\ testApplyAndPrint_Lambda()
+comment2.params=
+comment2.target=void\ testApplyAndPrint_AnonymousClass()
+comment3.params=
+comment3.target=void\ testApplyAndPrint_TopLevelClass()
+comment4.params=
+comment4.target=void\ testApplyAndPrint_StaticNestedClass()
+comment5.params=runnable
+comment5.target=java.lang.String\ getPrintedOutput(java.lang.Runnable)
+numComments=6

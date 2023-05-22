@@ -1,24 +1,15 @@
 import java.util.function.Predicate;
 @FunctionalInterface
 interface MyFunctionExtended extends MyFunction {
-    default MyFunctionExtended conditionateInput(Predicate<Integer> predicate) {
-        return value -> {
-            if (predicate.test(value)) {
-                return this.apply(value);
-            } else {
-                return 0;
-            }
-        };
+    default public MyFunctionExtended conditionateInput(Predicate<Integer> predicate) {
+
+        return x -> predicate.test(x)?this.apply(x) :0;
     }
 
-    default MyFunctionExtended conditionateOutput(Predicate<Integer> predicate) {
-        return value -> {
-            int result = this.apply(value);
-            if (predicate.test(result)) {
-                return result;
-            } else {
-                return 0;
-            }
+    default public MyFunctionExtended conditionateOutput (Predicate<Integer> predicate) {
+        return x -> {
+            int ergebnis = this.apply(x);
+            return predicate.test(ergebnis) ? ergebnis : 0;
         };
     }
 }
