@@ -121,30 +121,31 @@ public class Main {
         System.out.println(even.test(number1) ? number1 : null);  // Output: null
         System.out.println(even.test(number2) ? number2 : null);  // Output: 4
         
+        
+        System.out.println("/nWAQDASPD");
+        
+        applyAndPrint(1, 10, x -> {
+            if (x % 2 == 0) {
+                return x * x; // Quadratzahl für gerade Zahlen
+            } else {
+                return 0; // Für ungerade Zahlen wird 0 zurückgegeben
+            }
+        });
+
         System.out.println("/nWAQDASPD");
 
-        MyFunction functionF = x -> {
-            if (odd.test(x)) {
-                return FunctionEnum.factorial(x);
-            } else {
-                return 0;
-            }
-        };
+        MyFunction functionF = x -> FunctionEnum.factorial(x);
+        MyFunctionExtended extendedFunctionF = ((MyFunctionExtended) functionF).conditionateInput(odd);
 
-        MyFunction functionF2 = x -> {
-            if (even.test(x)) {
-                return FunctionEnum.factorial(x);
-            } else {
-                return 0;
-            }
-        };
+        MyFunction functionF2 = x -> FunctionEnum.factorial(x);
+        MyFunctionExtended extendedFunctionF2 = ((MyFunctionExtended) functionF2).conditionateInput(even);
 
         // ...
 
         System.out.println("\n FAK ungerade");
-        applyAndPrint(1, 10, functionF);
+        applyAndPrint(1, 10, extendedFunctionF);
 
         System.out.println("\n FAK gerade");
-        applyAndPrint(1, 10, functionF2);
+        applyAndPrint(1, 10, extendedFunctionF2);
     }
 }
