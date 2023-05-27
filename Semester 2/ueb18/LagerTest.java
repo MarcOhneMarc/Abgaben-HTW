@@ -170,15 +170,33 @@ public class LagerTest {
         lager.legeAnArtikel(artikel33);
         lager.legeAnArtikel(artikel44);
         
+        BiPredicate<Artikel, Artikel> kriterium1 = (artikel1, artikel2) -> {
+            if (artikel1.getArtikelNr() < artikel2.getArtikelNr()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        
+        BiPredicate<Artikel, Artikel> kriterium2 = (artikel1, artikel2) -> {
+            return (artikel2.getBeschreibung()).compareTo(artikel1.getBeschreibung()) < 0;
+        };
+
+        
         // Sortieren nach Artikelnummer
-        Comparator<Artikel> artikelnummerComparator = Comparator.comparingInt(Artikel::getArtikelNr);
-        Artikel[] sortedByArtikelnummer = lager.getSorted(artikelnummerComparator);
+        System.out.println("1: ");
+        System.out.println("1: ");
+        System.out.println("1: ");
+        Artikel[] sortedByArtikelnummer = lager.getSorted(kriterium1);
         for (Artikel artikel: sortedByArtikelnummer) {
             System.out.println("1: " + artikel.toString());
         }
-        // Sortieren nach Beschreibung
+        // Sortieren nach Bestand
+        System.out.println("2: ");
+        System.out.println("2: ");
+        System.out.println("2: ");
         Comparator<Artikel> beschreibungComparator = Comparator.comparing(Artikel::getArt);
-        Artikel[] sortedByBeschreibung = lager.getSorted(beschreibungComparator);
+        Artikel[] sortedByBeschreibung = lager.getSorted(kriterium2);
         for (Artikel artikel: sortedByBeschreibung) {
             System.out.println("2: " + artikel.toString());
         }

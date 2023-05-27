@@ -54,9 +54,19 @@ import java.util.function.BiPredicate;
      * @param comparator Das Sortierkriterium als Comparator<Artikel>.
      * @return sortedArray Ein sortiertes Array der Artikel im Lager.
      */
-    public Artikel[] getSorted(BiPredicate<Integer, Integer> comparator) {
+    public Artikel[] getSorted(BiPredicate<Artikel, Artikel> kriterium) {
         Artikel[] sortedArray = Arrays.copyOf(allArtikels, countArtikel);
-        sortedArray = allArtikels.sort(comparator);
+        
+        for (int i = 0; i < sortedArray.length; i++) {
+            for (int j = i + 1; j < sortedArray.length; j++) {
+                if (kriterium.test(sortedArray[i], sortedArray[j])) {
+                    Artikel temp = sortedArray[i];
+                    sortedArray[i] = sortedArray[j];
+                    sortedArray[j] = temp;
+                }
+            }
+        }
+        
         return sortedArray;
     }
 
