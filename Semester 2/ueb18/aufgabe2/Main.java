@@ -79,7 +79,7 @@ public class Main{
      * der MyFunctionExtended-Schnittstelle verwendet.
      */
     public static class FactorialNasted implements MyFunctionExtended{
-        @Override
+
         public int apply(int i) {
             // Aufruf der Faktorielfunktion aus der FunctionEnum-Klasse
             return Main.FunctionEnum.factorial(i);
@@ -182,5 +182,12 @@ public class Main{
         applyAndPrint(1, 10, functionF);
         System.out.println("\nUngerade Fakultaeten:");
         applyAndPrint(1, 10, functionF2) ;
+
+
+        System.out.println("Fakultaet mit TLC und OMR");
+        applyAndPrint(1,10, factorialTopLvl::apply);
+
+        System.out.println("Fakultaet mit SNC und SMR");
+        applyAndPrint(1,10, new FactorialNasted::apply);
     }
 }

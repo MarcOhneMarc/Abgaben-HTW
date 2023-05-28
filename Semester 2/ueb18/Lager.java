@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * Klasse zum erstellen eines Lagers, in dem man mehrere Artikel der klasse Artikel.java speichern kann.
@@ -24,6 +25,7 @@ import java.util.function.Consumer;
     
     
     private Artikel[] allArtikels;
+    private Artikel artikels;
     private int countArtikel;
     private int arraylaenge;
     
@@ -49,14 +51,14 @@ import java.util.function.Consumer;
         this.arraylaenge = 10;
     }
     
-    
+
     public void applyToArticles(Consumer<Artikel> operation) {
         for (Artikel artikel: allArtikels) {
             if (artikel != null)
                 operation.accept(artikel);
         }
     }
-    
+
     /**
      * Methode zum Sortieren der Artikel im Lager.
      * 
@@ -318,5 +320,40 @@ import java.util.function.Consumer;
         else {
             return allArtikels.length;
         }
+    }
+
+    public Artikel filter(Predicate<Object> filter){
+        for(int i = 0; i < allArtikels.length; i++){
+            if (filter.test(allArtikels[i])){
+                return allArtikels[i];
+            }
+        }
+        return null;
+    }
+    public void applyToSomeArticles(Predicate<Object> filter, Consumer<Artikel> artikelConsumer){
+        for(int i = 0; i < allArtikels.length; i++){
+            if (filter.test(allArtikels[i])){
+                 artikelConsumer.accept(allArtikels[i]);
+            }
+        }
+    }
+    public Artikel[] getArticles(Predicate<Object> filter, BiPredicate<Artikel, Artikel> kriterium){
+        Artikel[] sortedArtikelList = new Artikel[countArtikel];
+        int counter = 0;
+        for(int i = 0; i < allArtikels.length; i++){
+            if (filter.test(allArtikels[i])){
+                sortedArtikelList[counter] = allArtikels[i];
+            }
+        }
+        for (int i = 0; i < sortedArtikelList.length; i++) {
+            for (int j = i + 1; j < sortedArtikelList.length; j++) {
+                if (kriterium.test(sortedArtikelList[i], sortedArtikelList[j])) {
+                    Artikel temp = sortedArtikelList[i];
+                    sortedArtikelList[i] = sortedArtikelList[j];
+                    sortedArtikelList[j] = temp;
+                }
+            }
+        }
+        return sortedArtikelList;
     }
 }

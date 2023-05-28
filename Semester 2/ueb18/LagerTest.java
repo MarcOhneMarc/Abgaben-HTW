@@ -21,6 +21,10 @@ public class LagerTest {
     private Artikel artikel33;
     private Artikel artikel44;
     private Lager lager;
+    private CD CDartikel55;
+    private CD CDartikel66;
+    private CD CDartikel77;
+    private CD CDartikel88;
 
     @BeforeEach
     public void setup() {
@@ -33,6 +37,12 @@ public class LagerTest {
         artikel22 = new Artikel(1111, "b", 20, 30);
         artikel33 = new Artikel(8888, "a", 10, 15);
         artikel44 = new Artikel(2222, "d", 20, 30);
+
+        CDartikel55 = new CD(2222, 10, 20, "a", "at", 10);
+        CDartikel66 = new CD(2222, 10, 20, "a", "at", 10);
+        CDartikel77 = new CD(2222, 10, 20, "a", "at", 10);
+        CDartikel88 = new CD(2222, 10, 20, "a", "at", 10);
+
     }
     
     @Test
@@ -275,6 +285,28 @@ public class LagerTest {
         System.out.println("123213: ");
         lager.applyToArticles(operation);
        
+        System.out.println(lager.toString());
+
+    }
+    public void testCDPreisAlle10Pro() {
+        Lager lager = new Lager(10);
+        // Fügen Sie Artikel zum Lager hinzu
+
+        lager.legeAnArtikel(CDartikel55);
+        lager.legeAnArtikel(CDartikel66);
+        lager.legeAnArtikel(CDartikel77);
+        lager.legeAnArtikel(CDartikel88);
+
+        Consumer<Artikel> operation = artikel -> {
+            artikel.setPreis((artikel.getPreis())*2);
+        };
+
+        // Sortieren nach Artikelnummer
+        System.out.println("123213: ");
+        System.out.println("123123: ");
+        System.out.println("123213: ");
+        lager.applyToArticles(operation);
+
         System.out.println(lager.toString());
 
     }
