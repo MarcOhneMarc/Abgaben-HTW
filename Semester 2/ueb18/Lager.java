@@ -2,6 +2,7 @@ import static java.lang.String.format;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.function.BiPredicate;
+import java.util.function.Consumer;
 
 /**
  * Klasse zum erstellen eines Lagers, in dem man mehrere Artikel der klasse Artikel.java speichern kann.
@@ -46,6 +47,14 @@ import java.util.function.BiPredicate;
     public Lager() {
         allArtikels = new Artikel[10];
         this.arraylaenge = 10;
+    }
+    
+    
+    public void applyToArticles(Consumer<Artikel> operation) {
+        for (Artikel artikel: allArtikels) {
+            if (artikel != null)
+                operation.accept(artikel);
+        }
     }
     
     /**

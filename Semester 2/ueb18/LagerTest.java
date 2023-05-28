@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.function.Consumer;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -225,14 +226,14 @@ public class LagerTest {
             }
         };
             
-            //Bestand aufsteigend
-            BiPredicate<Artikel, Artikel> bestandAufsteigend = (artikel1, artikel2) -> {
-                if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
-                    return true;
-                } else {
-                    return false;
-                }
-            };
+        //Bestand aufsteigend
+        BiPredicate<Artikel, Artikel> bestandAufsteigend = (artikel1, artikel2) -> {
+            if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
 
         
         // Sortieren nach Artikelnummer
@@ -243,6 +244,7 @@ public class LagerTest {
         for (Artikel artikel: sortedByArtikelnummer) {
             System.out.println("1: " + artikel.toString());
         }
+        
         // Sortieren nach Bestand
         System.out.println("2: ");
         System.out.println("2: ");
@@ -251,5 +253,29 @@ public class LagerTest {
         for (Artikel artikel: sortedByBeschreibung) {
             System.out.println("2: " + artikel.toString());
         }
+    }
+    
+    @Test
+    public void test12() {
+        Lager lager = new Lager(10);
+        // Fügen Sie Artikel zum Lager hinzu
+
+        lager.legeAnArtikel(artikel11);
+        lager.legeAnArtikel(artikel22);
+        lager.legeAnArtikel(artikel33);
+        lager.legeAnArtikel(artikel44);
+        
+        Consumer<Artikel> operation = artikel -> {
+            artikel.setPreis((artikel.getPreis())*2);
+        };
+    
+        // Sortieren nach Artikelnummer
+        System.out.println("123213: ");
+        System.out.println("123123: ");
+        System.out.println("123213: ");
+        lager.applyToArticles(operation);
+       
+        System.out.println(lager.toString());
+
     }
 }

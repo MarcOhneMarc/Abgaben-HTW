@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Ueb18Fassade
+comment0.text=\r\n\ <p>Diese\ Klasse\ ist\ eine\ Fassade,\ hinter\ der\ Sie\ Ihre\ Loesung\ verstecken.\ Der\ Test\ ruft\ nur\ die\ hier\ definierten\r\n\ Schnittstellenmethoden\ auf.\ Loeschen\ Sie\ bitte\ keine\ Methoden.\ Wenn\ Sie\ eine\ Methode\ nicht\ implementieren\r\n\ moechten,\ lassen\ Sie\ bitte\ die\ leere\ Implementierung\ stehen.\ Innerhalb\ der\ Methoden\ und\ in\ allen\ anderen\ Klassen,\r\n\ die\ Sie\ noch\ benoetigen,\ haben\ Sie\ alle\ Freiheiten.</p>\r\n\ \r\n\ <p>Wenn\ Sie\ Ihre\ Loesung\ mit\ JUnit\ testen\ moechten,\ testen\ Sie\ diese\ Schnittstellenmethoden.</p>\r\n\ @author\ christopher\r\n\r\n
+comment1.params=
+comment1.target=Artikel[]\ aufgabe_c_i()
+comment1.text=\r\n\ Loest\ die\ Aufgabe\ (c)\ i.\r\n\ <br\ />\r\n\ Sortierung\ nach\ den\ folgenden\ Kriterien\:\r\n\ <ol>\r\n\ \ \ \ \ <li>Unterkategorie\ (alphabetisch)</li>\r\n\ \ \ \ \ <li>Bestand</li>\r\n\ \ \ \ \ <li>Preis</li>\r\n\ </ol>\r\n\ @param\ lager\ Das\ Lager\ mit\ der\ unsortierten\ Artikelliste.\ \ \r\n\ @return\ Die\ sortierte\ Artikelliste.\r\n
+comment2.params=lager
+comment2.target=void\ aufgabe_c_ii(Lager)
+comment2.text=\r\n\ Loest\ die\ Aufgabe\ (c)\ ii.\r\n\ <br\ />\r\n\ Der\ Preis\ aller\ Artikel\ wird\ um\ 10%\ reduziert.\r\n\ @param\ lager\ Das\ Lager\ mit\ den\ Artikeln,\ deren\ Preise\ geaendert\ werden\ sollen.\r\n
+numComments=3
