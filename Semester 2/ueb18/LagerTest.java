@@ -170,7 +170,8 @@ public class LagerTest {
         lager.legeAnArtikel(artikel33);
         lager.legeAnArtikel(artikel44);
         
-        BiPredicate<Artikel, Artikel> kriterium1 = (artikel1, artikel2) -> {
+        //Artikelnummer absteigend
+        BiPredicate<Artikel, Artikel> artikelnummerAbsteigend = (artikel1, artikel2) -> {
             if (artikel1.getArtikelNr() < artikel2.getArtikelNr()) {
                 return true;
             } else {
@@ -178,16 +179,67 @@ public class LagerTest {
             }
         };
         
-        BiPredicate<Artikel, Artikel> kriterium2 = (artikel1, artikel2) -> {
+        //Artikelnummer aufsteigend
+        BiPredicate<Artikel, Artikel> artikelnummerAufsteigend = (artikel1, artikel2) -> {
+            if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        
+        //Art absteigend
+        BiPredicate<Artikel, Artikel> artAbsteigend = (artikel1, artikel2) -> {
             return (artikel2.getBeschreibung()).compareTo(artikel1.getBeschreibung()) < 0;
         };
+        
+        //Art aufsteigend
+        BiPredicate<Artikel, Artikel> artAufsteigend = (artikel1, artikel2) -> {
+            return (artikel2.getBeschreibung()).compareTo(artikel1.getBeschreibung()) < 0;
+        };
+        
+        //Preis absteigend
+        BiPredicate<Artikel, Artikel> preisAbsteigend = (artikel1, artikel2) -> {
+            if (artikel1.getArtikelNr() < artikel2.getArtikelNr()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        
+        //Preis aufsteigend
+        BiPredicate<Artikel, Artikel> preisAufsteigend = (artikel1, artikel2) -> {
+            if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        
+        //Bestand absteigend
+        BiPredicate<Artikel, Artikel> bestandAbsteigend = (artikel1, artikel2) -> {
+            if (artikel1.getArtikelNr() < artikel2.getArtikelNr()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+            
+            //Bestand aufsteigend
+            BiPredicate<Artikel, Artikel> bestandAufsteigend = (artikel1, artikel2) -> {
+                if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
 
         
         // Sortieren nach Artikelnummer
         System.out.println("1: ");
         System.out.println("1: ");
         System.out.println("1: ");
-        Artikel[] sortedByArtikelnummer = lager.getSorted(kriterium1);
+        Artikel[] sortedByArtikelnummer = lager.getSorted(artikelnummerAbsteigend);
         for (Artikel artikel: sortedByArtikelnummer) {
             System.out.println("1: " + artikel.toString());
         }
@@ -195,8 +247,7 @@ public class LagerTest {
         System.out.println("2: ");
         System.out.println("2: ");
         System.out.println("2: ");
-        Comparator<Artikel> beschreibungComparator = Comparator.comparing(Artikel::getArt);
-        Artikel[] sortedByBeschreibung = lager.getSorted(kriterium2);
+        Artikel[] sortedByBeschreibung = lager.getSorted(artikelnummerAufsteigend);
         for (Artikel artikel: sortedByBeschreibung) {
             System.out.println("2: " + artikel.toString());
         }

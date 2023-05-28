@@ -378,14 +378,115 @@ public class LagerDialog {
         if (lager == null) {
             throw new IllegalArgumentException(KEIN_LAGER_EXISTIERT);
         } else {
-            // Sortieren nach Artikelnummer
-            Comparator<Artikel> artikelnummerComparator = Comparator.comparingInt(Artikel::getArtikelNr);
-            Artikel[] sortedByArtikelnummer = lager.getSorted(artikelnummerComparator);
-            System.out.println("1: " + sortedByArtikelnummer);
-            // Sortieren nach Beschreibung
-            Comparator<Artikel> beschreibungComparator = Comparator.comparing(Artikel::getBeschreibung);
-            Artikel[] sortedByBeschreibung = lager.getSorted(beschreibungComparator);
-            System.out.println("2: " + sortedByArtikelnummer);
+            //Artikelnummer absteigend
+            BiPredicate<Artikel, Artikel> artikelnummerAbsteigend = (artikel1, artikel2) -> {
+                if (artikel1.getArtikelNr() < artikel2.getArtikelNr()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            
+            //Artikelnummer aufsteigend
+            BiPredicate<Artikel, Artikel> artikelnummerAufsteigend = (artikel1, artikel2) -> {
+                if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            
+            //Art absteigend
+            BiPredicate<Artikel, Artikel> artAbsteigend = (artikel1, artikel2) -> {
+                return (artikel2.getBeschreibung()).compareTo(artikel1.getBeschreibung()) < 0;
+            };
+            
+            //Art aufsteigend
+            BiPredicate<Artikel, Artikel> artAufsteigend = (artikel1, artikel2) -> {
+                return (artikel2.getBeschreibung()).compareTo(artikel1.getBeschreibung()) < 0;
+            };
+            
+            //Preis absteigend
+            BiPredicate<Artikel, Artikel> preisAbsteigend = (artikel1, artikel2) -> {
+                if (artikel1.getArtikelNr() < artikel2.getArtikelNr()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            
+            //Preis aufsteigend
+            BiPredicate<Artikel, Artikel> preisAufsteigend = (artikel1, artikel2) -> {
+                if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            
+            //Bestand absteigend
+            BiPredicate<Artikel, Artikel> bestandAbsteigend = (artikel1, artikel2) -> {
+                if (artikel1.getArtikelNr() < artikel2.getArtikelNr()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            
+            //Bestand aufsteigend
+            BiPredicate<Artikel, Artikel> bestandAufsteigend = (artikel1, artikel2) -> {
+                if (artikel1.getArtikelNr() > artikel2.getArtikelNr()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+            
+            System.out.println("1) Artikelnummer aufsteigend\n"
+                                +"2) Artikelnummer absteigend\n"
+                                +"3) Art aufsteigend\n"
+                                +"4) Art absteigend\n"
+                                +"5) Preis aufsteigend\n"
+                                +"6) Preis absteigend\n"
+                                +"7) Bestand aufsteigend\n"
+                                +"8) Bestand absteigend\n");
+            System.out.println("Ihre Auswahl [1-8]:");
+            int index = input.nextInt();
+            Artikel[] sorted;
+            
+            switch(index){
+            case 1:
+                sorted = lager.getSorted(artikelnummerAufsteigend);
+                break;
+            case 2:
+                sorted = lager.getSorted(artikelnummerAbsteigend);
+                break;
+            case 3:
+                sorted = lager.getSorted(artAbsteigend);
+                break;
+            case 4:
+                sorted = lager.getSorted(artAufsteigend);
+                break;
+            case 5:
+                sorted = lager.getSorted(preisAufsteigend);
+                break;
+            case 6:
+                sorted = lager.getSorted(preisAbsteigend);
+                break;
+            case 7:
+                sorted = lager.getSorted(bestandAufsteigend);
+                break;
+            case 8:
+                sorted = lager.getSorted(bestandAbsteigend);
+                break;
+            default:
+                System.out.println("Falsche Eingabe!");
+                return;
+            }
+            
+            for (Artikel artikel: sorted) {
+            System.out.println("2: " + artikel.toString());
+            }
         }
     }
 
