@@ -338,6 +338,38 @@ import java.util.function.Predicate;
             }
         }
     }
+
+    public Artikel[] filterAll(Predicate<Artikel> ... filter) {
+        int count = 0;
+        for (Artikel artikel : allArtikels) {
+            boolean matchesAllCriteria = true;
+            for (Predicate<Artikel> filterKriterium : filter) {
+                if (!filterKriterium.test(artikel)) {
+                    matchesAllCriteria = false;
+                    break;
+                }
+            }
+            if (matchesAllCriteria) {
+                count++;
+            }
+        }
+        Artikel[] artikelFilterAll = new Artikel[count];
+        int index = 0;
+        for (Artikel artikel : allArtikels) {
+            boolean matchesAllCriteria = true;
+            for (Predicate<Artikel> filterKriterium : filter) {
+                if (!filterKriterium.test(artikel)) {
+                    matchesAllCriteria = false;
+                    break;
+                }
+            }
+            if (matchesAllCriteria) {
+                artikelFilterAll[index] = artikel;
+                index++;
+            }
+        }
+        return artikelFilterAll;
+    }
     
     public Artikel[] getArticles(Predicate<Object> filter, BiPredicate<Artikel, Artikel> kriterium){
         Artikel[] sortedArtikelList = new Artikel[countArtikel];

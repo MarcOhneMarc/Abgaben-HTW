@@ -1,6 +1,8 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.Arrays;
 import java.util.function.Consumer;
 import java.util.function.BiPredicate;
 
@@ -154,7 +156,10 @@ public class Ueb18Fassade {
      * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
      */
     public void aufgabe_h_i(Lager lager) {
-    	lager.applyToSomeArticles(a -> a instanceof CD, a -> a.aenderePreis(10));
+        lager.applyToSomeArticles(a -> a instanceof CD, artikel -> {
+            double neuerPreis = artikel.getPreis() * 1.1;
+            artikel.setPreis(neuerPreis);
+        });
     }
     
     /**
@@ -164,6 +169,12 @@ public class Ueb18Fassade {
      * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
      */
     public void aufgabe_h_ii(Lager lager) {
+        lager.applyToArticles(artikel -> {
+            if (artikel.getBestand() <= 2) {
+                double reduziertPreis = artikel.getPreis() * 0.95;
+                artikel.setPreis(reduziertPreis);
+            }
+        });
     }
     
     /**
@@ -174,6 +185,13 @@ public class Ueb18Fassade {
      * @param gesuchterAutor Der Autor, dessen Buecher guenstiger werden sollen.
      */
     public void aufgabe_h_iii(Lager lager, String gesuchterAutor) {
+        lager.applyToSomeArticles(artikel -> (artikel instanceof Buch) && ((Buch) artikel).getAuthor().equals(gesuchterAutor), artikel -> {
+            if (artikel instanceof Buch) {
+                double preis = artikel.getPreis();
+                double reduzierterPreis = preis * 0.95;
+                artikel.setPreis(reduzierterPreis);
+            }
+        });
     }
     
     /**
@@ -183,6 +201,19 @@ public class Ueb18Fassade {
      * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
      */
     public void aufgabe_h_iv(Lager lager) {
+        lager.applyToArticles(artikel -> {
+            if (artikel instanceof CD) {
+                CD cd = (CD) artikel;
+                double alterPreis = cd.getPreis();
+                double neuerPreis = alterPreis * 1.1;
+                cd.setPreis(neuerPreis);
+            }
+            if (artikel.getBestand() <= 2) {
+                double alterPreis = artikel.getPreis();
+                double neuerPreis = alterPreis * 0.95;
+                artikel.setPreis(neuerPreis);
+            }
+        });
     }
     
     /**
@@ -192,7 +223,15 @@ public class Ueb18Fassade {
      * @return Eine Liste mit allen Buechern, sortiert nach den Namen der Autoren. 
      */
     public Artikel[] aufgabe_h_v(Lager lager) {
-    	return null;
+        Artikel[] sortierteListe = lager.getSorted((a1, a2) -> {
+            if (a1 instanceof Buch && a2 instanceof Buch) {
+                Buch buch1 = (Buch) a1;
+                Buch buch2 = (Buch) a2;
+                return buch1.getAuthor().compareTo(buch2.getAuthor()) > 0;
+            }
+            return false;
+        });
+        return sortierteListe;
     }
     
     /**
@@ -205,9 +244,14 @@ public class Ueb18Fassade {
      * @return Alle Buecher vom Autor autor und mit einem Preis, der zwischen minPreis und maxPreis liegt.
      */
     public Artikel[] aufgabe_h_vi(Lager lager, String gesuchterAutor, double minPreis, double maxPreis) {
-    	return null;
+        Artikel[] gefundeneArtikel = (Artikel[]) Arrays.stream(lager.filterAll(artikel -> {
+            if (artikel instanceof Buch) {
+                Buch buch = (Buch) artikel;
+                return buch.getAuthor().equals(gesuchterAutor) &&
+                        buch.getPreis() >= minPreis && buch.getPreis() <= maxPreis;
+            }
+            return false;
+        })).toArray();
+        return gefundeneArtikel;
     }
-    
-    
-    
 }

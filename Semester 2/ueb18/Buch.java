@@ -60,6 +60,9 @@ public class Buch extends Artikel {
     public String getBeschreibung(){
         return "Art: " + getArt() + " " + autor + " " + titel;
     }
+    public String getAuthor(){
+        return autor;
+    }
 
     /**
      * Methode zum ausgeben der Attribute eines Buches als Zeichenkette

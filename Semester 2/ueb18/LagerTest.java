@@ -288,6 +288,7 @@ public class LagerTest {
         System.out.println(lager.toString());
 
     }
+    @Test
     public void testCDPreisAlle10Pro() {
         Lager lager = new Lager(10);
         // Fügen Sie Artikel zum Lager hinzu
@@ -310,4 +311,5 @@ public class LagerTest {
         System.out.println(lager.toString());
 
     }
+
 }
