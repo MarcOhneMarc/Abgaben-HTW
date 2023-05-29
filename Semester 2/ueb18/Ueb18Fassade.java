@@ -114,7 +114,7 @@ public class Ueb18Fassade {
     * <br />
     * An alle Artikelbezeichnungen wird das Suffix (Sonderangebot) angehaengt.
     * @param lager Das Lager mit den Artikeln, deren Bezeichnungen geaendert werden sollen.
-    */	
+    */
     public void aufgabe_c_iii(Lager lager) {
         Consumer<Artikel> operation = artikel -> {
             if (artikel.getArt() != null)
@@ -149,7 +149,7 @@ public class Ueb18Fassade {
         System.out.println(lager.toString());
     }
     
-    	/**
+        /**
      * Loest die Aufgabe (h) i.
      * <br />
      * Der Preis aller CDs wird um 10 % erhoeht.
