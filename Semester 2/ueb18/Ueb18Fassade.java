@@ -112,7 +112,7 @@ public class Ueb18Fassade {
     * <br />
     * An alle Artikelbezeichnungen wird das Suffix (Sonderangebot) angehaengt.
     * @param lager Das Lager mit den Artikeln, deren Bezeichnungen geaendert werden sollen.
-    */	
+    */    
     public void aufgabe_c_iii(Lager lager) {
         Consumer<Artikel> operation = artikel -> {
             if (artikel.getArt() != null)
@@ -147,14 +147,14 @@ public class Ueb18Fassade {
         System.out.println(lager.toString());
     }
     
-    	/**
+        /**
      * Loest die Aufgabe (h) i.
      * <br />
      * Der Preis aller CDs wird um 10 % erhoeht.
      * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
      */
     public void aufgabe_h_i(Lager lager) {
-    	lager.applyToSomeArticles(a -> a instanceof CD, a -> a.aenderePreis(10));
+        lager.applyToSomeArticles(a -> a instanceof CD, a -> a.setPreis(10));
     }
     
     /**
@@ -192,7 +192,7 @@ public class Ueb18Fassade {
      * @return Eine Liste mit allen Buechern, sortiert nach den Namen der Autoren. 
      */
     public Artikel[] aufgabe_h_v(Lager lager) {
-    	return null;
+        return null;
     }
     
     /**
@@ -205,7 +205,7 @@ public class Ueb18Fassade {
      * @return Alle Buecher vom Autor autor und mit einem Preis, der zwischen minPreis und maxPreis liegt.
      */
     public Artikel[] aufgabe_h_vi(Lager lager, String gesuchterAutor, double minPreis, double maxPreis) {
-    	return null;
+        return null;
     }
     
     

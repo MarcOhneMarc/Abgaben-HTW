@@ -172,7 +172,7 @@ public class LagerTest {
     }
     
     @Test
-    public void test() {
+    public void getSortedTest() {
         Lager lager = new Lager(10);
         // Fügen Sie Artikel zum Lager hinzu
 
@@ -247,18 +247,12 @@ public class LagerTest {
 
         
         // Sortieren nach Artikelnummer
-        System.out.println("1: ");
-        System.out.println("1: ");
-        System.out.println("1: ");
         Artikel[] sortedByArtikelnummer = lager.getSorted(artikelnummerAbsteigend);
         for (Artikel artikel: sortedByArtikelnummer) {
             System.out.println("1: " + artikel.toString());
         }
         
         // Sortieren nach Bestand
-        System.out.println("2: ");
-        System.out.println("2: ");
-        System.out.println("2: ");
         Artikel[] sortedByBeschreibung = lager.getSorted(artikelnummerAufsteigend);
         for (Artikel artikel: sortedByBeschreibung) {
             System.out.println("2: " + artikel.toString());
@@ -266,7 +260,7 @@ public class LagerTest {
     }
     
     @Test
-    public void test12() {
+    public void applyToArticlesTest() {
         Lager lager = new Lager(10);
         // Fügen Sie Artikel zum Lager hinzu
 
@@ -288,6 +282,7 @@ public class LagerTest {
         System.out.println(lager.toString());
 
     }
+    
     public void testCDPreisAlle10Pro() {
         Lager lager = new Lager(10);
         // Fügen Sie Artikel zum Lager hinzu
