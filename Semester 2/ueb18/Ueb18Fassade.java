@@ -95,28 +95,7 @@ public class Ueb18Fassade {
      * Der Preis aller Artikel wird um 10% reduziert.
      * @param lager Das Lager mit den Artikeln, deren Preise geaendert werden sollen.
      */
-    public void aufgabe_c_ii() {
-        Lager lager = new Lager(10);
-        
-        Artikel artikel11 = new Artikel(3333, "c", 3, 1112);
-        Artikel artikel22 = new Artikel(1111, "b", 6, 323);
-        Artikel artikel33 = new Artikel(8888, "a", 23, 222);
-        Artikel artikel44 = new Artikel(2222, "d", 21, 333);
-        
-        CD cd11 = new CD(9999, 10, 15, "bInterpret", "bTitel", 154);
-        CD cd22 = new CD(3232, 10, 15, "cInterpret", "cTitel", 153);
-        CD cd33 = new CD(7777, 10, 15, "aInterpret", "aTitel", 156);
-        CD cd44 = new CD(6666, 10, 15, "dInterpret", "dTitel", 159);
-        
-        lager.legeAnArtikel(artikel11);
-        lager.legeAnArtikel(cd11);
-        lager.legeAnArtikel(cd22);
-        lager.legeAnArtikel(artikel22);
-        lager.legeAnArtikel(artikel33);
-        lager.legeAnArtikel(cd33);
-        lager.legeAnArtikel(cd44);
-        lager.legeAnArtikel(artikel44);
-        
+    public void aufgabe_c_ii(Lager lager) {
         Consumer<Artikel> operation = artikel -> {
             artikel.setPreis((artikel.getPreis())*0.9);
         };
