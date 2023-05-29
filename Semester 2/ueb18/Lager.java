@@ -330,6 +330,7 @@ import java.util.function.Predicate;
         }
         return null;
     }
+    
     public void applyToSomeArticles(Predicate<Object> filter, Consumer<Artikel> artikelConsumer){
         for(int i = 0; i < allArtikels.length; i++){
             if (filter.test(allArtikels[i])){
@@ -337,6 +338,7 @@ import java.util.function.Predicate;
             }
         }
     }
+    
     public Artikel[] getArticles(Predicate<Object> filter, BiPredicate<Artikel, Artikel> kriterium){
         Artikel[] sortedArtikelList = new Artikel[countArtikel];
         int counter = 0;

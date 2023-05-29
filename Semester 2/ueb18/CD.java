@@ -62,7 +62,7 @@ public class CD extends Artikel{
      */
     @Override
     public String getBeschreibung(){
-        return interpret + " " + titel;
+        return "Art: " + getArt() + " " + interpret + " " + titel;
     }
 
     /**

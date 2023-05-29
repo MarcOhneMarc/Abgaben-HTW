@@ -116,8 +116,181 @@ public class Ueb18Fassade {
      * Der Preis aller Artikel wird um 10% reduziert.
      * @param lager Das Lager mit den Artikeln, deren Preise geaendert werden sollen.
      */
-    public void aufgabe_c_ii(Lager lager) {
+    public void aufgabe_c_ii() {
+        Lager lager = new Lager(10);
         
+        Artikel artikel11 = new Artikel(3333, "c", 3, 1112);
+        Artikel artikel22 = new Artikel(1111, "b", 6, 323);
+        Artikel artikel33 = new Artikel(8888, "a", 23, 222);
+        Artikel artikel44 = new Artikel(2222, "d", 21, 333);
+        
+        CD cd11 = new CD(9999, 10, 15, "bInterpret", "bTitel", 154);
+        CD cd22 = new CD(3232, 10, 15, "cInterpret", "cTitel", 153);
+        CD cd33 = new CD(7777, 10, 15, "aInterpret", "aTitel", 156);
+        CD cd44 = new CD(6666, 10, 15, "dInterpret", "dTitel", 159);
+        
+        lager.legeAnArtikel(artikel11);
+        lager.legeAnArtikel(cd11);
+        lager.legeAnArtikel(cd22);
+        lager.legeAnArtikel(artikel22);
+        lager.legeAnArtikel(artikel33);
+        lager.legeAnArtikel(cd33);
+        lager.legeAnArtikel(cd44);
+        lager.legeAnArtikel(artikel44);
+        Consumer<Artikel> operation = artikel -> {
+            artikel.setPreis((artikel.getPreis())*0.9);
+        };
+
+        System.out.println(lager.toString());
+        // Sortieren nach Artikelnummer
+        lager.applyToArticles(operation);
+
+        System.out.println(lager.toString());
     }
+    
+    /**
+    * Loest die Aufgabe (c) iii.
+    * <br />
+    * An alle Artikelbezeichnungen wird das Suffix (Sonderangebot) angehaengt.
+    * @param lager Das Lager mit den Artikeln, deren Bezeichnungen geaendert werden sollen.
+    */	
+    public void aufgabe_c_iii() {
+        Lager lager = new Lager(10);
+        
+        Artikel artikel11 = new Artikel(3333, "c", 3, 1112);
+        Artikel artikel22 = new Artikel(1111, "b", 6, 323);
+        Artikel artikel33 = new Artikel(8888, "a", 23, 222);
+        Artikel artikel44 = new Artikel(2222, "d", 21, 333);
+        
+        CD cd11 = new CD(9999, 10, 15, "bInterpret", "bTitel", 154);
+        CD cd22 = new CD(3232, 10, 15, "cInterpret", "cTitel", 153);
+        CD cd33 = new CD(7777, 10, 15, "aInterpret", "aTitel", 156);
+        CD cd44 = new CD(6666, 10, 15, "dInterpret", "dTitel", 159);
+        
+        lager.legeAnArtikel(artikel11);
+        lager.legeAnArtikel(cd11);
+        lager.legeAnArtikel(cd22);
+        lager.legeAnArtikel(artikel22);
+        lager.legeAnArtikel(artikel33);
+        lager.legeAnArtikel(cd33);
+        lager.legeAnArtikel(cd44);
+        lager.legeAnArtikel(artikel44);
+        
+        Consumer<Artikel> operation = artikel -> {
+            if (artikel.getArt() != null)
+                artikel.setArt((artikel.getArt())+ " (Sonderangebot)");
+        };
+
+        System.out.println(lager.toString());
+        // Sortieren nach Artikelnummer
+        lager.applyToArticles(operation);
+
+        System.out.println(lager.toString());
+    }
+    
+    /**
+    * Loest die Aufgabe (c) iv.
+    * <br />
+    * Die beiden Operatoren aus den Aufgabenteilen ii und iii werden konkateniert, d.h. alle Preise werden
+    * um 10 % reduziert und alle Bezeichnungen werden um das Suffix (Sonderangebot) erweitert.
+    * @param lager Das Lager mit den Artikeln, deren Preise und Bezeichnungen geaendert werden sollen.
+    */
+    public void aufgabe_c_iv() {
+        Lager lager = new Lager(10);
+        
+        Artikel artikel11 = new Artikel(3333, "c", 3, 1112);
+        Artikel artikel22 = new Artikel(1111, "b", 6, 323);
+        Artikel artikel33 = new Artikel(8888, "a", 23, 222);
+        Artikel artikel44 = new Artikel(2222, "d", 21, 333);
+        
+        CD cd11 = new CD(9999, 10, 15, "bInterpret", "bTitel", 154);
+        CD cd22 = new CD(3232, 10, 15, "cInterpret", "cTitel", 153);
+        CD cd33 = new CD(7777, 10, 15, "aInterpret", "aTitel", 156);
+        CD cd44 = new CD(6666, 10, 15, "dInterpret", "dTitel", 159);
+        
+        lager.legeAnArtikel(artikel11);
+        lager.legeAnArtikel(cd11);
+        lager.legeAnArtikel(cd22);
+        lager.legeAnArtikel(artikel22);
+        lager.legeAnArtikel(artikel33);
+        lager.legeAnArtikel(cd33);
+        lager.legeAnArtikel(cd44);
+        lager.legeAnArtikel(artikel44);
+        
+        Consumer<Artikel> operation = artikel -> {
+            artikel.setPreis((artikel.getPreis())*0.9);
+            if (artikel.getArt() != null)
+                artikel.setArt((artikel.getArt())+ " (Sonderangebot)");
+        };
+
+        System.out.println(lager.toString());
+        // Sortieren nach Artikelnummer
+        lager.applyToArticles(operation);
+
+        System.out.println(lager.toString());
+    }
+    
+    	/**
+     * Loest die Aufgabe (h) i.
+     * <br />
+     * Der Preis aller CDs wird um 10 % erhoeht.
+     * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+     */
+    public void aufgabe_h_i(Lager lager) {
+    	lager.applyToSomeArticles(a -> a instanceof CD, a -> a.aenderePreis(10));
+    }
+    
+    /**
+     * Loest die Aufgabe (h) ii.
+     * <br />
+     * Der Preis aller Artikel, von denen der Bestand hoechstes zwei ist, wird um 5 % reduziert.
+     * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+     */
+    public void aufgabe_h_ii(Lager lager) {
+    }
+    
+    /**
+     * Loest die Aufgabe (h) iii.
+     * <br />
+     * Der Preis der Buecher eines bestimmten Autors wird um 5 % reduziert.
+     * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+     * @param gesuchterAutor Der Autor, dessen Buecher guenstiger werden sollen.
+     */
+    public void aufgabe_h_iii(Lager lager, String gesuchterAutor) {
+    }
+    
+    /**
+     * Loest die Aufgabe (h) iv.
+     * <br />
+     * Der Preis aller CDs wird um 10 % erhoeht und der Preis aller Artikel, von denen der Bestand hoechstes zwei ist, wird um 5 % reduziert.
+     * @param lager Das Lager mit den Artikeln. Die Aenderungen werden direkt in diesem Objekt vorgenommen.
+     */
+    public void aufgabe_h_iv(Lager lager) {
+    }
+    
+    /**
+     * Loest die Aufgabe (h) v.
+     * <br />
+     * @param lager Das Lager mit den Artikeln. 
+     * @return Eine Liste mit allen Buechern, sortiert nach den Namen der Autoren. 
+     */
+    public Artikel[] aufgabe_h_v(Lager lager) {
+    	return null;
+    }
+    
+    /**
+     * Loest die Aufgabe (h) vi.
+     * <br />
+     * @param lager Das Lager, dessen Artikel gefiltert werden sollen.
+     * @param gesuchterAutor Der Autor, nach dem gefiltert werden soll.
+     * @param minPreis Der kleinste Preis, den die zu filternden Buecher haben sollen.
+     * @param maxPreis Der hoechste Preis, den die zu filternden Buecher haben sollen.
+     * @return Alle Buecher vom Autor autor und mit einem Preis, der zwischen minPreis und maxPreis liegt.
+     */
+    public Artikel[] aufgabe_h_vi(Lager lager, String gesuchterAutor, double minPreis, double maxPreis) {
+    	return null;
+    }
+    
+    
     
 }
