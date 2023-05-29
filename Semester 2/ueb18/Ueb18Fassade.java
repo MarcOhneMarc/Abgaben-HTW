@@ -28,28 +28,7 @@ public class Ueb18Fassade {
      * @param lager Das Lager mit der unsortierten Artikelliste.  
      * @return Die sortierte Artikelliste.
      */
-    public Artikel[] aufgabe_c_i() {
-        Lager lager = new Lager(10);
-        
-        Artikel artikel11 = new Artikel(3333, "c", 3, 1112);
-        Artikel artikel22 = new Artikel(1111, "b", 6, 323);
-        Artikel artikel33 = new Artikel(8888, "a", 23, 222);
-        Artikel artikel44 = new Artikel(2222, "d", 21, 333);
-        
-        CD cd11 = new CD(9999, 10, 15, "bInterpret", "bTitel", 154);
-        CD cd22 = new CD(3232, 10, 15, "cInterpret", "cTitel", 153);
-        CD cd33 = new CD(7777, 10, 15, "aInterpret", "aTitel", 156);
-        CD cd44 = new CD(6666, 10, 15, "dInterpret", "dTitel", 159);
-        
-        lager.legeAnArtikel(artikel11);
-        lager.legeAnArtikel(cd11);
-        lager.legeAnArtikel(cd22);
-        lager.legeAnArtikel(artikel22);
-        lager.legeAnArtikel(artikel33);
-        lager.legeAnArtikel(cd33);
-        lager.legeAnArtikel(cd44);
-        lager.legeAnArtikel(artikel44);
-        
+    public Artikel[] aufgabe_c_i(Lager lager) {
         //Bestand aufsteigend
         BiPredicate<Artikel, Artikel> kriterium = (artikel1, artikel2) -> {
             // Sortieren nach Unterklassen alphabetisch
@@ -102,7 +81,7 @@ public class Ueb18Fassade {
             return preis1 < preis2;
         };
         
-        System.out.println("B: ");
+        System.out.println("C: ");
         Artikel[] sortByPreisExtendet = lager.getSorted(kriterium3);
         for (Artikel artikel: sortByPreisExtendet) {
             System.out.println("1: " + artikel.toString());
@@ -137,6 +116,7 @@ public class Ueb18Fassade {
         lager.legeAnArtikel(cd33);
         lager.legeAnArtikel(cd44);
         lager.legeAnArtikel(artikel44);
+        
         Consumer<Artikel> operation = artikel -> {
             artikel.setPreis((artikel.getPreis())*0.9);
         };
@@ -154,28 +134,7 @@ public class Ueb18Fassade {
     * An alle Artikelbezeichnungen wird das Suffix (Sonderangebot) angehaengt.
     * @param lager Das Lager mit den Artikeln, deren Bezeichnungen geaendert werden sollen.
     */	
-    public void aufgabe_c_iii() {
-        Lager lager = new Lager(10);
-        
-        Artikel artikel11 = new Artikel(3333, "c", 3, 1112);
-        Artikel artikel22 = new Artikel(1111, "b", 6, 323);
-        Artikel artikel33 = new Artikel(8888, "a", 23, 222);
-        Artikel artikel44 = new Artikel(2222, "d", 21, 333);
-        
-        CD cd11 = new CD(9999, 10, 15, "bInterpret", "bTitel", 154);
-        CD cd22 = new CD(3232, 10, 15, "cInterpret", "cTitel", 153);
-        CD cd33 = new CD(7777, 10, 15, "aInterpret", "aTitel", 156);
-        CD cd44 = new CD(6666, 10, 15, "dInterpret", "dTitel", 159);
-        
-        lager.legeAnArtikel(artikel11);
-        lager.legeAnArtikel(cd11);
-        lager.legeAnArtikel(cd22);
-        lager.legeAnArtikel(artikel22);
-        lager.legeAnArtikel(artikel33);
-        lager.legeAnArtikel(cd33);
-        lager.legeAnArtikel(cd44);
-        lager.legeAnArtikel(artikel44);
-        
+    public void aufgabe_c_iii(Lager lager) {
         Consumer<Artikel> operation = artikel -> {
             if (artikel.getArt() != null)
                 artikel.setArt((artikel.getArt())+ " (Sonderangebot)");
@@ -195,28 +154,7 @@ public class Ueb18Fassade {
     * um 10 % reduziert und alle Bezeichnungen werden um das Suffix (Sonderangebot) erweitert.
     * @param lager Das Lager mit den Artikeln, deren Preise und Bezeichnungen geaendert werden sollen.
     */
-    public void aufgabe_c_iv() {
-        Lager lager = new Lager(10);
-        
-        Artikel artikel11 = new Artikel(3333, "c", 3, 1112);
-        Artikel artikel22 = new Artikel(1111, "b", 6, 323);
-        Artikel artikel33 = new Artikel(8888, "a", 23, 222);
-        Artikel artikel44 = new Artikel(2222, "d", 21, 333);
-        
-        CD cd11 = new CD(9999, 10, 15, "bInterpret", "bTitel", 154);
-        CD cd22 = new CD(3232, 10, 15, "cInterpret", "cTitel", 153);
-        CD cd33 = new CD(7777, 10, 15, "aInterpret", "aTitel", 156);
-        CD cd44 = new CD(6666, 10, 15, "dInterpret", "dTitel", 159);
-        
-        lager.legeAnArtikel(artikel11);
-        lager.legeAnArtikel(cd11);
-        lager.legeAnArtikel(cd22);
-        lager.legeAnArtikel(artikel22);
-        lager.legeAnArtikel(artikel33);
-        lager.legeAnArtikel(cd33);
-        lager.legeAnArtikel(cd44);
-        lager.legeAnArtikel(artikel44);
-        
+    public void aufgabe_c_iv(Lager lager) {
         Consumer<Artikel> operation = artikel -> {
             artikel.setPreis((artikel.getPreis())*0.9);
             if (artikel.getArt() != null)
