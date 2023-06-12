@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
  * Eine doppelt verkettete Liste implementiert das List-Interface und ermöglicht den Zugriff auf Elemente
  * in der Liste sowie das Hinzufügen, Entfernen und Ändern von Elementen.
  *
+ * @author Jonas Neu und Marc Perwak
  * @param <E> der Typ der Elemente in der Liste
  */
 public class DoppeltVerketteteListe<E> implements List<E> {
@@ -149,7 +150,13 @@ public class DoppeltVerketteteListe<E> implements List<E> {
      */
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return addAll(size, c);
+        boolean anhaengenErfolgreich = false;
+        for (E element : c) {
+            if (add(element)) {
+                anhaengenErfolgreich = true;
+            }
+        }
+        return anhaengenErfolgreich;
     }
 
     /**
