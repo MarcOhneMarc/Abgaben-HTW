@@ -58,11 +58,12 @@ public class DoppeltVerketteteListeTest {
         list.add("B");
         list.add("C");
 
-        Object[] array = list.toArray();
-        Assertions.assertEquals(3, array.length);
-        Assertions.assertEquals("A", array[0]);
-        Assertions.assertEquals("B", array[1]);
-        Assertions.assertEquals("C", array[2]);
+        Object[] arraya = new Object[list.size()];
+        list.toArray(arraya);
+        Assertions.assertEquals(3, arraya.length);
+        Assertions.assertEquals("A", arraya[0]);
+        Assertions.assertEquals("B", arraya[1]);
+        Assertions.assertEquals("C", arraya[2]);
     }
 
     @Test

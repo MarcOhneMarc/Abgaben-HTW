@@ -13,9 +13,8 @@ public class testDialog {
         test.add("test4");
         test.add("test5");
         System.out.println(test.size());
-        String[] testa = new String[test.size()];
-        test.toArray(testa);
-        System.out.println(Arrays.toString(testa));
+        Object testa = test.toArray();;
+        System.out.println(testa.toString());
         System.out.println(test.indexOf("test2"));
     }
 }
