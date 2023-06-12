@@ -251,9 +251,7 @@ public class DoppeltVerketteteListe<E> implements List<E> {
         }
         return -1;
     }
-
-    // Private helper methods
-
+    
     /**
      * Fügt ein Element am Ende der Liste hinzu.
      *
@@ -378,8 +376,6 @@ public class DoppeltVerketteteListe<E> implements List<E> {
     private boolean isPositionIndex(int index) {
         return index >= 0 && index <= size;
     }
-
-    // Weitere Methoden des List-Interface (nicht implementiert)
 
     @Override
     public Iterator<E> iterator() {
