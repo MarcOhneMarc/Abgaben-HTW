@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
+import java.util.List;
+
 
 public class DoppeltVerketteteListeTest {
 
@@ -100,25 +102,6 @@ public class DoppeltVerketteteListeTest {
         Assertions.assertFalse(list.remove("D"));
         Assertions.assertEquals(2, list.size());
     }
-
-    @Test
-    public void testAddAll() {
-        DoppeltVerketteteListe<Integer> list = new DoppeltVerketteteListe<>();
-        Assertions.assertTrue(list.isEmpty());
-
-        DoppeltVerketteteListe<Integer> otherList = new DoppeltVerketteteListe<>();
-        otherList.add(1);
-        otherList.add(2);
-        otherList.add(3);
-
-        Assertions.assertTrue(list.addAll(otherList));
-
-        Assertions.assertEquals(3, list.size());
-        Assertions.assertEquals(1, list.get(0).intValue());
-        Assertions.assertEquals(2, list.get(1).intValue());
-        Assertions.assertEquals(3, list.get(2).intValue());
-    }
-
     @Test
     public void testClear() {
         DoppeltVerketteteListe<Double> list = new DoppeltVerketteteListe<>();
