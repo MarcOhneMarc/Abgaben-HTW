@@ -43,7 +43,7 @@ public class Consumer implements Runnable{
     }
 
 
-    public int numberOfOccurences(int zahl) {
+    public int numberOfOccurrences(int zahl) {
         if (quersummenMap.containsKey(zahl)) {
             int ergebnis = quersummenMap.get(zahl).size();
             return ergebnis;
