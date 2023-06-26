@@ -2,7 +2,7 @@ public class LagerProgrammierhilfe{
     private Lager lager;
     
     public static void main(String[] args) {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
         
         Artikel artikel1 = new Artikel(1111, "Artikel1", 10, 15);
         Artikel artikel2 = new Artikel(2222, "Artikel2", 20, 30);

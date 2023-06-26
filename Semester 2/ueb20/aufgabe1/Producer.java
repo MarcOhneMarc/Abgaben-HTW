@@ -1,10 +1,11 @@
-import java.util.Queue;
+
+import java.util.Collection;
 import java.util.Random;
 
 public class Producer implements Runnable {
-    private Queue <Integer> queue;
+    private Collection <Integer> queue;
 
-    public Producer(Queue<Integer> queue) {
+    public Producer(Collection<Integer> queue) {
         this.queue = queue;
     }
 
@@ -12,7 +13,7 @@ public class Producer implements Runnable {
     public void run() {
         for (int i = 1; i <= 10; i++) {
             try {
-                produce(i);
+                produce();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -20,11 +21,7 @@ public class Producer implements Runnable {
     }
 
     private int produce() throws InterruptedException {
-        synchronized (queue) {
-            Random ran = new Random();
-            int numb = ran.nextInt(1000);
-            System.out.println("Random Int: " + numb);
-            return numb;
-        }
+        Random random = new Random();
+        return random.nextInt(1000);
     }
 }

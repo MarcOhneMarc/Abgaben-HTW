@@ -1,10 +1,14 @@
 import static java.lang.String.format;
+import static java.lang.String.valueOf;
+
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Klasse zum erstellen eines Lagers, in dem man mehrere Artikel der klasse Artikel.java speichern kann.
@@ -13,7 +17,7 @@ import java.util.function.Predicate;
  */
  public class Lager {
     //initialisierung der Attribute
-    private static final int ARTIKEL_NICHT_GEFUNDEN = -1;
+    private static final Artikel ARTIKEL_NICHT_GEFUNDEN = null;
     private static final String ERROR_ARTIKEL_EXISTIERT_BEREITS = "Dieser Artikel ist bereits im Lager!";
     private static final String MINIMAL_MAXIMAL_LAGER = "Das Lager darf minimal 1 und maximal 10 einheiten groß sein!";
     private static final String ARTIKEL_EXISTIERT_NICHT = "Dieser Artikel existiert noch nicht!";
@@ -27,48 +31,29 @@ import java.util.function.Predicate;
     
     private Map<Integer, Artikel> allArtikels;
     private Artikel artikels;
-    private int countArtikel;
-    private int arraylaenge;
-    
-    /**
-    * Konstruktor zum initialisiern der Lagergroesse
-    *
-    * @param arraylaenge gibt an wie viele Speicherplaetze im Array vergeben werden
-    */
-    public Lager(int arraylaenge) {
-        if (arraylaenge > 10 || arraylaenge <= 0) {
-            throw new IllegalArgumentException(MINIMAL_MAXIMAL_LAGER);
-        } else {
-           allArtikels = new Artikel[arraylaenge];
-           this.arraylaenge = arraylaenge;
-        }
-    }
     
     /**
     * Konstruktor zum initialisiern der maximalen Lagergroesse 10
     */
     public Lager() {
-        allArtikels = new Artikel[10];
-        this.arraylaenge = 10;
+        allArtikels = new LinkedHashMap<>();
     }
     
 
     public void applyToArticles(Consumer<Artikel> operation) {
-        for (Artikel artikel: allArtikels) {
-            if (artikel != null)
-                operation.accept(artikel);
-        }
+        allArtikels.values()
+                .forEach(operation::accept);
     }
 
     /**
      * Methode zum Sortieren der Artikel im Lager.
      * 
-     * @param comparator Das Sortierkriterium als Comparator<Artikel>.
+     * @param kriterium Das Sortierkriterium als Comparator<Artikel>.
      * @return sortedArray Ein sortiertes Array der Artikel im Lager.
      */
     public Artikel[] getSorted(BiPredicate<Artikel, Artikel> kriterium) {
-        Artikel[] sortedArray = Arrays.copyOf(allArtikels, countArtikel);
-        
+        Artikel[] sortedArray = allArtikels.values().toArray(new Artikel[0]);
+
         for (int i = 0; i < sortedArray.length; i++) {
             for (int j = i + 1; j < sortedArray.length; j++) {
                 if (kriterium.test(sortedArray[i], sortedArray[j])) {
@@ -78,7 +63,7 @@ import java.util.function.Predicate;
                 }
             }
         }
-        
+
         return sortedArray;
     }
 
@@ -95,22 +80,15 @@ import java.util.function.Predicate;
         if (artikel == null) {
            throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         }
-        
-        // Pruefen ob das Lager schon voll ist
-        if (arraylaenge == countArtikel) {
-           throw new IllegalArgumentException(LAGER_VOLL);
-        }
-        
+
         int artikelNr = artikel.getArtikelNr(); // Abspeichern der Artikelnummer
-        int index = findeArtikelIndex(artikelNr); // Abspeichern des Index eines Artikels
-        
+
         // Ueberpruefung ob sich der Artikel noch nicht im Lager befindet
-        if (index != ARTIKEL_NICHT_GEFUNDEN) {
+        if (allArtikels.get(artikelNr) != null) {
            throw new IllegalArgumentException(ERROR_ARTIKEL_EXISTIERT_BEREITS);
         }
         
-        allArtikels[countArtikel] = artikel;
-        countArtikel++;
+        allArtikels.put(artikelNr, artikel);
     }
 
     /**
@@ -120,18 +98,12 @@ import java.util.function.Predicate;
     * @throws IllegalArgumentException wenn der Artikel nicht gefunden wird.
     */
     public void entferneArtikel(int artikelNr){
-        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
 
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
-        if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+        if (allArtikels.get(artikelNr) == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         }
-
-        for (int i = artikelIndex; i < countArtikel -1; i++) {
-          allArtikels[i] = allArtikels[i + 1];
-        }
-        allArtikels[countArtikel - 1] = null;
-        countArtikel--;
+        allArtikels.remove(artikelNr);
     }
 
     /**
@@ -140,7 +112,7 @@ import java.util.function.Predicate;
     * @param artikelNr Die Artikelnummer des Artikels, dessen index ausgegeben werden soll
     * @return ARTIKEL_NICHT_GEFUNDEN = -1 bedeutet der Artikel befindet sich nicht im Lager oder i wenn die Artikelnummer gefunden wurde
     */
-    public int findeArtikelIndex(int artikelNr) {
+/*    public int findeArtikelIndex(int artikelNr) {
         for (int i = 0; i < countArtikel; i++) {
           Artikel artikel = allArtikels[i];
           if (artikel.getArtikelNr() == artikelNr) {
@@ -148,7 +120,7 @@ import java.util.function.Predicate;
           }
         }
         return ARTIKEL_NICHT_GEFUNDEN;
-    }
+    }*/
     
     /**
     * Methode zum buchen einer Bestandserhoehung eines Artikels
@@ -157,14 +129,12 @@ import java.util.function.Predicate;
     * @param zugang Der Zugang als Ganzzahl
     */
     public void bucheZugang(int artikelNr, int zugang) {
-        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
-        
+
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
-        if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+        if (allArtikels.get(artikelNr) == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
-        } else {
-            allArtikels[artikelIndex].bucheZugang(zugang);
         }
+        allArtikels.values().forEach(value -> value.bucheZugang(zugang));
     }
     
     /**
@@ -174,14 +144,12 @@ import java.util.function.Predicate;
     * @param abgang Der Abgang als Ganzzahl
     */
     public void bucheAbgang(int artikelNr, int abgang) {
-        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
 
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
-        if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+        if (allArtikels.get(artikelNr) == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
-        } else {
-            allArtikels[artikelIndex].bucheAbgang(abgang);
         }
+        allArtikels.values().forEach(value -> value.bucheAbgang(abgang));
     }
 
     /**
@@ -192,22 +160,17 @@ import java.util.function.Predicate;
      * @param prozent uebergebene Prozentzahl als double
      */
     public void aenderePreisEinesArtikels(int artikelNr, double prozent) {
-        int artikelIndex = findeArtikelIndex(artikelNr); // Abspeichern des Index an dem sich der Artikel befindet
-
         // Ueberpruefung ob sich der Artikel bereits im Lager befindet
-        if (artikelIndex == ARTIKEL_NICHT_GEFUNDEN) {
+        if (allArtikels.get(artikelNr) == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         }
-        
-        double preisAkktuel = allArtikels[artikelIndex].getPreis(); // Der aktuelle Preis des Artikels wird abgespeichert
+        double preisAkktuel = allArtikels.get(artikelNr).getPreis(); // Der aktuelle Preis des Artikels wird abgespeichert
         double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geaenderter Preis wird abgespeichert
         
         if (preisRechnung < 0) {
           throw new IllegalArgumentException(PREIS_KLEINER_NULL);
         }
-        
-        Artikel artikel = allArtikels[artikelIndex];
-        artikel.setPreis(preisRechnung);
+        allArtikels.get(artikelNr).setPreis(preisRechnung);
     }
 
     /**
@@ -217,12 +180,8 @@ import java.util.function.Predicate;
      * @param prozent uebergebene Prozentzahl als double
      */
     public void aenderePreisAllerArtikel(double prozent) {
-        // For-Schleife zur Ermittlung der Artikel im Array
-        for (int i = 0; i < countArtikel; i++) {
-            double preisAkktuel = allArtikels[i].getPreis(); // Der aktuelle Preis des Artikels an der stelle i des Arrays
-            double preisRechnung = (preisAkktuel + (preisAkktuel / 100) * prozent); // Geaenderter Preis
-            allArtikels[i].setPreis(preisRechnung);
-        }
+        allArtikels.values()
+                .forEach(value -> value.setPreis(value.getPreis() + (value.getPreis() / 100) * prozent));
     }
    
     /**
@@ -232,21 +191,25 @@ import java.util.function.Predicate;
      */
     public String ausgebenBestandsListe() {
         double warenwertLager = 0;
-        double gesamt = 0;
-        String ausgabe = ""; // Definition der Variable "ausgabe" als String
-        ausgabe = format("\n%-10s %-60s %8s %10s %9s", "ArtikelNr", "Beschreibung", "Preis", "Bestand", "Gesamt");
-        ausgabe = ausgabe + "\n-----------------------------------------------------------------------------------------------------\n";
-        // Erweitern der ausgabe in den String
-        for (int i = 0; i < allArtikels.length; i++) {
-            if (allArtikels[i] != null) {
-                gesamt = getGesamt(allArtikels[i]);
-                warenwertLager += gesamt;
-                ausgabe = ausgabe + allArtikels[i].toString() + format("%10.2f", gesamt) + "\n";
-            }
-        }
-        ausgabe = ausgabe + "-----------------------------------------------------------------------------------------------------\n";
-        ausgabe = ausgabe + format("%s %89.2f", "Gesamtwert:", warenwertLager);
-        return ausgabe;
+        StringBuilder ausgabe = new StringBuilder(); // Verwendung von StringBuilder anstelle von String für effiziente Zeichenkettenmanipulation
+
+        ausgabe.append(String.format("%-10s %-60s %8s %10s %9s", "ArtikelNr", "Beschreibung", "Preis", "Bestand", "Gesamt"));
+        ausgabe.append("\n-----------------------------------------------------------------------------------------------------\n");
+
+        warenwertLager = allArtikels.entrySet().stream()
+                .filter(entry -> entry.getValue() != null)
+                .mapToDouble(entry -> {
+                    Artikel artikel = entry.getValue();
+                    double gesamt = getGesamt(artikel);
+                    ausgabe.append(artikel.toString()).append(String.format("%10.2f", gesamt)).append("\n");
+                    return gesamt;
+                })
+                .sum();
+
+        ausgabe.append("-----------------------------------------------------------------------------------------------------\n");
+        ausgabe.append(String.format("%s %89.2f", "Gesamtwert:", warenwertLager));
+
+        return ausgabe.toString();
     }
     
     /**
@@ -259,29 +222,23 @@ import java.util.function.Predicate;
         ausgabe = format("\n%-10s %-60s %8s %10s", "ArtikelNr", "Beschreibung", "Preis", "Bestand");
         ausgabe = ausgabe + "\n-------------------------------------------------------------------------------------------\n";
         // Erweitern der ausgabe in den String
-        for (int i = 0; i < allArtikels.length; i++) {
-            if (allArtikels[i] != null) {
-                ausgabe = ausgabe + allArtikels[i].toString() + "\n";
-            }
-        }
+        ausgabe = allArtikels.values().stream()
+                .map(Artikel::toString)
+                .collect(Collectors.joining("\n"));
+        ausgabe += "\n";
+
+
         return ausgabe;
     }
     
     /**
      * Methode zum ausgeben eines Artikels anhand seines index
      * 
-     * @param index der index als Ganzzahl von 1 bis 10
+     * @param artikelNr der index als Ganzzahl von 1 bis 10
      * @return Artikel der Artikel and der stelle Index
      */
-    public Artikel getArtikel(int index) {
-        // Pruefung ob index == null und ob index groeser ist als die eigentliche array laenge
-        if (index < 0){
-            throw new IllegalArgumentException(KEIN_NEGATIVER_LAGERPLATZ);
-        } else if (index > arraylaenge) {
-            throw new IllegalArgumentException(SPEICHERSTELLE_NICHT_VORHANDEN);
-        } else{
-            return allArtikels[index];
-        }
+    public Artikel getArtikel(int artikelNr) {
+        return allArtikels.get(artikelNr);
     }
 
     /**
@@ -290,12 +247,7 @@ import java.util.function.Predicate;
      * @return countArtikel Die Anzahl der Artikel
      */
     public int getArtikelAnzahl(){
-        // pruefen, ob es countArtikel nicht null ist
-        if (countArtikel == 0)
-            throw new IllegalArgumentException(LAGER_LEER);
-        else{
-            return countArtikel;
-        }
+        return allArtikels.size();
     }
     
     /**
@@ -305,8 +257,7 @@ import java.util.function.Predicate;
      * @retrun gesamt Der gesamte, ausgerechnete Wert der Artikel
      */
     public double getGesamt(Artikel artikel){
-        double gesamt = artikel.getPreis() * artikel.getBestand();
-        return gesamt;
+        return artikel.getPreis() * artikel.getBestand();
     }
 
     /**
@@ -315,80 +266,43 @@ import java.util.function.Predicate;
      * @return rueckgabe Die Groesse des Lagers als Ganzzahl
      */
     public int getLagerGroesse(){
-        // pruefen, ob es countArtikel nicht null ist
-        if (allArtikels == null)
-            throw new IllegalArgumentException(KEIN_LAGER);
-        else {
-            return allArtikels.length;
-        }
+            return allArtikels.size();
     }
 
     public Artikel filter(Predicate<Object> filter){
-        for(int i = 0; i < allArtikels.length; i++){
-            if (filter.test(allArtikels[i])){
-                return allArtikels[i];
-            }
-        }
-        return null;
+        return allArtikels.values().stream()
+                .filter(filter)
+                .findFirst()
+                .orElse(null);
     }
     
     public void applyToSomeArticles(Predicate<Object> filter, Consumer<Artikel> artikelConsumer){
-        for(int i = 0; i < allArtikels.length; i++){
-            if (filter.test(allArtikels[i])){
-                 artikelConsumer.accept(allArtikels[i]);
-            }
-        }
+        allArtikels.values().stream()
+                .filter(filter)
+                .forEach(artikelConsumer::accept);
     }
 
     public Artikel[] filterAll(Predicate<Artikel> ... filter) {
-        int count = 0;
-        for (Artikel artikel : allArtikels) {
-            boolean matchesAllCriteria = true;
-            for (Predicate<Artikel> filterKriterium : filter) {
-                if (!filterKriterium.test(artikel)) {
-                    matchesAllCriteria = false;
-                    break;
-                }
-            }
-            if (matchesAllCriteria) {
-                count++;
-            }
-        }
-        Artikel[] artikelFilterAll = new Artikel[count];
-        int index = 0;
-        for (Artikel artikel : allArtikels) {
-            boolean matchesAllCriteria = true;
-            for (Predicate<Artikel> filterKriterium : filter) {
-                if (!filterKriterium.test(artikel)) {
-                    matchesAllCriteria = false;
-                    break;
-                }
-            }
-            if (matchesAllCriteria) {
-                artikelFilterAll[index] = artikel;
-                index++;
-            }
-        }
-        return artikelFilterAll;
+        return allArtikels.values().stream()
+                .filter(artikel -> Arrays.stream(filter).allMatch(f -> f.test(artikel)))
+                .toArray(Artikel[]::new);
     }
     
-    public Artikel[] getArticles(Predicate<Object> filter, BiPredicate<Artikel, Artikel> kriterium){
-        Artikel[] sortedArtikelList = new Artikel[countArtikel];
-        int counter = 0;
-        for(int i = 0; i < allArtikels.length; i++){
-            if (filter.test(allArtikels[i])){
-                sortedArtikelList[counter] = allArtikels[i];
-            }
-        }
-        for (int i = 0; i < sortedArtikelList.length; i++) {
-            for (int j = i + 1; j < sortedArtikelList.length; j++) {
-                if (kriterium.test(sortedArtikelList[i], sortedArtikelList[j])) {
-                    Artikel temp = sortedArtikelList[i];
-                    sortedArtikelList[i] = sortedArtikelList[j];
-                    sortedArtikelList[j] = temp;
+    public Artikel[] getArticles(Predicate<Object> filter, BiPredicate<Artikel, Artikel> kriterium) {
+        Artikel[] filteredArray = allArtikels.values().stream()
+                .filter(filter)
+                .toArray(Artikel[]::new);
+
+        for (int i = 0; i < filteredArray.length; i++) {
+            for (int j = i + 1; j < filteredArray.length; j++) {
+                if (kriterium.test(filteredArray[i], filteredArray[j])) {
+                    Artikel temp = filteredArray[i];
+                    filteredArray[i] = filteredArray[j];
+                    filteredArray[j] = temp;
                 }
             }
         }
-        return sortedArtikelList;
+
+        return filteredArray;
     }
 }

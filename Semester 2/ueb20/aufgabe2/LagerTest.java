@@ -38,56 +38,17 @@ public class LagerTest {
         artikel33 = new Artikel(8888, "a", 10, 15);
         artikel44 = new Artikel(2222, "d", 20, 30);
 
-        CDartikel55 = new CD(2222, 10, 20, "a", "at", 10);
-        CDartikel66 = new CD(2222, 10, 20, "a", "at", 10);
-        CDartikel77 = new CD(2222, 10, 20, "a", "at", 10);
-        CDartikel88 = new CD(2222, 10, 20, "a", "at", 10);
+        CDartikel55 = new CD(2322, 10, 20, "a", "at", 10);
+        CDartikel66 = new CD(2422, 10, 20, "a", "at", 10);
+        CDartikel77 = new CD(2522, 10, 20, "a", "at", 10);
+        CDartikel88 = new CD(2622, 10, 20, "a", "at", 10);
 
-    }
-    
-    @Test
-    public void testLagerKonstruktor_mitGroesseErstellen_sollteKorrektSein() {
-        final int erwarteteGroesse = 5;
-        Lager lager = new Lager(erwarteteGroesse);
-        
-        final int tatsaechlicheLagerGroesse = lager.getLagerGroesse();
-        assertEquals(erwarteteGroesse, tatsaechlicheLagerGroesse);
-    }
-    
-    @Test
-    public void testLagerKonstruktor_ohneGroesseErstellen_sollteKorrektSein() {
-        final int erwarteteGroesse = 10;
-        Lager lager = new Lager();
-        
-        final int tatsaechlicheLagerGroesse = lager.getLagerGroesse();
-        assertEquals(erwarteteGroesse, tatsaechlicheLagerGroesse);
-    }
-    
-    @Test
-    public void testLagerKonstruktor_mitGroesse0_erwartetException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Lager(0);
-        });
-    }
-    
-    @Test
-    public void testLagerKonstruktor_mitLeererGroesse_erwartetException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Lager(' ');
-        });
-    }
-    
-    @Test
-    public void testLagerKonstruktor_mitNegativerGroesse_erwartetException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Lager(-5);
-        });
     }
     
     // Methoden
     @Test
     public void testLegeArtikelAn_anzahlArtikelSollteHoeherSein() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
     
         lager.legeAnArtikel(artikel1);
         assertEquals(1, lager.getArtikelAnzahl());
@@ -98,7 +59,7 @@ public class LagerTest {
     
     @Test
     public void testLegeArtikelAn_mitBereitsAngelegtemArtikel_erwartetException() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
         
         lager.legeAnArtikel(artikel1);
         lager.legeAnArtikel(artikel2);
@@ -109,19 +70,8 @@ public class LagerTest {
     }
 
     @Test
-    public void testLegeArtikelAn_mitLagerBereitsVoll_erwartetException() {
-        Lager lager = new Lager(1);
-        
-        lager.legeAnArtikel(artikel1);
-        
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            lager.legeAnArtikel(artikel2);
-        });
-    }
-    
-    @Test
     public void testEntferneArtikel_anzahlArtikelSollteGeringerSein() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
     
         lager.legeAnArtikel(artikel1);
         lager.legeAnArtikel(artikel2);
@@ -132,7 +82,7 @@ public class LagerTest {
     
     @Test
     public void testBucheZugang_artikelbestandSollteHoeherSein() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
     
         lager.legeAnArtikel(artikel1);
         
@@ -142,7 +92,7 @@ public class LagerTest {
 
     @Test
     public void testaenderePreisEinesArtikels_artikelPreisSollteHoeherSein() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
     
         lager.legeAnArtikel(artikel1);
         
@@ -152,7 +102,7 @@ public class LagerTest {
     
     @Test
     public void testaenderePreisEinesArtikels_artikelPreisWirdNegativ_erwartetException() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
     
         lager.legeAnArtikel(artikel1);
         
@@ -163,7 +113,7 @@ public class LagerTest {
 
     @Test
     public void testaenderePreisEinesArtikels_artikelPreisSollteGeringerSein() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
     
         lager.legeAnArtikel(artikel2);
         
@@ -173,7 +123,7 @@ public class LagerTest {
     
     @Test
     public void getSortedTest() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
         // Fügen Sie Artikel zum Lager hinzu
 
         lager.legeAnArtikel(artikel11);
@@ -261,7 +211,7 @@ public class LagerTest {
     
     @Test
     public void applyToArticlesTest() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
         // Fügen Sie Artikel zum Lager hinzu
 
         lager.legeAnArtikel(artikel11);
@@ -285,7 +235,7 @@ public class LagerTest {
 
     @Test
     public void testCDPreisAlle10Pro() {
-        Lager lager = new Lager(10);
+        Lager lager = new Lager();
         // Fügen Sie Artikel zum Lager hinzu
 
         lager.legeAnArtikel(CDartikel55);

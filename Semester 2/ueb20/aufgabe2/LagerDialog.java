@@ -142,10 +142,10 @@ public class LagerDialog {
                 System.out.print("Geben sie die Lagerkapazitaet an (Maximal 10): ");
                 int arraylaenge = input.nextInt();
                 input.nextLine();
-                return new Lager(arraylaenge);
+                return new Lager();
             } else if (choice == 'N') {
                 System.out.print("Lager mit der maximalen Lagergroesse 10 wird erstellt!\n");
-                return new Lager(10);
+                return new Lager();
             } else {
                 throw new IllegalArgumentException(FALSCHE_EINGABE);
             }
