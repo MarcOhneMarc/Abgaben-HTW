@@ -22,6 +22,9 @@ public class Producer implements Runnable {
 
     private int produce() throws InterruptedException {
         Random random = new Random();
-        return random.nextInt(1000);
+        int randInt = random.nextInt(1000);
+        queue.add(randInt);
+        queue.notifyAll();
+        return randInt;
     }
 }
