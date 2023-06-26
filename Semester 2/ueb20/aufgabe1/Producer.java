@@ -27,4 +27,8 @@ public class Producer implements Runnable {
         queue.notifyAll();
         return randInt;
     }
+
+    public Collection<Integer> getQueue() {
+        return queue;
+    }
 }

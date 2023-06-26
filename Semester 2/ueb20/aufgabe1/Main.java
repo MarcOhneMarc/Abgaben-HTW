@@ -17,6 +17,7 @@ public class Main {
         System.out.println(",");
 
         Producer producer = new Producer(collection);
+        collection = producer.getQueue();
         Consumer consumer = new Consumer(collection);
 
         System.out.println(",");
