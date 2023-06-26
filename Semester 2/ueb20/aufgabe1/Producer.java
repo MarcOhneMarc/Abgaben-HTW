@@ -3,7 +3,7 @@ import java.util.Random;
 /**
  * Producer
  *
- * @JonasNeu_MarcPerwak
+ * @author JonasNeu_MarcPerwak
  */
 class Producer {
     /**
