@@ -50,24 +50,41 @@ class Consumer {
         return crossTotal;
     }
 
+    /**
+     *  gibt an, wie viele unterschiedliche Quersummen berechnet wurden
+     */
     public int numberOfDifferentResults() {
         return timestampMap.size();
     }
 
+    /**
+     *  gibt für einen gegebenen Integer an, wie häufig dieser als Ergebnis einer Berechnung vorkam
+     */
     public int numberOfOccurrences(int number) {
         return occurrenceMap.getOrDefault(number, 0);
     }
 
+    /**
+     *  gibt eine Collection zurück, welche die berechneten Quersummen in aufsteigender Reihenfolge enthält
+     */
     public Collection<Integer> getCrossTotalsAscending() {
         return new TreeSet<>(timestampMap.keySet());
     }
 
+    /**
+     *  gibt eine Collection zurück, welche die berechneten Quersummen in absteigender Reihenfolge enthält.
+     */
     public Collection<Integer> getCrossTotalsDescending() {
         TreeSet<Integer> descendingSet = new TreeSet<>(Collections.reverseOrder());
         descendingSet.addAll(timestampMap.keySet());
         return descendingSet;
     }
 
+    /**
+     *  nimmt einen Integer entgegen und gibt eine Collection zurück,
+     *  welche alle zugehörigen Zeitstempel enthält. D.h. die Zeitstempel der Berechnungen, die
+     *  zu dem gegebenen Ergebnis geführt haben.
+     */
     public Collection<Long> getTimestampsForResult(int number) {
         return timestampMap.getOrDefault(number, new ArrayList<>());
     }
