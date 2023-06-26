@@ -9,19 +9,12 @@ public class main
 {
     public static void main(String[] args){
         
-        String str2 = "!bc!d+a!b+ac!d";
-        str2 = str2.replaceAll("a", "B0");
-        str2 = str2.replaceAll("b", "B1");
-        str2 = str2.replaceAll("c", "A0");
-        str2 = str2.replaceAll("d", "A1");
+        String str2 = "¬E ∧ ((¬B ∧ ¬C ∧ D) ∨ (B ∧ ¬D ∧ ((A ∧ ¬C) ∨ (¬A ∧ C))))";
+        str2 = //str2.replaceAll("A", "D0");
+        str2 = //str2.replaceAll("B", "D1");
+        str2 = //str2.replaceAll("C", "D2");
+        str2 = //str2.replaceAll("D", "D3");
+        str2 = str2.replaceAll("E", "Z");
         System.out.println(str2);
-        
-        
-        String str = "!a!cd+!ab+b!cd";
-        str = str.replaceAll("a", "B0");
-        str = str.replaceAll("b", "B1");
-        str = str.replaceAll("c", "A0");
-        str = str.replaceAll("d", "A1");
-        System.out.println(str);
     }
 }
