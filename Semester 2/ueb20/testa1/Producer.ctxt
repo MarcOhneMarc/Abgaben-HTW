@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Producer
-comment0.text=\r\n\ Producer\r\n\r\n\ @JonasNeu_MarcPerwak\r\n
-comment1.params=
-comment1.target=int\ produce()
-comment1.text=\r\n\ Erstellt\ Zufallszahl\ zwischen\ 1\ und\ 1000.\r\n\ \r\n\ @return\ Die\ Zufallszahl\r\n
-numComments=2
