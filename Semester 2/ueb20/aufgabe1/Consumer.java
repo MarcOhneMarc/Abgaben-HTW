@@ -19,6 +19,26 @@ public class Consumer implements Runnable{
     }
     private void consume() throws InterruptedException {
         synchronized (queue) {
+            System.out.println("-");
+            while (queue.isEmpty()) {
+                try {
+                    queue.wait();
+                    System.out.println("-");
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    System.out.println("--");
+                }
+            }
+            System.out.println("-");
+            int value = getFromQueue();
+            System.out.println("-");
+            berechneQuersumme(value);
+            System.out.println("-");
+        }
+    }
+
+    private int getFromQueue() {
+        synchronized (queue) {
             while (queue.isEmpty()) {
                 try {
                     queue.wait();
@@ -26,16 +46,12 @@ public class Consumer implements Runnable{
                     e.printStackTrace();
                 }
             }
-            int value = getFromQueue();
-            berechneQuersumme(value);
-        }
-    }
 
-    private int getFromQueue() {
-        Iterator<Integer> iterator = queue.iterator();
-        int value = iterator.next();
-        iterator.remove();
-        return value;
+            Iterator<Integer> iterator = queue.iterator();
+            int value = iterator.next();
+            iterator.remove();
+            return value;
+        }
     }
 
     public int numberOfDifferentResults() {

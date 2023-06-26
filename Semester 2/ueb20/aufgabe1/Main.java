@@ -37,6 +37,6 @@ public class Main {
         //System.out.println("Occurrences of 123: " + consumer.numberOfOccurrences(123));
         System.out.println("Cross totals (ascending): " + consumer.getCrossTotalsAscending());
         System.out.println("Cross totals (descending): " + consumer.getCrossTotalsDescending());
-        System.out.println("Timestamps for result 123: " + consumer.getTimestampsForResult(123));
+        //System.out.println("Timestamps for result 123: " + consumer.getTimestampsForResult(123));
     }
 }
