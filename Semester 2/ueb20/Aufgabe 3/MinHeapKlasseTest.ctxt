@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=MinHeapKlasseTest
+comment1.params=
+comment1.target=void\ testOfferAndPoll()
+comment2.params=
+comment2.target=void\ testPollNull()
+comment3.params=
+comment3.target=void\ testReihenfolgeOffered()
+comment4.params=
+comment4.target=void\ testPeek()
+numComments=5
