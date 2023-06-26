@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Producer
+comment1.params=queue
+comment1.target=Producer(java.util.Collection)
+comment2.params=
+comment2.target=void\ run()
+comment3.params=
+comment3.target=int\ produce()
+numComments=4

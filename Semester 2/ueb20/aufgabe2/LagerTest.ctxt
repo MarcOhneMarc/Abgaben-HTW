@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=LagerTest
+comment1.params=
+comment1.target=void\ setup()
+comment10.params=
+comment10.target=void\ applyToArticlesTest()
+comment11.params=
+comment11.target=void\ testCDPreisAlle10Pro()
+comment2.params=
+comment2.target=void\ testLegeArtikelAn_anzahlArtikelSollteHoeherSein()
+comment3.params=
+comment3.target=void\ testLegeArtikelAn_mitBereitsAngelegtemArtikel_erwartetException()
+comment4.params=
+comment4.target=void\ testEntferneArtikel_anzahlArtikelSollteGeringerSein()
+comment5.params=
+comment5.target=void\ testBucheZugang_artikelbestandSollteHoeherSein()
+comment6.params=
+comment6.target=void\ testaenderePreisEinesArtikels_artikelPreisSollteHoeherSein()
+comment7.params=
+comment7.target=void\ testaenderePreisEinesArtikels_artikelPreisWirdNegativ_erwartetException()
+comment8.params=
+comment8.target=void\ testaenderePreisEinesArtikels_artikelPreisSollteGeringerSein()
+comment9.params=
+comment9.target=void\ getSortedTest()
+numComments=12

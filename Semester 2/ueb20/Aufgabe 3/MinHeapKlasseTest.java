@@ -52,7 +52,15 @@ public class MinHeapKlasseTest {
         assertEquals(3, (int) minHeap.poll());
         assertEquals(5, (int) minHeap.poll());
     }
-
+    
+    @Test
+    public void testFullTest() {
+        MinHeapKlasse<Integer> minHeap = new MinHeapKlasse<>(1);
+        minHeap.offer(1);
+       assertEquals(false, (boolean) minHeap.offer(2));
+        
+    }
+    
     @Test
     public void testPeek() {
         MinHeapKlasse<Integer> minHeap = new MinHeapKlasse<>(10);
@@ -63,5 +71,23 @@ public class MinHeapKlasseTest {
         minHeap.offer(7);
 
         assertEquals(3, (int) minHeap.peek());
+    }
+    
+    @Test
+    public void testOfferLetters() {
+        MinHeapKlasse<String> minHeap = new MinHeapKlasse<>(10);
+
+        minHeap.offer("a");
+        minHeap.offer("b");
+        minHeap.offer("e");
+        minHeap.offer("c");
+        minHeap.offer("d");
+    
+        assertEquals("a", minHeap.poll());
+        assertEquals("b", minHeap.poll());
+        assertEquals("c", minHeap.poll());
+        assertEquals("e", minHeap.poll());
+        assertEquals("d", minHeap.poll());
+        assertNull(minHeap.poll());
     }
 }
