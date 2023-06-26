@@ -10,13 +10,7 @@ import java.util.Set;
 public class MinHeapKlasse
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private Queue<Integer> queue = new Queue<>();
+    private Queue<Integer> queue;
 
-    /**
-     * Konstruktor für Objekte der Klasse MinHeapKlasse
-     */
-    public MinHeapKlasse()
-    {
-        queue = new Queue<>();
-    }
+    private Queue
 }
