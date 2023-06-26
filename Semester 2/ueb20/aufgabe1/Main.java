@@ -33,11 +33,12 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(",");
+        System.out.println("2");
         System.out.println("Number of different results: " + consumer.numberOfDifferentResults());
         //System.out.println("Occurrences of 123: " + consumer.numberOfOccurrences(123));
         System.out.println("Cross totals (ascending): " + consumer.getCrossTotalsAscending());
         System.out.println("Cross totals (descending): " + consumer.getCrossTotalsDescending());
         //System.out.println("Timestamps for result 123: " + consumer.getTimestampsForResult(123));
+        System.out.println("2");
     }
 }
