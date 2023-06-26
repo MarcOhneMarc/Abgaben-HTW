@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/ggt-palindrom" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ggt-palindrom BlueJ" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ueb13" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ueb16" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ueb17" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ueb18" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ueb18-copy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ueb19" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
