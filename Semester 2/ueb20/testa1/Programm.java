@@ -1,21 +1,17 @@
 import java.util.*;
 
 /**
- * Beschreiben Sie hier die Klasse Programm.
+ * TestProgramm für Producer und Consumer
  *
- * @author (Ihr Name)
- * @version (eine Versionsnummer oder ein Datum)
+ * @JonasNeu_MarcPerwak
  */
 public class Programm {
     public static void main(String[] args) {
-        // Parameter für die Collection- und Sortierungsart
-        boolean useFIFO = true; // true für FIFO-Ordnung, false für natürliche Sortierung
+        boolean useFIFO = true;
 
-        // Erstellen von Producer und Consumer
         Producer producer = new Producer();
         Consumer consumer = new Consumer();
 
-        // Collection abhängig von der gewählten Sortierung erstellen
         Collection<Integer> collection;
         if (useFIFO) {
             collection = new LinkedList<>();
@@ -23,16 +19,13 @@ public class Programm {
             collection = new PriorityQueue<>();
         }
 
-        // Random-Objekt für die zufällige Auswahl von Producer oder Consumer
         Random random = new Random();
-
+        //gegebene Schleife
         for (int i = 0; i < 10000; i++) {
             if (random.nextInt(2) > 0) {
-                // Producer erzeugt einen neuen Integer und speichert ihn in der Collection
                 int value = producer.produce();
                 collection.add(value);
             } else {
-                // Consumer entnimmt einen Integer aus der Collection und berechnet die Quersumme
                 if (!collection.isEmpty()) {
                     int value = collection.iterator().next();
                     collection.remove(value);
@@ -40,13 +33,16 @@ public class Programm {
                 }
             }
         }
-
-        // Testen der Consumer-Methoden
-        System.out.println("Anzahl unterschiedlicher Quersummen: " + consumer.numberOfDifferentResults());
-        int number = 5; // Beispielzahl
-        System.out.println("Anzahl Vorkommen von " + number + ": " + consumer.numberOfOccurrences(number));
-        System.out.println("Quersummen in aufsteigender Reihenfolge: " + consumer.getCrossTotalsAscending());
-        System.out.println("Quersummen in absteigender Reihenfolge: " + consumer.getCrossTotalsDescending());
-        System.out.println("Zeitstempel für Quersumme " + number + ": " + consumer.getTimestampsForResult(number));
+        
+        System.out.println("ERGEBNISSE:");
+        System.out.println("Anzahl unterschiedlicher Quersummen: ");
+        System.out.println(consumer.numberOfDifferentResults() + "\n");
+        int number = 10;
+        System.out.println("Anzahl Vorkommen von " + number + ": " + consumer.numberOfOccurrences(number) + "\n");
+        number = 18;
+        System.out.println("Anzahl Vorkommen von " + number + ": " + consumer.numberOfOccurrences(number) + "\n");
+        System.out.println("Zeiten zur berechnung der Quersummen: " + number + ": " + consumer.getTimestampsForResult(number) + "\n");
+        System.out.println("Quersummen absteigend: " + consumer.getCrossTotalsDescending() + "\n");
+        System.out.println("Quersummen aufsteigend: " + consumer.getCrossTotalsAscending() + "\n");
     }
 }

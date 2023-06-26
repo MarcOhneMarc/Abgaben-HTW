@@ -9,8 +9,7 @@ import java.util.Collections;
 /**
  * Beschreiben Sie hier die Klasse Consumer.
  *
- * @author (Ihr Name)
- * @version (eine Versionsnummer oder ein Datum)
+ * @JonasNeu_MarcPerwak
  */
 class Consumer {
     private Map<Integer, List<Long>> timestampMap;
@@ -21,11 +20,17 @@ class Consumer {
         occurrenceMap = new HashMap<>();
     }
 
+    /**
+     * Diese Methode nimmt einen Integer entgegen und 
+     * berechnet die Quersumme mit Zeitangabe.
+     * 
+     * @param number Die Zahl, dessen Quersumme berechnet werden soll.
+     */
     public void consume(int number) {
-        // Quersumme berechnen
+        //Quersumme
         int crossTotal = calculateCrossTotal(number);
-
-        // Zeitstempel speichern
+        
+        
         long timestamp = System.currentTimeMillis();
         List<Long> timestamps = timestampMap.getOrDefault(crossTotal, new ArrayList<>());
         timestamps.add(timestamp);
