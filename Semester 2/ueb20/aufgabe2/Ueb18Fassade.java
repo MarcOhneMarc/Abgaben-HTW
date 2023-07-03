@@ -3,7 +3,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.BiPredicate;
 
@@ -33,7 +32,7 @@ public class Ueb18Fassade {
      */
     public Artikel[] aufgabe_c_i(Lager lager) {
         //Bestand aufsteigend
-        Comparator<Artikel> kriterium = (artikel1, artikel2) -> {
+        BiPredicate<Artikel, Artikel> kriterium = (artikel1, artikel2) -> {
             // Sortieren nach Unterklassen alphabetisch
             String klasse1 = artikel1.getClass().getSimpleName();
             String klasse2 = artikel2.getClass().getSimpleName();
