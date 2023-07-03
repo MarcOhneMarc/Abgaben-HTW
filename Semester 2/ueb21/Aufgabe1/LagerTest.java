@@ -1,9 +1,16 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.function.Consumer;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.function.BiPredicate;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.function.BiPredicate;
-import java.util.function.Consumer;
 
 public class LagerTest {
     private static final double EPSILON = 0.00000001;
