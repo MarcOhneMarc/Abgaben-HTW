@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Mitarbeiter
+comment0.text=\r\n\ Diese\ Klasse\ definiert\ einen\ Mitarbeiter\ welcher\ von\ der\ Klasse\ Person\ erbt.\r\n\ \r\n\ @jonas_neu_+_marc_perwak\r\n
+comment1.params=vorname\ nachname\ mail
+comment1.target=Mitarbeiter(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ Mitarbeiter\r\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Mitarbeiters\ als\ String\r\n\ \r\n\ @return\ mitarbeiter\ Die\ Ausgabe\ eines\ Mitarbeiters\ mit\ Signatur\:\ VORNAME\ NACHNAME\ (MAIL)\r\n
+comment3.params=raum\ beginn\ ende\ bemerkung
+comment3.target=void\ reserviere(Raum,\ Uhrzeit,\ Uhrzeit,\ java.lang.String)
+comment3.text=\r\n\ Methode\ zum\ resavieren\ eines\ Raumes\r\n\ \r\n\ @param\ raum\ Der\ Raum,\ welcher\ Reserviert\ werden\ soll\r\n\ @param\ beginn\ die\ Uhrzeit\ ab\ welcher\ die\ Reservierung\ starten\ soll\r\n\ @param\ ende\ die\ Uhrzeit\ an\ der\ die\ Reservierung\ beendet\ werden\ soll\r\n\ @param\ bemerkung\ Bemerkungen\ zur\ Reservierung\r\n
+comment4.params=
+comment4.target=java.lang.String\ getEmail()
+comment4.text=\r\n\ Methode\ zur\ Rueckgabe\ der\ Email\r\n\ \r\n\ @return\ mail\ Die\ Rueckgabe\ des\ Vornamens\ als\ String\r\n
+comment5.params=mitarbeiter
+comment5.target=boolean\ equals(Mitarbeiter)
+numComments=6

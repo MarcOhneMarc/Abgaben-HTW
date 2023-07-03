@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Uhrzeit
+comment0.text=\r\n\ Diese\ Klasse\ dient\ als\ Datentyp\ fuer\ eine\ Uhrzeit.\r\n\ \r\n\ @jonas_neu_+_marc_perwak\r\n
+comment1.params=stunde\ minute
+comment1.target=Uhrzeit(int,\ int)
+comment1.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ Uhrzeit\r\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\r\n\ Methode\ zum\ ausgeben\ der\ Uhrzeit\ als\ String\r\n\ \r\n\ @return\ uhrzeit\ Die\ Ausgabe\ der\ Uhrzeit\ mit\ Signatur\:\ STUNDE\:MINUTE\ Uhr\r\n
+comment3.params=
+comment3.target=int\ getStunde()
+comment3.text=\r\n\ Methode\ zur\ Rueckgabe\ der\ Stunde\r\n\ \r\n\ @return\ stunde\ Die\ Rueckgabe\ der\ Stunde\ als\ Integer\r\n
+comment4.params=
+comment4.target=int\ getMinute()
+comment4.text=\r\n\ Methode\ zur\ Rueckgabe\ der\ Minute\r\n\ \r\n\ @return\ minute\ Die\ Rueckgabe\ der\ Minute\ als\ Integer\r\n
+numComments=5

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Person
+comment0.text=\r\n\ Diese\ Klasse\ definiert\ das\ Grundgeruest\ einer\ Person.\r\n\ \r\n\ @jonas_neu_+_marc_perwak\r\n
+comment1.params=vorname\ nachname
+comment1.target=Person(java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ Konstruktor\ fuer\ Objekte\ der\ Klasse\ Person\r\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\r\n\ Methode\ zum\ ausgeben\ einer\ Person\ als\ String\r\n\ \r\n\ @return\ person\ Die\ Ausgabe\ einer\ Person\ mit\ Signatur\:\ VORNAME\ NACHNAME\r\n
+comment3.params=
+comment3.target=java.lang.String\ getVorname()
+comment3.text=\r\n\ Methode\ zur\ Rueckgabe\ des\ Vornamens\r\n\ \r\n\ @return\ vorname\ Die\ Rueckgabe\ des\ Vornamens\ als\ String\r\n
+comment4.params=
+comment4.target=java.lang.String\ getNachname()
+comment4.text=\r\n\ Methode\ zur\ Rueckgabe\ des\ Nachnamens\r\n\ \r\n\ @return\ vorname\ Die\ Rueckgabe\ des\ Nachnamens\ als\ String\r\n
+comment5.params=person
+comment5.target=boolean\ equals(Person)
+numComments=6

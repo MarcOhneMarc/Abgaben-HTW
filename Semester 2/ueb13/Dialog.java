@@ -22,8 +22,8 @@ public class Dialog {
     private Mitarbeiter[] mitarbeiterListe;
     private int mitarbeiterListeLaenge = 0;
     
-    private static final int mitarbeiterHinzufügen = 1;
-    private static final int raumHinzufügen = 2;
+    private static final int mitarbeiterHinzufuegen = 1;
+    private static final int raumHinzufuegen = 2;
     private static final int raumReservieren = 3;
     private static final int mitarbeiterAusgeben = 4;
     private static final int raeumeUndResarvirerungenAusgeben = 5;
@@ -96,9 +96,9 @@ public class Dialog {
         switch (funktion) {
             case raumReservieren: raumReservieren();
             break;
-            case mitarbeiterHinzufügen: mitarbeiterHinzufügen();
+            case mitarbeiterHinzufuegen: mitarbeiterHinzufuegenuegen();
             break;
-            case raumHinzufügen: raumHinzufügen();
+            case raumHinzufuegen: raumHinzufuegen();
             break;
             case mitarbeiterAusgeben: mitarbeiterAusgeben();
             break;
@@ -111,7 +111,7 @@ public class Dialog {
     /**
      * Hinzufuegen eines Mitarbeites zum Programm
      */
-    private void mitarbeiterHinzufügen() {
+    private void mitarbeiterHinzufuegen() {
         System.out.println("Vorname des Mitarbeiters:");
         String vorname = input.nextLine();
         System.out.println("Nachname des Mitarbeiters:");
@@ -130,7 +130,7 @@ public class Dialog {
     /**
      * Hinzufuegen eines Raumes zum Programm
      */
-    private void raumHinzufügen() {
+    private void raumHinzufuegen() {
         System.out.println("Nummer des Gebaeudes:");
         int geb = input.nextInt();
         System.out.println("Nummer der Etage:");

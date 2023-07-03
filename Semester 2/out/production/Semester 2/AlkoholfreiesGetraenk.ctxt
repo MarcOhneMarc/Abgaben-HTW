@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=AlkoholfreiesGetraenk
+comment0.text=\r\n\ Abstrakte\ Klasse\ AlkoholfreiesGetraenk,\ erbt\ von\ Getraenk.\r\n\ \r\n\ @Jonas_Neu_&_Marc_Perwak\r\n
+comment1.params=hersteller
+comment1.target=AlkoholfreiesGetraenk(java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getHersteller()
+comment2.text=\r\n\ Methode\ zur\ Rueckgabe\ des\ Herstellers\ eines\ Getraenks\r\n\ \r\n\ @return\ hersteller\ Die\ Rueckgabe\ des\ Herstellers\ als\ String\r\n
+comment3.params=hersteller
+comment3.target=void\ setHersteller(java.lang.String)
+comment3.text=\r\n\ Methode\ zum\ ueberschreiben\ des\ Herstellers\ eines\ alkohlfreien\ Getraenks\r\n\ \r\n\ @param\ hersteller\ Die\ uebergabe\ des\ Herstellers\ als\ String\r\n
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment4.text=\r\n\ Methode\ zum\ ausgeben\ eines\ alkoholfreien\ Getraenks\r\n
+numComments=5

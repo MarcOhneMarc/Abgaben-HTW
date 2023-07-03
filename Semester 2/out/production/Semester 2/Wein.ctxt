@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Wein
+comment0.text=\r\n\ Klasse\ Wein,\ erbt\ von\ AlkoholischesGetraenk.\r\n\ \r\n\ @Jonas_Neu_&_Marc_Perwak\r\n
+comment1.params=alkoholgehalt\ weingut
+comment1.target=Wein(float,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getWeingut()
+comment2.text=\r\n\ Methode\ zur\ Rueckgabe\ des\ Weinguts\ eines\ Weins\r\n\ \r\n\ @return\ weingut\ Die\ Rueckgabe\ des\ Weinguts\ als\ String\r\n
+comment3.params=weingut
+comment3.target=void\ setWeingut(java.lang.String)
+comment3.text=\r\n\ Methode\ zum\ ueberschreiben\ des\ Weinguts\ eines\ Weins\r\n\ \r\n\ @param\ weingut\ Die\ Uebergabe\ des\ Weinguts\ als\ String\r\n
+comment4.params=
+comment4.target=java.lang.String\ toString()
+comment4.text=\r\n\ Methode\ zum\ ausgeben\ eines\ Weins\r\n
+numComments=5
