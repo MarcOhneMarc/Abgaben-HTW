@@ -1,10 +1,7 @@
 import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -41,7 +38,7 @@ import java.util.stream.Collectors;
     
 
     public void applyToArticles(Consumer<Artikel> operation) {
-        allArtikels.values()
+        allArtikels.values().stream()
                 .forEach(operation::accept);
     }
 
@@ -51,20 +48,10 @@ import java.util.stream.Collectors;
      * @param kriterium Das Sortierkriterium als Comparator<Artikel>.
      * @return sortedArray Ein sortiertes Array der Artikel im Lager.
      */
-    public Artikel[] getSorted(BiPredicate<Artikel, Artikel> kriterium) {
-        Artikel[] sortedArray = allArtikels.values().toArray(new Artikel[0]);
-
-        for (int i = 0; i < sortedArray.length; i++) {
-            for (int j = i + 1; j < sortedArray.length; j++) {
-                if (kriterium.test(sortedArray[i], sortedArray[j])) {
-                    Artikel temp = sortedArray[i];
-                    sortedArray[i] = sortedArray[j];
-                    sortedArray[j] = temp;
-                }
-            }
-        }
-
-        return sortedArray;
+    public List<Artikel> getSorted(Comparator<Artikel> kriterium) {
+        return allArtikels.values().stream()
+                .sorted(kriterium)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -134,7 +121,7 @@ import java.util.stream.Collectors;
         if (allArtikels.get(artikelNr) == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         }
-        allArtikels.values().forEach(value -> value.bucheZugang(zugang));
+        allArtikels.values().stream().forEach(value -> value.bucheZugang(zugang));
     }
     
     /**
@@ -149,7 +136,7 @@ import java.util.stream.Collectors;
         if (allArtikels.get(artikelNr) == ARTIKEL_NICHT_GEFUNDEN) {
           throw new IllegalArgumentException(ARTIKEL_EXISTIERT_NICHT);
         }
-        allArtikels.values().forEach(value -> value.bucheAbgang(abgang));
+        allArtikels.values().stream().forEach(value -> value.bucheAbgang(abgang));
     }
 
     /**
@@ -180,7 +167,7 @@ import java.util.stream.Collectors;
      * @param prozent uebergebene Prozentzahl als double
      */
     public void aenderePreisAllerArtikel(double prozent) {
-        allArtikels.values()
+        allArtikels.values().stream()
                 .forEach(value -> value.setPreis(value.getPreis() + (value.getPreis() / 100) * prozent));
     }
    
@@ -287,7 +274,7 @@ import java.util.stream.Collectors;
                 .filter(artikel -> Arrays.stream(filter).allMatch(f -> f.test(artikel)))
                 .toArray(Artikel[]::new);
     }
-    
+
     public Artikel[] getArticles(Predicate<Object> filter, BiPredicate<Artikel, Artikel> kriterium) {
         Artikel[] filteredArray = allArtikels.values().stream()
                 .filter(filter)
