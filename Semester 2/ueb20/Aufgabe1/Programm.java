@@ -7,13 +7,13 @@ import java.util.*;
  */
 public class Programm {
     public static void main(String[] args) {
-        boolean useFIFO = true;
+        String arguments = args.toString();
 
         Producer producer = new Producer();
         Consumer consumer = new Consumer();
 
         Collection<Integer> collection;
-        if (useFIFO) {
+        if (arguments.equals("fifo") || arguments.equals("FIFO")) {
             collection = new LinkedList<>();
         } else {
             collection = new PriorityQueue<>();

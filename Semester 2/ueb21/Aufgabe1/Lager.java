@@ -48,10 +48,11 @@ import java.util.stream.Collectors;
      * @param kriterium Das Sortierkriterium als Comparator<Artikel>.
      * @return sortedArray Ein sortiertes Array der Artikel im Lager.
      */
-    public List<Artikel> getSorted(Comparator<Artikel> kriterium) {
-        return allArtikels.values().stream()
-                .sorted(kriterium)
-                .collect(Collectors.toList());
+    public Artikel[] getSorted(BiPredicate<Artikel, Artikel> kriterium) {
+        return this.allArtikels.values()
+                .stream()
+                .sorted(Comparator.comparing(artikel -> artikel, (a, b) -> kriterium.test(a, b) ? -1 : 1))
+                .toArray(Artikel[]::new);
     }
 
     /**
