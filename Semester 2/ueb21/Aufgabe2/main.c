@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int main() {
-
+    bvb b,
     float nettopreis;
     printf("Bitte geben sie den Nettopreis ein: ");
     scanf("%f", &nettopreis);
