@@ -16,11 +16,10 @@ Impuls berechneImpuls(Masse m, Geschwindigkeit v) {
     return m * v;
 }
 
-void main() {
+/*void main() {
     Geschwindigkeit geschwindigkeit;
     geschwindigkeit = berechneGeschwindigkeit(10, 3);
     printf("\n %f", geschwindigkeit);
-
 
     Geschwindigkeit beschleunigung;
     beschleunigung = berechneBeschleunigung(10, 3);
@@ -30,3 +29,4 @@ void main() {
     impuls = berechneImpuls(3, 3);
     printf("\n %f", impuls);
 }
+*/

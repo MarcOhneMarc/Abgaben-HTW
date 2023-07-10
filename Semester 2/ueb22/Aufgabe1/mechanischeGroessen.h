@@ -16,4 +16,4 @@ Geschwindigkeit berechneGeschwindigkeit(Strecke delta_s, Zeit delta_t);
 Beschleunigung berechneBeschleunigung(Geschwindigkeit delta_v, Zeit delta_t);
 Impuls berechneImpuls(Masse m, Geschwindigkeit v);
 
-#endif // MECHANISCHEGROESSEN_H
+#endif
