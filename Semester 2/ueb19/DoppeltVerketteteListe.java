@@ -11,10 +11,6 @@ import java.util.NoSuchElementException;
  * @author Jonas Neu und Marc Perwak
  * @param <E> der Typ der Elemente in der Liste
  */
-
-/**
- * ASDIJANSDIOASNDFUINADSIPFNUDSIPUFJN
- */
 public class DoppeltVerketteteListe<E> implements List<E> {
 
     private Node<E> head;
